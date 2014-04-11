@@ -19,6 +19,13 @@ function incom_admin_init() {
 
 function incom_frontend_init() {
 	require_once( INCOM_PATH . 'frontend/class-frontend.php' );
+
+	if ( true === true ) {
+		require_once( INCOM_PATH . 'frontend/class-wp.php' );
+	}
+	else {
+		require_once( INCOM_PATH . 'frontend/class-indisq.php' );
+	}
 }
 
 if ( is_admin() ) {

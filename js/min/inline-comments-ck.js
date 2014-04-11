@@ -1,0 +1,1 @@
+!function(n,o,c){o(document).ready(function(){i()});var i=function(){console.log("test")}}(window.incom=window.incom||{},jQuery);
