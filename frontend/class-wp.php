@@ -1,6 +1,6 @@
 <?php
 /**
- * @package WordPress Comment System
+ * @package Comment System Type: WordPress
  */
 class INCOM_WordPress extends INCOM_Frontend {
 

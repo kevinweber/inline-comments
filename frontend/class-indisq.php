@@ -1,6 +1,6 @@
 <?php
 /**
- * @package Disqus Comment System
+ * @package Comment System Type: Disqus
  */
 class INCOM_Indisq extends INCOM_Frontend {
 

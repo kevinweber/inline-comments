@@ -16,7 +16,7 @@ class INCOM_Admin {
 	}
 
 	function register_incom_settings() {
-		$arr = array('disqus_shortname', 'identifier', 'multiselector', 'display_count', 'check_highlight', 'select_align', 'set_bgcolour', 'set_maxwidth', 'custom_css', 'check_rmode');
+		$arr = array('disqus_shortname', 'identifier', 'multiselector', 'display_count', 'check_highlight', 'select_align', 'select_comment_type', 'set_bgcolour', 'set_maxwidth', 'custom_css', 'check_rmode');
 		foreach ( $arr as $i ) {
 			register_setting( 'incom-settings-group', $i );
 		}
@@ -64,8 +64,8 @@ class INCOM_Admin {
 			        	<th scope="row">Position</th>
 				        <td>
 							<select class="select" typle="select" name="select_align">
-								<option value="left"<?php if (get_option('select_align') == 'left') { echo ' selected="selected"'; } ?>>Left</option>
-								<option value="right"<?php if (get_option('select_align') == 'right') { echo ' selected="selected"'; } ?>>Right</option>
+								<option value="left"<?php if (get_option('select_align') === 'left') { echo ' selected="selected"'; } ?>>Left</option>
+								<option value="right"<?php if (get_option('select_align') === 'right') { echo ' selected="selected"'; } ?>>Right</option>
 							</select>
 					    </td>
 			        </tr>
@@ -85,6 +85,15 @@ class INCOM_Admin {
 			        	<th scope="row">Responsive Mode (Beta)</th>
 				        <td>
 							<input name="check_rmode" type="checkbox" value="1" <?php checked( '1', get_option( 'check_rmode' ) ); ?> /> <span>If checked, the plugin reacts different on smaller/larger screens. The comments field will be fixed on the page's right/left side.</span>
+				        </td>
+			        </tr>
+			        <tr valign="top">
+			        	<th scope="row">Choose Comment System (Alpha)</th>
+				        <td>
+							<select class="select" typle="select" name="select_comment_type">
+								<option value="disqus"<?php if (get_option('select_comment_type') === 'disqus') { echo ' selected="selected"'; } ?>>Disqus</option>
+								<option value="wp"<?php if (get_option('select_comment_type') === 'wp') { echo ' selected="selected"'; } ?>>WordPress Comments</option>
+							</select>
 				        </td>
 			        </tr>
 			        <tr valign="top">
