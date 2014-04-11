@@ -84,7 +84,7 @@ class INCOM_Admin {
 			        <tr valign="top">
 			        	<th scope="row">Responsive Mode (Beta)</th>
 				        <td>
-							<input name="check_rmode" type="checkbox" value="1" <?php checked( '1', get_option( 'check_rmode' ) ); ?> /> <span>If checked, the plugin reacts different on smaller/larger screens.</span>
+							<input name="check_rmode" type="checkbox" value="1" <?php checked( '1', get_option( 'check_rmode' ) ); ?> /> <span>If checked, the plugin reacts different on smaller/larger screens. The comments field will be fixed on the page's right/left side.</span>
 				        </td>
 			        </tr>
 			        <tr valign="top">

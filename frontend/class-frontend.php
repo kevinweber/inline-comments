@@ -23,7 +23,7 @@ class INCOM_Frontend {
 	 * Add Scripts into Footer
 	 */
 	function load_incom() {
-			echo '<script src="' . plugins_url( 'js/inlineDisqussions.js' , plugin_dir_path( __FILE__ ) ) . '"></script>';
+			echo '<script src="' . plugins_url( 'js/min/inlineDisqussions-ck.js' , plugin_dir_path( __FILE__ ) ) . '"></script>';
 		?>
 		<script>
 			disqus_shortname = '<?php if (get_option("disqus_shortname") !== "") { echo get_option("disqus_shortname"); } ?>';
