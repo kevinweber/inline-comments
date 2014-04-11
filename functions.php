@@ -40,24 +40,28 @@
 			var $rmode = <?php if (get_option("check_rmode") == "1") { echo "true"; } else { echo "false"; } ?>
 
 			// Test if Screen Size is Small enough and if Responsive Mode is activated
-			if ( ( $viewportW < 860 ) && ( $rmode == true ) ) {
+			if ( ( $viewportW < 860 ) && ( $rmode === true ) ) {
 				$slidewidth = "70%";
 				activate_rmode($slidewidth);
 			}
-			else if ( ( $viewportW < 980 ) && ( $rmode == true ) ) {
+			else if ( ( $viewportW < 980 ) && ( $rmode === true ) ) {
 				$slidewidth = "55%";
 				activate_rmode($slidewidth);
 			}
-			else if ( ( $viewportW < 1200 ) && ( $rmode == true ) ) {
+			else if ( ( $viewportW < 1200 ) && ( $rmode === true ) ) {
 				$slidewidth = "40%";
+				activate_rmode($slidewidth);
+			}
+			else if ( $rmode === true ) {
+				$slidewidth = "30%";
 				activate_rmode($slidewidth);
 			}
 			function activate_rmode($slidewidth) {
 				var $tvar = 0;
 				if ( $tvar = 0 ) {
 					$ind('a.disqussion-link').click(
-					function movecontent(){
-						<?php if (get_option("select_align") == "right") { ?>
+					function(){
+						<?php if (get_option("select_align") === "right") { ?>
 							$ind('body').css( { "position" : "relative", "right" : $slidewidth  } );
 						<?php } else { ?>
 							$ind('body').css( { "position" : "relative", "left" : $slidewidth  } );
@@ -67,8 +71,8 @@
 				}
 				else if ( $tvar = 1 ) {
 					$ind('a.disqussion-link').click(
-					function movecontent(){
-						<?php if (get_option("select_align") == "right") { ?>
+					function(){
+						<?php if (get_option("select_align") === "right") { ?>
 							$ind('body').css( { "position" : "relative", "left" : "initial", "right" : $slidewidth  } );
 						<?php } else { ?>
 							$ind('body').css( { "position" : "relative", "right" : "initial", "left" : $slidewidth  } );
@@ -94,14 +98,22 @@
 	function indisq_custom_css(){ ?>
 		<style type="text/css">	
 			<?php if (get_option("check_rmode") == "1") { ?>
+
+				#disqus_thread.positioned {
+					position:fixed!important;
+					width:30%!important;	/* Should be the same as $slidewidth */
+					height: 100%;
+					left:0%!important;
+					top:0!important;
+					overflow-y: scroll;
+					<?php if (get_option("select_align") == "right") { ?>
+						left:70%!important;
+					<?php } ?>
+				}
+
 				@media all and (max-width: 1200px) {
 					#disqus_thread.positioned {
-						position:fixed!important;
-						width:40%!important;	/* Should be the same as $slidewidth */
-						height: 100%;
-						left:0%!important;
-						top:0!important;
-						overflow-y: scroll;
+						width:40%!important;
 						<?php if (get_option("select_align") == "right") { ?>
 							left:60%!important;
 						<?php } ?>
