@@ -47,7 +47,7 @@ class INCOM_Indisq extends INCOM_Frontend {
 				activate_rmode($slidewidth);
 			}
 			else if ( $rmode === true ) {
-				$slidewidth = "30%";
+				$slidewidth = "10%";
 				activate_rmode($slidewidth);
 			}
 			function activate_rmode($slidewidth) {
@@ -100,20 +100,20 @@ class INCOM_Indisq extends INCOM_Frontend {
 
 				#disqus_thread.positioned {
 					position:fixed!important;
-					width:30%!important;	/* Should be the same as $slidewidth */
+					width:30%!important;	/* Differs from $slidewidth only in this case */
 					height: 100%;
 					left:0%!important;
 					top:0!important;
 					overflow-y: scroll;
-					<?php if (get_option("select_align") == "right") { ?>
+					<?php if (get_option("select_align") === "right") { ?>
 						left:70%!important;
 					<?php } ?>
 				}
 
 				@media all and (max-width: 1200px) {
 					#disqus_thread.positioned {
-						width:40%!important;
-						<?php if (get_option("select_align") == "right") { ?>
+						width:40%!important;	/* Should be the same as $slidewidth */
+						<?php if (get_option("select_align") === "right") { ?>
 							left:60%!important;
 						<?php } ?>
 					}
@@ -121,7 +121,7 @@ class INCOM_Indisq extends INCOM_Frontend {
 				@media all and (max-width: 980px) {
 					#disqus_thread.positioned {
 						width:55%!important;
-						<?php if (get_option("select_align") == "right") { ?>
+						<?php if (get_option("select_align") === "right") { ?>
 							left:45%!important;
 						<?php } ?>
 					}
