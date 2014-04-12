@@ -19,11 +19,11 @@ class INCOM_WordPress extends INCOM_Frontend {
 
 			$ind(document).ready(function() {
 				incom.init({
-					selectors: '<?php if (get_option('multiselector') === '') { echo 'p'; } else { echo get_option('multiselector'); } ?>',
+					selectors: '<?php if (get_option("multiselector") === '') { echo "p"; } else { echo get_option("multiselector"); } ?>',
 	              // identifier: 'disqussion',
 	              // displayCount: true,
 	              // highlighted: false,
-	              // position: 'right',
+	            	position: '<?php if (get_option("select_align") == "") { echo "left"; } else { echo get_option("select_align"); } ?>',
 	              // background: 'white',
 	              // maxWidth: 9999,
 				});

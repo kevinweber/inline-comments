@@ -5,58 +5,89 @@
 
 (function( incom, $, undefined ) {
 
+  var o;
+
   /*
    * Public methods
    */
 
   incom.init = function( options ) {
-
-    //var that = this;
-
-    // Defaults
-    var o = $.extend( {
-        selectors: 'p',
-        // identifier: 'disqussion',
-        // displayCount: true,
-        // highlighted: false,
-        // position: 'right',
-        // background: 'white',
-        // maxWidth: 9999,
-      },
-    options);
-
-    // Increase counter per element type (instead of using one counter for all elements).
-    // Advantage: For example, if an user inserts a new paragraph, the comments assigned to a specific element will not match anymore.
-    // However, this new paragraph will not affect comments that are assigned to other elements of another type, like DIVs, blockquotes or headlines.
-    var selectors = splitSelectors( o.selectors );
-
-    $( selectors ).each( function(j) {
-
-      $( selectors[j] ).each( function(i) {
-        addAtt( i, $(this) );
-      });
-
-    });
-
+    setOptions( options );
+    initCommentsWrapper();
+    initSelectElements();
   };
 
   /*
    * Private methods
    */
 
-  var addAtt = function(i, element) {
+  var setOptions = function( options ) {
+    // Override defaults
+    o = $.extend( {
+        selectors: 'p',
+        // identifier: 'disqussion',
+        // displayCount: true,
+        // highlighted: false,
+        position: 'left',
+        // background: 'white',
+        // maxWidth: 9999,
+      },
+    options);
+  };
 
-    // Use the first letter of the element's name
+  var initCommentsWrapper = function() {
+    if ( $( '#incom_wrapper' ).length === 0 ) {
+      $( '<div id="incom_wrapper"></div>' ).appendTo( $('body') );
+    }
+    // if ( $( '#incom_thread' ).length === 0 ) {
+    //   $( '<div id="incom_thread"></div>' ).appendTo( '#incom_wrapper' );
+    // }
+  };
+
+  /* 
+   * Select elements and increase counter per element type (instead of using one counter for all elements independent of their types).
+   */
+  var initSelectElements = function() {
+    var selectors = splitSelectors( o.selectors );
+
+    $( selectors ).each( function(j) {
+
+      $( selectors[j] ).each( function(i) {
+        var $element = $( this );
+        var $offset = $element.offset();
+
+        addAtt( i, $element );
+
+        var a = $('<a/>')
+          .text('+')
+          .wrap('<div class="incom-bubbles" />')
+          .parent()
+          .appendTo('#incom_wrapper');
+            a.css({
+              'top': $offset.top,
+              'left': o.position === 'right' ? $offset.left + $element.outerWidth() : $offset.left - a.outerWidth()
+            });
+
+      });
+
+    });
+  };
+
+  var addAtt = function(i, element) {
+    // Use the first letter of the element's name as identifier
     var identifier = element.prop('tagName').substr(0,1);
 
-    // If element has no attribute 'data-incom' add it
+    // If element has no attribute 'data-incom', add it
     if ( !element.attr( 'data-incom') ) {
       var attProp = identifier + i;
       element.attr( 'data-incom', attProp );
     }
   };
 
-  // Split selectors
+  /*
+   * Split selectors
+   * @return array
+   */
   var splitSelectors = function( selectors ) {
     var splitSelectors = selectors.split(',');
     return splitSelectors;
