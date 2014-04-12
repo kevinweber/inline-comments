@@ -11,9 +11,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 	/**
 	 * Add Scripts into Footer
 	 */
-	function load_incom() {
-		echo '<script src="' . plugins_url( 'js/min/inline-comments-ck.js' , plugin_dir_path( __FILE__ ) ) . '"></script>';
-		?>
+	function load_incom() { ?>
 		<script>
 			var $ind = jQuery.noConflict();
 
@@ -29,8 +27,15 @@ class INCOM_WordPress extends INCOM_Frontend {
 				});
 			});
 		</script>
-	<?php }    
-	
+	<?php }
+
+	/**
+	 * Add scripts (like JS)
+	 */
+	function incom_enqueue_scripts() {
+		wp_enqueue_script('pw-script', plugins_url( 'js/min/inline-comments-ck.js' , plugin_dir_path( __FILE__ ) ) );
+		wp_localize_script('pw-script', 'pw_script_vars', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )	) );
+	}
 
 	/**
 	 * Add stylesheet

@@ -20,6 +20,7 @@
     setOptions( options );
     initIncomWrapper();
     initSelectElements();
+    my_js_function();
   };
 
 
@@ -175,6 +176,17 @@
 
   };
 
+var my_js_function = function() 
+{
+  console.log("testjax1");
+     $.ajax({
+       url: pw_script_vars.ajaxurl,
+       data: ({action : 'get_my_option'}),
+       success: function() {
+        console.log("testjax");
+       }
+     });
+};
 
   /* 
    * Remove comments wrapper

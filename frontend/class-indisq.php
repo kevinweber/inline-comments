@@ -11,9 +11,7 @@ class INCOM_Indisq extends INCOM_Frontend {
 	/**
 	 * Add Scripts into Footer
 	 */
-	function load_incom() {
-			echo '<script src="' . plugins_url( 'js/min/inlineDisqussions-ck.js' , plugin_dir_path( __FILE__ ) ) . '"></script>';
-		?>
+	function load_incom() {	?>
 		<script>
 			disqus_shortname = '<?php if (get_option("disqus_shortname") !== "") { echo get_option("disqus_shortname"); } ?>';
 			var $ind = jQuery.noConflict();
@@ -81,6 +79,12 @@ class INCOM_Indisq extends INCOM_Frontend {
 		</script>
 	<?php }    
 	
+	/**
+	 * Add scripts (like JS)
+	 */
+	function incom_enqueue_scripts() {
+		wp_enqueue_script('pw-script', plugins_url( 'js/min/inlineDisqussions-ck.js' , plugin_dir_path( __FILE__ ) ) );
+	}
 
 	/**
 	 * Add stylesheet
