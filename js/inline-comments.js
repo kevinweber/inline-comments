@@ -169,7 +169,7 @@
     // Remove comments wrapper when user clicks anywhere but the #incom_wrapper and its children
     $('html').click( function( event ) {
       if( $( event.target ).parents( '#incom_wrapper' ).length === 0 ) {
-        removeCommentsWrapper();
+        removeCommentsWrapper( true );
       }
     });
 
@@ -179,13 +179,19 @@
   /* 
    * Remove comments wrapper
    */
-  var removeCommentsWrapper = function () {
+  var removeCommentsWrapper = function ( fadeout ) {
     var $classIncomBubble = $( '.incom-bubble' );
+    var $classCommentsWrapper = $( '.incom-comments-wrapper' );
 
     // If any element with $classIncomBubble has classIncomActive -> remove class and commentsWrapper
     if ( $classIncomBubble.hasClass(classIncomActive) ) {
       $classIncomBubble.removeClass( classIncomActive );
-      $( '.incom-comments-wrapper' ).remove();
+      if ( fadeout === true ) {
+        $classCommentsWrapper.fadeOut( 'fast' );
+      }
+      else {
+        $classCommentsWrapper.remove();
+      }
     }
   };
 
