@@ -1,20 +1,28 @@
 <?php
 class INCOM_Comments {
 
-	function __construct() {
-		$this->getCode();
+	/*
+	 * Get PHP code. Can be decoded in JS file with JSON.parse(@comments_php)
+	 */
+	function getCode() {
+		$items = $this->generateCode();
+
+	    $str = serialize($items);
+	    $comments_php = json_encode( unserialize( $str) );
+		return $comments_php;
 	}
 
-	function getCode() {
-		$items = array();
+	private function generateCode() {
+		$code = array();
 		$comments = get_comments('post_id=135'); // TODO: No static ID (-'135'-)
 
 		foreach($comments as $comment) :
-				$items[] = '<p>' . $comment->comment_content . '</p>';
+			$code[] = '<p>' . $comment->comment_content . '</p>';
 		endforeach;
 
-		return $items;
+		return $code;
 	}
+
 }
 
 function initialize_incom_comments() {

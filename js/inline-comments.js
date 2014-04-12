@@ -158,7 +158,7 @@
               {
                 'class': 'incom-comments-wrapper',
               })
-      .html( JSON.stringify(commentsPHP) )
+      .html( JSON.parse( commentsPHP ) )
       .appendTo('#incom_wrapper');
 
     // Position comments wrapper
