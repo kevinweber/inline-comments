@@ -35,6 +35,9 @@
     options);
   };
 
+  /* 
+   * This wrapper contains comment bubbles
+   */
   var initCommentsWrapper = function() {
     if ( $( '#incom_wrapper' ).length === 0 ) {
       $( '<div id="incom_wrapper"></div>' ).appendTo( $('body') );
@@ -54,26 +57,15 @@
 
       $( selectors[j] ).each( function(i) {
         var $element = $( this );
-        var $offset = $element.offset();
 
         addAtt( i, $element );
-
-        var a = $('<a/>')
-          .text('+')
-          .wrap('<div class="incom-bubbles" />')
-          .parent()
-          .appendTo('#incom_wrapper');
-            a.css({
-              'top': $offset.top,
-              'left': o.position === 'right' ? $offset.left + $element.outerWidth() : $offset.left - a.outerWidth()
-            });
-
+        addBubble( $element );
       });
 
     });
   };
 
-  var addAtt = function(i, element) {
+  var addAtt = function( i, element ) {
     // Use the first letter of the element's name as identifier
     var identifier = element.prop('tagName').substr(0,1);
 
@@ -82,6 +74,29 @@
       var attProp = identifier + i;
       element.attr( 'data-incom', attProp );
     }
+  };
+
+  var addBubble = function( element ) {
+    var $offset = element.offset();
+    var $bubble = $('<a/>')
+      .text('+')
+      .wrap('<div class="incom-bubble" />')
+      .parent()
+      .appendTo('#incom_wrapper');
+
+      // Position bubble
+      $bubble.css({
+        'top': $offset.top,
+        'left': o.position === 'right' ? $offset.left + element.outerWidth() : $offset.left - $bubble.outerWidth()
+      });
+
+      // Handle hover
+      element.hover(function() {
+        $bubble.stop( true, true ).fadeIn( 'middle' );
+      }, function() {
+        $bubble.stop( true, true ).fadeOut( 2000 );
+      });
+
   };
 
   /*

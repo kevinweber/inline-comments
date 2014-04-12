@@ -99,7 +99,7 @@ var disqus_url;
       .appendTo('#disqussions_wrapper');
     a.css({
       'top': node.offset().top,
-      'left': settings.position == 'right' ? node.offset().left + node.outerWidth() : node.offset().left - a.outerWidth()
+      'left': settings.position === 'right' ? node.offset().left + node.outerWidth() : node.offset().left - a.outerWidth()
     });
 
     node.attr('data-disqus-identifier', identifier).mouseover(function() {
@@ -232,14 +232,14 @@ var disqus_url;
     css.backgroundColor = settings.background;
 
     var animate = {};
-    if (el.attr('data-disqus-position') == 'right') {
+    if (el.attr('data-disqus-position') === 'right') {
       animate = {
         "top": el.offset().top,
         "left": el.offset().left + el.outerWidth(),
         "width": Math.min(parseInt($(window).width() - (el.offset().left + el.outerWidth()), 10), settings.maxWidth)
       };
     }
-    else if (el.attr('data-disqus-position') == 'left') {
+    else if (el.attr('data-disqus-position') === 'left') {
       animate = {
         "top": el.offset().top,
         "left": el.offset().left - Math.min(parseInt(el.offset().left, 10), settings.maxWidth),
