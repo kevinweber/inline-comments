@@ -20,7 +20,6 @@
     setOptions( options );
     initIncomWrapper();
     initSelectElements();
-    my_js_function();
   };
 
 
@@ -152,13 +151,14 @@
    * Load comments wrapper
    */
   var loadComments = function ( source ) {
+    var commentsPHP = ajaxLoadComments();
 
     var $offset = source.offset();
     var $commentsWrapper = $('<div/>',
               {
                 'class': 'incom-comments-wrapper',
               })
-      .text('INSERT WP COMMENT SYSTEM HERE')
+      .html( JSON.stringify(commentsPHP) )
       .appendTo('#incom_wrapper');
 
     // Position comments wrapper
@@ -176,17 +176,24 @@
 
   };
 
-var my_js_function = function() 
-{
-  console.log("testjax1");
-     $.ajax({
-       url: pw_script_vars.ajaxurl,
-       data: ({action : 'get_my_option'}),
-       success: function() {
-        console.log("testjax");
-       }
-     });
-};
+  /*
+   * Get PHP using AJAX
+   */
+  var ajaxLoadComments = function()
+  {
+    $.ajax({
+      //url: ajax_script_vars.ajaxurl,
+      // data: (
+      //   {
+      //     action : ajax_script_vars.comments_php
+      //   }
+      // ),
+      // success: function() {
+      //   console.log( 'debug' );
+      // }
+    });
+    return ajax_script_vars.comments_php;
+  };
 
   /* 
    * Remove comments wrapper
