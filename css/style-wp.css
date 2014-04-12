@@ -12,3 +12,10 @@
   font-weight: bold;
   padding: 7px;
 }
+
+.incom-comments-wrapper {
+	position: absolute;
+	background: blue;
+	width: 100px;
+	height: 100px;
+}

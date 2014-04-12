@@ -6,26 +6,35 @@
 (function( incom, $, undefined ) {
 
   var o;
+  var classIncomActive = 'incom-active';  // Class for currently selected bubble
+
+
 
   /*
    * Public methods
    */
 
+
+
   incom.init = function( options ) {
     setOptions( options );
-    initCommentsWrapper();
+    initIncomWrapper();
     initSelectElements();
   };
+
+
 
   /*
    * Private methods
    */
 
+
+
   var setOptions = function( options ) {
     // Override defaults
     o = $.extend( {
         selectors: 'p',
-        // identifier: 'disqussion',
+        // identifier: 'disqussion', // WILL NOT BE SUPPORTET for WordPress Comment System
         // displayCount: true,
         // highlighted: false,
         position: 'left',
@@ -35,10 +44,11 @@
     options);
   };
 
+
   /* 
    * This wrapper contains comment bubbles
    */
-  var initCommentsWrapper = function() {
+  var initIncomWrapper = function() {
     if ( $( '#incom_wrapper' ).length === 0 ) {
       $( '<div id="incom_wrapper"></div>' ).appendTo( $('body') );
     }
@@ -46,6 +56,7 @@
     //   $( '<div id="incom_thread"></div>' ).appendTo( '#incom_wrapper' );
     // }
   };
+
 
   /* 
    * Select elements and increase counter per element type (instead of using one counter for all elements independent of their types).
@@ -65,6 +76,9 @@
     });
   };
 
+  /*
+   * Add attribute 'data-incom' to each element
+   */
   var addAtt = function( i, element ) {
     // Use the first letter of the element's name as identifier
     var identifier = element.prop('tagName').substr(0,1);
@@ -76,12 +90,15 @@
     }
   };
 
+  /*
+   * Add bubbles to each element
+   */
   var addBubble = function( element ) {
     var $offset = element.offset();
     var $bubble = $('<a/>',
               {
-                  href: '',
-                  'class': 'incom-bubble-link',
+                href: '',
+                'class': 'incom-bubble-link',
               })
       .text('+')
       .wrap('<div class="incom-bubble" />')
@@ -99,8 +116,9 @@
 
   };
 
+
   /* 
-   * This will happen when user hovers a text element or bubble
+   * This event will be triggered when user hovers a text element or bubble
    */
   var handleHover = function ( element, bubble ) {
     // Handle hover (for both, "elements" and $bubble)
@@ -111,14 +129,66 @@
     });
   };
 
+
   /* 
-   * This will happen when user clicks on bubble
+   * This event will be triggered when user clicks on bubble
    */
   var handleClickBubble = function ( bubble ) {
-    $( document ).on( 'click', bubble, function(e) {
+    bubble.on( 'click', function(e) {
       e.preventDefault();
+
+      // Before creating a new comments wrapper: remove the previously created wrapper, if any
+      removeCommentsWrapper();
+
+      bubble.addClass( classIncomActive );
+      loadComments( bubble );
+
     });
   };
+
+
+  /* 
+   * Load comments wrapper
+   */
+  var loadComments = function ( source ) {
+
+    var $offset = source.offset();
+    var $commentsWrapper = $('<div/>',
+              {
+                'class': 'incom-comments-wrapper',
+              })
+      .text('INSERT WP COMMENT SYSTEM HERE')
+      .appendTo('#incom_wrapper');
+
+    // Position comments wrapper
+    $commentsWrapper.css({
+      'top': $offset.top,
+      'left': o.position === 'right' ? $offset.left + source.outerWidth() : $offset.left - $commentsWrapper.outerWidth()
+    });
+
+    // Remove comments wrapper when user clicks anywhere but the #incom_wrapper and its children
+    $('html').click( function( event ) {
+      if( $( event.target ).parents( '#incom_wrapper' ).length === 0 ) {
+        removeCommentsWrapper();
+      }
+    });
+
+  };
+
+
+  /* 
+   * Remove comments wrapper
+   */
+  var removeCommentsWrapper = function () {
+    var $classIncomBubble = $( '.incom-bubble' );
+
+    // If any element with $classIncomBubble has classIncomActive -> remove class and commentsWrapper
+    if ( $classIncomBubble.hasClass(classIncomActive) ) {
+      $classIncomBubble.removeClass( classIncomActive );
+      $( '.incom-comments-wrapper' ).remove();
+    }
+  };
+
 
   /*
    * Split selectors
