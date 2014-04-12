@@ -6,3 +6,9 @@
 .incom-bubble:hover {
   opacity: 1;
 }
+.incom-bubble a {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 7px;
+}

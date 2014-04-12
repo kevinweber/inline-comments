@@ -78,7 +78,11 @@
 
   var addBubble = function( element ) {
     var $offset = element.offset();
-    var $bubble = $('<a/>')
+    var $bubble = $('<a/>',
+              {
+                  href: '',
+                  'class': 'incom-bubble-link',
+              })
       .text('+')
       .wrap('<div class="incom-bubble" />')
       .parent()
@@ -90,13 +94,30 @@
         'left': o.position === 'right' ? $offset.left + element.outerWidth() : $offset.left - $bubble.outerWidth()
       });
 
-      // Handle hover
-      element.hover(function() {
-        $bubble.stop( true, true ).fadeIn( 'middle' );
-      }, function() {
-        $bubble.stop( true, true ).fadeOut( 2000 );
-      });
+    handleHover( element, $bubble );
+    handleClickBubble( $bubble );
 
+  };
+
+  /* 
+   * This will happen when user hovers a text element or bubble
+   */
+  var handleHover = function ( element, bubble ) {
+    // Handle hover (for both, "elements" and $bubble)
+    element.add(bubble).hover(function() {
+      bubble.stop( true, true ).fadeIn();
+    }, function() {
+      bubble.stop( true, true ).fadeOut( 2000 );
+    });
+  };
+
+  /* 
+   * This will happen when user clicks on bubble
+   */
+  var handleClickBubble = function ( bubble ) {
+    $( document ).on( 'click', bubble, function(e) {
+      e.preventDefault();
+    });
   };
 
   /*
