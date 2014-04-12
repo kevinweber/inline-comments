@@ -181,17 +181,17 @@
    */
   var ajaxLoadComments = function()
   {
-    $.ajax({
-      //url: ajax_script_vars.ajaxurl,
-      // data: (
-      //   {
-      //     action : ajax_script_vars.comments_php
-      //   }
-      // ),
-      // success: function() {
-      //   console.log( 'debug' );
-      // }
-    });
+    // $.ajax({
+    //   //url: ajax_script_vars.ajaxurl,
+    //   // data: (
+    //   //   {
+    //   //     action : ajax_script_vars.comments_php
+    //   //   }
+    //   // ),
+    //   // success: function() {
+    //   //   console.log( 'debug' );
+    //   // }
+    // });
     return ajax_script_vars.comments_php;
   };
 

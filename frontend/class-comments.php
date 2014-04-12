@@ -14,7 +14,9 @@ class INCOM_Comments {
 
 	private function generateCode() {
 		$code = array();
-		$comments = get_comments('post_id=135'); // TODO: No static ID (-'135'-)
+
+		$postId = 'post_id=' . get_the_ID();
+		$comments = get_comments( $postId );
 
 		foreach($comments as $comment) :
 			$code[] = '<p>' . $comment->comment_content . '</p>';
