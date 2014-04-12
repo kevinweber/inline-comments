@@ -12,8 +12,23 @@ class INCOM_WordPress extends INCOM_Frontend {
 	 * Add Scripts into Footer
 	 */
 	function load_incom() {
-			echo '<script src="' . plugins_url( 'js/min/inline-comments-ck.js' , plugin_dir_path( __FILE__ ) ) . '"></script>';
+		echo '<script src="' . plugins_url( 'js/min/inline-comments-ck.js' , plugin_dir_path( __FILE__ ) ) . '"></script>';
 		?>
+		<script>
+			var $ind = jQuery.noConflict();
+
+			$ind(document).ready(function() {
+				incom.init({
+					selectors: '<?php if (get_option('multiselector') === '') { echo 'p'; } else { echo get_option('multiselector'); } ?>',
+	              // identifier: 'disqussion',
+	              // displayCount: true,
+	              // highlighted: false,
+	              // position: 'right',
+	              // background: 'white',
+	              // maxWidth: 9999,
+				});
+			});
+		</script>
 	<?php }    
 	
 
