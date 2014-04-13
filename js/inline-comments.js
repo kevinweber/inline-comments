@@ -6,8 +6,17 @@
 (function( incom, $, undefined ) {
 
   var o;
-  var classIncomActive = 'incom-active';  // Class for currently selected bubble
-  var idCommentsAndForm = '#comments-and-form';
+  var idWrapper = 'incom_wrapper';
+    var idWrapperHash = '#'+idWrapper;
+  var idCommentsAndForm = 'comments-and-form';
+    var idCommentsAndFormHash = '#'+idCommentsAndForm;
+  var attDataIncom = 'data-incom';
+  var classActive = 'incom-active';  // Class for currently selected bubble
+  var classBubble = 'incom-bubble';
+    var classBubbleDot = '.'+classBubble;
+  var classBubbleLink = 'incom-bubble-link';
+  var classCommentsWrapper = 'incom-comments-wrapper';
+    var classCommentsWrapperDot = '.'+classCommentsWrapper;
 
 
   /*
@@ -31,7 +40,7 @@
 
 
   var setOptions = function( options ) {
-    // Override defaults
+    // 'options' overrides these defaults
     o = $.extend( {
         selectors: 'p',
         // identifier: 'disqussion', // WILL NOT BE SUPPORTET for WordPress Comment System
@@ -49,11 +58,11 @@
    * This wrapper contains comment bubbles
    */
   var initIncomWrapper = function() {
-    if ( $( '#incom_wrapper' ).length === 0 ) {
-      $( '<div id="incom_wrapper"></div>' ).appendTo( $('body') );
+    if ( $( idWrapperHash ).length === 0 ) {
+      $( '<div id="'+idWrapper+'"></div>' ).appendTo( $( 'body' ) );
     }
     // if ( $( '#incom_thread' ).length === 0 ) {
-    //   $( '<div id="incom_thread"></div>' ).appendTo( '#incom_wrapper' );
+    //   $( '<div id="incom_thread"></div>' ).appendTo( idWrapperHash );
     // }
   };
 
@@ -77,16 +86,16 @@
   };
 
   /*
-   * Add attribute 'data-incom' to each element
+   * Add attribute attDataIncom to each element
    */
   var addAtt = function( i, element ) {
     // Use the first letter of the element's name as identifier
     var identifier = element.prop('tagName').substr(0,1);
 
-    // If element has no attribute 'data-incom', add it
-    if ( !element.attr( 'data-incom') ) {
+    // If element has no attribute attDataIncom, add it
+    if ( !element.attr( attDataIncom ) ) {
       var attProp = identifier + i;
-      element.attr( 'data-incom', attProp );
+      element.attr( attDataIncom, attProp );
     }
   };
 
@@ -97,12 +106,12 @@
     var $bubble = $('<a/>',
         {
           href: '',
-          'class': 'incom-bubble-link',
+          'class': classBubbleLink,
         })
       .text('+')
-      .wrap('<div class="incom-bubble" />')
+      .wrap('<div class="'+classBubble+'" />')
       .parent()
-      .appendTo('#incom_wrapper');
+      .appendTo( idWrapperHash );
 
     setPosition( source, $bubble );
     handleHover( source, $bubble );
@@ -133,7 +142,7 @@
       // Before creating a new comments wrapper: remove the previously created wrapper, if any
       removeCommentsWrapper();
 
-      source.addClass( classIncomActive );
+      source.addClass( classActive );
       loadCommentsWrapper( source );
 
     });
@@ -146,9 +155,9 @@
   var loadCommentsWrapper = function ( source ) {
     var $commentsWrapper = $('<div/>',
         {
-          'class': 'incom-comments-wrapper',
+          'class': classCommentsWrapper,
         })
-      .appendTo('#incom_wrapper')
+      .appendTo( idWrapperHash )
       .css('background-color', o.background);
 
     loadCommentForm();
@@ -160,7 +169,7 @@
    * Insert comment form into wrapper
    */
   var loadCommentForm = function() {
-    $( idCommentsAndForm ).appendTo( '.incom-comments-wrapper' ).show();
+    $( idCommentsAndFormHash ).appendTo( classCommentsWrapperDot ).show();
   };
 
   /*
@@ -176,11 +185,11 @@
   };
 
   /*
-   * Remove comments wrapper when user clicks anywhere but the #incom_wrapper and its children
+   * Remove comments wrapper when user clicks anywhere but the idWrapperHash and its children
    */
   var handleClickElsewhere = function() {
     $('html').click( function( event ) {
-      if( $( event.target ).parents( '#incom_wrapper' ).length === 0 ) {
+      if( $( event.target ).parents( idWrapperHash ).length === 0 ) {
         removeCommentsWrapper( true );
       }
     });
@@ -209,15 +218,15 @@
    * Remove comments wrapper
    */
   var removeCommentsWrapper = function ( fadeout ) {
-    var $classIncomBubble = $( '.incom-bubble' );
-    var $classCommentsWrapper = $( '.incom-comments-wrapper' );
+    var $classIncomBubble = $( classBubbleDot );
+    var $classCommentsWrapper = $( classCommentsWrapperDot );
 
     // Comment form must be detached (and hidden) before wrapper is deleted
-    $( idCommentsAndForm ).appendTo('#incom_wrapper').hide();
+    $( idCommentsAndFormHash ).appendTo( idWrapperHash ).hide();
 
-    // If any element with $classIncomBubble has classIncomActive -> remove class and commentsWrapper
-    if ( $classIncomBubble.hasClass(classIncomActive) ) {
-      $classIncomBubble.removeClass( classIncomActive );
+    // If any element with $classIncomBubble has classActive -> remove class and commentsWrapper
+    if ( $classIncomBubble.hasClass( classActive ) ) {
+      $classIncomBubble.removeClass( classActive );
       if ( fadeout === true ) {
         $classCommentsWrapper.fadeOut( 'fast', function() {
             $( this ).remove();
