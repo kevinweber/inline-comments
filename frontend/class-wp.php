@@ -6,6 +6,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 
 	function __construct() {
 		parent::__construct();
+		$this->get_comments_php();
 		// add_action( "wp_ajax_get_comments_php", array( $this, 'get_comments_php' ) );
 		// add_action( "wp_ajax_nopriv_get_comments_php", array( $this, 'get_comments_php' ) );
 	}
@@ -14,9 +15,9 @@ class INCOM_WordPress extends INCOM_Frontend {
 	{
 		require_once( 'class-comments.php' );
 		$comments = new INCOM_Comments();
-		$comments_php = $comments->getCode();
-		return $comments_php;
-	    die();
+		// $comments_php = $comments->getCode();
+		// return $comments_php;
+		// die();
 	}
 
 	/**
@@ -45,7 +46,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 	 */
 	function incom_enqueue_scripts() {
 		wp_enqueue_script('ajax-script', plugins_url( 'js/min/inline-comments-ck.js' , plugin_dir_path( __FILE__ ) ) );
-		wp_localize_script('ajax-script', 'ajax_script_vars', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'comments_php' => $this->get_comments_php() ) );
+		//wp_localize_script('ajax-script', 'ajax_script_vars', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'comments_php' => $this->get_comments_php() ) );
 	}
 
 	/**
@@ -72,4 +73,3 @@ function initialize_incom_wp() {
 	$incom_wp = new INCOM_WordPress();
 }
 add_action( 'init', 'initialize_incom_wp' );
-?>

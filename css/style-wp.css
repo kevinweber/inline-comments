@@ -19,3 +19,10 @@
 	width: 100px;
 	height: 100px;
 }
+
+/*
+ * This comment form should be not visible at first. When the plugin loads inline comments, it will use this form.
+ */
+#incom_commentform {
+  display: none;
+}

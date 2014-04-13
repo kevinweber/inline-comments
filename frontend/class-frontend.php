@@ -31,4 +31,3 @@ function initialize_incom_frontend() {
 	$incom_frontend = new INCOM_Frontend();
 }
 add_action( 'init', 'initialize_incom_frontend' );
-?>

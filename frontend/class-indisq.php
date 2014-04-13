@@ -157,4 +157,3 @@ function initialize_incom_indisq() {
 	$incom_indisq = new INCOM_Indisq();
 }
 add_action( 'init', 'initialize_incom_indisq' );
-?>

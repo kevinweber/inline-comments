@@ -36,4 +36,3 @@ else {
 }
 
 /***** Plugin by Kevin Weber || kevinw.de *****/
-?>

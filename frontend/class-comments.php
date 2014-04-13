@@ -1,28 +1,46 @@
 <?php
 class INCOM_Comments {
 
-	/*
-	 * Get PHP code. Can be decoded in JS file with JSON.parse(@comments_php)
-	 */
-	function getCode() {
-		$items = $this->generateCode();
-
-	    $str = serialize($items);
-	    $comments_php = json_encode( unserialize( $str) );
-		return $comments_php;
+	function __construct() {
+		add_action('wp_footer', array( $this, 'generateCommentForm') );
 	}
 
-	private function generateCode() {
-		$code = array();
+	// /*
+	//  * Get PHP code. Can be decoded in JS file with JSON.parse(@comments_php)
+	//  */
+	// function getCode() {
+	// 	$items = $this->generateCode();
 
-		$postId = 'post_id=' . get_the_ID();
-		$comments = get_comments( $postId );
+	//     $str = serialize($items);
+	//     $comments_php = json_encode( unserialize( $str) );
+	// 	return $comments_php;
+	// }
 
-		foreach($comments as $comment) :
-			$code[] = '<p>' . $comment->comment_content . '</p>';
-		endforeach;
+	// private function generateCode() {
+	// 	$code = array();
 
-		return $code;
+	// 	$postId = 'post_id=' . get_the_ID();
+	// 	$comments = get_comments( $postId );
+
+	// 	foreach($comments as $comment) :
+	// 		$code[] = '<p>' . $comment->comment_content . '</p>';
+	// 	endforeach;
+
+	// 	return $code;
+	// }
+
+	function generateCommentForm() {
+		echo '<div id="incom_commentform">';
+		//TODO: incom-DESIGN + invisible ++ mit .detach() das Commentform entfernen und später wieder einfügen
+		comment_form(array(
+			//'id_form' => '',
+			'comment_form_before' => '',
+			'comment_notes_after' => '',
+			'title_reply'       => '',
+			'title_reply_to'    => ''
+			)
+		);
+		echo '</div>';	//<!--#incom_commentform-->
 	}
 
 }

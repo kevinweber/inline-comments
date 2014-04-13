@@ -96,10 +96,10 @@
   var addBubble = function( element ) {
     var $offset = element.offset();
     var $bubble = $('<a/>',
-              {
-                href: '',
-                'class': 'incom-bubble-link',
-              })
+        {
+          href: '',
+          'class': 'incom-bubble-link',
+        })
       .text('+')
       .wrap('<div class="incom-bubble" />')
       .parent()
@@ -113,7 +113,6 @@
 
     handleHover( element, $bubble );
     handleClickBubble( $bubble );
-
   };
 
 
@@ -133,15 +132,15 @@
   /* 
    * This event will be triggered when user clicks on bubble
    */
-  var handleClickBubble = function ( bubble ) {
-    bubble.on( 'click', function(e) {
+  var handleClickBubble = function ( source ) {
+    source.on( 'click', function(e) {
       e.preventDefault();
 
       // Before creating a new comments wrapper: remove the previously created wrapper, if any
       removeCommentsWrapper();
 
-      bubble.addClass( classIncomActive );
-      loadComments( bubble );
+      source.addClass( classIncomActive );
+      loadCommentsWrapper( source );
 
     });
   };
@@ -150,50 +149,66 @@
   /* 
    * Load comments wrapper
    */
-  var loadComments = function ( source ) {
-    var commentsPHP = ajaxLoadComments();
-
-    var $offset = source.offset();
+  var loadCommentsWrapper = function ( source ) {
     var $commentsWrapper = $('<div/>',
-              {
-                'class': 'incom-comments-wrapper',
-              })
-      .html( JSON.parse( commentsPHP ) )
+        {
+          'class': 'incom-comments-wrapper',
+        })
       .appendTo('#incom_wrapper');
 
-    // Position comments wrapper
+    loadCommentForm();
+    positionWrapper( source, $commentsWrapper );
+    handleClickElsewhere();
+  };
+
+  /*
+   * Insert comment form into wrapper
+   */
+  var loadCommentForm = function() {
+    $( '#incom_commentform' ).appendTo( '.incom-comments-wrapper' ).show();
+  };
+
+  /*
+   * Position comments wrapper
+   */
+  var positionWrapper = function ( source, $commentsWrapper ) {
+    var $offset = source.offset();
+
     $commentsWrapper.css({
       'top': $offset.top,
       'left': o.position === 'right' ? $offset.left + source.outerWidth() : $offset.left - $commentsWrapper.outerWidth()
     });
+  };
 
-    // Remove comments wrapper when user clicks anywhere but the #incom_wrapper and its children
+  /*
+   * Remove comments wrapper when user clicks anywhere but the #incom_wrapper and its children
+   */
+  var handleClickElsewhere = function() {
     $('html').click( function( event ) {
       if( $( event.target ).parents( '#incom_wrapper' ).length === 0 ) {
         removeCommentsWrapper( true );
       }
     });
-
   };
 
   /*
    * Get PHP using AJAX
    */
-  var ajaxLoadComments = function()
-  {
-    // $.ajax({
-    //   //url: ajax_script_vars.ajaxurl,
-    //   // data: (
-    //   //   {
-    //   //     action : ajax_script_vars.comments_php
-    //   //   }
-    //   // ),
-    //   // success: function() {
-    //   //   console.log( 'debug' );
-    //   // }
-    // });
-    return ajax_script_vars.comments_php;
-  };
+  // var ajaxLoadComments = function()
+  // {
+  //   // $.ajax({
+  //   //   //url: ajax_script_vars.ajaxurl,
+  //   //   // data: (
+  //   //   //   {
+  //   //   //     action : ajax_script_vars.comments_php
+  //   //   //   }
+  //   //   // ),
+  //   //   // success: function() {
+  //   //   //   console.log( 'debug' );
+  //   //   // }
+  //   // });
+  //   return ajax_script_vars.comments_php;
+  // };
 
   /* 
    * Remove comments wrapper
@@ -202,18 +217,22 @@
     var $classIncomBubble = $( '.incom-bubble' );
     var $classCommentsWrapper = $( '.incom-comments-wrapper' );
 
+    // Comment form must be detached (and hidden) before wrapper is deleted
+    $( '#incom_commentform' ).appendTo('#incom_wrapper').hide();
+
     // If any element with $classIncomBubble has classIncomActive -> remove class and commentsWrapper
     if ( $classIncomBubble.hasClass(classIncomActive) ) {
       $classIncomBubble.removeClass( classIncomActive );
       if ( fadeout === true ) {
-        $classCommentsWrapper.fadeOut( 'fast' );
+        $classCommentsWrapper.fadeOut( 'fast', function() {
+            $( this ).remove();
+        });
       }
       else {
         $classCommentsWrapper.remove();
       }
     }
   };
-
 
   /*
    * Split selectors
