@@ -38,7 +38,7 @@
         // displayCount: true,
         // highlighted: false,
         position: 'left',
-        // background: 'white',
+        background: 'white',
         // maxWidth: 9999,
       },
     options);
@@ -154,7 +154,8 @@
         {
           'class': 'incom-comments-wrapper',
         })
-      .appendTo('#incom_wrapper');
+      .appendTo('#incom_wrapper')
+      .css('background-color', o.background);
 
     loadCommentForm();
     positionWrapper( source, $commentsWrapper );

@@ -34,7 +34,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 	              // displayCount: true,
 	              // highlighted: false,
 	            	position: '<?php if (get_option("select_align") == "") { echo "left"; } else { echo get_option("select_align"); } ?>',
-	              // background: 'white',
+	              	background: '<?php if (get_option("set_bgcolour") == "") { echo "#fff"; } else { echo get_option("set_bgcolour"); } ?>',
 	              // maxWidth: 9999,
 				});
 			});
