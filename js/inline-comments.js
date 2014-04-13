@@ -7,7 +7,7 @@
 
   var o;
   var classIncomActive = 'incom-active';  // Class for currently selected bubble
-
+  var idCommentsAndForm = '#comments-and-form';
 
 
   /*
@@ -93,8 +93,7 @@
   /*
    * Add bubbles to each element
    */
-  var addBubble = function( element ) {
-    var $offset = element.offset();
+  var addBubble = function( source ) {
     var $bubble = $('<a/>',
         {
           href: '',
@@ -105,13 +104,8 @@
       .parent()
       .appendTo('#incom_wrapper');
 
-      // Position bubble
-      $bubble.css({
-        'top': $offset.top,
-        'left': o.position === 'right' ? $offset.left + element.outerWidth() : $offset.left - $bubble.outerWidth()
-      });
-
-    handleHover( element, $bubble );
+    setPosition( source, $bubble );
+    handleHover( source, $bubble );
     handleClickBubble( $bubble );
   };
 
@@ -158,7 +152,7 @@
       .css('background-color', o.background);
 
     loadCommentForm();
-    positionWrapper( source, $commentsWrapper );
+    setPosition( source, $commentsWrapper );
     handleClickElsewhere();
   };
 
@@ -166,18 +160,18 @@
    * Insert comment form into wrapper
    */
   var loadCommentForm = function() {
-    $( '#incom_commentform' ).appendTo( '.incom-comments-wrapper' ).show();
+    $( idCommentsAndForm ).appendTo( '.incom-comments-wrapper' ).show();
   };
 
   /*
-   * Position comments wrapper
+   * Set position
    */
-  var positionWrapper = function ( source, $commentsWrapper ) {
+  var setPosition = function ( source, element ) {
     var $offset = source.offset();
 
-    $commentsWrapper.css({
+    element.css({
       'top': $offset.top,
-      'left': o.position === 'right' ? $offset.left + source.outerWidth() : $offset.left - $commentsWrapper.outerWidth()
+      'left': o.position === 'right' ? $offset.left + source.outerWidth() : $offset.left - element.outerWidth()
     });
   };
 
@@ -219,7 +213,7 @@
     var $classCommentsWrapper = $( '.incom-comments-wrapper' );
 
     // Comment form must be detached (and hidden) before wrapper is deleted
-    $( '#incom_commentform' ).appendTo('#incom_wrapper').hide();
+    $( idCommentsAndForm ).appendTo('#incom_wrapper').hide();
 
     // If any element with $classIncomBubble has classIncomActive -> remove class and commentsWrapper
     if ( $classIncomBubble.hasClass(classIncomActive) ) {

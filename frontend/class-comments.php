@@ -2,7 +2,7 @@
 class INCOM_Comments {
 
 	function __construct() {
-		add_action('wp_footer', array( $this, 'generateCommentForm') );
+		add_action('wp_footer', array( $this, 'generateCommentsAndForm' ) );
 	}
 
 	// /*
@@ -29,18 +29,42 @@ class INCOM_Comments {
 	// 	return $code;
 	// }
 
-	function generateCommentForm() {
-		echo '<div id="incom_commentform">';
-		//TODO: incom-DESIGN + invisible ++ mit .detach() das Commentform entfernen und später wieder einfügen
+	function generateCommentsAndForm() {
+		echo '<div id="comments-and-form">';
+
+		$this->generateCommentsList();
+		$this->generateCommentForm();
+
+		echo '</div>';	//<!--#incom_commentform-->
+	}
+
+	private function generateCommentsList() {
+		$comments = get_comments( 'post_id=' . get_the_ID() );
+
+		foreach($comments as $comment) :
+			echo '<p>' . $comment->comment_content . '</p>';
+		endforeach;
+	}
+
+	private function generateCommentForm() {
+		$user = wp_get_current_user();
+		$user_identity = $user->exists() ? $user->display_name : '';
+
 		comment_form(array(
 			//'id_form' => '',
 			'comment_form_before' => '',
+			'comment_notes_before' => '',
 			'comment_notes_after' => '',
-			'title_reply'       => '',
-			'title_reply_to'    => ''
+			'title_reply' => '',
+			'title_reply_to' => '',
+			'logged_in_as' => '<p class="logged-in-as">' .
+			    sprintf(
+			    __( 'Logged in as <a href="%1$s">%2$s</a>.' ),
+			      admin_url( 'profile.php' ),
+			      $user_identity
+			    ) . '</p>'
 			)
 		);
-		echo '</div>';	//<!--#incom_commentform-->
 	}
 
 }

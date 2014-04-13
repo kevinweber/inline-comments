@@ -21,8 +21,8 @@
 }
 
 /*
- * This comment form should be not visible at first. When the plugin loads inline comments, it will use this form.
+ * This wrapper should be not visible at first. When the plugin loads inline comments, it will be used.
  */
-#incom_commentform {
+#comments-and-form {
   display: none;
 }
