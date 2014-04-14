@@ -9,6 +9,7 @@ class INCOM_Admin {
 	function __construct() {
 		add_action('admin_menu', array( $this, 'incom_create_menu' ));
 		add_action('admin_init', array( $this, 'register_incom_settings' ));
+		add_action('admin_footer', array( $this, 'incom_admin_js' ) );
 	}
 
 	function incom_create_menu() {
@@ -39,9 +40,18 @@ class INCOM_Admin {
 				        </td>
 			        </tr>
 			        <tr valign="top">
+			        	<th scope="row">Position</th>
+				        <td>
+							<select class="select" typle="select" name="select_align">
+								<option value="right"<?php if (get_option('select_align') === 'right') { echo ' selected="selected"'; } ?>>Right</option>
+								<option value="left"<?php if (get_option('select_align') === 'left') { echo ' selected="selected"'; } ?>>Left</option>
+							</select>
+					    </td>
+			        </tr>
+			        <tr class="disqus_shortname" valign="top">
 			        	<th scope="row">Disqus Shortname (required for Disqus!)</th>
 			        	<td>
-			        		<input type="text" name="disqus_shortname" placeholder="your_disqus_shortname" value="<?php echo get_option('disqus_shortname'); ?>" /> <span>This plugin requires a <a href="http://disqus.com" target="_blank" title="Disqus">Disqus</a> shortname. (<a href="http://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-" target="_blank" title="What's a Shortname?">What's a shortname?</a>)</span>
+			        		<input type="text" name="disqus_shortname" placeholder="your_disqus_shortname" value="<?php echo get_option('disqus_shortname'); ?>" /> <span>To use Disqus, a <a href="http://disqus.com" target="_blank" title="Disqus">shortname</a> is required. (<a href="http://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-" target="_blank" title="What's a Shortname?">What's a shortname?</a>)</span>
 			        	</td>
 			        </tr>
 			        <tr valign="top">
@@ -62,15 +72,6 @@ class INCOM_Admin {
 				        <td>
 							<input name="check_highlight" type="checkbox" value="1" <?php checked( '1', get_option( 'check_highlight' ) ); ?> /> <span>If checked, the highlighting of the active section is enabled. Default: Unchecked (no highlighting).</span>
 				        </td>
-			        </tr>
-			        <tr valign="top">
-			        	<th scope="row">Position</th>
-				        <td>
-							<select class="select" typle="select" name="select_align">
-								<option value="left"<?php if (get_option('select_align') === 'left') { echo ' selected="selected"'; } ?>>Left</option>
-								<option value="right"<?php if (get_option('select_align') === 'right') { echo ' selected="selected"'; } ?>>Right</option>
-							</select>
-					    </td>
 			        </tr>
 			        <tr valign="top">
 			        	<th scope="row">Background Colour</th>
@@ -117,6 +118,10 @@ class INCOM_Admin {
 		</div>
 
 	<?php
+	}
+
+	function incom_admin_js( $hook ) {
+	    wp_enqueue_script( 'incom_admin_js', plugins_url( '../js/min/admin-ck.js' , __FILE__ ) );
 	}
 
 }
