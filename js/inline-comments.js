@@ -11,8 +11,8 @@
   var idCommentsAndForm = 'comments-and-form';
     var idCommentsAndFormHash = '#'+idCommentsAndForm;
   var attDataIncom = 'data-incom';
-  var classActive = 'incom-active';  // Class for currently selected bubble
   var classBubble = 'incom-bubble';
+  var classActive = 'incom-active';  // Class for currently selected bubble
     var classBubbleDot = '.'+classBubble;
   var classBubbleLink = 'incom-bubble-link';
   var classCommentsWrapper = 'incom-comments-wrapper';
@@ -28,7 +28,6 @@
   incom.init = function( options ) {
     setOptions( options );
     initIncomWrapper();
-    initSelectElements();
   };
 
 
@@ -61,9 +60,8 @@
     if ( $( idWrapperHash ).length === 0 ) {
       $( '<div id="'+idWrapper+'"></div>' ).appendTo( $( 'body' ) );
     }
-    // if ( $( '#incom_thread' ).length === 0 ) {
-    //   $( '<div id="incom_thread"></div>' ).appendTo( idWrapperHash );
-    // }
+    
+    initSelectElements();
   };
 
 
@@ -144,7 +142,6 @@
 
       source.addClass( classActive );
       loadCommentsWrapper( source );
-
     });
   };
 
@@ -166,7 +163,7 @@
   };
 
   /*
-   * Insert comment form into wrapper
+   * Insert comments and comment form into wrapper
    */
   var loadCommentForm = function() {
     $( idCommentsAndFormHash ).appendTo( classCommentsWrapperDot ).show();
@@ -185,10 +182,10 @@
   };
 
   /*
-   * Remove comments wrapper when user clicks anywhere but the idWrapperHash and its children
+   * Remove comments wrapper when user clicks anywhere but the idWrapperHash
    */
   var handleClickElsewhere = function() {
-    $('html').click( function( event ) {
+    $( 'html' ).click( function( event ) {
       if( $( event.target ).parents( idWrapperHash ).length === 0 ) {
         removeCommentsWrapper( true );
       }
@@ -221,7 +218,7 @@
     var $classIncomBubble = $( classBubbleDot );
     var $classCommentsWrapper = $( classCommentsWrapperDot );
 
-    // Comment form must be detached (and hidden) before wrapper is deleted
+    // Comments and comment form must be detached (and hidden) before wrapper is deleted, so it can be used afterwards
     $( idCommentsAndFormHash ).appendTo( idWrapperHash ).hide();
 
     // If any element with $classIncomBubble has classActive -> remove class and commentsWrapper

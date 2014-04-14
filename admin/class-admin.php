@@ -43,12 +43,6 @@ class INCOM_Admin {
 			        	</td>
 			        </tr>
 			        <tr valign="top">
-			        	<th scope="row">Identifier</th>
-			        	<td>
-			        		<input type="text" name="identifier" placeholder="disqussion" value="<?php echo get_option('identifier'); ?>" /> <span>Set a string to be used, together with an index number, as the disqus_identifier string. Defaults: disqussion.</span>
-			        	</td>
-			        </tr>
-			        <tr valign="top">
 			        	<th scope="row">Display Count</th>
 				        <td>
 							<input name="display_count" type="checkbox" value="1" <?php checked( '1', get_option( 'display_count' ) ); ?> /> <span>If checked, the comment count inside the icon is disabled. Default: Unchecked (count is visible).</span>
