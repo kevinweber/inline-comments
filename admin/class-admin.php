@@ -16,7 +16,7 @@ class INCOM_Admin {
 	}
 
 	function register_incom_settings() {
-		$arr = array('disqus_shortname', 'identifier', 'multiselector', 'display_count', 'check_highlight', 'select_align', 'select_comment_type', 'set_bgcolour', 'set_maxwidth', 'custom_css', 'check_rmode');
+		$arr = array('disqus_shortname', 'multiselector', 'display_count', 'check_highlight', 'select_align', 'select_comment_type', 'set_bgcolour', 'set_maxwidth', 'custom_css', 'check_rmode');
 		foreach ( $arr as $i ) {
 			register_setting( 'incom-settings-group', $i );
 		}
@@ -30,7 +30,16 @@ class INCOM_Admin {
 			    <?php do_settings_sections( 'incom-settings-group' ); ?>
 			    <table class="form-table">
 			        <tr valign="top">
-			        	<th scope="row">Disqus Shortname (required!)</th>
+			        	<th scope="row">Choose Comment System</th>
+				        <td>
+							<select class="select" typle="select" name="select_comment_type">
+								<option value="disqus"<?php if (get_option('select_comment_type') === 'disqus') { echo ' selected="selected"'; } ?>>Disqus</option>
+								<option value="wp"<?php if (get_option('select_comment_type') === 'wp') { echo ' selected="selected"'; } ?>>WordPress Comments (beta)</option>
+							</select>
+				        </td>
+			        </tr>
+			        <tr valign="top">
+			        	<th scope="row">Disqus Shortname (required for Disqus!)</th>
 			        	<td>
 			        		<input type="text" name="disqus_shortname" placeholder="your_disqus_shortname" value="<?php echo get_option('disqus_shortname'); ?>" /> <span>This plugin requires a <a href="http://disqus.com" target="_blank" title="Disqus">Disqus</a> shortname. (<a href="http://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-" target="_blank" title="What's a Shortname?">What's a shortname?</a>)</span>
 			        	</td>
@@ -82,15 +91,6 @@ class INCOM_Admin {
 				        </td>
 			        </tr>
 			        <tr valign="top">
-			        	<th scope="row">Choose Comment System (Alpha)</th>
-				        <td>
-							<select class="select" typle="select" name="select_comment_type">
-								<option value="disqus"<?php if (get_option('select_comment_type') === 'disqus') { echo ' selected="selected"'; } ?>>Disqus</option>
-								<option value="wp"<?php if (get_option('select_comment_type') === 'wp') { echo ' selected="selected"'; } ?>>WordPress Comments</option>
-							</select>
-				        </td>
-			        </tr>
-			        <tr valign="top">
 			        	<th scope="row">Custom CSS</th>
 			        	<td>
 			        		<textarea rows="14" cols="70" type="text" name="custom_css"><?php echo get_option('custom_css'); ?></textarea>
@@ -108,6 +108,9 @@ class INCOM_Admin {
 		        	I'm the developer of this plugin. I hope you enjoy it!</p></td>
 		        <td>
 					<p><b>It's free!</b> Support me with <a href="http://kevinw.de/donate/InlineComments/" title="Pay me a delicious lunch" target="_blank">a delicious lunch</a> or give this plugin a 5 star rating <a href="http://wordpress.org/support/view/plugin-reviews/inline-comments?filter=5" title="Vote for Inline Comments" target="_blank">on WordPress.org</a>.</p>
+		        </td>
+		        <td>
+					<p><b>Speed up your site</b> by replacing embedded Youtube and Vimeo videos with a clickable preview image: <a href="http://kevinw.de/ind-ll" title="Lazy Load for Videos" target="_blank">Lazy Load for Videos</a>.</p>
 		        </td>
 		        </tr>
 			</table>

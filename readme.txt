@@ -65,6 +65,10 @@ First, you need an account and a registered site on disqus.com. Then read this: 
 
 == Changelog ==
 
+= x.x =
+* Removed option “identifier” (users cannot choose their own identifier anymore)
+
+
 = 0.8 =
 * Plugin goes public.
 
