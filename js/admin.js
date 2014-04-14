@@ -11,7 +11,7 @@
     if ( $( this ).val() === 'disqus' ) {
       $classDisqusShortname.show( 'fast' );
     } else {
-       $classDisqusShortname.hide( 'fast' );
+       $classDisqusShortname.hide( 'middle' );
     }
   });
 

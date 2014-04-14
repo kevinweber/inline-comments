@@ -90,7 +90,7 @@ class INCOM_Indisq extends INCOM_Frontend {
 	 * Add stylesheet
 	 */
 	function load_incom_style() {
-		wp_register_style( 'incom-style', plugins_url('css/style-disq.css', plugin_dir_path( __FILE__ )) );
+		wp_register_style( 'incom-style', plugins_url('css/min/style-disq.css', plugin_dir_path( __FILE__ )) );
 		wp_enqueue_style( 'incom-style' );
 	}
 

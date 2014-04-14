@@ -39,6 +39,12 @@ class INCOM_Admin {
 							</select>
 				        </td>
 			        </tr>
+			        <tr class="disqus_shortname" valign="top">
+			        	<th scope="row">Disqus Shortname (required for Disqus!)</th>
+			        	<td>
+			        		<input type="text" name="disqus_shortname" placeholder="your_disqus_shortname" value="<?php echo get_option('disqus_shortname'); ?>" /> <span>To use Disqus, a <a href="http://disqus.com" target="_blank" title="Disqus">shortname</a> is required. (<a href="http://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-" target="_blank" title="What's a Shortname?">What's a shortname?</a>)</span>
+			        	</td>
+			        </tr>
 			        <tr valign="top">
 			        	<th scope="row">Position</th>
 				        <td>
@@ -47,12 +53,6 @@ class INCOM_Admin {
 								<option value="left"<?php if (get_option('select_align') === 'left') { echo ' selected="selected"'; } ?>>Left</option>
 							</select>
 					    </td>
-			        </tr>
-			        <tr class="disqus_shortname" valign="top">
-			        	<th scope="row">Disqus Shortname (required for Disqus!)</th>
-			        	<td>
-			        		<input type="text" name="disqus_shortname" placeholder="your_disqus_shortname" value="<?php echo get_option('disqus_shortname'); ?>" /> <span>To use Disqus, a <a href="http://disqus.com" target="_blank" title="Disqus">shortname</a> is required. (<a href="http://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-" target="_blank" title="What's a Shortname?">What's a shortname?</a>)</span>
-			        	</td>
 			        </tr>
 			        <tr valign="top">
 			        	<th scope="row">Insert Selectors</th>

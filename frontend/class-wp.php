@@ -53,7 +53,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 	 * Add stylesheet
 	 */
 	function load_incom_style() {
-		wp_register_style( 'incom-style', plugins_url('css/style-wp.css', plugin_dir_path( __FILE__ )) );
+		wp_register_style( 'incom-style', plugins_url('css/min/style-wp.css', plugin_dir_path( __FILE__ )) );
 		wp_enqueue_style( 'incom-style' );
 	}
 
