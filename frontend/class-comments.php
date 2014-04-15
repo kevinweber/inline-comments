@@ -38,6 +38,7 @@ class INCOM_Comments {
 		$this->loadPluginInfo();
 		$this->loadCommentsList();
 		$this->loadCommentForm();
+		$this->loadCancelLink();
 
 		echo '</div>';
 	}
@@ -72,7 +73,11 @@ class INCOM_Comments {
 	}
 
 	private function loadPluginInfo() {
-		echo '<a href="' . $this->loadPluginInfoHref . '" title="' . $this->loadPluginInfoTitle . '" target="_blank">(i)</a>';
+		echo '<a class="incom-info" href="' . $this->loadPluginInfoHref . '" title="' . $this->loadPluginInfoTitle . '" target="_blank">(i)</a>';
+	}
+
+	private function loadCancelLink() {
+		echo '<a class="incom-cancel" href title>Cancel</a>';
 	}
 
 }
