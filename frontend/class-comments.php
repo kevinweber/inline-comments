@@ -1,6 +1,9 @@
 <?php
 class INCOM_Comments {
 
+	private $loadPluginInfoHref = 'http://kevinw.de/inline-comments';
+	private $loadPluginInfoTitle = 'Inline-Comments by Kevin Weber';
+
 	function __construct() {
 		add_action('wp_footer', array( $this, 'generateCommentsAndForm' ) );
 	}
@@ -32,13 +35,14 @@ class INCOM_Comments {
 	function generateCommentsAndForm() {
 		echo '<div id="comments-and-form">';
 
-		$this->generateCommentsList();
-		$this->generateCommentForm();
+		$this->loadPluginInfo();
+		$this->loadCommentsList();
+		$this->loadCommentForm();
 
-		echo '</div>';	//<!--#incom_commentform-->
+		echo '</div>';
 	}
 
-	private function generateCommentsList() {
+	private function loadCommentsList() {
 		$comments = get_comments( 'post_id=' . get_the_ID() );
 
 		foreach($comments as $comment) :
@@ -46,12 +50,12 @@ class INCOM_Comments {
 		endforeach;
 	}
 
-	private function generateCommentForm() {
+	private function loadCommentForm() {
 		$user = wp_get_current_user();
 		$user_identity = $user->exists() ? $user->display_name : '';
 
 		comment_form(array(
-			//'id_form' => '',
+			// 'id_form' => '',
 			'comment_form_before' => '',
 			'comment_notes_before' => '',
 			'comment_notes_after' => '',
@@ -65,6 +69,10 @@ class INCOM_Comments {
 			    ) . '</p>'
 			)
 		);
+	}
+
+	private function loadPluginInfo() {
+		echo '<a href="' . $this->loadPluginInfoHref . '" title="' . $this->loadPluginInfoTitle . '" target="_blank">(i)</a>';
 	}
 
 }
