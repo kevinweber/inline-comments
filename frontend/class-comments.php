@@ -77,7 +77,7 @@ class INCOM_Comments {
 	}
 
 	private function loadCancelLink() {
-		echo '<a class="incom-cancel" href title>Cancel</a>';
+		echo '<a class="incom-cancel incom-cancel-link" href title>Cancel</a>';
 	}
 
 }

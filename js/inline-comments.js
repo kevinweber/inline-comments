@@ -17,6 +17,9 @@
   var classBubbleLink = 'incom-bubble-link';
   var classCommentsWrapper = 'incom-comments-wrapper';
     var classCommentsWrapperDot = '.'+classCommentsWrapper;
+  var classCancel = 'incom-cancel'; // When a user clicks on an element with this class, the comments wrapper will be removed
+    var classCancelDot = '.'+classCancel;
+
 
 
   /*
@@ -160,6 +163,7 @@
     loadCommentForm();
     setPosition( source, $commentsWrapper );
     handleClickElsewhere();
+    handleClickCancel();
   };
 
   /*
@@ -185,10 +189,20 @@
    * Remove comments wrapper when user clicks anywhere but the idWrapperHash
    */
   var handleClickElsewhere = function() {
-    $( 'html' ).click( function( event ) {
-      if( $( event.target ).parents( idWrapperHash ).length === 0 ) {
+    $( 'html' ).click( function( e ) {
+      if( $( e.target ).parents( idWrapperHash ).length === 0 ) {
         removeCommentsWrapper( true );
       }
+    });
+  };
+
+  /*
+   * Remove comments wrapper when user clicks on a cancel element
+   */
+  var handleClickCancel = function() {
+    $( classCancelDot ).click( function( e ) {
+      e.preventDefault();
+      removeCommentsWrapper( true );
     });
   };
 
