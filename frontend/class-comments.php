@@ -4,6 +4,8 @@ class INCOM_Comments {
 	private $loadPluginInfoHref = 'http://kevinw.de/inline-comments';
 	private $loadPluginInfoTitle = 'Inline-Comments by Kevin Weber';
 	private $DataIncomValue = NULL;
+	private $DataIncomKey = 'data_incom';
+	private $DataIncomKeyPOST = 'data_incom';
 
 	function __construct() {
 		add_action ( 'comment_post', array( $this, 'add_comment_meta_data_incom' ) );
@@ -95,7 +97,7 @@ class INCOM_Comments {
 		<<?php echo $tag ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>">
 		<?php if ( 'div' != $args['style'] ) :
 
-		$data_incom = get_comment_meta( $comment->comment_ID, 'data_incom', true ); ?>
+		$data_incom = get_comment_meta( $comment->comment_ID, $this->DataIncomKey, true ); ?>
 		<div id="div-comment-<?php comment_ID() ?>" class="comment-body" data-incom-comment="<?php echo $data_incom; ?>">
 		
 		<?php endif; ?>
@@ -132,7 +134,7 @@ class INCOM_Comments {
 		$user_identity = $user->exists() ? $user->display_name : '';
 
 		comment_form(array(
-			// 'id_form' => '',
+			'id_form' => 'incom-commentform',
 			'comment_form_before' => '',
 			'comment_notes_before' => '',
 			'comment_notes_after' => '',
@@ -153,34 +155,18 @@ class INCOM_Comments {
 	 */
 	function add_comment_meta_data_incom( $comment_id ) {
 		$DataIncomValue = $this->getValueDataIncom();
-		add_comment_meta( $comment_id, 'data_incom', $DataIncomValue, true );
+		add_comment_meta( $comment_id, $this->DataIncomKey, $DataIncomValue, true );
 	}
-
-// //allow redirection, even if my theme starts to send output to the browser
-// add_action('init', 'do_output_buffer');
-// function do_output_buffer() {
-//         ob_start();
-// }
 
 	/**
 	 * This function will be executed immediately before a comment will be stored into database
 	 */
 	function preprocess_comment_handler( $commentdata ) {
-		$this->setValueDataIncom( $this->getValueDataIncomUsingJS() );
-		$commentdata['data_incom'] = $this->DataIncomValue;
+		$this->setValueDataIncom( $_POST[ $this->DataIncomKeyPOST ] );
+		$commentdata[ $this->DataIncomKey ] = $this->DataIncomValue;
 
 		return $commentdata;
 	}
-
-	/**
-	 * Extract the DataIncomValue using JavaScript
-	 */
-	private function getValueDataIncomUsingJS() {
-		// TODO
-		$DataIncomValue = '3';
-		return $DataIncomValue;
-	}
-
 
 	/**
 	 * Load plugin info

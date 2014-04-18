@@ -11,9 +11,11 @@
   var idCommentsAndForm = 'comments-and-form';
     var idCommentsAndFormHash = '#'+idCommentsAndForm;
   var attDataIncom = 'data-incom';
+  var classActive = 'incom-active';
+    var classActiveDot = '.'+classActive;
   var classBubble = 'incom-bubble';
-  var classActive = 'incom-active';  // Class for currently selected bubble
     var classBubbleDot = '.'+classBubble;
+  var classBubbleActive = 'incom-bubble-active';  // Class for currently selected bubble
   var classBubbleLink = 'incom-bubble-link';
   var classCommentsWrapper = 'incom-comments-wrapper';
     var classCommentsWrapperDot = '.'+classCommentsWrapper;
@@ -116,7 +118,7 @@
 
     setPosition( source, $bubble );
     handleHover( source, $bubble );
-    handleClickBubble( $bubble );
+    handleClickBubble( source, $bubble );
   };
 
 
@@ -136,18 +138,37 @@
   /* 
    * This event will be triggered when user clicks on bubble
    */
-  var handleClickBubble = function ( source ) {
-    source.on( 'click', function(e) {
+  var handleClickBubble = function ( source, bubble ) {
+    bubble.on( 'click', function(e) {
       e.preventDefault();
+      
+      // Remove classActive before classActive will be added to another element (source)
+      removeClassActive();
+
+      // Add classActive to active elements (paragraphs, divs, etc.)
+      source.addClass( classActive );
 
       // Before creating a new comments wrapper: remove the previously created wrapper, if any
       removeCommentsWrapper();
 
-      source.addClass( classActive );
-      loadCommentsWrapper( source );
+      bubble.addClass( classBubbleActive );
+      loadCommentsWrapper( bubble );
     });
   };
 
+  /* 
+   * Remove classActive from the element that's not 'active' anymore
+   */
+   var removeClassActive = function() {
+    var $activeE = $( classActiveDot );
+    if ( $activeE.length !== 0 ) {
+      $activeE.removeClass( classActive );
+      // If the attribute 'class' is empty -> remove it
+      if ( $activeE.prop( 'class' ).length === 0 ) {
+        $activeE.removeAttr( 'class' );
+      }
+    }
+  };
 
   /* 
    * Load comments wrapper
@@ -171,6 +192,20 @@
    */
   var loadCommentForm = function() {
     $( idCommentsAndFormHash ).appendTo( classCommentsWrapperDot ).show();
+
+    // Add a hidden input field dynamically
+    var input = $( '<input>' )
+     .attr('type', 'hidden')
+     .attr('name', 'data_incom').val( getAttDataIncomValue );
+    $( idCommentsAndFormHash + ' .form-submit').append( $( input ) );
+  };
+
+  /*
+   * Get (current) value for AttDataIncom
+   */
+  var getAttDataIncomValue = function() {
+    var $attDataIncomValue = $( classActiveDot ).attr( attDataIncom );
+    return $attDataIncomValue;
   };
 
   /*
@@ -235,9 +270,9 @@
     // Comments and comment form must be detached (and hidden) before wrapper is deleted, so it can be used afterwards
     $( idCommentsAndFormHash ).appendTo( idWrapperHash ).hide();
 
-    // If any element with $classIncomBubble has classActive -> remove class and commentsWrapper
-    if ( $classIncomBubble.hasClass( classActive ) ) {
-      $classIncomBubble.removeClass( classActive );
+    // If any element with $classIncomBubble has classBubbleActive -> remove class and commentsWrapper
+    if ( $classIncomBubble.hasClass( classBubbleActive ) ) {
+      $classIncomBubble.removeClass( classBubbleActive );
       if ( fadeout === true ) {
         $classCommentsWrapper.fadeOut( 'fast', function() {
             $( this ).remove();
