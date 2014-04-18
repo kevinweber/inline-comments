@@ -7,9 +7,15 @@
 class INCOM_Admin {
 
 	function __construct() {
-		add_action('admin_menu', array( $this, 'incom_create_menu' ));
-		add_action('admin_init', array( $this, 'register_incom_settings' ));
-		add_action('admin_footer', array( $this, 'incom_admin_js' ) );
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+		add_action( 'admin_menu', array( $this, 'incom_create_menu' ));	
+	}
+
+	function admin_init() {
+		if ( isset( $_GET['page'] ) && ( $_GET['page'] == 'incom.php') ) {
+			add_action( 'admin_footer', array( $this, 'incom_admin_js' ) );
+		}
+		$this->register_incom_settings();
 	}
 
 	function incom_create_menu() {
@@ -120,7 +126,7 @@ class INCOM_Admin {
 	<?php
 	}
 
-	function incom_admin_js( $hook ) {
+	function incom_admin_js() {
 	    wp_enqueue_script( 'incom_admin_js', plugins_url( '../js/min/admin-ck.js' , __FILE__ ) );
 	}
 

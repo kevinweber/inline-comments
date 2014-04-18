@@ -1,5 +1,5 @@
-inline-comments
-===============
+Inline Comments by [Kevin Weber](http://kevinw.de/)
+====================
 
 Inline Comments is a WordPress plugin that adds the great Disqus Comment System to the side of paragraphs and other specific sections (like headlines and images) of your post. You can download it from the official WordPress directory: http://wordpress.org/plugins/inline-comments/
 
