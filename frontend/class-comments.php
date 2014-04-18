@@ -3,10 +3,26 @@ class INCOM_Comments {
 
 	private $loadPluginInfoHref = 'http://kevinw.de/inline-comments';
 	private $loadPluginInfoTitle = 'Inline-Comments by Kevin Weber';
+	private $DataIncomValue = NULL;
 
 	function __construct() {
 		add_action ( 'comment_post', array( $this, 'add_comment_meta_data_incom' ) );
+		add_action( 'preprocess_comment' , array( $this, 'preprocess_comment_handler' ) );
 		add_action( 'wp_footer', array( $this, 'generateCommentsAndForm' ) );
+	}
+
+	/**
+	 * Set $DataIncomValue
+	 */
+	private function setValueDataIncom( $value ) {
+		$this->DataIncomValue = $value;
+	}
+
+	/**
+	 * Get $DataIncomValue
+	 */
+	private function getValueDataIncom() {
+		return $this->DataIncomValue;
 	}
 
 	// /*
@@ -33,6 +49,9 @@ class INCOM_Comments {
 	// 	return $code;
 	// }
 
+	/**
+	 * Generate comments form
+	 */
 	function generateCommentsAndForm() {
 		echo '<div id="comments-and-form">';
 
@@ -44,28 +63,23 @@ class INCOM_Comments {
 		echo '</div>';
 	}
 
+	/**
+	 * Generate list with comments
+	 */
 	private function loadCommentsList() {
 		$args = array(
 			'post_id' => get_the_ID(),
 			'type' => 'comment',
-			'callback' => array( $this, 'incom_comment' ),
+			'callback' => array( $this, 'loadComment' ),
 			'avatar_size' => '0',
 		);
-
 		wp_list_comments( $args );
-
-
-
-
-		// $comments = get_comments( $args );
-
-		// foreach($comments as $comment) :
-		// 	$data_incom = get_comment_meta( $comment->comment_ID, 'data_incom', true );
-		// 	echo '<p data-incom-comment="' . $data_incom . '">' . $comment->comment_content . '</p>';
-		// endforeach;
 	}
 
-	function incom_comment($comment, $args, $depth) {
+	/**
+	 * Generate a single comment
+	 */
+	function loadComment($comment, $args, $depth) {
 		$GLOBALS['comment'] = $comment;
 		extract($args, EXTR_SKIP);
 
@@ -110,7 +124,9 @@ class INCOM_Comments {
 	<?php
 	}
 
-
+	/**
+	 * Load comment form
+	 */
 	private function loadCommentForm() {
 		$user = wp_get_current_user();
 		$user_identity = $user->exists() ? $user->display_name : '';
@@ -132,18 +148,50 @@ class INCOM_Comments {
 		);
 	}
 
+	/**
+	 * Add comment meta field to comment form
+	 */
 	function add_comment_meta_data_incom( $comment_id ) {
-		add_comment_meta($comment_id, 'data_incom', $this->getValueDataIncom(), true);
+		$DataIncomValue = $this->getValueDataIncom();
+		add_comment_meta( $comment_id, 'data_incom', $DataIncomValue, true );
 	}
 
-	private function getValueDataIncom() {
-		return 'P4';
+// //allow redirection, even if my theme starts to send output to the browser
+// add_action('init', 'do_output_buffer');
+// function do_output_buffer() {
+//         ob_start();
+// }
+
+	/**
+	 * This function will be executed immediately before a comment will be stored into database
+	 */
+	function preprocess_comment_handler( $commentdata ) {
+		$this->setValueDataIncom( $this->getValueDataIncomUsingJS() );
+		$commentdata['data_incom'] = $this->DataIncomValue;
+
+		return $commentdata;
 	}
 
+	/**
+	 * Extract the DataIncomValue using JavaScript
+	 */
+	private function getValueDataIncomUsingJS() {
+		// TODO
+		$DataIncomValue = '3';
+		return $DataIncomValue;
+	}
+
+
+	/**
+	 * Load plugin info
+	 */
 	private function loadPluginInfo() {
 		echo '<a class="incom-info" href="' . $this->loadPluginInfoHref . '" title="' . $this->loadPluginInfoTitle . '" target="_blank">(i)</a>';
 	}
 
+	/**
+	 * Load cancel link (remove wrapper when user clicks on that link)
+	 */
 	private function loadCancelLink() {
 		echo '<a class="incom-cancel incom-cancel-link" href title>Cancel</a>';
 	}
