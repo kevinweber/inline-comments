@@ -62,7 +62,7 @@ class INCOM_Comments {
 	 * Generate comments form
 	 */
 	function generateCommentsAndForm() {
-		echo '<div id="comments-and-form">';
+		echo '<div id="comments-and-form" style="display:none">';
 
 		$this->loadPluginInfo();
 		$this->loadCommentsList();
@@ -102,7 +102,7 @@ class INCOM_Comments {
 		$data_incom = get_comment_meta( $comment->comment_ID, $this->DataIncomKey, true );
 		?>
 		
-		<<?php echo $tag ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>" data-incom-comment="<?php echo $data_incom; ?>">
+		<<?php echo $tag ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>" data-incom-comment="<?php echo $data_incom; ?>" style="display:none">
 		<?php if ( 'div' != $args['style'] ) : ?>
 
 		<div id="div-comment-<?php comment_ID() ?>" class="comment-body">

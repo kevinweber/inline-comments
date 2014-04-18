@@ -19,10 +19,3 @@
   width: 100px;
   height: 100px;
 }
-
-/*
- * Those elements should be not be visible at first. When the plugin loads inline comments, it will be used.
- */
-#comments-and-form, #comments-and-form .comment {
-  display: none;
-}
