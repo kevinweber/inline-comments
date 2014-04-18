@@ -162,7 +162,9 @@ class INCOM_Comments {
 	 */
 	function add_comment_meta_data_incom( $comment_id ) {
 		$DataIncomValue = $this->getValueDataIncom();
-		add_comment_meta( $comment_id, $this->DataIncomKey, $DataIncomValue, true );
+		if ( $DataIncomValue !== NULL ) {
+			add_comment_meta( $comment_id, $this->DataIncomKey, $DataIncomValue, true );
+		}
 	}
 
 	/**
