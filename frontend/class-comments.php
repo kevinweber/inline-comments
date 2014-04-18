@@ -45,24 +45,15 @@ class INCOM_Comments {
 	}
 
 	private function loadCommentsList() {
-
-// add_filter( 'get_comment_author_link',	'attach_city_to_author' );
-// function attach_city_to_author( $author ) {
-//   $city = get_comment_meta( get_comment_ID(), 'city', true );
-//   if ( $city )
-//     $author .= " ($city)";
-// 	return $author;
-// }
-
 		$args = array(
-			'post_id' => get_the_ID(),
-		    'meta_value' => $this->getValueDataIncom()
+			'post_id' => get_the_ID()
 		);
 
 		$comments = get_comments( $args );
 
 		foreach($comments as $comment) :
-			echo '<p>' . $comment->comment_content . '</p>';
+			$data_incom = get_comment_meta( $comment->comment_ID, 'data_incom', true );
+			echo '<p data-incom-comment="' . $data_incom . '">' . $comment->comment_content . '</p>';
 		endforeach;
 	}
 
@@ -91,7 +82,7 @@ class INCOM_Comments {
 		add_comment_meta($comment_id, 'data_incom', $this->getValueDataIncom(), true);
 	}
 
-	function getValueDataIncom() {
+	private function getValueDataIncom() {
 		return 'P4';
 	}
 
