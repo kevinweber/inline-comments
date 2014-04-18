@@ -1,15 +1,4 @@
 <?php
-
- 
-// add_filter( 'get_comment_author_link',	'attach_city_to_author' );
-// function attach_city_to_author( $author ) {
-//   $city = get_comment_meta( get_comment_ID(), 'city', true );
-//   if ( $city )
-//     $author .= " ($city)";
-// 	return $author;
-// }
-
-
 class INCOM_Comments {
 
 	private $loadPluginInfoHref = 'http://kevinw.de/inline-comments';
@@ -56,7 +45,21 @@ class INCOM_Comments {
 	}
 
 	private function loadCommentsList() {
-		$comments = get_comments( 'post_id=' . get_the_ID() );
+
+// add_filter( 'get_comment_author_link',	'attach_city_to_author' );
+// function attach_city_to_author( $author ) {
+//   $city = get_comment_meta( get_comment_ID(), 'city', true );
+//   if ( $city )
+//     $author .= " ($city)";
+// 	return $author;
+// }
+
+		$args = array(
+			'post_id' => get_the_ID(),
+		    'meta_value' => $this->getValueDataIncom()
+		);
+
+		$comments = get_comments( $args );
 
 		foreach($comments as $comment) :
 			echo '<p>' . $comment->comment_content . '</p>';
