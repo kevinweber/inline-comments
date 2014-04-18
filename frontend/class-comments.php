@@ -46,16 +46,70 @@ class INCOM_Comments {
 
 	private function loadCommentsList() {
 		$args = array(
-			'post_id' => get_the_ID()
+			'post_id' => get_the_ID(),
+			'type' => 'comment',
+			'callback' => array( $this, 'incom_comment' ),
+			'avatar_size' => '0',
 		);
 
-		$comments = get_comments( $args );
+		wp_list_comments( $args );
 
-		foreach($comments as $comment) :
-			$data_incom = get_comment_meta( $comment->comment_ID, 'data_incom', true );
-			echo '<p data-incom-comment="' . $data_incom . '">' . $comment->comment_content . '</p>';
-		endforeach;
+
+
+
+		// $comments = get_comments( $args );
+
+		// foreach($comments as $comment) :
+		// 	$data_incom = get_comment_meta( $comment->comment_ID, 'data_incom', true );
+		// 	echo '<p data-incom-comment="' . $data_incom . '">' . $comment->comment_content . '</p>';
+		// endforeach;
 	}
+
+	function incom_comment($comment, $args, $depth) {
+		$GLOBALS['comment'] = $comment;
+		extract($args, EXTR_SKIP);
+
+		if ( 'div' == $args['style'] ) {
+			$tag = 'div';
+			$add_below = 'comment';
+		} else {
+			$tag = 'li';
+			$add_below = 'div-comment';
+		}
+		?>
+		
+		<<?php echo $tag ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>">
+		<?php if ( 'div' != $args['style'] ) :
+
+		$data_incom = get_comment_meta( $comment->comment_ID, 'data_incom', true ); ?>
+		<div id="div-comment-<?php comment_ID() ?>" class="comment-body" data-incom-comment="<?php echo $data_incom; ?>">
+		
+		<?php endif; ?>
+		<div class="comment-author vcard">
+			<?php if ( $args['avatar_size'] != 0 ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
+			<?php printf( __( '<cite class="fn">%s</cite>' ), get_comment_author_link() ); ?>
+		</div>
+		<?php if ( $comment->comment_approved == '0' ) : ?>
+			<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></em>
+			<br />
+		<?php endif; ?>
+
+		<div class="comment-meta commentmetadata">
+			<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
+			<?php
+				/* translators: 1: date, 2: time */
+				printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time() ); ?>
+			</a>
+		</div>
+
+		<?php comment_text(); ?>
+
+		<?php if ( 'div' != $args['style'] ) : ?>
+		</div>
+		<?php endif; ?>
+	<?php
+	}
+
 
 	private function loadCommentForm() {
 		$user = wp_get_current_user();
