@@ -3,6 +3,7 @@ class INCOM_Comments {
 
 	private $loadPluginInfoHref = 'http://kevinw.de/inline-comments';
 	private $loadPluginInfoTitle = 'Inline-Comments by Kevin Weber';
+	private $loadCancelLinkText = 'Cancel';
 	private $DataIncomValue = NULL;
 	private $DataIncomKey = 'data_incom';
 	private $DataIncomKeyPOST = 'data_incom';
@@ -98,13 +99,13 @@ class INCOM_Comments {
 			$tag = 'li';
 			$add_below = 'div-comment';
 		}
+		$data_incom = get_comment_meta( $comment->comment_ID, $this->DataIncomKey, true );
 		?>
 		
-		<<?php echo $tag ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>">
-		<?php if ( 'div' != $args['style'] ) :
+		<<?php echo $tag ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>" data-incom-comment="<?php echo $data_incom; ?>">
+		<?php if ( 'div' != $args['style'] ) : ?>
 
-		$data_incom = get_comment_meta( $comment->comment_ID, $this->DataIncomKey, true ); ?>
-		<div id="div-comment-<?php comment_ID() ?>" class="comment-body" data-incom-comment="<?php echo $data_incom; ?>">
+		<div id="div-comment-<?php comment_ID() ?>" class="comment-body">
 		
 		<?php endif; ?>
 		<div class="comment-author vcard">
@@ -185,7 +186,7 @@ class INCOM_Comments {
 	 * Load cancel link (remove wrapper when user clicks on that link)
 	 */
 	private function loadCancelLink() {
-		echo '<a class="incom-cancel incom-cancel-link" href title>Cancel</a>';
+		echo '<a class="incom-cancel incom-cancel-link" href title>' . $this->loadCancelLinkText . '</a>';
 	}
 
 }

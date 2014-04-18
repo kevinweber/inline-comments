@@ -11,6 +11,7 @@
   var idCommentsAndForm = 'comments-and-form';
     var idCommentsAndFormHash = '#'+idCommentsAndForm;
   var attDataIncom = 'data-incom';
+  var attDataIncomComment = 'data-incom-comment';
   var classActive = 'incom-active';
     var classActiveDot = '.'+classActive;
   var classBubble = 'incom-bubble';
@@ -21,6 +22,8 @@
     var classCommentsWrapperDot = '.'+classCommentsWrapper;
   var classCancel = 'incom-cancel'; // When a user clicks on an element with this class, the comments wrapper will be removed
     var classCancelDot = '.'+classCancel;
+  var selectComment = '#comments-and-form .comment';
+  var dataIncomKey = 'data_incom';  // Should be the same as $DataIncomKey in class-comments.php
 
 
 
@@ -181,6 +184,7 @@
       .appendTo( idWrapperHash )
       .css('background-color', o.background);
 
+    loadComments();
     loadCommentForm();
     setPosition( source, $commentsWrapper );
     handleClickElsewhere();
@@ -192,12 +196,26 @@
    */
   var loadCommentForm = function() {
     $( idCommentsAndFormHash ).appendTo( classCommentsWrapperDot ).show();
+    loadHiddenInputField();
+  };
 
-    // Add a hidden input field dynamically
+  /*
+   * Add a hidden input field dynamically
+   */
+  var loadHiddenInputField = function() {
     var input = $( '<input>' )
-     .attr('type', 'hidden')
-     .attr('name', 'data_incom').val( getAttDataIncomValue );
-    $( idCommentsAndFormHash + ' .form-submit').append( $( input ) );
+     .attr( 'type', 'hidden' )
+     .attr( 'name', dataIncomKey ).val( getAttDataIncomValue );
+    $( idCommentsAndFormHash + ' .form-submit' ).append( $( input ) );
+  };
+
+  /*
+   * Insert comments that have a specific value (getAttDataIncomValue) for attDataIncomComment
+   */
+  var loadComments = function() {
+    var selectByAtt = '[' + attDataIncomComment + '=' + getAttDataIncomValue() + ']';
+    $( selectComment ).hide();
+    $( selectComment + selectByAtt ).show();
   };
 
   /*
