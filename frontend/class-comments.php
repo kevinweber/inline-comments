@@ -16,7 +16,13 @@ class INCOM_Comments {
 	/**
 	 * Set $DataIncomValue
 	 */
-	private function setValueDataIncom( $value ) {
+	private function setValueDataIncom() {
+		if ( isset( $_POST[ $this->DataIncomKeyPOST ] ) ) {
+			$value = $_POST[ $this->DataIncomKeyPOST ];
+		}
+		else {
+			$value = NULL;
+		}
 		$this->DataIncomValue = $value;
 	}
 
@@ -162,7 +168,7 @@ class INCOM_Comments {
 	 * This function will be executed immediately before a comment will be stored into database
 	 */
 	function preprocess_comment_handler( $commentdata ) {
-		$this->setValueDataIncom( $_POST[ $this->DataIncomKeyPOST ] );
+		$this->setValueDataIncom();
 		$commentdata[ $this->DataIncomKey ] = $this->DataIncomValue;
 
 		return $commentdata;
