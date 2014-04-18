@@ -1,11 +1,23 @@
 <?php
+
+ 
+// add_filter( 'get_comment_author_link',	'attach_city_to_author' );
+// function attach_city_to_author( $author ) {
+//   $city = get_comment_meta( get_comment_ID(), 'city', true );
+//   if ( $city )
+//     $author .= " ($city)";
+// 	return $author;
+// }
+
+
 class INCOM_Comments {
 
 	private $loadPluginInfoHref = 'http://kevinw.de/inline-comments';
 	private $loadPluginInfoTitle = 'Inline-Comments by Kevin Weber';
 
 	function __construct() {
-		add_action('wp_footer', array( $this, 'generateCommentsAndForm' ) );
+		add_action ( 'comment_post', array( $this, 'add_comment_meta_data_incom' ) );
+		add_action( 'wp_footer', array( $this, 'generateCommentsAndForm' ) );
 	}
 
 	// /*
@@ -70,6 +82,14 @@ class INCOM_Comments {
 			    ) . '</p>'
 			)
 		);
+	}
+
+	function add_comment_meta_data_incom( $comment_id ) {
+		add_comment_meta($comment_id, 'data_incom', $this->getValueDataIncom(), true);
+	}
+
+	function getValueDataIncom() {
+		return 'P4';
 	}
 
 	private function loadPluginInfo() {
