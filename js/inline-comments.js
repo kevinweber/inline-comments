@@ -7,30 +7,34 @@
 
   var o;
   
+  // IDs
   var idWrapper = 'incom_wrapper';
     var idWrapperHash = '#'+idWrapper;
   var idCommentsAndForm = 'comments-and-form';
     var idCommentsAndFormHash = '#'+idCommentsAndForm;
 
+  // Attributes
   var attDataIncom = 'data-incom';
-  var attDataIncomComment = 'data-incom-comment';
+    var attDataIncomComment = attDataIncom+'-comment';
 
+  // Classes
   var classActive = 'incom-active';
     var classActiveDot = '.'+classActive;
   var classBubble = 'incom-bubble';
     var classBubbleDot = '.'+classBubble;
-  var classBubbleActive = 'incom-bubble-active';  // Class for currently selected bubble
-  var classBubbleLink = 'incom-bubble-link';
+    var classBubbleStatic = classBubble+'-static';
+    var classBubbleActive = classBubble+'-active';  // Class for currently selected bubble
+    var classBubbleLink = classBubble+'-link';
   var classCommentsWrapper = 'incom-comments-wrapper';
     var classCommentsWrapperDot = '.'+classCommentsWrapper;
   var classCancel = 'incom-cancel'; // When a user clicks on an element with this class, the comments wrapper will be removed
     var classCancelDot = '.'+classCancel;
 
-  var selectComment = '#comments-and-form .comment';
-
+  // Other
+  var selectComment = idCommentsAndFormHash+' .comment';
   var dataIncomKey = 'data_incom';  // Should be the same as $DataIncomKey in class-comments.php
 
-  var defaultBubbleText = '+';
+
 
 
   /*
@@ -56,7 +60,9 @@
     // 'options' overrides these defaults
     o = $.extend( {
         selectors: 'p',
-        displayCount: true,
+        countDisplay: true,
+        countStatic: true,
+        defaultBubbleText: '+',
         // highlighted: false,
         position: 'left',
         background: 'white',
@@ -113,14 +119,16 @@
    * Add bubbles to each element
    */
   var addBubble = function( source ) {
-    var bubbleText = getBubbleText( source );
+    var bubbleText = addBubbleText( source );
+    var bubbleContainer = loadBubbleContainer( source );
     var $bubble = $('<a/>',
         {
           href: '',
           'class': classBubbleLink,
         })
+      //.addClass( addClassBubbleStatic( source ) )
       .text( bubbleText )
-      .wrap('<div class="'+classBubble+'" />')
+      .wrap( bubbleContainer )
       .parent()
       .appendTo( idWrapperHash );
 
@@ -132,15 +140,14 @@
   /*
    * Get text/number that should be displayed in a bubble
    */
-  var getBubbleText = function( source ) {
+  var addBubbleText = function( source ) {
     var bubbleText;
-    var count = countComments( source );
 
-    if ( $.isNumeric( count ) && count > 0 && o.displayCount === true ) {
-      bubbleText = count;
+    if ( ( testIfCommentsCountLarger0( source ) && o.countDisplay ) === true ) {
+      bubbleText = countComments( source );
     }
     else {
-      bubbleText = defaultBubbleText;
+      bubbleText = o.defaultBubbleText;
     }
 
     return bubbleText;
@@ -158,6 +165,32 @@
     var $count = $( selectByAtt ).length;
 
     return $count;
+  };
+
+  /*
+   * Get container that contains the bubble link
+   */
+  var loadBubbleContainer = function( source ) {
+    var text = '<div class="' + loadBubbleContainerClass( source ) + '" />';
+    return text;
+  };
+
+  var loadBubbleContainerClass = function( source ) {
+    var containerClass = classBubble;
+
+    if ( ( testIfCommentsCountLarger0( source ) && o.countDisplay ) === true ) {
+      containerClass = classBubble + ' ' + classBubbleStatic;
+    }
+
+    return containerClass;
+  };
+
+  /*
+   * Test if comments count is larger than 0
+   */
+  var testIfCommentsCountLarger0 = function( source ) {
+    var count = countComments( source );
+    return ( $.isNumeric( count ) && count > 0 ) ? true : false;
   };
 
   /* 
