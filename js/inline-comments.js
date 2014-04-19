@@ -6,12 +6,15 @@
 (function( incom, $, undefined ) {
 
   var o;
+  
   var idWrapper = 'incom_wrapper';
     var idWrapperHash = '#'+idWrapper;
   var idCommentsAndForm = 'comments-and-form';
     var idCommentsAndFormHash = '#'+idCommentsAndForm;
+
   var attDataIncom = 'data-incom';
   var attDataIncomComment = 'data-incom-comment';
+
   var classActive = 'incom-active';
     var classActiveDot = '.'+classActive;
   var classBubble = 'incom-bubble';
@@ -22,7 +25,9 @@
     var classCommentsWrapperDot = '.'+classCommentsWrapper;
   var classCancel = 'incom-cancel'; // When a user clicks on an element with this class, the comments wrapper will be removed
     var classCancelDot = '.'+classCancel;
+
   var selectComment = '#comments-and-form .comment';
+
   var dataIncomKey = 'data_incom';  // Should be the same as $DataIncomKey in class-comments.php
 
 
@@ -258,25 +263,6 @@
       removeCommentsWrapper( true );
     });
   };
-
-  /*
-   * Get PHP using AJAX
-   */
-  // var ajaxLoadComments = function()
-  // {
-  //   // $.ajax({
-  //   //   //url: ajax_script_vars.ajaxurl,
-  //   //   // data: (
-  //   //   //   {
-  //   //   //     action : ajax_script_vars.comments_php
-  //   //   //   }
-  //   //   // ),
-  //   //   // success: function() {
-  //   //   //   console.log( 'debug' );
-  //   //   // }
-  //   // });
-  //   return ajax_script_vars.comments_php;
-  // };
 
   /* 
    * Remove comments wrapper
