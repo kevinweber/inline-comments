@@ -175,6 +175,9 @@
     return text;
   };
 
+  /*
+   * Generate class for bubbleContainer
+   */
   var loadBubbleContainerClass = function( source ) {
     var containerClass = classBubble;
 
