@@ -61,10 +61,12 @@ class INCOM_WordPress extends INCOM_Frontend {
 	/**
 	 * Add Custom CSS
 	 */
-	function load_incom_custom_css(){ ?>
-		<style type="text/css">	
-		</style>
-	<?php
+	function load_incom_custom_css(){
+		echo '<style type="text/css">';
+		if (stripslashes(get_option('custom_css')) != '') {
+			echo stripslashes(get_option('custom_css'));
+		}
+		echo '</style>';
 	}
 
 }

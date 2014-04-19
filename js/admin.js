@@ -1,17 +1,17 @@
 (function( incom, $, undefined ) {
 
   var $selectCommentType = $( 'select[name=select_comment_type]' );
-  var $classDisqusShortname = $( '.disqus_shortname' );
+  var $classHideDisqus = $( '.hide-disqus' );
 
   if ( $selectCommentType.val() !== 'disqus' ) {
-     $classDisqusShortname.hide();
+     $classHideDisqus.hide();
   }
 
   $selectCommentType.change(function () {
     if ( $( this ).val() === 'disqus' ) {
-      $classDisqusShortname.show( 'fast' );
+      $classHideDisqus.show( 'fast' );
     } else {
-       $classDisqusShortname.hide( 'middle' );
+       $classHideDisqus.hide( 'middle' );
     }
   });
 
