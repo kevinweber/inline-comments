@@ -55,12 +55,10 @@
     // 'options' overrides these defaults
     o = $.extend( {
         selectors: 'p',
-        // identifier: 'disqussion', // WILL NOT BE SUPPORTET for WordPress Comment System
-        // displayCount: true,
+        displayCount: true,
         // highlighted: false,
         position: 'left',
         background: 'white',
-        // maxWidth: 9999,
       },
     options);
   };
@@ -137,7 +135,7 @@
     var bubbleText;
     var count = countComments( source );
 
-    if ( $.isNumeric( count ) && count > 0 ) {
+    if ( $.isNumeric( count ) && count > 0 && o.displayCount === true ) {
       bubbleText = count;
     }
     else {
