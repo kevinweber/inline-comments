@@ -1,6 +1,6 @@
 <?php
 /**
- * Create options panel (http://codex.wordpress.org/Creating_Options_Pages)
+ * Any functions that are used independent from the options panel
  * @package Admin
  */
 

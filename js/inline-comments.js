@@ -114,12 +114,13 @@
    * Add bubbles to each element
    */
   var addBubble = function( source ) {
+    var bubbleText = getBubbleText( source );
     var $bubble = $('<a/>',
         {
           href: '',
           'class': classBubbleLink,
         })
-      .text('+')
+      .text( bubbleText )
       .wrap('<div class="'+classBubble+'" />')
       .parent()
       .appendTo( idWrapperHash );
@@ -129,6 +130,36 @@
     handleClickBubble( source, $bubble );
   };
 
+  /*
+   * Get text/number that should be displayed in a bubble
+   */
+  var getBubbleText = function( source ) {
+    var bubbleText;
+    var count = countComments( source );
+
+    if ( $.isNumeric( count ) && count > 0 ) {
+      bubbleText = count;
+    }
+    else {
+      bubbleText = '+';
+    }
+
+    return bubbleText;
+  };
+
+  /*
+   * Count the number of comments that are assigned to a specific paragraph
+   */
+  var countComments = function( source ) {
+    // Get attribute value from source's attribute attDataIncom
+    var attFromSource = source.attr( attDataIncom );
+    // Define selector that identifies elements that shell be counted
+    var selectByAtt = '[' + attDataIncomComment + '=' + attFromSource + ']';
+    // Count elements
+    var $count = $( selectByAtt ).length;
+
+    return $count;
+  };
 
   /* 
    * This event will be triggered when user hovers a text element or bubble

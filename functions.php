@@ -14,7 +14,7 @@ if ( !defined( 'INCOM_PATH' ) )
 	define( 'INCOM_PATH', plugin_dir_path( __FILE__ ) );
 
 function incom_admin_init() {
-	require_once( INCOM_PATH . 'admin/class-admin.php' );
+	// require_once( INCOM_PATH . 'admin/class-admin.php' );
 	require_once( INCOM_PATH . 'admin/class-admin-options.php' );
 }
 
