@@ -30,6 +30,7 @@
 
   var dataIncomKey = 'data_incom';  // Should be the same as $DataIncomKey in class-comments.php
 
+  var defaultBubbleText = '+';
 
 
   /*
@@ -139,7 +140,7 @@
       bubbleText = count;
     }
     else {
-      bubbleText = '+';
+      bubbleText = defaultBubbleText;
     }
 
     return bubbleText;
