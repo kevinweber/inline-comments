@@ -83,14 +83,14 @@ class INCOM_Indisq extends INCOM_Frontend {
 	 * Add scripts (like JS)
 	 */
 	function incom_enqueue_scripts() {
-		wp_enqueue_script('pw-script', plugins_url( 'js/min/inlineDisqussions-ck.js' , plugin_dir_path( __FILE__ ) ) );
+		wp_enqueue_script('pw-script', plugins_url( 'js/min/inlineDisqussions-ck.js' , plugin_dir_path( __FILE__ ) ), array( 'jquery' ) );
 	}
 
 	/**
 	 * Add stylesheet
 	 */
 	function load_incom_style() {
-		wp_register_style( 'incom-style', plugins_url('css/min/style-disq.css', plugin_dir_path( __FILE__ )) );
+		wp_register_style( 'incom-style', plugins_url('css/min/style-disq.css', plugin_dir_path( __FILE__ ) ) );
 		wp_enqueue_style( 'incom-style' );
 	}
 

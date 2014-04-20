@@ -5,18 +5,10 @@
 class INCOM_Frontend {
 
 	function __construct() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'incom_enqueue_jquery' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'incom_enqueue_scripts' ) );
 		add_action( 'wp_footer', array( $this, 'load_incom'), 15, 'functions' );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_incom_style') );
 		add_action( 'wp_head', array( $this, 'load_incom_custom_css') );
-	}
-
-	/**
-	 * Enable jQuery (comes with WordPress)
-	 */
-	function incom_enqueue_jquery() {
-    	wp_enqueue_script('jquery');
 	}
 
 	function incom_enqueue_scripts() {}

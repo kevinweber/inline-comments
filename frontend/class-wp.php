@@ -44,7 +44,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 	 * Add scripts (like JS)
 	 */
 	function incom_enqueue_scripts() {
-		wp_enqueue_script('ajax-script', plugins_url( 'js/min/inline-comments-ck.js' , plugin_dir_path( __FILE__ ) ) );
+		wp_enqueue_script('ajax-script', plugins_url( 'js/min/inline-comments-ck.js' , plugin_dir_path( __FILE__ ) ), array( 'jquery' ) );
 		//wp_localize_script('ajax-script', 'ajax_script_vars', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'comments_php' => $this->get_comments_php() ) );
 	}
 
@@ -52,7 +52,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 	 * Add stylesheet
 	 */
 	function load_incom_style() {
-		wp_register_style( 'incom-style', plugins_url('css/min/style-wp.css', plugin_dir_path( __FILE__ )) );
+		wp_register_style( 'incom-style', plugins_url('css/min/style-wp.css', plugin_dir_path( __FILE__ ) ) );
 		wp_enqueue_style( 'incom-style' );
 	}
 
