@@ -5,7 +5,7 @@
 class INCOM_Indisq extends INCOM_Frontend {
 
 	function __construct() {
-		parent::__construct();
+		parent::addActions();
 	}
 
 	/**

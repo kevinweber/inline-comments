@@ -5,7 +5,7 @@
 class INCOM_WordPress extends INCOM_Frontend {
 
 	function __construct() {
-		parent::__construct();
+		parent::addActions();
 		$this->get_comments_php();
 		// add_action( "wp_ajax_get_comments_php", array( $this, 'get_comments_php' ) );
 		// add_action( "wp_ajax_nopriv_get_comments_php", array( $this, 'get_comments_php' ) );
