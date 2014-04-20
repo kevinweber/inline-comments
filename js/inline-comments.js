@@ -132,6 +132,7 @@
       .parent()
       .appendTo( idWrapperHash );
 
+    setDisplayStatic( $bubble );
     setPosition( source, $bubble );
     handleHover( source, $bubble );
     handleClickBubble( source, $bubble );
@@ -196,16 +197,24 @@
     return ( $.isNumeric( count ) && count > 0 ) ? true : false;
   };
 
+  var setDisplayStatic = function( bubble ) {
+    if ( bubble.hasClass( classBubbleStatic ) ) {
+      bubble.css( 'display', 'block' );
+    }
+  };
+
   /* 
    * This event will be triggered when user hovers a text element or bubble
    */
   var handleHover = function ( element, bubble ) {
-    // Handle hover (for both, "elements" and $bubble)
-    element.add(bubble).hover(function() {
-      bubble.stop( true, true ).fadeIn();
-    }, function() {
-      bubble.stop( true, true ).fadeOut( 2000 );
-    });
+    if ( !bubble.hasClass( classBubbleStatic ) ) {
+      // Handle hover (for both, "elements" and $bubble)
+      element.add(bubble).hover(function() {
+        bubble.stop( true, true ).fadeIn();
+      }, function() {
+        bubble.stop( true, true ).fadeOut( 2000 );
+      });
+    }
   };
 
 
