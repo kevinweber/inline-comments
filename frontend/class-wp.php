@@ -6,13 +6,16 @@ class INCOM_WordPress extends INCOM_Frontend {
 
 	function __construct() {
 		parent::addActions();
+		$this->addActions();
+	}
+
+	function addActions() {
 		$this->get_comments_php();
 		// add_action( "wp_ajax_get_comments_php", array( $this, 'get_comments_php' ) );
 		// add_action( "wp_ajax_nopriv_get_comments_php", array( $this, 'get_comments_php' ) );
 	}
 
-	function get_comments_php()
-	{
+	function get_comments_php() {
 		require_once( 'class-comments.php' );
 		$comments = new INCOM_Comments();
 		// $comments_php = $comments->getCode();
