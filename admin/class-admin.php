@@ -1,6 +1,6 @@
 <?php
 /**
- * Any functions that are used independent from the options panel
+ * Functions that are used independent from the options panel
  * @package Admin
  */
 

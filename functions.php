@@ -10,8 +10,15 @@
  * Text Domain: inline-comments
 */
 
+if ( ! defined( 'INCOM_FILE' ) ) {
+	define( 'INCOM_FILE', __FILE__ );
+}
+
 if ( !defined( 'INCOM_PATH' ) )
 	define( 'INCOM_PATH', plugin_dir_path( __FILE__ ) );
+
+require_once( INCOM_PATH . 'admin/class-register.php' );
+
 
 function incom_admin_init() {
 	// require_once( INCOM_PATH . 'admin/class-admin.php' );
