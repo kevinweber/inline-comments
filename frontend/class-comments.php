@@ -19,7 +19,7 @@ class INCOM_Comments {
 	 */
 	private function setValueDataIncom() {
 		if ( isset( $_POST[ $this->DataIncomKeyPOST ] ) ) {
-			$value = $_POST[ $this->DataIncomKeyPOST ];
+			$value = sanitize_text_field( $_POST[ $this->DataIncomKeyPOST ] );
 		}
 		else {
 			$value = NULL;
