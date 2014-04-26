@@ -1,22 +1,33 @@
 (function( incom, $, undefined ) {
 
-  $(document).ready(function($) {
-    $( "#tabs" ).tabs();
+  $(document).ready(function() {
+    init();
   });
 
-  var $selectCommentType = $( 'select[name=select_comment_type]' );
-  var $classHideDisqus = $( '.hide-disqus' );
+  var init = function() {
+    handleSelect();
+    handleTabs();
+  };
 
-  if ( $selectCommentType.val() !== 'disqus' ) {
-     $classHideDisqus.hide();
-  }
+  var handleSelect = function() {
+    var $selectCommentType = $( 'select[name=select_comment_type]' );
+    var $classHideDisqus = $( '.hide-disqus' );
 
-  $selectCommentType.change(function () {
-    if ( $( this ).val() === 'disqus' ) {
-      $classHideDisqus.show( 'fast' );
-    } else {
-       $classHideDisqus.hide( 'middle' );
+    if ( $selectCommentType.val() !== 'disqus' ) {
+       $classHideDisqus.hide();
     }
-  });
+
+    $selectCommentType.change(function () {
+      if ( $( this ).val() === 'disqus' ) {
+        $classHideDisqus.show( 'fast' );
+      } else {
+         $classHideDisqus.hide( 'middle' );
+      }
+    });
+  };
+
+  var handleTabs = function() {
+    $( "#tabs" ).tabs();
+  };
 
 }( window.incom = window.incom || {}, jQuery ));
