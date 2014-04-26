@@ -58,6 +58,7 @@ class INCOM_Admin_Options {
 										<option value="wp"<?php if (get_option('select_comment_type') === 'wp') { echo ' selected="selected"'; } ?>>WordPress Comments (recommended)</option>
 										<option value="disqus"<?php if (get_option('select_comment_type') === 'disqus') { echo ' selected="selected"'; } ?>>Disqus</option>
 									</select>
+									<span class="hide-disqus"><br><span style="color:#f60;">Notice:</span> Inline Comments with <strong>Disqus</strong> works on many websites. However, there are some known bugs that will not be fixed in the near future.</span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
@@ -77,9 +78,9 @@ class INCOM_Admin_Options {
 					        	</td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Display Count</th>
+					        	<th scope="row">Hide Static Bubbles</th>
 						        <td>
-									<input name="display_count" type="checkbox" value="1" <?php checked( '1', get_option( 'display_count' ) ); ?> /> <span>If checked, the comment count inside the icon is disabled. Default: Unchecked (count is visible).</span>
+									<input name="display_count" type="checkbox" value="1" <?php checked( '1', get_option( 'display_count' ) ); ?> /> <span>If checked, the comment count bubbles will only be visible when the user hovers a specific element (paragraph or so).</span>
 						        </td>
 					        </tr>
 					    </tbody>
