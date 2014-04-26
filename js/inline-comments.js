@@ -61,7 +61,6 @@
     // 'options' overrides these defaults
     o = $.extend( {
         selectors: 'p',
-        countDisplay: true,
         countStatic: true,
         defaultBubbleText: '+',
         // highlighted: false,
@@ -144,7 +143,7 @@
   var addBubbleText = function( source ) {
     var bubbleText;
 
-    if ( testIfCommentsCountLarger0( source ) === true ) {
+    if ( testIfCommentsCountLarger0( source ) ) {
       bubbleText = countComments( source );
     }
     else {
@@ -182,7 +181,7 @@
   var loadBubbleContainerClass = function( source ) {
     var containerClass = classBubble;
 
-    if ( ( testIfCommentsCountLarger0( source ) && o.countDisplay ) === true ) {
+    if ( ( testIfCommentsCountLarger0( source ) && o.countStatic ) === true ) {
       containerClass = classBubble + ' ' + classBubbleStyle + ' ' + classBubbleStatic;
     }
     else if ( testIfCommentsCountLarger0( source ) === true ) {

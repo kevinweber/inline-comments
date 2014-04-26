@@ -19,7 +19,7 @@ class INCOM_Indisq extends INCOM_Frontend {
 			$ind(document).ready(function() {
 				$ind("<?php if (get_option('multiselector') == '') { echo 'p'; } else { echo get_option('multiselector'); } ?>").inlineDisqussions({
 					identifier: '<?php if (get_option("identifier") != "") { echo get_option("identifier"); } else { echo "indisq"; } ?>',	// Fallback for plugin version 0.8 and older: If get_option("identifier") is set, use it
-					displayCount: <?php if (get_option("display_count") == "1") { echo "false"; } else { echo "true"; } ?>,
+					displayCount: <?php if (get_option("bubble_static") == "1") { echo "false"; } else { echo "true"; } ?>,
 					highlighted: <?php if (get_option("check_highlight") == "1") { echo "true"; } else { echo "false"; } ?>,
 					position: '<?php if (get_option("select_align") == "") { echo "right"; } else { echo get_option("select_align"); } ?>',
 					background: '<?php if (get_option("set_bgcolour") == "") { echo "#fff"; } else { echo get_option("set_bgcolour"); } ?>',

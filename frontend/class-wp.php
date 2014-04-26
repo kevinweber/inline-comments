@@ -33,7 +33,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 			$ind(document).ready(function() {
 				incom.init({
 					selectors: '<?php if (get_option("multiselector") === '') { echo "p"; } else { echo get_option("multiselector"); } ?>',
-	            	countDisplay: <?php if (get_option("display_count") == "1") { echo "false"; } else { echo "true"; } ?>,
+	            	countStatic: <?php if (get_option("bubble_static") == "1") { echo "false"; } else { echo "true"; } ?>,
 				  // defaultBubbleText: '+',
 	              // highlighted: false,
 	            	position: '<?php if (get_option("select_align") == "") { echo "right"; } else { echo get_option("select_align"); } ?>',

@@ -24,7 +24,7 @@ class INCOM_Admin_Options {
 	}
 
 	function register_incom_settings() {
-		$arr = array('disqus_shortname', 'multiselector', 'display_count', 'check_highlight', 'select_align', 'select_comment_type', 'set_bgcolour', 'set_maxwidth', 'custom_css', 'check_rmode');
+		$arr = array('disqus_shortname', 'multiselector', 'bubble_static', 'check_highlight', 'select_align', 'select_comment_type', 'set_bgcolour', 'set_maxwidth', 'custom_css', 'check_rmode');
 		foreach ( $arr as $i ) {
 			register_setting( 'incom-settings-group', $i );
 		}
@@ -80,7 +80,7 @@ class INCOM_Admin_Options {
 					        <tr valign="top">
 					        	<th scope="row">Hide Static Bubbles</th>
 						        <td>
-									<input name="display_count" type="checkbox" value="1" <?php checked( '1', get_option( 'display_count' ) ); ?> /> <span>If checked, the comment count bubbles will only be visible when the user hovers a specific element (paragraph or so).</span>
+									<input name="bubble_static" type="checkbox" value="1" <?php checked( '1', get_option( 'bubble_static' ) ); ?> /> <span>If checked, the comment count bubbles will only be visible when the user hovers a specific element (paragraph or so).</span>
 						        </td>
 					        </tr>
 					    </tbody>
