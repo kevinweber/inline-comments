@@ -13,6 +13,7 @@ class INCOM_Admin_Options {
 
 	function admin_init_options() {
 		if ( isset( $_GET['page'] ) && ( $_GET['page'] == 'incom.php') ) {
+			add_action( 'admin_footer', array( $this, 'incom_admin_css' ) );
 			add_action( 'admin_footer', array( $this, 'incom_admin_js' ) );
 		}
 		$this->register_incom_settings();
@@ -30,80 +31,121 @@ class INCOM_Admin_Options {
 	}
 
 	function incom_settings_page()	{ ?>
-		<div class="wrap">
-			<h2>Inline Comments</h2>
+
+		<div id="tabs" class="ui-tabs">
+			<h2>Inline Comments by Kevin Weber</h2>
+
+			<ul class="ui-tabs-nav">
+		        <li><a href="#tabs-1">Basics</a></li>
+				<li class="hide-disqus"><a href="#tabs-2">Disqus-specific</a></li>
+		    	<li><a href="#tabs-3">Styling</a></li>
+		    </ul>
+
 			<form method="post" action="options.php">
 			    <?php settings_fields( 'incom-settings-group' ); ?>
 			    <?php do_settings_sections( 'incom-settings-group' ); ?>
-			    <table class="form-table">
-			        <tr valign="top">
-			        	<th scope="row">Choose Comment System</th>
-				        <td>
-							<select class="select" typle="select" name="select_comment_type">
-								<option value="disqus"<?php if (get_option('select_comment_type') === 'disqus') { echo ' selected="selected"'; } ?>>Disqus</option>
-								<option value="wp"<?php if (get_option('select_comment_type') === 'wp') { echo ' selected="selected"'; } ?>>WordPress Comments (beta)</option>
-							</select>
-				        </td>
-			        </tr>
-			        <tr class="hide-disqus" valign="top">
-			        	<th scope="row">Disqus Shortname (required for Disqus!)</th>
-			        	<td>
-			        		<input type="text" name="disqus_shortname" placeholder="your_disqus_shortname" value="<?php echo get_option('disqus_shortname'); ?>" /> <span>To use Disqus, a <a href="http://disqus.com" target="_blank" title="Disqus">shortname</a> is required. (<a href="http://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-" target="_blank" title="What's a Shortname?">What's a shortname?</a>)</span>
-			        	</td>
-			        </tr>
-			        <tr valign="top">
-			        	<th scope="row">Position</th>
-				        <td>
-							<select class="select" typle="select" name="select_align">
-								<option value="right"<?php if (get_option('select_align') === 'right') { echo ' selected="selected"'; } ?>>Right</option>
-								<option value="left"<?php if (get_option('select_align') === 'left') { echo ' selected="selected"'; } ?>>Left</option>
-							</select>
-					    </td>
-			        </tr>
-			        <tr valign="top">
-			        	<th scope="row">Insert Selectors</th>
-			        	<td>
-			        		<textarea rows="3" cols="70" type="text" name="multiselector"><?php echo get_option('multiselector'); ?></textarea><br>
-			        		<span>Insert selectors in order to control beside which sections the comment bubbles should be displayed. You can insert selectors like that: <i>selector1, selector2, selectorN</i>. Example: <i>h1, .single-post p, span, blockquote</i></span>
-			        	</td>
-			        </tr>
-			        <tr valign="top">
-			        	<th scope="row">Display Count</th>
-				        <td>
-							<input name="display_count" type="checkbox" value="1" <?php checked( '1', get_option( 'display_count' ) ); ?> /> <span>If checked, the comment count inside the icon is disabled. Default: Unchecked (count is visible).</span>
-				        </td>
-			        </tr>
-			        <tr class="hide-disqus" valign="top">
-			        	<th scope="row">Highlighting</th>
-				        <td>
-							<input name="check_highlight" type="checkbox" value="1" <?php checked( '1', get_option( 'check_highlight' ) ); ?> /> <span>If checked, the highlighting of the active section is enabled. Default: Unchecked (no highlighting).</span>
-				        </td>
-			        </tr>
-			        <tr valign="top">
-			        	<th scope="row">Background Colour</th>
-			        	<td>
-			        		<input type="text" name="set_bgcolour" placeholder="#ffffff" value="<?php echo get_option('set_bgcolour'); ?>" /> <span>CSS background-color for comment threads.</span>
-			        	</td>
-			        </tr>
-			        <tr class="hide-disqus" valign="top">
-			        	<th scope="row">Max Disqussion Width</th>
-			        	<td>
-			        		<input type="text" name="set_maxwidth" placeholder="9999" value="<?php echo get_option('set_maxwidth'); ?>" /> <span>Maximum width, in pixels, for comment threads.</span>
-			        	</td>
-			        </tr>
-			        <tr class="hide-disqus" valign="top">
-			        	<th scope="row">Responsive Mode (Beta)</th>
-				        <td>
-							<input name="check_rmode" type="checkbox" value="1" <?php checked( '1', get_option( 'check_rmode' ) ); ?> /> <span>If checked, the plugin reacts different on smaller/larger screens. The comments field will be fixed on the page's right/left side.</span>
-				        </td>
-			        </tr>
-			        <tr valign="top">
-			        	<th scope="row">Custom CSS</th>
-			        	<td>
-			        		<textarea rows="14" cols="70" type="text" name="custom_css"><?php echo get_option('custom_css'); ?></textarea>
-			        	</td>
-			        </tr>
-			    </table>
+
+			    <div id="tabs-1">
+
+					<h3>Basic Settings</h3>
+
+				    <table class="form-table">
+					    <tbody>
+					        <tr valign="top">
+					        	<th scope="row">Comment System</th>
+						        <td>
+									<select class="select" typle="select" name="select_comment_type">
+										<option value="wp"<?php if (get_option('select_comment_type') === 'wp') { echo ' selected="selected"'; } ?>>WordPress Comments (recommended)</option>
+										<option value="disqus"<?php if (get_option('select_comment_type') === 'disqus') { echo ' selected="selected"'; } ?>>Disqus</option>
+									</select>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row">Position</th>
+						        <td>
+									<select class="select" typle="select" name="select_align">
+										<option value="right"<?php if (get_option('select_align') === 'right') { echo ' selected="selected"'; } ?>>Right</option>
+										<option value="left"<?php if (get_option('select_align') === 'left') { echo ' selected="selected"'; } ?>>Left</option>
+									</select>
+							    </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row">Selectors</th>
+					        	<td>
+					        		<textarea rows="3" cols="70" type="text" name="multiselector"><?php echo get_option('multiselector'); ?></textarea><br>
+					        		<span>Insert selectors in order to control beside which sections the comment bubbles should be displayed. You can insert selectors like that: <i>selector1, selector2, selectorN</i>. Example: <i>h1, .single-post p, span, blockquote</i></span>
+					        	</td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row">Display Count</th>
+						        <td>
+									<input name="display_count" type="checkbox" value="1" <?php checked( '1', get_option( 'display_count' ) ); ?> /> <span>If checked, the comment count inside the icon is disabled. Default: Unchecked (count is visible).</span>
+						        </td>
+					        </tr>
+					    </tbody>
+				    </table>
+
+			    </div>
+
+			    <div id="tabs-2">
+
+					<h3>Disqus-specific Settings</h3>
+
+				    <table class="form-table">
+					    <tbody>
+					        <tr valign="top">
+					        	<th scope="row">Disqus Shortname (required!)</th>
+					        	<td>
+					        		<input type="text" name="disqus_shortname" placeholder="your_disqus_shortname" value="<?php echo get_option('disqus_shortname'); ?>" /> <span>To use Disqus, a <a href="http://disqus.com" target="_blank" title="Disqus">shortname</a> is required. (<a href="http://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-" target="_blank" title="What's a Shortname?">What's a shortname?</a>)</span>
+					        	</td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row">Highlighting</th>
+						        <td>
+									<input name="check_highlight" type="checkbox" value="1" <?php checked( '1', get_option( 'check_highlight' ) ); ?> /> <span>If checked, the highlighting of the active section is enabled. Default: Unchecked (no highlighting).</span>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row">Max Disqussion Width</th>
+					        	<td>
+					        		<input type="text" name="set_maxwidth" placeholder="9999" value="<?php echo get_option('set_maxwidth'); ?>" /> <span>Maximum width, in pixels, for comment threads.</span>
+					        	</td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row">Responsive Mode</th>
+						        <td>
+									<input name="check_rmode" type="checkbox" value="1" <?php checked( '1', get_option( 'check_rmode' ) ); ?> /> <span>If checked, the plugin reacts different on smaller/larger screens. The comments field will be fixed on the page's right/left side.</span>
+						        </td>
+					        </tr>
+					    </tbody>
+				    </table>
+
+				</div>
+
+			    <div id="tabs-3">
+
+					<h3>Styling</h3>
+
+				    <table class="form-table">
+					    <tbody>
+					        <tr valign="top">
+					        	<th scope="row">Background Colour</th>
+					        	<td>
+					        		<input type="text" name="set_bgcolour" placeholder="#ffffff" value="<?php echo get_option('set_bgcolour'); ?>" /> <span>CSS background-color for comment threads.</span>
+					        	</td>
+					        </tr>
+
+					        <tr valign="top">
+					        	<th scope="row">Custom CSS</th>
+					        	<td>
+					        		<textarea rows="14" cols="70" type="text" name="custom_css"><?php echo get_option('custom_css'); ?></textarea>
+					        	</td>
+					        </tr>
+				        </tbody>
+				    </table>
+
+				</div>
+
 			    <?php submit_button(); ?>
 			</form>
 
@@ -127,7 +169,11 @@ class INCOM_Admin_Options {
 	}
 
 	function incom_admin_js() {
-	    wp_enqueue_script( 'incom_admin_js', plugins_url( '../js/min/admin-ck.js' , __FILE__ ) );
+	    wp_enqueue_script( 'incom_admin_js', plugins_url( '../js/min/admin-ck.js' , __FILE__ ), array('jquery', 'jquery-ui-tabs') );
+	}
+
+	function incom_admin_css() {
+		wp_enqueue_style( 'incom_admin_css', plugins_url('../css/min/admin.css', __FILE__) );
 	}
 
 }

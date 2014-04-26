@@ -1,5 +1,9 @@
 (function( incom, $, undefined ) {
 
+  $(document).ready(function($) {
+    $( "#tabs" ).tabs();
+  });
+
   var $selectCommentType = $( 'select[name=select_comment_type]' );
   var $classHideDisqus = $( '.hide-disqus' );
 
