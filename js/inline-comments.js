@@ -22,6 +22,7 @@
     var classActiveDot = '.'+classActive;
   var classBubble = 'incom-bubble';
     var classBubbleDot = '.'+classBubble;
+    var classBubbleStyle = classBubble+'-style';
     var classBubbleStatic = classBubble+'-static';
     var classBubbleActive = classBubble+'-active';  // Class for currently selected bubble
     var classBubbleLink = classBubble+'-link';
@@ -126,7 +127,6 @@
           href: '',
           'class': classBubbleLink,
         })
-      //.addClass( addClassBubbleStatic( source ) )
       .text( bubbleText )
       .wrap( bubbleContainer )
       .parent()
@@ -144,7 +144,7 @@
   var addBubbleText = function( source ) {
     var bubbleText;
 
-    if ( ( testIfCommentsCountLarger0( source ) && o.countDisplay ) === true ) {
+    if ( testIfCommentsCountLarger0( source ) === true ) {
       bubbleText = countComments( source );
     }
     else {
@@ -183,7 +183,10 @@
     var containerClass = classBubble;
 
     if ( ( testIfCommentsCountLarger0( source ) && o.countDisplay ) === true ) {
-      containerClass = classBubble + ' ' + classBubbleStatic;
+      containerClass = classBubble + ' ' + classBubbleStyle + ' ' + classBubbleStatic;
+    }
+    else if ( testIfCommentsCountLarger0( source ) === true ) {
+      containerClass = classBubble + ' ' + classBubbleStyle;
     }
 
     return containerClass;
