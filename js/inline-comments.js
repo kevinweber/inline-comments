@@ -20,6 +20,7 @@
   // Classes
   var classActive = 'incom-active';
     var classActiveDot = '.'+classActive;
+  var classPosition = 'incom-position-';  // Expects that o.position follows ('left' or 'right')
   var classBubble = 'incom-bubble';
     var classBubbleDot = '.'+classBubble;
     var classBubbleStyle = classBubble+'-style';
@@ -76,7 +77,8 @@
    */
   var initIncomWrapper = function() {
     if ( $( idWrapperHash ).length === 0 ) {
-      $( '<div id="'+idWrapper+'"></div>' ).appendTo( $( 'body' ) );
+      $( '<div id="'+idWrapper+'"></div>' ).appendTo( $( 'body' ) )
+        .addClass( classPosition + o.position );
     }
     
     initSelectElements();
@@ -180,12 +182,13 @@
    */
   var loadBubbleContainerClass = function( source ) {
     var containerClass = classBubble;
+    var space = ' ';
 
     if ( ( testIfCommentsCountLarger0( source ) && o.countStatic ) ) {
-      containerClass = classBubble + ' ' + classBubbleStyle + ' ' + classBubbleStatic;
+      containerClass += space + classBubbleStyle + space + classBubbleStatic;
     }
     else if ( testIfCommentsCountLarger0( source ) ) {
-      containerClass = classBubble + ' ' + classBubbleStyle;
+      containerClass += space + classBubbleStyle;
     }
 
     return containerClass;

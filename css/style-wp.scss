@@ -2,6 +2,8 @@
  * Variables
  */
 $bubble-radius: 3px;
+$bubble-tri-pos: 6px;
+$bubble-margin-left: 10px;
 
 /*
  * Mixins
@@ -33,25 +35,34 @@ $bubble-radius: 3px;
 }
 
 .incom-bubble-style {
-  margin-left: 6px;
+  margin-left: $bubble-margin-left;
   background: #000;
   @include border-radius( $bubble-radius );
   &:after {
     content: '';
     position: absolute;
     border-style: solid;
-    border-width: 5px 6px 5px 0;
+    border-width: 5px $bubble-tri-pos 5px 0;
     border-color: transparent #000;
     display: block;
     width: 0;
     z-index: 1;
     margin-top: -5px;
-    left: -6px;
+    left: -$bubble-tri-pos;
     top: 50%;
   }
   a {
     color: #fff;
     font-weight: normal;
+  }
+}
+
+.incom-position-left .incom-bubble-style {
+  margin-left: -$bubble-margin-left;
+  &:after {
+    border-width: 5px 0 5px $bubble-tri-pos;
+    left: initial;
+    right: -$bubble-tri-pos;
   }
 }
 
