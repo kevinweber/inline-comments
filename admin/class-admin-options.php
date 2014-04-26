@@ -73,7 +73,7 @@ class INCOM_Admin_Options {
 					        <tr valign="top">
 					        	<th scope="row">Selectors</th>
 					        	<td>
-					        		<textarea rows="3" cols="70" type="text" name="multiselector"><?php echo get_option('multiselector'); ?></textarea><br>
+					        		<textarea rows="3" cols="70" type="text" name="multiselector" placeholder="selector1, selector2, selectorN"><?php echo get_option('multiselector'); ?></textarea><br>
 					        		<span>Insert selectors in order to control beside which sections the comment bubbles should be displayed. You can insert selectors like that: <i>selector1, selector2, selectorN</i>. Example: <i>h1, .single-post p, span, blockquote</i></span>
 					        	</td>
 					        </tr>
@@ -138,9 +138,14 @@ class INCOM_Admin_Options {
 					        </tr>
 
 					        <tr valign="top">
-					        	<th scope="row">Custom CSS</th>
+					        	<th scope="row">Custom CSS <span class="description thin"><br>Add additional CSS. This should override any other stylesheets.</span></th>
 					        	<td>
-					        		<textarea rows="14" cols="70" type="text" name="custom_css"><?php echo get_option('custom_css'); ?></textarea>
+					        		<textarea rows="14" cols="70" type="text" name="custom_css" placeholder="selector { property: value; }"><?php echo get_option('custom_css'); ?></textarea>
+					        		<span>
+					        			For example:<br>
+					        			<i>a.incom-bubble-link { color: red; }</i><br>
+					        			(You don't know CSS? Try the <a href="http://www.w3schools.com/css/DEFAULT.asp" target="_blank" title="CSS Tutorial on W3Schools">CSS Tutorial</a> on W3Schools.)
+					        		</span>
 					        	</td>
 					        </tr>
 				        </tbody>
