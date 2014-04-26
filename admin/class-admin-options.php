@@ -64,10 +64,8 @@ class INCOM_Admin_Options {
 					        <tr valign="top">
 					        	<th scope="row">Position</th>
 						        <td>
-									<select class="select" typle="select" name="select_align">
-										<option value="right"<?php if (get_option('select_align') === 'right') { echo ' selected="selected"'; } ?>>Right</option>
-										<option value="left"<?php if (get_option('select_align') === 'left') { echo ' selected="selected"'; } ?>>Left</option>
-									</select>
+						        	<input id="select_align_left" class="radio" type="radio" name="select_align" value="left"<?php if (get_option('select_align') === 'left') { echo ' checked'; } ?> /><label class="label-radio" for="select_align_left">Left</label>
+						        	<input id="select_align_right" class="radio" type="radio" name="select_align" value="right"<?php if (get_option('select_align') !== 'left') { echo ' checked'; } ?> /><label class="label-radio" for="select_align_right">Right</label>
 							    </td>
 					        </tr>
 					        <tr valign="top">
