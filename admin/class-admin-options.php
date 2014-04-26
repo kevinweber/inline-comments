@@ -132,7 +132,7 @@ class INCOM_Admin_Options {
 					        <tr valign="top">
 					        	<th scope="row">Background Colour <span class="description thin"><br>for comment threads</th>
 					        	<td>
-					        		<input id="incom_picker_input_bgcolor" class="picker-input" type="text" name="set_bgcolour" placeholder="#ffffff" value="<?php echo get_option('set_bgcolour'); ?>" />
+					        		<input id="incom_picker_input_bgcolor" class="picker-input" type="text" name="set_bgcolour" placeholder="#ffffff" value="<?php if (get_option("set_bgcolour") == "") { echo "#ffffff"; } else { echo get_option("set_bgcolour"); } ?>" />
 					        		<div id="incom_picker_bgcolor" class="picker-style"></div>
 					        	</td>
 					        </tr>
