@@ -77,12 +77,6 @@ class INCOM_Admin_Options {
 					        		<span>Insert selectors in order to control beside which sections the comment bubbles should be displayed. You can insert selectors like that: <i>selector1, selector2, selectorN</i>. Example: <i>h1, .single-post p, span, blockquote</i></span>
 					        	</td>
 					        </tr>
-					        <tr valign="top">
-					        	<th scope="row">Hide Static Bubbles</th>
-						        <td>
-									<input name="bubble_static" type="checkbox" value="1" <?php checked( '1', get_option( 'bubble_static' ) ); ?> /> <span>If checked, the comment count bubbles will only be visible when the user hovers a specific element (paragraph or so).</span>
-						        </td>
-					        </tr>
 					    </tbody>
 				    </table>
 
@@ -129,6 +123,12 @@ class INCOM_Admin_Options {
 
 				    <table class="form-table">
 					    <tbody>
+					        <tr valign="top">
+					        	<th scope="row">Hide Static Bubbles</th>
+						        <td>
+									<input name="bubble_static" type="checkbox" value="1" <?php checked( '1', get_option( 'bubble_static' ) ); ?> /> <span>If checked, the comment count bubbles will only be visible when the user hovers a specific element (paragraph or so).</span>
+						        </td>
+					        </tr>
 					        <tr valign="top">
 					        	<th scope="row">Background Colour</th>
 					        	<td>
