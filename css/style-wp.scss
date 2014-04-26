@@ -5,6 +5,8 @@ $bubble-radius: 3px;
 $bubble-tri-pos: 6px;
 $bubble-margin-left: 10px;
 
+$black: #000;
+
 /*
  * Mixins
  */
@@ -23,6 +25,7 @@ $bubble-margin-left: 10px;
   opacity: 0.7;
   text-align: center;
   font-size: 14px;
+  z-index: 80;
   &:hover {
     opacity: 1;
   }
@@ -31,19 +34,23 @@ $bubble-margin-left: 10px;
     text-decoration: none;
     font-weight: 700;
     padding: 5px 10px 4px;
+    @include border-radius( $bubble-radius );
+    &:hover {
+      background: inherit;
+    }
   }
 }
 
 .incom-bubble-style {
   margin-left: $bubble-margin-left;
-  background: #000;
+  background: $black;
   @include border-radius( $bubble-radius );
   &:after {
     content: '';
     position: absolute;
     border-style: solid;
     border-width: 5px $bubble-tri-pos 5px 0;
-    border-color: transparent #000;
+    border-color: transparent $black;
     display: block;
     width: 0;
     z-index: 1;
