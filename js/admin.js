@@ -7,6 +7,7 @@
   var init = function() {
     handleSelect();
     handleTabs();
+    addColourPicker();
   };
 
   var handleSelect = function() {
@@ -28,6 +29,11 @@
 
   var handleTabs = function() {
     $( "#tabs" ).tabs();
+  };
+
+  var addColourPicker = function() {
+    $('#incom_picker_bgcolor').farbtastic('#incom_picker_input_bgcolor');
+// Picker No 2:    $('#incom_picker_bgcolor').farbtastic('#incom_picker_input_bgcolor');
   };
 
 }( window.incom = window.incom || {}, jQuery ));

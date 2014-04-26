@@ -130,9 +130,10 @@ class INCOM_Admin_Options {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Background Colour</th>
+					        	<th scope="row">Background Colour <span class="description thin"><br>for comment threads</th>
 					        	<td>
-					        		<input type="text" name="set_bgcolour" placeholder="#ffffff" value="<?php echo get_option('set_bgcolour'); ?>" /> <span>CSS background-color for comment threads.</span>
+					        		<input id="incom_picker_input_bgcolor" class="picker-input" type="text" name="set_bgcolour" placeholder="#ffffff" value="<?php echo get_option('set_bgcolour'); ?>" />
+					        		<div id="incom_picker_bgcolor" class="picker-style"></div>
 					        	</td>
 					        </tr>
 
@@ -170,11 +171,12 @@ class INCOM_Admin_Options {
 	}
 
 	function incom_admin_js() {
-	    wp_enqueue_script( 'incom_admin_js', plugins_url( '../js/min/admin-ck.js' , __FILE__ ), array('jquery', 'jquery-ui-tabs') );
+	    wp_enqueue_script( 'incom_admin_js', plugins_url( '../js/min/admin-ck.js' , __FILE__ ), array( 'jquery', 'jquery-ui-tabs', 'farbtastic' ) );
 	}
 
 	function incom_admin_css() {
 		wp_enqueue_style( 'incom_admin_css', plugins_url('../css/min/admin.css', __FILE__) );
+		wp_enqueue_style( 'farbtastic' );	// Required for colour picker
 	}
 
 }
