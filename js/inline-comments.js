@@ -181,10 +181,10 @@
   var loadBubbleContainerClass = function( source ) {
     var containerClass = classBubble;
 
-    if ( ( testIfCommentsCountLarger0( source ) && o.countStatic ) === true ) {
+    if ( ( testIfCommentsCountLarger0( source ) && o.countStatic ) ) {
       containerClass = classBubble + ' ' + classBubbleStyle + ' ' + classBubbleStatic;
     }
-    else if ( testIfCommentsCountLarger0( source ) === true ) {
+    else if ( testIfCommentsCountLarger0( source ) ) {
       containerClass = classBubble + ' ' + classBubbleStyle;
     }
 
@@ -354,7 +354,7 @@
     // If any element with $classIncomBubble has classBubbleActive -> remove class and commentsWrapper
     if ( $classIncomBubble.hasClass( classBubbleActive ) ) {
       $classIncomBubble.removeClass( classBubbleActive );
-      if ( fadeout === true ) {
+      if ( fadeout ) {
         $classCommentsWrapper.fadeOut( 'fast', function() {
             $( this ).remove();
         });
