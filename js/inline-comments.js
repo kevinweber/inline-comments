@@ -35,7 +35,7 @@
   // Other
   var selectComment = idCommentsAndFormHash+' .comment';
   var dataIncomKey = 'data_incom';  // Should be the same as $DataIncomKey in class-comments.php
-  var slideWidth = 100;  // Shift page content ('body') to the left
+  var slideWidth = 100;  // Shift page content o.moveSiteSelector to the left
 
 
 
@@ -67,6 +67,7 @@
         // highlighted: false,
         position: 'left',
         background: 'white',
+        moveSiteSelector: 'body',
       },
     options);
   };
@@ -269,10 +270,10 @@
       .appendTo( idWrapperHash )
       .css('background-color', o.background);
 
-    moveSite( 'in' );
     loadComments();
     loadCommentForm();
-    setPosition( source, $commentsWrapper, slideWidth );
+    setPosition( source, $commentsWrapper );
+    moveSite( 'in' );
     handleClickElsewhere();
     handleClickCancel();
   };
@@ -315,13 +316,12 @@
   /*
    * Set position
    */
-  var setPosition = function ( source, element, addWidth ) {
+  var setPosition = function ( source, element ) {
     var $offset = source.offset();
-    addWidth = typeof addWidth !== 'undefined' ? addWidth : 0;
 
     element.css({
       'top': $offset.top,
-      'left': o.position === 'right' ? $offset.left + source.outerWidth() + addWidth : $offset.left - element.outerWidth() - addWidth
+      'left': o.position === 'right' ? $offset.left + source.outerWidth() : $offset.left - element.outerWidth()
     });
   };
 
@@ -372,23 +372,75 @@
   };
 
   var moveSite = function( way ) {
-      //var $viewportW = $ind(window).width();
+    // var $viewportW = $(window).width();
+    var $move = $( o.moveSiteSelector );
+    var val;
 
-      if ( way === 'in' ) {
-        if ( o.position === "left") {
-          $( 'body' ).css( { "position" : "relative", "left" : slideWidth  } );
-         } else {
-          $( 'body' ).css( { "position" : "relative", "right" : slideWidth  } );
-        }
+    $move.css( { "position" : "relative"  } );
+
+    if ( way === 'in' ) {
+      moveBubblesIn();
+      moveWrapperIn();
+
+      val = slideWidth;
+      if ( o.position === "left" ) {
+        $move.css( { "left" : val  } );
+       } else {
+        $move.css( { "right" : val  } );
       }
-      else if ( way === 'out' ) {
-        if ( o.position === "left" ) {
-          $( 'body' ).css( { "position" : "relative", "left" : "initial"  } );
-        } else {
-          $( 'body' ).css( { "position" : "relative", "right" : "initial"  } );
-        }
+    }
+    else if ( way === 'out' ) {
+      moveBubblesOut();
+      moveWrapperOut();
+
+      val = "initial";
+      if ( o.position === "left" ) {
+        $move.css( { "left" : val  } );
+      } else {
+        $move.css( { "right" : val  } );
       }
+    }
   };
+
+  var moveBubblesIn = function() {
+    var $bubble = $( '.incom-bubble' );
+    // var $offset = $bubble.css("left")+30);//.offset().left - 90;
+    // $bubble.css("left")+30);
+    $bubble.css({
+      left: o.position === 'right' ? '-='+slideWidth : '+='+slideWidth
+      //'left': $offset //o.position === 'right' ? $offset.left - addWidth : $offset.left + addWidth
+    });
+  };
+
+  var moveBubblesOut = function() {
+    var $bubble = $( '.incom-bubble' );
+    // var $offset = $bubble.css("left")+30);//.offset().left - 90;
+    // $bubble.css("left")+30);
+    $bubble.css({
+      left: o.position === 'right' ? '+='+slideWidth : '-='+slideWidth
+      //'left': $offset //o.position === 'right' ? $offset.left - addWidth : $offset.left + addWidth
+    });
+  };
+
+  var moveWrapperIn = function() {
+    var $bubble = $( '.incom-comments-wrapper' );
+    // var $offset = $bubble.css("left")+30);//.offset().left - 90;
+    // $bubble.css("left")+30);
+    $bubble.css({
+      left: o.position === 'right' ? '-='+slideWidth : '+='+slideWidth
+      //'left': $offset //o.position === 'right' ? $offset.left - addWidth : $offset.left + addWidth
+    });
+  };
+
+  var moveWrapperOut = function() {
+    var $bubble = $( '.incom-comments-wrapper' );
+    $bubble.css({
+      left: o.position === 'right' ? '+='+slideWidth : '-='+slideWidth
+      //'left': $offset //o.position === 'right' ? $offset.left - addWidth : $offset.left + addWidth
+    });
+  };
+
+
 
   /*
    * Split selectors
