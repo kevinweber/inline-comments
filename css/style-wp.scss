@@ -33,7 +33,7 @@ $black: #000;
     display: inline-block;
     text-decoration: none;
     font-weight: 700;
-    padding: 5px 10px 4px;
+    padding: 0 10px 0;
     @include border-radius( $bubble-radius );
     &:hover {
       background: inherit;
@@ -60,7 +60,12 @@ $black: #000;
   }
   a {
     color: #fff;
+    font-family: arial, sans-serif;
     font-weight: normal;
+    font-size: 13px;
+    line-height: 13px;
+    padding-top: 6px;
+    padding-bottom: 5px;
   }
 }
 
