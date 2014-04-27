@@ -90,7 +90,7 @@ class INCOM_Admin_Options {
 					        <tr valign="top">
 					        	<th scope="row">"Slide Site" Selector</th>
 					        	<td>
-					        		<input type="text" name="moveselector" placeholder="body" value="<?php echo get_option('moveselector'); ?>" /><br><span>This selector defines which content should slide left/right when the user clicks on a bubble. This setting depends on your theme's structure. Default is <i>body</i>.<br>You might try one of these selectors:<br><i>.site-inner</i></span>
+					        		<input type="text" name="moveselector" placeholder="body" value="<?php echo get_option('moveselector'); ?>" /><br><span>This selector defines which content should slide left/right when the user clicks on a bubble. This setting depends on your theme's structure. Default is <i>body</i>.<br>You might try one of these selectors:<br><i>.site<br>.site-inner</i></span>
 					        	</td>
 					        </tr>
 					    </tbody>
