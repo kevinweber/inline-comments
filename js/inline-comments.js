@@ -10,6 +10,7 @@
   // IDs
   var idWrapper = 'incom_wrapper';
     var idWrapperHash = '#'+idWrapper;
+  var idWrapperAppendTo = 'body'; //
   var idCommentsAndForm = 'comments-and-form';
     var idCommentsAndFormHash = '#'+idCommentsAndForm;
 
@@ -62,12 +63,12 @@
     // 'options' overrides these defaults
     o = $.extend( {
         selectors: 'p',
+        moveSiteSelector: idWrapperAppendTo,
         countStatic: true,
         defaultBubbleText: '+',
         // highlighted: false,
         position: 'left',
         background: 'white',
-        moveSiteSelector: 'body',
       },
     options);
   };
@@ -78,7 +79,7 @@
    */
   var initIncomWrapper = function() {
     if ( $( idWrapperHash ).length === 0 ) {
-      $( '<div id="'+idWrapper+'"></div>' ).appendTo( $( 'body' ) )
+      $( '<div id="'+idWrapper+'"></div>' ).appendTo( $( idWrapperAppendTo ) )
         .addClass( classPosition + o.position );
     }
     
