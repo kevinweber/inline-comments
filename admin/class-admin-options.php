@@ -24,7 +24,7 @@ class INCOM_Admin_Options {
 	}
 
 	function register_incom_settings() {
-		$arr = array('disqus_shortname', 'multiselector', 'bubble_static', 'check_highlight', 'select_align', 'select_comment_type', 'set_bgcolour', 'set_maxwidth', 'custom_css', 'check_rmode');
+		$arr = array('disqus_shortname', 'multiselector', 'moveselector', 'bubble_static', 'check_highlight', 'select_align', 'select_comment_type', 'set_bgcolour', 'set_maxwidth', 'custom_css', 'check_rmode');
 		foreach ( $arr as $i ) {
 			register_setting( 'incom-settings-group', $i );
 		}
@@ -37,8 +37,9 @@ class INCOM_Admin_Options {
 
 			<ul class="ui-tabs-nav">
 		        <li><a href="#tabs-1">Basics</a></li>
-				<li class="hide-disqus"><a href="#tabs-2">Disqus-specific</a></li>
-		    	<li><a href="#tabs-3">Styling</a></li>
+				<li class="hide-wp"><a href="#tabs-2">WordPress-specific</a></li>
+				<li class="hide-disqus"><a href="#tabs-3">Disqus-specific</a></li>
+		    	<li><a href="#tabs-4">Styling</a></li>
 		    </ul>
 
 			<form method="post" action="options.php">
@@ -82,7 +83,24 @@ class INCOM_Admin_Options {
 
 			    <div id="tabs-2">
 
-					<h3>Disqus-specific Settings</h3>
+					<h3>Specific Settings for Comment System "WordPress Comments"</h3>
+
+				    <table class="form-table">
+					    <tbody>
+					        <tr valign="top">
+					        	<th scope="row">"Slide Site" Selector</th>
+					        	<td>
+					        		<input type="text" name="movesite" placeholder="body" value="<?php echo get_option('movesite'); ?>" /> <span>Text</span>
+					        	</td>
+					        </tr>
+					    </tbody>
+				    </table>
+
+				</div>
+
+			    <div id="tabs-3">
+
+					<h3>Specific Settings for Comment System "Disqus"</h3>
 
 				    <table class="form-table">
 					    <tbody>
@@ -115,7 +133,7 @@ class INCOM_Admin_Options {
 
 				</div>
 
-			    <div id="tabs-3">
+			    <div id="tabs-4">
 
 					<h3>Styling</h3>
 
