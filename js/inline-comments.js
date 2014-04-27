@@ -35,7 +35,7 @@
   // Other
   var selectComment = idCommentsAndFormHash+' .comment';
   var dataIncomKey = 'data_incom';  // Should be the same as $DataIncomKey in class-comments.php
-
+  var slideWidth = 100;  // Shift page content ('body') to the left
 
 
 
@@ -211,7 +211,7 @@
   /* 
    * This event will be triggered when user hovers a text element or bubble
    */
-  var handleHover = function ( element, bubble ) {
+  var handleHover = function( element, bubble ) {
     if ( !bubble.hasClass( classBubbleStatic ) ) {
       // Handle hover (for both, "elements" and $bubble)
       element.add(bubble).hover(function() {
@@ -226,7 +226,7 @@
   /* 
    * This event will be triggered when user clicks on bubble
    */
-  var handleClickBubble = function ( source, bubble ) {
+  var handleClickBubble = function( source, bubble ) {
     bubble.on( 'click', function(e) {
       e.preventDefault();
       
@@ -269,9 +269,10 @@
       .appendTo( idWrapperHash )
       .css('background-color', o.background);
 
+    moveSite( 'in' );
     loadComments();
     loadCommentForm();
-    setPosition( source, $commentsWrapper );
+    setPosition( source, $commentsWrapper, slideWidth );
     handleClickElsewhere();
     handleClickCancel();
   };
@@ -314,12 +315,13 @@
   /*
    * Set position
    */
-  var setPosition = function ( source, element ) {
+  var setPosition = function ( source, element, addWidth ) {
     var $offset = source.offset();
+    addWidth = typeof addWidth !== 'undefined' ? addWidth : 0;
 
     element.css({
       'top': $offset.top,
-      'left': o.position === 'right' ? $offset.left + source.outerWidth() : $offset.left - element.outerWidth()
+      'left': o.position === 'right' ? $offset.left + source.outerWidth() + addWidth : $offset.left - element.outerWidth() - addWidth
     });
   };
 
@@ -365,7 +367,27 @@
       else {
         $classCommentsWrapper.remove();
       }
+      moveSite( 'out' );
     }
+  };
+
+  var moveSite = function( way ) {
+      //var $viewportW = $ind(window).width();
+
+      if ( way === 'in' ) {
+        if ( o.position === "left") {
+          $( 'body' ).css( { "position" : "relative", "left" : slideWidth  } );
+         } else {
+          $( 'body' ).css( { "position" : "relative", "right" : slideWidth  } );
+        }
+      }
+      else if ( way === 'out' ) {
+        if ( o.position === "left" ) {
+          $( 'body' ).css( { "position" : "relative", "left" : "initial"  } );
+        } else {
+          $( 'body' ).css( { "position" : "relative", "right" : "initial"  } );
+        }
+      }
   };
 
   /*
