@@ -33,7 +33,7 @@ class INCOM_Admin_Options {
 	function incom_settings_page()	{ ?>
 
 		<div id="tabs" class="ui-tabs">
-			<h2>Inline Comments by Kevin Weber</h2>
+			<h2>Inline Comments <span class="subtitle">by Kevin Weber (Version <?php echo INCOM_VERSION; ?>)</span></h2>
 
 			<ul class="ui-tabs-nav">
 		        <li><a href="#tabs-1">Basics</a></li>

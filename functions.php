@@ -10,6 +10,8 @@
  * Text Domain: inline-comments
 */
 
+define( 'INCOM_VERSION', '0.8' );
+
 if ( ! defined( 'INCOM_FILE' ) ) {
 	define( 'INCOM_FILE', __FILE__ );
 }
