@@ -33,7 +33,7 @@ class INCOM_Admin_Options {
 	function incom_settings_page()	{ ?>
 
 		<div id="tabs" class="ui-tabs">
-			<h2>Inline Comments <span class="subtitle">by Kevin Weber (Version <?php echo INCOM_VERSION; ?>)</span></h2>
+			<h2>Inline Comments <span class="subtitle">by <a href="http://kevinw.de/ic" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo INCOM_VERSION; ?>)</span></h2>
 
 			<ul class="ui-tabs-nav">
 		        <li><a href="#tabs-1">Basics</a></li>
@@ -156,15 +156,15 @@ class INCOM_Admin_Options {
 
 		    <table class="form-table">
 		        <tr valign="top">
-		        <th scope="row" style="width:100px;"><a href="http://kevinw.de/ind" target="_blank"><img src="http://www.gravatar.com/avatar/9d876cfd1fed468f71c84d26ca0e9e33?d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536&s=100" style="-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;"></a></th>
+		        <th scope="row" style="width:100px;"><a href="http://kevinw.de/ic" target="_blank"><img src="http://www.gravatar.com/avatar/9d876cfd1fed468f71c84d26ca0e9e33?d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536&s=100" style="-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;"></a></th>
 		        <td style="width:200px;">
-		        	<p><a href="http://kevinw.de/ind" target="_blank">Kevin Weber</a> &ndash; that's me.<br>
+		        	<p><a href="http://kevinw.de/ic" target="_blank">Kevin Weber</a> &ndash; that's me.<br>
 		        	I'm the developer of this plugin. I hope you enjoy it!</p></td>
 		        <td>
 					<p><b>It's free!</b> Support me with <a href="http://kevinw.de/donate/InlineComments/" title="Pay me a delicious lunch" target="_blank">a delicious lunch</a> or give this plugin a 5 star rating <a href="http://wordpress.org/support/view/plugin-reviews/inline-comments?filter=5" title="Vote for Inline Comments" target="_blank">on WordPress.org</a>.</p>
 		        </td>
 		        <td>
-					<p><b>Speed up your site</b> by replacing embedded Youtube and Vimeo videos with a clickable preview image: <a href="http://kevinw.de/ind-ll" title="Lazy Load for Videos" target="_blank">Lazy Load for Videos</a>.</p>
+					<p><b>Speed up your site</b> by replacing embedded Youtube and Vimeo videos with a clickable preview image: <a href="http://kevinw.de/ic-ll" title="Lazy Load for Videos" target="_blank">Lazy Load for Videos</a>.</p>
 		        </td>
 		        </tr>
 			</table>
