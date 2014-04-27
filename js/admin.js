@@ -1,14 +1,12 @@
 (function( incom, $, undefined ) {
 
   var $selectCommentType = $( 'select[name=select_comment_type]' );
-
   var classHidePraefix = '.hide-';
-
-  // Comment Systems
-  var classHideDisqus = 'disqus';
-  var classHideWP = 'wp';
-  // Array with all comment systems
-  var arrClassHide = [ classHideDisqus, classHideWP ];
+  var commentSystems = {
+    // Comment Systems
+    classDisqus: 'disqus',
+    classWP: 'wp',
+  };
 
 
   $(document).ready(function() {
@@ -29,16 +27,16 @@
     // Handle change event
     $selectCommentType.change(function () {
       var $element = $( this );
-      for (var i = arrClassHide.length - 1; i >= 0; i--) {
-        handleChangeCommentType( $element, arrClassHide[i] );
+      for ( var system in commentSystems ) {
+        handleChangeCommentType( $element, commentSystems[system] );
       }
     });
   };
 
   var handleSelectCommentType = function() {
-    for (var i = arrClassHide.length - 1; i >= 0; i--) {
-      var $classHide = $( classHidePraefix+arrClassHide[i] );
-      if ( $selectCommentType.val() !== arrClassHide[i] ) {
+    for ( var system in commentSystems ) {
+      var $classHide = $( classHidePraefix+commentSystems[system] );
+      if ( $selectCommentType.val() !== commentSystems[system] ) {
         $classHide.hide();
       }
     }
