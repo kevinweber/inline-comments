@@ -375,72 +375,48 @@
   var moveSite = function( way ) {
     // var $viewportW = $(window).width();
     var $move = $( o.moveSiteSelector );
-    var val;
-
     $move.css( { "position" : "relative"  } );
 
-    if ( way === 'in' ) {
-      moveBubblesIn();
-      moveWrapperIn();
+    handleWayInAndOut( $move, way );
+    moveElement( way, classBubbleDot ); // Move bubbles
+    moveElement( way, classCommentsWrapperDot );  // Move wrapper
+  };
 
-      val = slideWidth;
-      if ( o.position === "left" ) {
-        $move.css( { "left" : val  } );
-       } else {
-        $move.css( { "right" : val  } );
-      }
+  var handleWayInAndOut = function( element, way ) {
+    var value;
+
+    if ( way === 'in' ) {
+      value = slideWidth;
     }
     else if ( way === 'out' ) {
-      moveBubblesOut();
-      moveWrapperOut();
+      value = 'initial';
 
-      val = "initial";
-      if ( o.position === "left" ) {
-        $move.css( { "left" : val  } );
-      } else {
-        $move.css( { "right" : val  } );
-      }
+    }
+    moveLeftOrRight( element, value );
+  };
+
+  var moveLeftOrRight = function( element, value ) {
+    if ( o.position === "left" ) {
+      element.css( { "left" : value  } );
+    } else {
+      element.css( { "right" : value  } );
     }
   };
 
-  var moveBubblesIn = function() {
-    var $bubble = $( '.incom-bubble' );
-    // var $offset = $bubble.css("left")+30);//.offset().left - 90;
-    // $bubble.css("left")+30);
-    $bubble.css({
-      left: o.position === 'right' ? '-='+slideWidth : '+='+slideWidth
-      //'left': $offset //o.position === 'right' ? $offset.left - addWidth : $offset.left + addWidth
-    });
-  };
+  var moveElement = function( way, selector ) {
+    var $element = $( selector );
 
-  var moveBubblesOut = function() {
-    var $bubble = $( '.incom-bubble' );
-    // var $offset = $bubble.css("left")+30);//.offset().left - 90;
-    // $bubble.css("left")+30);
-    $bubble.css({
-      left: o.position === 'right' ? '+='+slideWidth : '-='+slideWidth
-      //'left': $offset //o.position === 'right' ? $offset.left - addWidth : $offset.left + addWidth
-    });
+    if ( way === 'in' ) {
+      $element.css({
+          left: o.position === 'right' ? '-='+slideWidth : '+='+slideWidth
+      });
+    }
+    else if ( way === 'out' ) {
+      $element.css({
+          left: o.position === 'right' ? '+='+slideWidth : '-='+slideWidth
+      });
+    }
   };
-
-  var moveWrapperIn = function() {
-    var $bubble = $( '.incom-comments-wrapper' );
-    // var $offset = $bubble.css("left")+30);//.offset().left - 90;
-    // $bubble.css("left")+30);
-    $bubble.css({
-      left: o.position === 'right' ? '-='+slideWidth : '+='+slideWidth
-      //'left': $offset //o.position === 'right' ? $offset.left - addWidth : $offset.left + addWidth
-    });
-  };
-
-  var moveWrapperOut = function() {
-    var $bubble = $( '.incom-comments-wrapper' );
-    $bubble.css({
-      left: o.position === 'right' ? '+='+slideWidth : '-='+slideWidth
-      //'left': $offset //o.position === 'right' ? $offset.left - addWidth : $offset.left + addWidth
-    });
-  };
-
 
 
   /*
