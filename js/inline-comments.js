@@ -378,8 +378,12 @@
     $move.css( { "position" : "relative"  } );
 
     handleWayInAndOut( $move, way );
-    moveElement( way, classBubbleDot ); // Move bubbles
-    moveElement( way, classCommentsWrapperDot );  // Move wrapper
+
+    // Only move elements if o.moveSiteSelector is not the same as idWrapperAppendTo
+    if ( o.moveSiteSelector !== idWrapperAppendTo ) {
+      moveElement( way, classBubbleDot ); // Move bubbles
+      moveElement( way, classCommentsWrapperDot );  // Move wrapper
+    }
   };
 
   var handleWayInAndOut = function( element, way ) {
