@@ -322,7 +322,7 @@
 
     element.css({
       'top': $offset.top,
-      'left': o.position === 'right' ? $offset.left + source.outerWidth() : $offset.left - element.outerWidth()
+      'left': testIfPositionRight() ? $offset.left + source.outerWidth() : $offset.left - element.outerWidth()
     });
   };
 
@@ -396,10 +396,10 @@
   };
 
   var moveLeftOrRight = function( element, value ) {
-    if ( o.position === "left" ) {
-      element.css( { "left" : value  } );
+    if ( testIfPositionRight() ) {
+      element.css( { 'right' : value  } );
     } else {
-      element.css( { "right" : value  } );
+      element.css( { 'left' : value  } );
     }
   };
 
@@ -408,16 +408,19 @@
 
     if ( way === 'in' ) {
       $element.css({
-          left: o.position === 'right' ? '-='+slideWidth : '+='+slideWidth
+          left: testIfPositionRight() ? '-='+slideWidth : '+='+slideWidth
       });
     }
     else if ( way === 'out' ) {
       $element.css({
-          left: o.position === 'right' ? '+='+slideWidth : '-='+slideWidth
+          left: testIfPositionRight() ? '+='+slideWidth : '-='+slideWidth
       });
     }
   };
 
+  var testIfPositionRight = function() {
+    return o.position === 'right' ? true : false;
+  };
 
   /*
    * Split selectors
