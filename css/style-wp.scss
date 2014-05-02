@@ -6,16 +6,18 @@ $bubble-tri-pos: 6px;
 $bubble-margin-left: 10px;
 
 $black: #000;
+$grey_light: #f3f3f3;
 $z-index-base: 80;
 
 /*
  * Mixins
  */
-@mixin border-radius( $radius ) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
+@mixin vendor-prefix($property, $value) {
+  -webkit-#{$property}: #{$value};
+  -moz-#{$property}: #{$value};
+  -os-#{$property}: #{$value};
+  -o-#{$property}: #{$value};
+  #{$property}: #{$value};
 }
 
 /* ======================== */
@@ -36,7 +38,7 @@ $z-index-base: 80;
     text-decoration: none;
     font-weight: 700;
     padding: 0 10px 0;
-    @include border-radius( $bubble-radius );
+    @include vendor-prefix( border-radius, $bubble-radius );
     &:hover {
       background: inherit;
     }
@@ -45,7 +47,7 @@ $z-index-base: 80;
 
 .incom-bubble-style {
   background: $black;
-  @include border-radius( $bubble-radius );
+  @include vendor-prefix( border-radius, $bubble-radius );
   &:after {
     content: '';
     position: absolute;
@@ -80,9 +82,43 @@ $z-index-base: 80;
 }
 
 .incom-comments-wrapper {
+  @include vendor-prefix( box-sizing, border-box );
   position: absolute;
   background: #fff;
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  max-width: 300px;
+  padding: 9px 8px;
   z-index: $z-index-base;
+  ul, li {
+    list-style: none;
+  }
+  cite {
+    font-style: normal;
+    font-weight: bold;
+    a {
+      color: $black;
+    }
+  }
+  .comment {
+    padding: 11px 8px 10px;
+    border-bottom: 1px solid $grey_light;
+  }
+  .comment-meta {
+    display: inline;
+    float: right;
+  }
+  .comment-author {
+    padding: 0 0 0.3em;
+  }
+  img {
+    opacity: 0.3;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .comment-respond input[type="email"], .comment-respond input[type="text"], .comment-respond input[type="url"] {
+    width: 100%;
+    max-width: 100%;
+  }
+
 }

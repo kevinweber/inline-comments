@@ -2,7 +2,7 @@
 class INCOM_Comments {
 
 	private $loadPluginInfoHref = 'http://kevinw.de/inline-comments';
-	private $loadPluginInfoTitle = 'Inline-Comments by Kevin Weber';
+	private $loadPluginInfoTitle = 'Inline Comments by Kevin Weber';
 	private $loadCancelLinkText = 'Cancel';
 	private $DataIncomValue = NULL;
 	private $DataIncomKey = 'data_incom';
@@ -84,6 +84,13 @@ class INCOM_Comments {
 		<div id="div-comment-<?php comment_ID() ?>" class="comment-body">
 		
 		<?php endif; ?>
+
+		<div class="comment-meta commentmetadata">
+			<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>" title="Permalink to this comment">
+				<img src="<?php echo plugins_url( 'images/permalink-icon.png' , INCOM_FILE ) ?>" alt="">
+			</a>
+		</div>
+
 		<div class="comment-author vcard">
 			<?php if ( $args['avatar_size'] != 0 ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
 			<?php printf( __( '<cite class="fn">%s</cite>' ), get_comment_author_link() ); ?>
@@ -92,14 +99,6 @@ class INCOM_Comments {
 			<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></em>
 			<br />
 		<?php endif; ?>
-
-		<div class="comment-meta commentmetadata">
-			<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
-			<?php
-				/* translators: 1: date, 2: time */
-				printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time() ); ?>
-			</a>
-		</div>
 
 		<?php comment_text(); ?>
 
