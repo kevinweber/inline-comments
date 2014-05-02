@@ -72,12 +72,14 @@ $z-index-base: 80;
   }
 }
 
-.incom-position-left .incom-bubble-style {
-  margin-left: -$bubble-margin-left;
-  &:after {
-    border-width: 5px 0 5px $bubble-tri-pos;
-    left: initial;
-    right: -$bubble-tri-pos;
+.incom-position-left {
+  .incom-bubble-style {
+    margin-left: -$bubble-margin-left;
+    &:after {
+      border-width: 5px 0 5px $bubble-tri-pos;
+      left: initial;
+      right: -$bubble-tri-pos;
+    }
   }
 }
 
@@ -88,7 +90,7 @@ $z-index-base: 80;
   width: 100%;
   max-width: 300px;
   padding: 9px 8px;
-  margin: 0 10px 0 10px;
+  margin: 0 0 0 10px;
   z-index: $z-index-base;
   ul, li {
     list-style: none;
