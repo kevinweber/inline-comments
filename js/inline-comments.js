@@ -274,8 +274,7 @@
     loadComments();
     loadCommentForm();
     setPosition( source, $commentsWrapper );
-    setSlideWidth( $commentsWrapper );
-    moveSite( 'in' );
+    testIfMoveSiteIsNecessary( $commentsWrapper );
     handleClickElsewhere();
     handleClickCancel();
   };
@@ -327,18 +326,25 @@
     });
   };
 
-  var setSlideWidth = function( element ) {
+  var testIfMoveSiteIsNecessary = function( element ) {
     var $viewportW = $(window).width();
+    var $elementW = element.outerWidth();
+    var $offsetL = element.offset().left;
+    var $sumOffsetAndElementW = $offsetL + $elementW;
 
-    var $offset = element.offset();
+    // If admin has selected position "right" and the comments wrapper's right side stands out of the screen -> setSlideWidth and moveSite
+    if( testIfPositionRight() && ( $sumOffsetAndElementW > $viewportW ) ) {
+      setSlideWidth( $sumOffsetAndElementW - $viewportW );
+      moveSite( 'in' );
+    }
+    else if ( !testIfPositionRight() && ( $offsetL < 0 ) ) {
+      setSlideWidth( -$offsetL );
+      moveSite( 'in' );
+    }
+  };
 
-
-    // element.css({
-    //   'top': $offset.top,
-    //   'left': testIfPositionRight() ? $offset.left + source.outerWidth() : $offset.left - element.outerWidth()
-    // });
-
-    slideWidth = element.outerWidth();//$viewportW-$offset.left;
+  var setSlideWidth = function( width ) {
+    slideWidth = width;
   };
 
   var getSlidewidth = function() {
