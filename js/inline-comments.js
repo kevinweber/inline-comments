@@ -36,7 +36,7 @@
   // Other
   var selectComment = idCommentsAndFormHash+' .comment';
   var dataIncomKey = 'data_incom';  // Should be the same as $DataIncomKey in class-comments.php
-  var slideWidth = 100;  // Shift page content o.moveSiteSelector to the left
+  var slideWidth = 0;  // Shift page content o.moveSiteSelector to the left
 
 
 
@@ -274,6 +274,7 @@
     loadComments();
     loadCommentForm();
     setPosition( source, $commentsWrapper );
+    setSlideWidth( $commentsWrapper );
     moveSite( 'in' );
     handleClickElsewhere();
     handleClickCancel();
@@ -326,6 +327,24 @@
     });
   };
 
+  var setSlideWidth = function( element ) {
+    var $viewportW = $(window).width();
+
+    var $offset = element.offset();
+
+
+    // element.css({
+    //   'top': $offset.top,
+    //   'left': testIfPositionRight() ? $offset.left + source.outerWidth() : $offset.left - element.outerWidth()
+    // });
+
+    slideWidth = element.outerWidth();//$viewportW-$offset.left;
+  };
+
+  var getSlidewidth = function() {
+    return slideWidth;
+  };
+
   /*
    * Remove comments wrapper when user clicks anywhere but the idWrapperHash
    */
@@ -373,7 +392,6 @@
   };
 
   var moveSite = function( way ) {
-    // var $viewportW = $(window).width();
     var $move = $( o.moveSiteSelector );
     $move.css( { "position" : "relative"  } );
 
@@ -390,7 +408,7 @@
     var value;
 
     if ( way === 'in' ) {
-      value = slideWidth;
+      value = getSlidewidth();
     }
     else if ( way === 'out' ) {
       value = 'initial';
@@ -412,12 +430,12 @@
 
     if ( way === 'in' ) {
       $element.css({
-          left: testIfPositionRight() ? '-='+slideWidth : '+='+slideWidth
+          left: testIfPositionRight() ? '-='+getSlidewidth() : '+='+getSlidewidth()
       });
     }
     else if ( way === 'out' ) {
       $element.css({
-          left: testIfPositionRight() ? '+='+slideWidth : '-='+slideWidth
+          left: testIfPositionRight() ? '+='+getSlidewidth() : '-='+getSlidewidth()
       });
     }
   };
