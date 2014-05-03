@@ -18,8 +18,8 @@
  */
 
 define( 'INCOM_VERSION', '1.0' );
-define( 'INCOM_DISQUS', false );	// Should be false if this is NOT the 'Disqus-only version'
-define( 'INCOM_ESSENTIAL', true );	// Should be false if this is the 'Disqus-only version' or 'Lifetime'
+define( 'INCOM_DISQUS', true );	// Should be false if this is NOT the 'Disqus-only version'
+define( 'INCOM_ESSENTIAL', false );	// Should be false if this is the 'Disqus-only version' or 'Lifetime'
 define( 'INCOM_LIFETIME', false );	// Should be false if this is the 'Disqus-only version' or 'Essential'
 
 if ( ! defined( 'INCOM_FILE' ) ) {

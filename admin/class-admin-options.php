@@ -81,7 +81,10 @@ class INCOM_Admin_Options {
 					        	<th scope="row">Selectors</th>
 					        	<td>
 					        		<textarea rows="3" cols="70" type="text" name="multiselector" placeholder="selector1, selector2, selectorN"><?php echo get_option('multiselector'); ?></textarea><br>
-					        		<span>Insert selectors in order to control beside which sections the comment bubbles should be displayed.<br>You can insert selectors like that: <i>selector1, selector2, selectorN</i><br>Example: <i>h1, .single-post .entry-content p, span, blockquote</i></span>
+					        		<span>Insert selectors in order to control beside which sections the comment bubbles should be displayed.<br><br>You can insert selectors like that: <i>selector1, selector2, selectorN</i><br>Example: <i>h1, .single-post .entry-content p, span, blockquote</i></span>
+					        		<?php if ( INCOM_DISQUS ) { ?>
+					        			<br><br><span>Users of <a href="http://kevinw.de/ic-inline-comments" title="Inline Comments" target="_blank"><b>Inline Comments Essential</b></a> get free support to choose the correct selectors.</span>
+					        		<?php } ?>
 					        	</td>
 					        </tr>
 					    </tbody>
