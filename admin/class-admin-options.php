@@ -187,9 +187,12 @@ class INCOM_Admin_Options {
 		        <td style="width:200px;">
 		        	<p><a href="http://kevinw.de/ic" target="_blank">Kevin Weber</a> &ndash; that's me.<br>
 		        	I'm the developer of this plugin. I hope you enjoy it!</p></td>
+		        <?php if ( INCOM_DISQUS ) { ?>
 		        <td>
 					<p><b>It's free!</b> Support me with <a href="http://kevinw.de/donate/InlineComments/" title="Pay me a delicious lunch" target="_blank">a delicious lunch</a> or give this plugin a 5 star rating <a href="http://wordpress.org/support/view/plugin-reviews/inline-comments?filter=5" title="Vote for Inline Comments" target="_blank">on WordPress.org</a>.</p>
 		        </td>
+		        <?php } ?>
+		        
 		        <td>
 					<p><b>Speed up your site</b> by replacing embedded Youtube and Vimeo videos with a clickable preview image: <a href="http://kevinw.de/ic-ll" title="Lazy Load for Videos" target="_blank">Lazy Load for Videos</a>.</p>
 		        </td>
