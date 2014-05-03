@@ -124,3 +124,21 @@ $z-index-base: 80;
     max-width: 100%;
   }
 }
+.incom-info-icon {
+    @include vendor-prefix( border-radius, 50% );
+    border: 2px solid $black;
+    width: 19px;
+    height: 19px;
+    display: block;
+    text-align: center;
+    opacity: 0.3;
+    margin: 1px 8px 1px auto;
+    color: $black;
+    font-family: arial, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    text-decoration: none;
+    &:hover {
+      opacity: 1;
+    }
+}

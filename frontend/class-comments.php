@@ -156,7 +156,7 @@ class INCOM_Comments {
 	 * Load plugin info
 	 */
 	private function loadPluginInfo() {
-		echo '<a class="incom-info" href="' . $this->loadPluginInfoHref . '" title="' . $this->loadPluginInfoTitle . '" target="_blank">(i)</a>';
+		echo '<a class="incom-info-icon" href="' . $this->loadPluginInfoHref . '" title="' . $this->loadPluginInfoTitle . '" target="_blank">i</a></span>';
 	}
 
 	/**
