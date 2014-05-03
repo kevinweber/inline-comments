@@ -32,6 +32,8 @@
     var classCommentsWrapperDot = '.'+classCommentsWrapper;
   var classCancel = 'incom-cancel'; // When a user clicks on an element with this class, the comments wrapper will be removed
     var classCancelDot = '.'+classCancel;
+  var classBranding = 'incom-info-icon';
+    var classBrandingDot = '.'+classBranding;
 
   // Other
   var selectComment = idCommentsAndFormHash+' .comment';
@@ -49,6 +51,7 @@
   incom.init = function( options ) {
     setOptions( options );
     initIncomWrapper();
+    displayBranding();
   };
 
 
@@ -69,6 +72,7 @@
         // highlighted: false,
         position: 'left',
         background: 'white',
+        // Premium feature: hideBranding: true,
       },
     options);
   };
@@ -448,6 +452,18 @@
 
   var testIfPositionRight = function() {
     return o.position === 'right' ? true : false;
+  };
+
+  /*
+   * Prevent users from removing branding
+   */
+  var displayBranding = function() {
+    if ( o.hideBranding !== true ) {
+      $( classBrandingDot ).css({
+        'display': 'block',
+        'visibility': 'visible',
+      });
+    }
   };
 
   /*
