@@ -71,13 +71,6 @@ class INCOM_Admin_Options {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Position</th>
-						        <td>
-						        	<input id="select_align_left" class="radio" type="radio" name="select_align" value="left"<?php if (get_option('select_align') === 'left') { echo ' checked'; } ?> /><label class="label-radio" for="select_align_left">Left</label>
-						        	<input id="select_align_right" class="radio" type="radio" name="select_align" value="right"<?php if (get_option('select_align') !== 'left') { echo ' checked'; } ?> /><label class="label-radio" for="select_align_right">Right</label>
-							    </td>
-					        </tr>
-					        <tr valign="top">
 					        	<th scope="row">Selectors</th>
 					        	<td>
 					        		<textarea rows="3" cols="70" type="text" name="multiselector" placeholder="selector1, selector2, selectorN"><?php echo get_option('multiselector'); ?></textarea><br>
@@ -159,6 +152,13 @@ class INCOM_Admin_Options {
 
 				    <table class="form-table">
 					    <tbody>
+					        <tr valign="top">
+					        	<th scope="row">Position</th>
+						        <td>
+						        	<input id="select_align_left" class="radio" type="radio" name="select_align" value="left"<?php if (get_option('select_align') === 'left') { echo ' checked'; } ?> /><label class="label-radio" for="select_align_left">Left</label>
+						        	<input id="select_align_right" class="radio" type="radio" name="select_align" value="right"<?php if (get_option('select_align') !== 'left') { echo ' checked'; } ?> /><label class="label-radio" for="select_align_right">Right</label>
+							    </td>
+					        </tr>
 					        <tr valign="top">
 					        	<th scope="row">Hide Static Bubbles</th>
 						        <td>
