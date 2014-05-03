@@ -33,7 +33,7 @@ class INCOM_Admin_Options {
 	function incom_settings_page()	{ ?>
 
 		<div id="tabs" class="ui-tabs">
-			<h2>Inline Comments <span class="subtitle">by <a href="http://kevinw.de/ic" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo INCOM_VERSION; ?>)</span></h2>
+			<h2>Inline Comments <?php if ( INCOM_DISQUS ) { echo 'with Disqus '; } ?><span class="subtitle">by <a href="http://kevinw.de/ic" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo INCOM_VERSION; ?>)</span></h2>
 
 			<ul class="ui-tabs-nav">
 		        <li><a href="#tabs-1">Basics</a></li>
