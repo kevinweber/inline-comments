@@ -101,7 +101,7 @@ class INCOM_Admin_Options {
 					        		<input type="text" name="moveselector" placeholder="body" value="<?php echo get_option('moveselector'); ?>" />
 					        			<br>
 					        			<span>This selector defines which content should slide left/right when the user clicks on a bubble. This setting depends on your theme's structure. Default is <i>body</i>.
-					        				<br>You might try one of these selectors:
+					        				<br><br>You might try one of these selectors:
 					        				<br><span class="italic"><?php echo $selectors; ?></span>
 					        			</span>
 					        	</td>
@@ -120,7 +120,7 @@ class INCOM_Admin_Options {
 					        <tr valign="top">
 					        	<th scope="row">Disqus Shortname (required!)</th>
 					        	<td>
-					        		<input type="text" name="disqus_shortname" placeholder="your_disqus_shortname" value="<?php echo get_option('disqus_shortname'); ?>" /> <span>To use Disqus, a <a href="http://disqus.com" target="_blank" title="Disqus">shortname</a> is required. (<a href="http://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-" target="_blank" title="What's a Shortname?">What's a shortname?</a>)</span>
+					        		<input type="text" name="disqus_shortname" placeholder="your_disqus_shortname" value="<?php echo get_option('disqus_shortname'); ?>" /><br><span>To use Disqus, a <a href="http://disqus.com" target="_blank" title="Disqus">shortname</a> is required. (<a href="http://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-" target="_blank" title="What's a Shortname?">What's a shortname?</a>)</span>
 					        	</td>
 					        </tr>
 					        <tr valign="top">
