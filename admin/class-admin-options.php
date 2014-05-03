@@ -56,10 +56,18 @@ class INCOM_Admin_Options {
 					        	<th scope="row">Comment System</th>
 						        <td>
 									<select class="select" typle="select" name="select_comment_type">
-										<option value="wp"<?php if (get_option('select_comment_type') === 'wp') { echo ' selected="selected"'; } ?>>WordPress Comments (recommended)</option>
+										<?php if ( !INCOM_DISQUS ) { ?>
+											<option value="wp"<?php if (get_option('select_comment_type') === 'wp') { echo ' selected="selected"'; } ?>>WordPress Comments (recommended)</option>
+										<?php } ?>
 										<option value="disqus"<?php if (get_option('select_comment_type') === 'disqus') { echo ' selected="selected"'; } ?>>Disqus</option>
 									</select>
-									<span class="hide-disqus"><br><span style="color:#f60;">Notice:</span> Inline Comments with <strong>Disqus</strong> works on many websites. However, there are some known bugs that will not be fixed in the near future.</span>
+									<span class="hide-disqus"><br>
+										<?php if ( INCOM_DISQUS ) { ?>
+											To choose another comment system than Disqus, you have to download <a href="http://kevinw.de/ic-inline-comments" title="Inline Comments" target="_blank"><b>Inline Comments Essential</b></a> from <a href="http://kevinw.de/ic-inline-comments" title="Inline Comments" target="_blank"><b>kevinw.de/inline-comments</b></a>. That enhanced version performs <b>with native WordPress comments</b>.
+										<?php } else { ?>
+											<span style="color:#f60;">Notice:</span> Inline Comments with <strong>Disqus</strong> works on many websites. However, there are some known bugs that will not be fixed in the near future.
+										<?php } ?>
+									</span>
 						        </td>
 					        </tr>
 					        <tr valign="top">

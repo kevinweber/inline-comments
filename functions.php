@@ -10,9 +10,16 @@
  * Text Domain: inline-comments
 */
 
+/*
+ * These files are not included in 'Disqus-only version':
+ * frontend/class-wp.php
+ * frontend/class-comments.php
+ * js/inline-comments.js (and its minified version)
+ */
+
 define( 'INCOM_VERSION', '1.0' );
 define( 'INCOM_DISQUS', false );	// Should be false if this is NOT the 'Disqus-only version'
-define( 'INCOM_ESSENTIAL', true );	// Should be false if this is the 'Disqus-only version'
+define( 'INCOM_ESSENTIAL', true );	// Should be false if this is the 'Disqus-only version' or 'Lifetime'
 define( 'INCOM_LIFETIME', false );	// Should be false if this is the 'Disqus-only version' or 'Essential'
 
 if ( ! defined( 'INCOM_FILE' ) ) {
@@ -33,11 +40,12 @@ function incom_admin_init() {
 function incom_frontend_init() {
 	require_once( INCOM_PATH . 'frontend/class-frontend.php' );
 
-	if ( get_option("select_comment_type") === "disqus" ) {
-		require_once( INCOM_PATH . 'frontend/class-indisq.php' );
+	if ( ( !INCOM_DISQUS ) && ( get_option("select_comment_type") === "wp" ) ) {
+		// Premium feature
+		require_once( INCOM_PATH . 'frontend/class-wp.php' );
 	}
 	else {
-		require_once( INCOM_PATH . 'frontend/class-wp.php' );
+		require_once( INCOM_PATH . 'frontend/class-indisq.php' );
 	}
 }
 
