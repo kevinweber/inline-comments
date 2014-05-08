@@ -119,7 +119,7 @@ $z-index-base: 80;
       opacity: 1;
     }
   }
-  .comment-respond input[type="email"], .comment-respond input[type="text"], .comment-respond input[type="url"] {
+  input[type="email"], input[type="text"], input[type="url"] {
     width: 100%;
     max-width: 100%;
   }
