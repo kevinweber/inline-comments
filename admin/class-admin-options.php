@@ -40,6 +40,7 @@ class INCOM_Admin_Options {
 				<li class="hide-wp"><a href="#tabs-2">WordPress-specific</a></li>
 				<li class="hide-disqus"><a href="#tabs-3">Disqus-specific</a></li>
 		    	<li><a href="#tabs-4">Styling</a></li>
+		    	<li><a href="#tabs-5">Free Updates</a></li>
 		    </ul>
 
 			<form method="post" action="options.php">
@@ -188,6 +189,43 @@ class INCOM_Admin_Options {
 				    </table>
 
 				</div>
+
+
+			    <div id="tabs-5">
+
+					<h3>Get Free Updates</h3>
+
+				    <table class="form-table">
+					    <tbody>
+					        <tr valign="top">
+					        	<th scope="row">Disqus Shortname (required!)</th>
+					        	<td>
+					        		<input type="text" name="disqus_shortname" placeholder="your_disqus_shortname" value="<?php echo get_option('disqus_shortname'); ?>" /><br><span>To use Disqus, a <a href="http://disqus.com" target="_blank" title="Disqus">shortname</a> is required. (<a href="http://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-" target="_blank" title="What's a Shortname?">What's a shortname?</a>)</span>
+					        	</td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row">Highlighting</th>
+						        <td>
+									<input name="check_highlight" type="checkbox" value="1" <?php checked( '1', get_option( 'check_highlight' ) ); ?> /> <span>If checked, the highlighting of the active section is enabled. Default: Unchecked (no highlighting).</span>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row">Max Disqussion Width</th>
+					        	<td>
+					        		<input type="text" name="set_maxwidth" placeholder="9999" value="<?php echo get_option('set_maxwidth'); ?>" /> <span>Maximum width, in pixels, for comment threads.</span>
+					        	</td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row">Responsive Mode</th>
+						        <td>
+									<input name="check_rmode" type="checkbox" value="1" <?php checked( '1', get_option( 'check_rmode' ) ); ?> /> <span>If checked, the plugin reacts different on smaller/larger screens. The comments field will be fixed on the page's right/left side.</span>
+						        </td>
+					        </tr>
+					    </tbody>
+				    </table>
+
+				</div>
+
 
 			    <?php submit_button(); ?>
 			</form>
