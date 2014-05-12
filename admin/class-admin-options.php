@@ -193,22 +193,14 @@ class INCOM_Admin_Options {
 			</form>
 
 
-			<?php
-				if ( INCOM_DISQUS || INCOM_ESSENTIAL ) {
-					if ( INCOM_DISQUS ) {
-						$group_name = 'WordPress.org';
-					}
-					elseif ( INCOM_ESSENTIAL ) {
-						$group_name = 'Essential';
-					}
-			?>
+			<?php if ( INCOM_DISQUS || INCOM_ESSENTIAL ) { ?>
 			<div id="mc_embed_signup">
 			<form action="http://kevinw.us2.list-manage.com/subscribe/post?u=f65d804ad274b9c8812b59b4d&amp;id=20c3ab10d8" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 				<h2>Get Free Updates</h2>
 			<div class="mc-field-group">
 				<label for="mce-EMAIL">Email Address </label>
 				<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-				<input type="hidden" name="GROUPS" id="GROUPS" value="<?= $group_name; ?>" />
+				<input type="hidden" name="GROUPS" id="GROUPS" value="<?= INCOM_VERSION_NAME; ?>" />
 			</div>
 				<div id="mce-responses" class="clear">
 					<div class="response" id="mce-error-response" style="display:none"></div>
