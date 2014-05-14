@@ -41,7 +41,7 @@ function incom_admin_init() {
 function incom_frontend_init() {
 	require_once( INCOM_PATH . 'frontend/class-frontend.php' );
 
-	if ( ( !INCOM_DISQUS ) && ( get_option("select_comment_type") === "wp" ) ) {
+	if ( ( !INCOM_DISQUS ) && ( get_option("select_comment_type") !== "disqus" ) ) {
 		// Premium feature
 		require_once( INCOM_PATH . 'frontend/class-wp.php' );
 	}
