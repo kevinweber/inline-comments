@@ -1,10 +1,12 @@
 Inline Comments by [Kevin Weber](http://kevinw.de/)
 ====================
 
-Inline Comments is a WordPress plugin that adds the great Disqus Comment System to the side of paragraphs and other specific sections (like headlines and images) of your post. You can download it from the official WordPress directory: http://wordpress.org/plugins/inline-comments/
+Inline Comments adds your comment system to the side of paragraphs, headlines and other sections (like headlines and images) of your post. You can get it from here: http://kevinw.de/inline-comments
+
+Inline Comments adds your comment system to the side of paragraphs, headlines and other sections (like headlines and images) of your post. It performs native with WordPress comments.
+
+You may know notes and annotations from Medium.com or Quartz. It feels like commenting in Microsoft Word, it goes easy and fast. Thousands of people love inline comments.
 
 The comment area is shown when you click the comment count bubbles (left or right) beside any section.
-
-Inline Comments is a further development from inlineDisqussions, a jQuery plugin by Tsachi Shlidor.
-
-You can see a demo at tsi.github.io/inlineDisqussions (not a WordPress demo).
+With this plugin commentators can better refer to specific paragraphs or statements in an article.
+Furthermore, readers can comment while reading (and don't have to scroll to the very bottom).

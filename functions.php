@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Inline Comments
  * Plugin URI: http://kevinw.de/inline-comments
- * Description: Inline Comments adds the great Disqus Comment System to the side of paragraphs and other specific sections (like headlines and images) of your post. The comment area is shown when you click the comment count bubbles (left or right) beside any section.
+ * Description: Inline Comments adds your comment system to the side of paragraphs, headlines and other sections (like headlines and images) of your post. It performs native with WordPress comments.
  * Author: Kevin Weber
  * Version: 1.0
  * Author URI: http://kevinw.de/
