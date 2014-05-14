@@ -121,6 +121,8 @@ $z-index-base: 80;
   }
   input[type="email"], input[type="text"], input[type="url"] {
     width: 100%;
+  }
+  textarea, input {
     max-width: 100%;
   }
 }
@@ -140,5 +142,6 @@ $z-index-base: 80;
     text-decoration: none;
     &:hover {
       opacity: 1;
+      text-decoration: none;
     }
 }
