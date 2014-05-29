@@ -11,23 +11,11 @@ Stable tag: 1.0.1
 Inline Comments adds your comment system to the side of paragraphs, headlines and other sections (like headlines and images) of your post.
 
 == Description ==
-Inline Comments adds your comment system to the side of paragraphs, headlines and other sections (like headlines and images) of your post. It performs native with WordPress comments.
+Inline Comments adds your comment system to the side of paragraphs, headlines and other sections (like headlines and images) of your post.
 
-You may know notes and annotations from Medium.com or Quartz. It feels like commenting in Microsoft Word, it goes easy and fast. Thousands of people love inline comments.
+It performs native with WordPress comments. The comment area is shown when you click the comment count bubbles (left or right) beside any section.
 
-The comment area is shown when you click the comment count bubbles (left or right) beside any section.
-
-With this plugin commentators can better refer to specific paragraphs or statements in an article. Furthermore, readers can comment while reading (and don't have to scroll to the very bottom).
-
-
-= Why should you use Inline Comments? =
-* Inline Comments are an innovative approach on how to display comments.
-* It’s simply different from „traditional“ comments you see on every website.
-* Commentators can better refer to specific paragraphs/statements in an article.
-* Readers can comment while reading (and don’t have to scroll to the very bottom).
-
-Get more information and test a demo on the developer’s website: ([kevinw.de/inline-comments](http://kevinw.de/inline-comments)).
-
+Demo and more information on the developer’s website: [kevinw.de/inline-comments](http://kevinw.de/inline-comments)
 
 == Installation ==
 
