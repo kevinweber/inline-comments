@@ -4,24 +4,16 @@
  * Plugin URI: http://kevinw.de/inline-comments
  * Description: Inline Comments adds your comment system to the side of paragraphs, headlines and other sections (like headlines and images) of your post. It performs native with WordPress comments.
  * Author: Kevin Weber
- * Version: 1.0
+ * Version: 1.0.1
  * Author URI: http://kevinw.de/
  * License: MIT
  * Text Domain: inline-comments
 */
 
-/*
- * These files are not included in 'Disqus-only version':
- * frontend/class-wp.php
- * frontend/class-comments.php
- * js/inline-comments.js (and its minified version)
- */
-
-define( 'INCOM_VERSION', '1.0' );
+define( 'INCOM_VERSION', '1.0.1' );
 define( 'INCOM_VERSION_NAME', 'Essential' );
-define( 'INCOM_DISQUS', false );	// Should be false if this is NOT the 'Disqus-only version'
-define( 'INCOM_ESSENTIAL', true );	// Should be false if this is the 'Disqus-only version' or 'Lifetime'
-define( 'INCOM_LIFETIME', false );	// Should be false if this is the 'Disqus-only version' or 'Essential'
+define( 'INCOM_ESSENTIAL', true );	// Should be false if this is the 'Lifetime' version
+define( 'INCOM_LIFETIME', false );	// Should be false if this is the 'Essential' version
 
 if ( ! defined( 'INCOM_FILE' ) ) {
 	define( 'INCOM_FILE', __FILE__ );
@@ -41,8 +33,7 @@ function incom_admin_init() {
 function incom_frontend_init() {
 	require_once( INCOM_PATH . 'frontend/class-frontend.php' );
 
-	if ( ( !INCOM_DISQUS ) && ( get_option("select_comment_type") !== "disqus" ) ) {
-		// Premium feature
+	if ( get_option("select_comment_type") !== "disqus" ) {
 		require_once( INCOM_PATH . 'frontend/class-wp.php' );
 	}
 	else {

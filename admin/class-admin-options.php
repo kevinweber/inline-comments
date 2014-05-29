@@ -33,7 +33,7 @@ class INCOM_Admin_Options {
 	function incom_settings_page()	{ ?>
 
 		<div id="tabs" class="ui-tabs">
-			<h2>Inline Comments <?php if ( INCOM_DISQUS ) { echo 'with Disqus '; } ?><span class="subtitle">by <a href="http://kevinw.de/ic" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo INCOM_VERSION; ?>)</span></h2>
+			<h2>Inline Comments <span class="subtitle">by <a href="http://kevinw.de/ic" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo INCOM_VERSION; ?>)</span></h2>
 
 			<ul class="ui-tabs-nav">
 		        <li><a href="#tabs-1">Basics</a></li>
@@ -56,17 +56,11 @@ class INCOM_Admin_Options {
 					        	<th scope="row">Comment System</th>
 						        <td>
 									<select class="select" typle="select" name="select_comment_type">
-										<?php if ( !INCOM_DISQUS ) { ?>
-											<option value="wp"<?php if (get_option('select_comment_type') === 'wp') { echo ' selected="selected"'; } ?>>WordPress Comments (recommended)</option>
-										<?php } ?>
+										<option value="wp"<?php if (get_option('select_comment_type') === 'wp') { echo ' selected="selected"'; } ?>>WordPress Comments (recommended)</option>
 										<option value="disqus"<?php if (get_option('select_comment_type') === 'disqus') { echo ' selected="selected"'; } ?>>Disqus</option>
 									</select>
 									<span class="hide-disqus"><br>
-										<?php if ( INCOM_DISQUS ) { ?>
-											To choose another comment system than Disqus, you have to download <a href="http://kevinw.de/ic-inline-comments" title="Inline Comments" target="_blank"><b>Inline Comments Essential</b></a> from <a href="http://kevinw.de/ic-inline-comments" title="Inline Comments" target="_blank"><b>kevinw.de/inline-comments</b></a>. That enhanced version performs <b>with native WordPress comments</b>.
-										<?php } else { ?>
-											<span style="color:#f60;">Notice:</span> Inline Comments with <strong>Disqus</strong> works on many websites. However, there are some known bugs that will not be fixed in the near future.
-										<?php } ?>
+										<span style="color:#f60;">Notice:</span> Inline Comments with <strong>Disqus</strong> works on many websites. However, there are some known bugs that will not be fixed in the near future.</span>
 									</span>
 						        </td>
 					        </tr>
@@ -75,9 +69,6 @@ class INCOM_Admin_Options {
 					        	<td>
 					        		<textarea rows="3" cols="70" type="text" name="multiselector" placeholder="selector1, selector2, selectorN"><?php echo get_option('multiselector'); ?></textarea><br>
 					        		<span>Insert selectors in order to control beside which sections the comment bubbles should be displayed.<br><br>You can insert selectors like that: <i>selector1, selector2, selectorN</i><br>Example: <i>h1, .single-post .entry-content p, span, blockquote</i></span>
-					        		<?php if ( INCOM_DISQUS ) { ?>
-					        			<br><br><span>Users of <a href="http://kevinw.de/ic-inline-comments" title="Inline Comments" target="_blank"><b>Inline Comments Essential</b></a> get free support to choose the correct selectors.</span>
-					        		<?php } ?>
 					        	</td>
 					        </tr>
 					    </tbody>
@@ -202,12 +193,9 @@ class INCOM_Admin_Options {
 		        <td style="width:200px;">
 		        	<p><a href="http://kevinw.de/ic" target="_blank">Kevin Weber</a> &ndash; that's me.<br>
 		        	I'm the developer of this plugin. Love it!</p></td>
-		        <?php if ( INCOM_DISQUS ) { ?>
-		        <td>
-					<p><b>It's free!</b> Support me with <a href="http://kevinw.de/donate/InlineComments/" title="Pay me a delicious lunch" target="_blank">a delicious lunch</a> or give this plugin a 5 star rating <a href="http://wordpress.org/support/view/plugin-reviews/inline-comments?filter=5" title="Vote for Inline Comments" target="_blank">on WordPress.org</a>.</p>
-		        </td>
-		        <?php } ?>
-		        
+			        <td>
+						<p><b>It's free!</b> Support me with <a href="http://kevinw.de/donate/InlineComments/" title="Pay me a delicious lunch" target="_blank">a delicious lunch</a> or give this plugin a 5 star rating <a href="http://wordpress.org/support/view/plugin-reviews/inline-comments?filter=5" title="Vote for Inline Comments" target="_blank">on WordPress.org</a>.</p>
+			        </td>       
 		        <td>
 					<p><b>Speed up your site</b> by replacing embedded Youtube and Vimeo videos with a clickable preview image: <a href="http://kevinw.de/ic-ll" title="Lazy Load for Videos" target="_blank">Lazy Load for Videos</a>.</p>
 		        </td>

@@ -15,8 +15,8 @@ Inline Comments adds your comment system to the side of paragraphs, headlines an
 You may know notes and annotations from Medium.com or Quartz. It feels like commenting in Microsoft Word, it goes easy and fast. Thousands of people love inline comments.
 
 The comment area is shown when you click the comment count bubbles (left or right) beside any section.
-With this plugin commentators can better refer to specific paragraphs or statements in an article.
-Furthermore, readers can comment while reading (and don't have to scroll to the very bottom).
+
+With this plugin commentators can better refer to specific paragraphs or statements in an article. Furthermore, readers can comment while reading (and don't have to scroll to the very bottom).
 
 
 = Why should you use Inline Comments? =
@@ -25,13 +25,13 @@ Furthermore, readers can comment while reading (and don't have to scroll to the 
 * Commentators can better refer to specific paragraphs/statements in an article.
 * Readers can comment while reading (and don’t have to scroll to the very bottom).
 
-Most people know Inline Comments from Medium as “Notes Feature” ([medium.com]( https://medium.com/about/5972c72b18f2)) and Quartz as “Annotation Feature” ([qz.com]( http://qz.com/111748/you-can-now-leave-annotations-in-the-margins-of-quartz/)).
+Get more information and test a demo on the developer’s website: ([kevinw.de/inline-comments](http://kevinw.de/inline-comments)).
 
 
 == Installation ==
 
 1. Upload Inline Comments into you plugin directory (/wp-content/plugins/) and activate the plugin through the 'Plugins' menu in WordPress.
-2. Configure the plugin via the admin backend, at least insert your shortname.
+2. Configure the plugin via the admin backend.
 
 
 == Frequently Asked Questions ==
