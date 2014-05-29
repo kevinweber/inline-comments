@@ -170,7 +170,7 @@ class INCOM_Admin_Options {
 					        		<textarea rows="14" cols="70" type="text" name="custom_css" placeholder="selector { property: value; }"><?php echo get_option('custom_css'); ?></textarea>
 					        		<span>
 					        			For example:<br>
-					        			<i>a.incom-bubble-link { color: red; }</i><br>
+					        			<i>.incom-bubble-dynamic a.incom-bubble-link { color: red; }</i><br>
 					        			(You don't know CSS? Try the <a href="http://www.w3schools.com/css/DEFAULT.asp" target="_blank" title="CSS Tutorial on W3Schools">CSS Tutorial</a> on W3Schools.)
 					        		</span>
 					        	</td>

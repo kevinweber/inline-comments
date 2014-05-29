@@ -12,6 +12,8 @@
 
 define( 'INCOM_VERSION', '1.0.1' );
 define( 'INCOM_VERSION_NAME', 'Essential' );
+define( 'INCOM_NEWS_TEXT', 'To suggest and vote for new features: Let the developer come into contact with you.' );
+define( 'INCOM_NEWS_BUTTON', 'Get contacted' );
 define( 'INCOM_ESSENTIAL', true );	// Should be false if this is the 'Lifetime' version
 define( 'INCOM_LIFETIME', false );	// Should be false if this is the 'Essential' version
 

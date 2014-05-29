@@ -26,6 +26,7 @@
     var classBubbleDot = '.'+classBubble;
     var classBubbleStyle = classBubble+'-style';
     var classBubbleStatic = classBubble+'-static';
+    var classBubbleDynamic = classBubble+'-dynamic';
     var classBubbleActive = classBubble+'-active';  // Class for currently selected bubble
     var classBubbleLink = classBubble+'-link';
   var classCommentsWrapper = 'incom-comments-wrapper';
@@ -195,6 +196,9 @@
     }
     else if ( testIfCommentsCountLarger0( source ) ) {
       containerClass += space + classBubbleStyle;
+    }
+    else {
+      containerClass += space + classBubbleDynamic;
     }
 
     return containerClass;
