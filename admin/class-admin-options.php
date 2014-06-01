@@ -24,7 +24,7 @@ class INCOM_Admin_Options {
 	}
 
 	function register_incom_settings() {
-		$arr = array('disqus_shortname', 'multiselector', 'moveselector', 'bubble_static', 'check_highlight', 'select_align', 'select_comment_type', 'set_bgcolour', 'set_maxwidth', 'custom_css', 'check_rmode');
+		$arr = array('disqus_shortname', 'multiselector', 'moveselector', 'select_bubble_style', 'bubble_static', 'check_highlight', 'select_align', 'select_comment_type', 'set_bgcolour', 'set_maxwidth', 'custom_css', 'check_rmode');
 		foreach ( $arr as $i ) {
 			register_setting( 'incom-settings-group', $i );
 		}
@@ -96,6 +96,15 @@ class INCOM_Admin_Options {
 					        				<br><span class="italic"><?php echo $selectors; ?></span>
 					        			</span>
 					        	</td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row">Bubble Style "+"<span class="newred">New!</span><span class="description thin"><br>for sections with no comments yet</th>
+						        <td>
+									<select class="select" typle="select" name="select_bubble_style">
+										<option value="plain"<?php if (get_option('select_bubble_style') === 'plain') { echo ' selected="selected"'; } ?>>Plain "+"</option>
+										<option value="bubble"<?php if (get_option('select_bubble_style') === 'bubble') { echo ' selected="selected"'; } ?>>Bubble</option>
+									</select>
+						        </td>
 					        </tr>
 					    </tbody>
 				    </table>

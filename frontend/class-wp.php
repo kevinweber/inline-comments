@@ -35,6 +35,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 					selectors: '<?php if (get_option("multiselector") == '') { echo "p"; } else { echo get_option("multiselector"); } ?>',
 					moveSiteSelector: '<?php if (get_option("moveselector") == '') { echo "body"; } else { echo get_option("moveselector"); } ?>',
 	            	countStatic: <?php if (get_option("bubble_static") == "1") { echo "false"; } else { echo "true"; } ?>,
+	            	bubbleStyle: '<?php if (get_option("select_bubble_style") == "") { echo "plain"; } else { echo get_option("select_bubble_style"); } ?>',
 				  // defaultBubbleText: '+',
 	              // highlighted: false,
 	            	position: '<?php if (get_option("select_align") == "") { echo "right"; } else { echo get_option("select_align"); } ?>',

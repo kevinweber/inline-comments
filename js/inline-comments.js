@@ -70,6 +70,7 @@
         moveSiteSelector: idWrapperAppendTo,
         countStatic: true,
         defaultBubbleText: '+',
+        bubbleStyle: 'plain',
         // highlighted: false,
         position: 'left',
         background: 'white',
@@ -194,7 +195,10 @@
     if ( ( testIfCommentsCountLarger0( source ) && o.countStatic ) ) {
       containerClass += space + classBubbleStyle + space + classBubbleStatic;
     }
-    else if ( testIfCommentsCountLarger0( source ) ) {
+    else if (
+        testIfCommentsCountLarger0( source ) ||
+        ( !testIfCommentsCountLarger0( source ) && ( o.bubbleStyle === 'bubble' ) )
+      ) {
       containerClass += space + classBubbleStyle;
     }
     else {
