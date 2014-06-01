@@ -43,7 +43,7 @@ For comment system "WordPress Comments", use custom CSS like this: .incom-active
 
 = 1.0.3 =
 * Now it's possible to format active paragraphs/sections
-* New feature: 
+* New feature: Select bubble style for sections with no comments yet (options: plain or bubble)
 
 = 1.0 =
 * Major update! Many improvements and new functionalities.
