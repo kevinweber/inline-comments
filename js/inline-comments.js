@@ -70,7 +70,7 @@
         moveSiteSelector: idWrapperAppendTo,
         countStatic: true,
         defaultBubbleText: '+',
-        bubbleStyle: 'plain',
+        bubbleStyle: 'bubble',
         // highlighted: false,
         position: 'left',
         background: 'white',

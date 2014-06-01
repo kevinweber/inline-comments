@@ -98,11 +98,11 @@ class INCOM_Admin_Options {
 					        	</td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Bubble Style "+"<span class="newred">New!</span><span class="description thin"><br>for sections with no comments yet</th>
+					        	<th scope="row">Bubble Style +<span class="newred">New!</span><span class="description thin"><br>for sections with no comments yet</th>
 						        <td>
 									<select class="select" typle="select" name="select_bubble_style">
-										<option value="plain"<?php if (get_option('select_bubble_style') === 'plain') { echo ' selected="selected"'; } ?>>Plain "+"</option>
 										<option value="bubble"<?php if (get_option('select_bubble_style') === 'bubble') { echo ' selected="selected"'; } ?>>Bubble</option>
+										<option value="plain"<?php if (get_option('select_bubble_style') === 'plain') { echo ' selected="selected"'; } ?>>Plain +</option>
 									</select>
 						        </td>
 					        </tr>
