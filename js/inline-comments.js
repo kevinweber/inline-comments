@@ -396,6 +396,7 @@
       if ( fadeout ) {
         $classCommentsWrapper.fadeOut( 'fast', function() {
             $( this ).remove();
+            removeClassActive();
         });
       }
       else {
