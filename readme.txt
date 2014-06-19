@@ -25,7 +25,7 @@ Demo and more information on the developer’s website: [kevinw.de/inline-commen
 
 == Frequently Asked Questions ==
 
-= Why should you use Inline Comments? =
+= Why should I use Inline Comments? =
 * Inline Comments are an innovative approach on how to display comments.
 * It’s simply different from „traditional“ comments you see on every website.
 * Commentators can better refer to specific paragraphs/statements in an article.
@@ -34,11 +34,15 @@ Demo and more information on the developer’s website: [kevinw.de/inline-commen
 Demo and get more information on the developer’s website: [kevinw.de/inline-comments](http://kevinw.de/inline-comments)
 
 = How can I change the formatting of the commentator’s currently selected section? =
-For comment system "WordPress Comments", use custom CSS like this: *.incom-active { background: #f3f3f3; }*
+For comment system "WordPress Comments", use custom CSS like this: 
 
-= Where do you get your Disqus shortname? =
+*.incom-active { background: #f3f3f3; }*
+
+= Where do I get my Disqus shortname from? =
 First, you need an account and a registered site on disqus.com. Then read this: http://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
 
+= Known bugs =
+* When you use Jetpack Comments, the comments will not be assigned to a specific paragraph. Anyhow, the comment will be displayed within your regular comment section with all other comments.
 
 == Changelog ==
 

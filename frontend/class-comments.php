@@ -9,7 +9,7 @@ class INCOM_Comments {
 	private $DataIncomKeyPOST = 'data_incom';
 
 	function __construct() {
-		add_action ( 'comment_post', array( $this, 'add_comment_meta_data_incom' ) );
+		add_action( 'comment_post', array( $this, 'add_comment_meta_data_incom' ) );
 		add_action( 'preprocess_comment' , array( $this, 'preprocess_comment_handler' ) );
 		add_action( 'wp_footer', array( $this, 'generateCommentsAndForm' ) );
 	}

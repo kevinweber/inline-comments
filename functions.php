@@ -6,7 +6,7 @@
  * Author: Kevin Weber
  * Version: 1.0.3
  * Author URI: http://kevinw.de/
- * License: MIT
+ * License: GPL v3
  * Text Domain: inline-comments
 */
 
@@ -17,7 +17,7 @@ define( 'INCOM_NEWS_BUTTON', 'Get contacted' );
 define( 'INCOM_ESSENTIAL', true );	// Should be false if this is the 'Lifetime' version
 define( 'INCOM_LIFETIME', false );	// Should be false if this is the 'Essential' version
 
-if ( ! defined( 'INCOM_FILE' ) ) {
+if ( !defined( 'INCOM_FILE' ) ) {
 	define( 'INCOM_FILE', __FILE__ );
 }
 
