@@ -16,7 +16,18 @@ class INCOM_Admin_Options {
 			add_action( 'admin_footer', array( $this, 'incom_admin_css' ) );
 			add_action( 'admin_footer', array( $this, 'incom_admin_js' ) );
 		}
+		$plugin = plugin_basename( INCOM_FILE ); 
+		add_filter("plugin_action_links_$plugin", array( $this, 'incom_settings_link' ) );
 		$this->register_incom_settings();
+	}
+
+	/**
+	 * Add settings link on plugin page
+	 */
+	function incom_settings_link($links) { 
+	  $settings_link = '<a href="options-general.php?page=incom.php">Settings</a>'; 
+	  array_unshift($links, $settings_link); 
+	  return $links; 
 	}
 
 	function incom_create_menu() {
