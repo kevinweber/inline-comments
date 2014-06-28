@@ -51,6 +51,7 @@ class INCOM_Admin_Options {
 				<li class="hide-wp"><a href="#tabs-2">WordPress-specific</a></li>
 				<li class="hide-disqus"><a href="#tabs-3">Disqus-specific</a></li>
 		    	<li><a href="#tabs-4">Styling</a></li>
+		    	<?php do_action( 'incom_settings_page_tabs_link_after' ); ?>
 		    </ul>
 
 			<form method="post" action="options.php">
@@ -199,6 +200,8 @@ class INCOM_Admin_Options {
 				    </table>
 
 				</div>
+
+				<?php do_action( 'incom_settings_page_tabs_after' ); ?>
 
 			    <?php submit_button(); ?>
 			</form>
