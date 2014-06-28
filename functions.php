@@ -10,12 +10,17 @@
  * Text Domain: inline-comments
 */
 
-define( 'INCOM_VERSION', '1.0.3' );
-define( 'INCOM_VERSION_NAME', 'Essential' );
-define( 'INCOM_NEWS_TEXT', 'To suggest and vote for new features: Let the developer come into contact with you.' );
-define( 'INCOM_NEWS_BUTTON', 'Get contacted' );
-define( 'INCOM_ESSENTIAL', true );	// Should be false if this is the 'Lifetime' version
-define( 'INCOM_LIFETIME', false );	// Should be false if this is the 'Essential' version
+if ( !defined( 'INCOM_VERSION' ) ) {
+	define( 'INCOM_VERSION', '1.0.3' );
+}
+
+if ( !defined( 'INCOM_VERSION_NAME' ) ) {
+	define( 'INCOM_VERSION_NAME', 'Essential' );
+}
+
+if ( !defined( 'INCOM_ESSENTIAL' ) ) {
+	define( 'INCOM_ESSENTIAL', true );	// Should be false if this is the 'Lifetime' version
+}
 
 if ( !defined( 'INCOM_FILE' ) ) {
 	define( 'INCOM_FILE', __FILE__ );
@@ -23,6 +28,9 @@ if ( !defined( 'INCOM_FILE' ) ) {
 
 if ( !defined( 'INCOM_PATH' ) )
 	define( 'INCOM_PATH', plugin_dir_path( __FILE__ ) );
+
+define( 'INCOM_NEWS_TEXT', 'To suggest and vote for new features: Let the developer come into contact with you.' );
+define( 'INCOM_NEWS_BUTTON', 'Get contacted' );
 
 require_once( INCOM_PATH . 'admin/class-register.php' );
 
