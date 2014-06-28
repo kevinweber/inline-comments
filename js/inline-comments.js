@@ -74,7 +74,6 @@
         // highlighted: false,
         position: 'left',
         background: 'white',
-        // Premium feature: hideBranding: true,
       },
     options);
   };
@@ -467,12 +466,10 @@
    * Prevent users from removing branding
    */
   var displayBranding = function() {
-    if ( o.hideBranding !== true ) {
-      $( classBrandingDot ).css({
-        'display': 'block',
-        'visibility': 'visible',
-      });
-    }
+    $( classBrandingDot ).css({
+      'display': 'block',
+      'visibility': 'visible',
+    });
   };
 
   /*

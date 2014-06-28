@@ -35,10 +35,24 @@ class INCOM_Admin_Options {
 	}
 
 	function register_incom_settings() {
-		$arr = array('disqus_shortname', 'multiselector', 'moveselector', 'select_bubble_style', 'bubble_static', 'check_highlight', 'select_align', 'select_comment_type', 'set_bgcolour', 'set_maxwidth', 'custom_css', 'check_rmode');
+		$arr = array(
+			'disqus_shortname',
+			'multiselector',
+			'moveselector',
+			'select_bubble_style',
+			'bubble_static',
+			'check_highlight',
+			'select_align',
+			'select_comment_type',
+			'set_bgcolour',
+			'set_maxwidth',
+			'custom_css',
+			'check_rmode'
+		);
 		foreach ( $arr as $i ) {
 			register_setting( 'incom-settings-group', $i );
 		}
+		do_action( 'register_incom_settings_after' );
 	}
 
 	function incom_settings_page()	{ ?>

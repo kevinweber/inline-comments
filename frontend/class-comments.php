@@ -40,11 +40,11 @@ class INCOM_Comments {
 	function generateCommentsAndForm() {
 		echo '<div id="comments-and-form" style="display:none">';
 
-		$this->loadPluginInfo();
+		echo apply_filters( 'incom_plugin_info', $this->loadPluginInfo() );
 		$this->loadCommentsList();
 		$this->loadCommentForm();
-		$this->loadCancelLink();
-
+		echo apply_filters( 'incom_cancel_link', $this->loadCancelLink() );
+		
 		echo '</div>';
 	}
 
@@ -58,7 +58,7 @@ class INCOM_Comments {
 			'callback' => array( $this, 'loadComment' ),
 			'avatar_size' => '0',
 		);
-		wp_list_comments( $args );
+		wp_list_comments( apply_filters( 'incom_comments_list_args', $args ) );
 	}
 
 	/**
@@ -115,7 +115,7 @@ class INCOM_Comments {
 		$user = wp_get_current_user();
 		$user_identity = $user->exists() ? $user->display_name : '';
 
-		comment_form(array(
+		$args = array(
 			'id_form' => 'incom-commentform',
 			'comment_form_before' => '',
 			'comment_notes_before' => '',
@@ -127,9 +127,11 @@ class INCOM_Comments {
 			    __( 'Logged in as <a href="%1$s">%2$s</a>.' ),
 			      admin_url( 'profile.php' ),
 			      $user_identity
-			    ) . '</p>'
-			)
+			    ) . '</p>',
+			'user_identity' => $user_identity,
 		);
+
+		comment_form( apply_filters( 'incom_comment_form_args', $args ) );
 	}
 
 	/**
@@ -156,14 +158,14 @@ class INCOM_Comments {
 	 * Load plugin info
 	 */
 	private function loadPluginInfo() {
-		echo '<a class="incom-info-icon" href="' . $this->loadPluginInfoHref . '" title="' . $this->loadPluginInfoTitle . '" target="_blank">i</a></span>';
+		return '<a class="incom-info-icon" href="' . $this->loadPluginInfoHref . '" title="' . $this->loadPluginInfoTitle . '" target="_blank">i</a></span>';
 	}
 
 	/**
 	 * Load cancel link (remove wrapper when user clicks on that link)
 	 */
 	private function loadCancelLink() {
-		echo '<a class="incom-cancel incom-cancel-link" href title>' . $this->loadCancelLinkText . '</a>';
+		return '<a class="incom-cancel incom-cancel-link" href title>' . $this->loadCancelLinkText . '</a>';
 	}
 
 }
