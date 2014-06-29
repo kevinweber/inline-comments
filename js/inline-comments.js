@@ -40,6 +40,10 @@
   var selectComment = idCommentsAndFormHash+' .comment';
   var dataIncomKey = 'data_incom';  // Should be the same as $DataIncomKey in class-comments.php
   var slideWidth = 0;  // Shift page content o.moveSiteSelector to the left
+  var $viewportW = $(window).width();
+  var $elementW;
+  var $offsetL;
+  var $sumOffsetAndElementW;
 
 
 
@@ -142,8 +146,14 @@
 
     setDisplayStatic( $bubble );
     setPosition( source, $bubble );
-    handleHover( source, $bubble );
-    handleClickBubble( source, $bubble );
+
+    if ( !isInWindow( $bubble ) ) {
+      $bubble.hide();
+    }
+    else {
+      handleHover( source, $bubble );
+      handleClickBubble( source, $bubble );
+    }
   };
 
   /*
@@ -229,6 +239,9 @@
       // Handle hover (for both, "elements" and $bubble)
       element.add(bubble).hover(function() {
         bubble.stop( true, true ).fadeIn();
+        if ( !isInWindow( bubble ) ) {
+          bubble.hide();
+        }  
       }, function() {
         bubble.stop( true, true ).fadeOut( 2000 );
       });
@@ -333,15 +346,29 @@
 
     element.css({
       'top': $offset.top,
-      'left': testIfPositionRight() ? $offset.left + source.outerWidth() : $offset.left - element.outerWidth()
+      'left': testIfPositionRight() ? $offset.left + source.outerWidth() : $offset.left - element.outerWidth(),
     });
   };
 
+  /*
+   * Set element properties (outerWidth, offset, ...)
+   */
+  var setElementProperties = function( element ) {
+    $elementW = element.outerWidth();
+    $offsetL = element.offset().left;
+    $sumOffsetAndElementW = $offsetL + $elementW;
+  };
+
+  /*
+   * Test if element (bubble or so) is in window completely
+   */
+  var isInWindow = function ( element ) {
+    setElementProperties( element );
+    return ( ( $sumOffsetAndElementW > $viewportW ) || ( $offsetL < 0 ) ) ? false : true;
+  };
+
   var testIfMoveSiteIsNecessary = function( element ) {
-    var $viewportW = $(window).width();
-    var $elementW = element.outerWidth();
-    var $offsetL = element.offset().left;
-    var $sumOffsetAndElementW = $offsetL + $elementW;
+    setElementProperties( element );
 
     // If admin has selected position "right" and the comments wrapper's right side stands out of the screen -> setSlideWidth and moveSite
     if( testIfPositionRight() && ( $sumOffsetAndElementW > $viewportW ) ) {
