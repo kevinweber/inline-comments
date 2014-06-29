@@ -206,6 +206,7 @@ class INCOM_Admin_Options {
 					        		<span>
 					        			For example:<br>
 					        			<i>.incom-bubble-dynamic a.incom-bubble-link { color: red; }</i><br>
+					        			<i>.incom-active { background: #f3f3f3; }</i><br>
 					        			(You don't know CSS? Try the <a href="http://www.w3schools.com/css/DEFAULT.asp" target="_blank" title="CSS Tutorial on W3Schools">CSS Tutorial</a> on W3Schools.)
 					        		</span>
 					        	</td>
