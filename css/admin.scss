@@ -69,7 +69,6 @@ p.notice {
 	font-weight: bold;
 	margin: 1em 0;
 }
-
 .wrap h3, .wrap table {
 	display: none;
 }
@@ -160,8 +159,8 @@ div#informations div#text li.center {
 }
 
 .newred{
-	color:red;
-	float:right;
+	color: red;
+	float: right;
 }
 .newred.grey{
 	color: #999;
@@ -187,4 +186,13 @@ div#informations div#text li.center {
 
 .label-radio {
 	margin-right: 20px;
+}
+
+.ui-tabs-nav li {
+	a.tab-green {
+		color: #91bd09;
+	}
+	&.ui-state-hover a.tab-green, &.ui-state-active a.tab-green {
+		color: #464646;
+	}
 }
