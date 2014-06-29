@@ -41,10 +41,15 @@ class INCOM_Comments {
 		echo '<div id="comments-and-form" style="display:none">';
 
 		echo apply_filters( 'incom_plugin_info', $this->loadPluginInfo() );
+
+		do_action( 'incom_comments_list_before' );
 		$this->loadCommentsList();
 		$this->loadCommentForm();
+
+		do_action( 'incom_cancel_link_before' );
 		echo apply_filters( 'incom_cancel_link', $this->loadCancelLink() );
-		
+		do_action( 'incom_cancel_link_after' );
+
 		echo '</div>';
 	}
 
