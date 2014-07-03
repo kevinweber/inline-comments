@@ -40,6 +40,8 @@ class INCOM_Comments {
 	function generateCommentsAndForm() {
 		echo '<div id="comments-and-form" style="display:none">';
 
+		$this->addInvisiblePluginInfo();
+
 		echo apply_filters( 'incom_plugin_info', $this->loadPluginInfo() );
 
 		do_action( 'incom_comments_list_before' );
@@ -51,6 +53,13 @@ class INCOM_Comments {
 		do_action( 'incom_cancel_link_after' );
 
 		echo '</div>';
+	}
+
+	/**
+	 * Generate list with comments
+	 */
+	private function addInvisiblePluginInfo() {
+		echo '<!-- ## Inline Comments by Kevin Weber - kevinw.de/inline-comments ## -->';
 	}
 
 	/**
