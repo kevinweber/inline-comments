@@ -45,6 +45,7 @@ class INCOM_Admin_Options {
 			'select_bubble_fadein',
 			'select_bubble_fadeout',
 			'comment_permalink',
+			'bubble_static_always',
 
 			'bubble_static',
 			'check_highlight',
@@ -136,6 +137,12 @@ class INCOM_Admin_Options {
 										<option value="bubble"<?php if (get_option('select_bubble_style') === 'bubble') { echo ' selected="selected"'; } ?>>Bubble</option>
 										<option value="plain"<?php if (get_option('select_bubble_style') === 'plain') { echo ' selected="selected"'; } ?>>Plain +</option>
 									</select>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row">Always Display Bubbles <span class="newred">New!</span></th>
+						        <td>
+									<input name="bubble_static_always" type="checkbox" value="1" <?php checked( '1', get_option( 'bubble_static_always' ) ); ?> /> <span>If checked, the comment count bubbles will always be visible (and not only on hover). Bubbles will not fade.</span>
 						        </td>
 					        </tr>
 					        <tr valign="top">

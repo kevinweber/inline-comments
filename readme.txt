@@ -48,6 +48,7 @@ First, you need an account and a registered site on disqus.com. Then read this: 
 
 = 1.0.6 =
 * New feature: Decide if bubbles should fade in/out or appear/disappear immediately
+* New feature: You can make the comment bubbles to be always visible.
 * New feature: Hide the permalink that’s displayed next to each comment
 
 = 1.0.4 =

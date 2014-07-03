@@ -74,6 +74,7 @@
         selectors: 'p',
         moveSiteSelector: idWrapperAppendTo,
         countStatic: true,
+        alwaysStatic: false,
         defaultBubbleText: '+',
         bubbleStyle: 'bubble',
         bubbleAnimationIn: 'default',
@@ -204,10 +205,14 @@
     var containerClass = classBubble;
     var space = ' ';
 
-    if ( ( testIfCommentsCountLarger0( source ) && o.countStatic ) ) {
-      containerClass += space + classBubbleStyle + space + classBubbleStatic;
+    if ( 
+        ( o.alwaysStatic ) ||
+        ( testIfCommentsCountLarger0( source ) && o.countStatic )
+      ) {
+      containerClass += space + classBubbleStatic;
     }
-    else if (
+
+    if (
         testIfCommentsCountLarger0( source ) ||
         ( !testIfCommentsCountLarger0( source ) && ( o.bubbleStyle === 'bubble' ) )
       ) {
@@ -241,13 +246,13 @@
     if ( !bubble.hasClass( classBubbleStatic ) ) {
       // Handle hover (for both, "elements" and $bubble)
       element.add(bubble).hover(function() {
+        // First hide all non-static bubbles
+        $( classBubbleDot+':not('+classBubbleStaticDot+')' ).hide();
+
         if ( o.bubbleAnimationIn === 'fadein' ) {
           bubble.stop( true, true ).fadeIn();
         }
         else {
-          // First hide all non-static bubbles
-          $( classBubbleDot+':not('+classBubbleStaticDot+')' ).hide();
-          // Then show the wanted bubble
           bubble.stop( true, true ).show();
         }
 
