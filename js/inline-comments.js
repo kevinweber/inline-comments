@@ -75,6 +75,8 @@
         countStatic: true,
         defaultBubbleText: '+',
         bubbleStyle: 'bubble',
+        bubbleAnimationIn: 'default',
+        bubbleAnimationOut: 'default',
         // highlighted: false,
         position: 'left',
         background: 'white',
@@ -238,12 +240,23 @@
     if ( !bubble.hasClass( classBubbleStatic ) ) {
       // Handle hover (for both, "elements" and $bubble)
       element.add(bubble).hover(function() {
-        bubble.stop( true, true ).fadeIn();
+        if ( o.bubbleAnimationIn === 'fadein' ) {
+          bubble.stop( true, true ).fadeIn();
+        }
+        else {
+          bubble.stop( true, true ).show();
+        }
+
         if ( !isInWindow( bubble ) ) {
           bubble.hide();
         }  
       }, function() {
-        bubble.stop( true, true ).fadeOut( 2000 );
+        if ( o.bubbleAnimationOut === 'fadeout' ) {
+          bubble.stop( true, true ).fadeOut();
+        }
+        else {
+          bubble.stop( true, true ).delay( 500 ).hide(0);
+        }
       });
     }
   };
