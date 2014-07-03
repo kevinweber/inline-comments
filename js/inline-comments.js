@@ -26,6 +26,7 @@
     var classBubbleDot = '.'+classBubble;
     var classBubbleStyle = classBubble+'-style';
     var classBubbleStatic = classBubble+'-static';
+      var classBubbleStaticDot = '.'+classBubbleStatic;
     var classBubbleDynamic = classBubble+'-dynamic';
     var classBubbleActive = classBubble+'-active';  // Class for currently selected bubble
     var classBubbleLink = classBubble+'-link';
@@ -244,6 +245,9 @@
           bubble.stop( true, true ).fadeIn();
         }
         else {
+          // First hide all non-static bubbles
+          $( classBubbleDot+':not('+classBubbleStaticDot+')' ).hide();
+          // Then show the wanted bubble
           bubble.stop( true, true ).show();
         }
 
@@ -255,7 +259,8 @@
           bubble.stop( true, true ).fadeOut();
         }
         else {
-          bubble.stop( true, true ).delay( 500 ).hide(0);
+          // Delay hiding to make it possible to hover the bubble before it disappears
+          bubble.stop( true, true ).delay( 700 ).hide(0);
         }
       });
     }
