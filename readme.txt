@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: admin, comment, comments, content, counter, free, integration, jquery, mobile, page, pages, plugin, post, posts, sidebar, wordpress
 Requires at least: 3.0
 Tested up to: 3.9.1
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 
 Inline Comments adds your comment system to the side of paragraphs, headlines and other sections (like headlines and images) of your post.
 
@@ -46,8 +46,9 @@ First, you need an account and a registered site on disqus.com. Then read this: 
 
 == Changelog ==
 
-= 1.0.5 =
+= 1.0.6 =
 * New feature: Decide if bubbles should fade in/out or appear/disappear immediately
+* New feature: Hide the permalink that’s displayed next to each comment
 
 = 1.0.4 =
 * If a comment bubble fits not completely on the screen, it will not be displayed

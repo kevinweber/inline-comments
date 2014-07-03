@@ -44,6 +44,7 @@ class INCOM_Admin_Options {
 			'select_bubble_style',
 			'select_bubble_fadein',
 			'select_bubble_fadeout',
+			'comment_permalink',
 
 			'bubble_static',
 			'check_highlight',
@@ -129,7 +130,7 @@ class INCOM_Admin_Options {
 					        	</td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Bubble Style<span class="description thin"><br>for sections with no comments yet</th>
+					        	<th scope="row">Bubble Style <span class="description thin"><br>for sections with no comments yet</th>
 						        <td>
 									<select class="select" typle="select" name="select_bubble_style">
 										<option value="bubble"<?php if (get_option('select_bubble_style') === 'bubble') { echo ' selected="selected"'; } ?>>Bubble</option>
@@ -138,7 +139,7 @@ class INCOM_Admin_Options {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Bubble Fade In<span class="newred">New!</span></th>
+					        	<th scope="row">Bubble Fade In <span class="newred">New!</span></th>
 						        <td>
 									<select class="select" typle="select" name="select_bubble_fadein">
 										<option value="default"<?php if (get_option('select_bubble_fadein') === 'default') { echo ' selected="selected"'; } ?>>No animation</option>
@@ -147,12 +148,18 @@ class INCOM_Admin_Options {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Bubble Fade Out<span class="newred">New!</span></th>
+					        	<th scope="row">Bubble Fade Out <span class="newred">New!</span></th>
 						        <td>
 									<select class="select" typle="select" name="select_bubble_fadeout">
 										<option value="default"<?php if (get_option('select_bubble_fadeout') === 'default') { echo ' selected="selected"'; } ?>>No animation</option>
 										<option value="fadeout"<?php if (get_option('select_bubble_fadeout') === 'fadeout') { echo ' selected="selected"'; } ?>>Basic animation</option>
 									</select>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row">Hide Permalinks <span class="newred">New!</span></th>
+						        <td>
+									<input name="comment_permalink" type="checkbox" value="1" <?php checked( '1', get_option( 'comment_permalink' ) ); ?> /> <span>If checked, the permalink icon next to each comment will not be displayed.</span>
 						        </td>
 					        </tr>
 					    </tbody>

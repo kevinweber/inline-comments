@@ -97,13 +97,13 @@ class INCOM_Comments {
 
 		<div id="div-comment-<?php comment_ID() ?>" class="comment-body">
 		
-		<?php endif; ?>
+		<?php
+			endif;
 
-		<div class="comment-meta commentmetadata">
-			<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>" title="Permalink to this comment">
-				<img src="<?php echo plugins_url( 'images/permalink-icon.png' , INCOM_FILE ) ?>" alt="">
-			</a>
-		</div>
+			if ( (get_option("comment_permalink") != "1") ) {
+				echo apply_filters( 'incom_comment_permalink', $this->loadCommentPermalink( $comment->comment_ID ) );
+			}
+		?>
 
 		<div class="comment-author vcard">
 			<?php if ( $args['avatar_size'] != 0 ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
@@ -173,6 +173,20 @@ class INCOM_Comments {
 	 */
 	private function loadPluginInfo() {
 		return '<a class="incom-info-icon" href="' . $this->loadPluginInfoHref . '" title="' . $this->loadPluginInfoTitle . '" target="_blank">i</a></span>';
+	}
+
+	/**
+	 * Load permalink to comment
+	 */
+	private function loadCommentPermalink( $comment_ID ) {
+		$permalink_url = htmlspecialchars( get_comment_link( $comment_ID ) );
+		$permalink_img_url = plugins_url( 'images/permalink-icon.png' , INCOM_FILE );
+		$permalink_html = '<div class="comment-meta commentmetadata">
+			<a href="' . $permalink_url . '" title="Permalink to this comment">
+				<img src="' . $permalink_img_url . '" alt="">
+			</a>
+		</div>';
+		return $permalink_html;
 	}
 
 	/**
