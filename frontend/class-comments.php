@@ -172,7 +172,7 @@ class INCOM_Comments {
 	 * Load plugin info
 	 */
 	private function loadPluginInfo() {
-		return '<a class="incom-info-icon" href="' . $this->loadPluginInfoHref . '" title="' . $this->loadPluginInfoTitle . '" target="_blank">i</a></span>';
+		return '<a class="incom-info-icon" href="' . $this->loadPluginInfoHref . '" title="' . $this->loadPluginInfoTitle . '" target="_blank">i</a>';
 	}
 
 	/**
