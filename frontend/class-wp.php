@@ -40,6 +40,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 	              // highlighted: false,
 	            	position: '<?php if (get_option("select_align") == "") { echo "right"; } else { echo get_option("select_align"); } ?>',
 	              	background: '<?php if (get_option("set_bgcolour") == "") { echo "#fff"; } else { echo get_option("set_bgcolour"); } ?>',
+					<?php do_action( 'incom_wp_set_options' ); ?>
 				});
 			});
 		</script>

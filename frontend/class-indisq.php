@@ -24,6 +24,7 @@ class INCOM_Indisq extends INCOM_Frontend {
 					position: '<?php if (get_option("select_align") == "") { echo "right"; } else { echo get_option("select_align"); } ?>',
 					background: '<?php if (get_option("set_bgcolour") == "") { echo "#fff"; } else { echo get_option("set_bgcolour"); } ?>',
 					maxWidth: <?php if (get_option("set_maxwidth") == "") { echo "9999"; } else { echo get_option("set_maxwidth"); } ?>
+					<?php do_action( 'incom_disqus_set_options' ); ?>
 				});
 
 		/** Make Inline Comments responsive ("Responsive Mode") **/
