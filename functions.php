@@ -58,23 +58,4 @@ else {
 	add_action( 'plugins_loaded', 'incom_frontend_init', 15 );
 }
 
-
-	/**
-	 * My Ajax function
-	 */
-	function incom_do_ajax_wp() {
-		/* this area is very simple but being serverside it affords the possibility of retreiving data from the server and passing it back to the javascript function */
-		$name = get_option("multiselector");
-		echo "$name";// this is passed back to the javascript function
-		die();// wordpress may print out a spurious zero without this – can be particularly bad if using json
-	}
-
-		//AJAX
-		add_action("wp_ajax_nopriv_incom_do_ajax_wp", 'incom_do_ajax_wp' );
-		//AJAX
-		add_action("wp_ajax_incom_do_ajax_wp", 'incom_do_ajax_wp' );
-		// The 'template_redirect' tells WP to run this function before loading the template file and ensures the admin-ajax.php file and .js will be properly added to the ‹head› portion of your site.
-
-
-
 /***** Plugin by Kevin Weber || kevinw.de *****/

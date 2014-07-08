@@ -58,26 +58,8 @@
     setOptions( options );
     initIncomWrapper();
     displayBranding();
-
-    //AJAX
-    $('p').on( 'click', function(e) {
-      my_js_function();
-    });
   };
 
-  //AJAX
-  var my_js_function = function() {
-     $.ajax({
-       url: my_ajax_script.ajaxurl,//'../../../../wp-admin/admin-ajax.php',//'localhost/wordpress/greenbird/wp-admin/admin-ajax.php',//
-       data: { action: "incom_do_ajax_wp" },
-       // beforeSend: function() {
-       //  console.log('beforeSend');
-       // },
-       success: function( response ) {
-        console.log( 'test-success: ' + response );
-       }
-     });
-  };
 
 
   /*

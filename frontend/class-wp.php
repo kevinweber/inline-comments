@@ -1,7 +1,6 @@
 <?php
 /**
  * @package Comment System Type: WordPress
- * Using Ajax (as explained on http://premium.wpmudev.org/blog/how-to-use-ajax-with-php-on-your-wp-site-without-a-plugin/)
  */
 class INCOM_WordPress extends INCOM_Frontend {
 
@@ -11,8 +10,6 @@ class INCOM_WordPress extends INCOM_Frontend {
 	}
 
 	function addActions() {
-		//AJAX
-		add_action('template_redirect', array( $this, 'incom_enable_ajax' ) );
 		$this->get_comments_php();
 	}
 
@@ -28,8 +25,6 @@ class INCOM_WordPress extends INCOM_Frontend {
 	 */
 	function load_incom() { ?>
 		<script>
-			//var my_ajax_script = "<?php echo admin_url('admin-ajax.php'); ?>";
-
 			var $ind = jQuery.noConflict();
 
 			$ind(document).ready(function() {
@@ -51,17 +46,10 @@ class INCOM_WordPress extends INCOM_Frontend {
 	<?php }
 
 	/**
-	 * Enable Ajax
-	 */
-	function incom_enable_ajax() {
-		wp_enqueue_script( 'function', plugins_url( 'js/min/inline-comments-ck.js' , plugin_dir_path( __FILE__ ) ), array( 'jquery' ), true);	// Must be enqueued before wp_localize_script
-		wp_localize_script( 'function', 'my_ajax_script', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
-	}
-
-	/**
 	 * Add scripts (like JS)
 	 */
 	function incom_enqueue_scripts() {
+		wp_enqueue_script( 'function', plugins_url( 'js/min/inline-comments-ck.js' , plugin_dir_path( __FILE__ ) ), array( 'jquery' ), true);	// In case 'wp_localize_script' is used: wp_enqueue_script must be enqueued before wp_localize_script
 	}
 
 	/**
