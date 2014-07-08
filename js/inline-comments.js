@@ -21,6 +21,8 @@
   // Classes
   var classActive = 'incom-active';
     var classActiveDot = '.'+classActive;
+  var classVisibleComment = 'incom-visible-comment';
+    var classVisibleCommentDot = '.'+classVisibleComment;
   var classPosition = 'incom-position-';  // Expects that o.position follows ('left' or 'right')
   var classBubble = 'incom-bubble';
     var classBubbleDot = '.'+classBubble;
@@ -350,7 +352,7 @@
   var loadComments = function() {
     var selectByAtt = '[' + attDataIncomComment + '=' + getAttDataIncomValue() + ']';
     $( selectComment ).hide();
-    $( selectComment + selectByAtt ).show();
+    $( selectComment + selectByAtt ).addClass( classVisibleComment ).show();
   };
 
   /*
@@ -443,6 +445,9 @@
     // Comments and comment form must be detached (and hidden) before wrapper is deleted, so it can be used afterwards
     $( idCommentsAndFormHash ).appendTo( idWrapperHash ).hide();
 
+    // Remove classVisibleComment from every element that has classVisibleComment
+    $( classVisibleCommentDot ).removeClass( classVisibleComment );
+
     // If any element with $classIncomBubble has classBubbleActive -> remove class and commentsWrapper
     if ( $classIncomBubble.hasClass( classBubbleActive ) ) {
       $classIncomBubble.removeClass( classBubbleActive );
@@ -457,6 +462,7 @@
       }
       moveSite( 'out' );
     }
+
   };
 
   var moveSite = function( way ) {

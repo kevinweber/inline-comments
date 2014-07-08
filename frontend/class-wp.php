@@ -13,8 +13,6 @@ class INCOM_WordPress extends INCOM_Frontend {
 		$this->get_comments_php();
 	}
 
-
-
 	function get_comments_php() {
 		require_once( 'class-comments.php' );
 		$comments = new INCOM_Comments();
