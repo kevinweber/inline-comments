@@ -20,6 +20,9 @@
 		$wpacOptions = is_array($wpacOptions) ? $wpacOptions : array();
 
 		// Filter Values
+		$wpacOptions['enable'] = true;
+		$wpacOptions['disableScrollToAnchor'] = true;
+
 		$wpacOptions['selectorCommentForm'] = '#incom-commentform';
 		$wpacOptions['selectorCommentsContainer'] = '#comments-and-form';
 		$wpacOptions['selectorCommentPagingLinks'] = '#incom-commentform [class^="nav-"] a';
