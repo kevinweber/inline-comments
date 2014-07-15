@@ -22,6 +22,10 @@ if ( !defined( 'INCOM_ESSENTIAL' ) ) {
 	define( 'INCOM_ESSENTIAL', true );	// Should be false if this is the 'Lifetime' version
 }
 
+if ( !defined( 'INCOM_OPTION_KEY' ) ) {
+	define( 'INCOM_OPTION_KEY', 'incom' ); // used to save options in version >= 0.9.0
+}
+
 if ( !defined( 'INCOM_FILE' ) ) {
 	define( 'INCOM_FILE', __FILE__ );
 }
@@ -58,7 +62,7 @@ else {
 }
 
 // Feature: Support for WP-Ajaxify-Comments
-if ( !(get_option('BLATASDTa_opt_support_for_widgets') == true) && !is_admin() ) {
+if ( (get_option( INCOM_OPTION_KEY.'_support_for_ajaxify_comments' ) == true) && !is_admin() ) {
 	require_once( INCOM_PATH . 'frontend/inc/class-wpac.php');
 }
 

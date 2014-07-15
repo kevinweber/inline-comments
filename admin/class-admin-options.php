@@ -40,7 +40,9 @@ class INCOM_Admin_Options {
 			'disqus_shortname',
 			'multiselector',
 			'moveselector',
+
 			// WP-only
+			INCOM_OPTION_KEY.'_support_for_ajaxify_comments',
 			'select_bubble_style',
 			'select_bubble_fadein',
 			'select_bubble_fadeout',
@@ -69,8 +71,8 @@ class INCOM_Admin_Options {
 
 			<ul class="ui-tabs-nav">
 		        <li><a href="#tabs-1">Basics</a></li>
-				<li class="hide-wp"><a href="#tabs-2">WordPress-specific</a></li>
-				<li class="hide-disqus"><a href="#tabs-3">Disqus-specific</a></li>
+				<li class="hide-wp"><a href="#tab-wordpress">WordPress-specific <span class="newred_dot">&bull;</span></a></li>
+				<li class="hide-disqus"><a href="#tab-disqus">Disqus-specific</a></li>
 		    	<li><a href="#tabs-4">Styling</a></li>
 		    	<?php do_action( 'incom_settings_page_tabs_link_after' ); ?>
 		    </ul>
@@ -109,12 +111,18 @@ class INCOM_Admin_Options {
 
 			    </div>
 
-			    <div id="tabs-2">
+			    <div id="tab-wordpress">
 
 					<h3>Specific Settings for Comment System "WordPress Comments"</h3>
 
 				    <table class="form-table">
 					    <tbody>
+					        <tr valign="top">
+					        	<th scope="row">Use Ajaxify (no page reload) <span class="newred">New!</span><br><span class="description thin">Requires <a href="http://wordpress.org/extend/plugins/wp-ajaxify-comments/" title="WP-Ajaxify-Comments" target="_blank">this plugin</a>.</th>
+						        <td>
+									<input name="<?php echo INCOM_OPTION_KEY; ?>_support_for_ajaxify_comments" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_support_for_ajaxify_comments' ) ); ?> /> <span>Empower <a href="http://wordpress.org/extend/plugins/wp-ajaxify-comments/" title="WP-Ajaxify-Comments" target="_blank">WP-Ajaxify-Comments</a> (version 0.24.0 or higher) to add Ajax functionality to Inline Comments and improve the user experience: Your page will not reload when a comment is submitted. Recommended.</span>
+						        </td>
+					        </tr>
 					        <tr valign="top">
 					        	<th scope="row">"Slide Site" Selector</th>
 					        	<td>
@@ -131,7 +139,7 @@ class INCOM_Admin_Options {
 					        	</td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Bubble Style <span class="description thin"><br>for sections with no comments yet</th>
+					        	<th scope="row">Bubble Style <span class="description thin"><br>for sections with no comments yet</span></th>
 						        <td>
 									<select class="select" typle="select" name="select_bubble_style">
 										<option value="bubble"<?php if (get_option('select_bubble_style') === 'bubble') { echo ' selected="selected"'; } ?>>Bubble</option>
@@ -140,13 +148,13 @@ class INCOM_Admin_Options {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Always Display Bubbles <span class="newred">New!</span></th>
+					        	<th scope="row">Always Display Bubbles</th>
 						        <td>
 									<input name="bubble_static_always" type="checkbox" value="1" <?php checked( '1', get_option( 'bubble_static_always' ) ); ?> /> <span>If checked, the comment count bubbles will always be visible (and not only on hover). Bubbles will not fade.</span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Bubble Fade In <span class="newred">New!</span></th>
+					        	<th scope="row">Bubble Fade In</th>
 						        <td>
 									<select class="select" typle="select" name="select_bubble_fadein">
 										<option value="default"<?php if (get_option('select_bubble_fadein') === 'default') { echo ' selected="selected"'; } ?>>No animation</option>
@@ -155,7 +163,7 @@ class INCOM_Admin_Options {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Bubble Fade Out <span class="newred">New!</span></th>
+					        	<th scope="row">Bubble Fade Out</th>
 						        <td>
 									<select class="select" typle="select" name="select_bubble_fadeout">
 										<option value="default"<?php if (get_option('select_bubble_fadeout') === 'default') { echo ' selected="selected"'; } ?>>No animation</option>
@@ -164,7 +172,7 @@ class INCOM_Admin_Options {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Hide Permalinks <span class="newred">New!</span></th>
+					        	<th scope="row">Hide Permalinks</th>
 						        <td>
 									<input name="comment_permalink" type="checkbox" value="1" <?php checked( '1', get_option( 'comment_permalink' ) ); ?> /> <span>If checked, the permalink icon next to each comment will not be displayed.</span>
 						        </td>
@@ -174,7 +182,7 @@ class INCOM_Admin_Options {
 
 				</div>
 
-			    <div id="tabs-3">
+			    <div id="tab-disqus">
 
 					<h3>Specific Settings for Comment System "Disqus"</h3>
 
