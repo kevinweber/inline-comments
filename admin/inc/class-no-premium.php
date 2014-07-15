@@ -35,18 +35,18 @@ class INCOM_No_Premium_Admin_Options {
 	function add_incom_admin_tab() { ?>
 		<div id="tab-no-premium">
 
-			<h3>Get Premium to &hellip;</h3>
+			<h3>Get Premium and &hellip;</h3>
 
 			<table class="form-table">
 				<tbody>
 			        <tr valign="top">
-			        	<th scope="row">&hellip; remove Branding</th>
+			        	<th scope="row">&hellip; remove branding</th>
 				        <td>
 							<span>The <i>Premium Extension</i> automatically removes the branding link from Inline Comments.</span>
 				        </td>
 			        </tr>
 			        <tr valign="top">
-			        	<th scope="row">&hellip; display Avatars<br><span class="description thin">next to each comment</span></th>
+			        	<th scope="row">&hellip; display avatars<br><span class="description thin">next to each comment</span></th>
 				        <td>
 							<span>Display photos/avatars from commentators next to each comment.</span>
 				        </td>
@@ -55,6 +55,12 @@ class INCOM_No_Premium_Admin_Options {
 			        	<th scope="row">&hellip; enjoy coming features</th>
 				        <td>
 							<span>Here is so much more to come!<br>What do you think of social logins (Twitter, Facebook) and the possibility to reply to specific inline comments?</span>
+				        </td>
+			        </tr>
+			        <tr valign="top">
+			        	<th scope="row"><span style="color:#f90;font-size:1.25em;font-weight:normal">44€</span><br><span class="description thin">starting in August</span></th>
+				        <td>
+							<span><b>55% introductory offer</b>: The first <b>55 people who contact me</b> in July get a lifetime license for merely <span style="color:#009000;font-size:1.25em"><b>19,80€</b></span>! <a href="http://kevinw.de/kontakt" target="_blank">Click here to contact me right now</a>.</span>
 				        </td>
 			        </tr>
 			    </tbody>
