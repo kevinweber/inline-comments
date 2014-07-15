@@ -34,7 +34,6 @@ define( 'INCOM_NEWS_BUTTON', 'Get contacted' );
 
 require_once( INCOM_PATH . 'admin/class-register.php' );
 
-
 function incom_admin_init() {
 	// require_once( INCOM_PATH . 'admin/class-admin.php' );
 	require_once( INCOM_PATH . 'admin/class-admin-options.php' );
@@ -57,5 +56,11 @@ if ( is_admin() ) {
 else {
 	add_action( 'plugins_loaded', 'incom_frontend_init', 15 );
 }
+
+// Feature: Support for WP-Ajaxify-Comments
+if ( !(get_option('BLATASDTa_opt_support_for_widgets') == true) && !is_admin() ) {
+	require_once( INCOM_PATH . 'frontend/inc/class-wpac.php');
+}
+
 
 /***** Plugin by Kevin Weber || kevinw.de *****/
