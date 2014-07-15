@@ -198,7 +198,11 @@ div#informations div#text li.center {
 	a.tab-green {
 		color: #91bd09;
 	}
-	&.ui-state-hover a.tab-green, &.ui-state-active a.tab-green {
+	a.tab-orange {
+		color: #f90;
+	}
+	&.ui-state-hover a.tab-green, &.ui-state-active a.tab-green,
+	&.ui-state-hover a.tab-orange, &.ui-state-active a.tab-orange {
 		color: #464646;
 	}
 }
