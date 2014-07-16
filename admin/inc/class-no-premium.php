@@ -52,6 +52,12 @@ class INCOM_No_Premium_Admin_Options {
 				        </td>
 			        </tr>
 			        <tr valign="top">
+			        	<th scope="row">&hellip; get preferred support<br><span class="description thin">to setup and style Inline Comments</span></th>
+				        <td>
+							<span>I help you to choose the correct selectors and assist you to make Inline Comments good-looking on your site.</span>
+				        </td>
+			        </tr>
+			        <tr valign="top">
 			        	<th scope="row">&hellip; enjoy coming features</th>
 				        <td>
 							<span>Here is so much more to come!<br>What do you think of social logins (Twitter, Facebook) and the possibility to reply to specific inline comments?</span>

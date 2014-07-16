@@ -3,18 +3,10 @@
  * @package Comment System Type: WordPress
  */
 
-	// if ( !defined( 'WPAC_DOMAIN' ) ) {
-	// 	define( 'WPAC_DOMAIN', 'wpac' );
-	// }
-	// if ( !defined( 'WPAC_OPTION_KEY' ) ) {
-	// 	define( 'WPAC_OPTION_KEY', WPAC_DOMAIN ); // used to save options in version >= 0.9.0
-	// }
-
 	/*
 	 * Customise WP Ajaxify Comments
 	 */
 	add_filter('option_wpac', 'filter_options_wpac' );
-	//add_filter('option_'.WPAC_OPTION_KEY, 'filter_options_wpac' );
 
 	function filter_options_wpac($wpacOptions) {
 		$wpacOptions = is_array($wpacOptions) ? $wpacOptions : array();
