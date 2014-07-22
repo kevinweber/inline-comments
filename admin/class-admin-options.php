@@ -1,109 +1,107 @@
 <?php
 /**
- * Create options panel (http://codex.wordpress.org/Creating_Options_Pages)
  * @package Admin
  */
 
-class INCOM_Admin_Options {
+class Wbounce_Admin_Options {
 
 	function __construct() {
-		add_action( 'admin_menu', array( $this, 'incom_create_menu' ));	
+		add_action( 'admin_menu', array( $this, 'create_menu' ));	
 		add_action( 'admin_init', array( $this, 'admin_init_options' ) );
 	}
 
 	function admin_init_options() {
-		if ( isset( $_GET['page'] ) && ( $_GET['page'] == 'incom.php') ) {
-			add_action( 'admin_footer', array( $this, 'incom_admin_css' ) );
-			add_action( 'admin_footer', array( $this, 'incom_admin_js' ) );
-		}
-		$plugin = plugin_basename( INCOM_FILE ); 
-		add_filter("plugin_action_links_$plugin", array( $this, 'incom_settings_link' ) );
-		$this->register_incom_settings();
+		$plugin = plugin_basename( WBOUNCE_FILE ); 
+		add_filter("plugin_action_links_$plugin", array( $this, 'settings_link' ) );
+		$this->register_settings();
 	}
 
 	/**
 	 * Add settings link on plugin page
 	 */
-	function incom_settings_link($links) { 
-	  $settings_link = '<a href="options-general.php?page=incom.php">Settings</a>'; 
+	function settings_link($links) { 
+	  $settings_link = '<a href="options-general.php?page='.WBOUNCE_OPTION_KEY.'.php">Settings</a>'; 
 	  array_unshift($links, $settings_link); 
 	  return $links; 
 	}
 
-	function incom_create_menu() {
-		add_options_page('Inline Comments', 'Inline Comments', 'manage_options', 'incom.php', array( $this, 'incom_settings_page'));
+	function create_menu() {
+		add_options_page(WBOUNCE_PLUGIN_NAME, WBOUNCE_PLUGIN_NAME, 'manage_options', WBOUNCE_OPTION_KEY.'.php', array( $this, 'settings_page'));
 	}
 
-	function register_incom_settings() {
-		$arr = array(
-			// Disqus-only
-			'disqus_shortname',
-			'multiselector',
-			'moveselector',
-
-			// WP-only
-			INCOM_OPTION_KEY.'_support_for_ajaxify_comments',
-			'select_bubble_style',
-			'select_bubble_fadein',
-			'select_bubble_fadeout',
-			'comment_permalink',
-			'bubble_static_always',
-
-			'bubble_static',
-			'check_highlight',
-			'select_align',
-			'select_comment_type',
-			'set_bgcolour',
-			'set_maxwidth',
-			'custom_css',
-			'check_rmode'
+	function register_settings() {
+		$arr = array(	// Use these options like this: WBOUNCE_OPTION_KEY.'_content'
+			// Tab 'Content'
+			'_test_mode',
+			'_content',
+			// Tab 'Options'
+			'_aggressive_mode',
+			'_timer',
+			// Tab 'Styling'
+			'_custom_css',
 		);
 		foreach ( $arr as $i ) {
-			register_setting( 'incom-settings-group', $i );
+			register_setting( WBOUNCE_OPTION_KEY.'-settings-group', WBOUNCE_OPTION_KEY.$i );
 		}
-		do_action( 'register_incom_settings_after' );
+		do_action( WBOUNCE_OPTION_KEY.'_register_settings_after' );
 	}
 
-	function incom_settings_page()	{ ?>
+	function settings_page()	{ ?>
 
 		<div id="tabs" class="ui-tabs">
-			<h2>Inline Comments <span class="subtitle">by <a href="http://kevinw.de/ic" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo INCOM_VERSION; ?>)</span></h2>
+			<h2><?= WBOUNCE_PLUGIN_NAME ?> <span class="subtitle">by <a href="http://kevinw.de/ic" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo WBOUNCE_VERSION_NUM; ?>)</span></h2>
 
 			<ul class="ui-tabs-nav">
-		        <li><a href="#tabs-1">Basics</a></li>
-				<li class="hide-wp"><a href="#tab-wordpress">WordPress-specific <span class="newred_dot">&bull;</span></a></li>
-				<li class="hide-disqus"><a href="#tab-disqus">Disqus-specific</a></li>
-		    	<li><a href="#tabs-4">Styling</a></li>
-		    	<?php do_action( 'incom_settings_page_tabs_link_after' ); ?>
+		        <li><a href="#tab-content">Content</a></li>
+		        <li><a href="#tab-options">Options</a></li>
+		        <li><a href="#tab-styling">Styling</a></li>
+		    	<?php do_action( WBOUNCE_OPTION_KEY.'_settings_page_tabs_link_after' ); ?>
 		    </ul>
 
 			<form method="post" action="options.php">
-			    <?php settings_fields( 'incom-settings-group' ); ?>
-			    <?php do_settings_sections( 'incom-settings-group' ); ?>
+			    <?php settings_fields( WBOUNCE_OPTION_KEY.'-settings-group' ); ?>
+			    <?php do_settings_sections( WBOUNCE_OPTION_KEY.'-settings-group' ); ?>
 
-			    <div id="tabs-1">
+			    <div id="tab-content">
 
-					<h3>Basic Settings</h3>
+					<h3>Content</h3>
 
 				    <table class="form-table">
 					    <tbody>
 					        <tr valign="top">
-					        	<th scope="row">Comment System</th>
+						        <th scope="row">Test Mode</th>
 						        <td>
-									<select class="select" typle="select" name="select_comment_type">
-										<option value="wp"<?php if (get_option('select_comment_type') === 'wp') { echo ' selected="selected"'; } ?>>WordPress Comments (recommended)</option>
-										<option value="disqus"<?php if (get_option('select_comment_type') === 'disqus') { echo ' selected="selected"'; } ?>>Disqus</option>
-									</select>
-									<span class="hide-disqus"><br>
-										<span style="color:#f60;">Notice:</span> Inline Comments with <strong>Disqus</strong> works on many websites. However, there are some known bugs that will not be fixed in the near future.</span>
-									</span>
+									<input name="<?= WBOUNCE_OPTION_KEY ?>_test_mode" type="checkbox" value="1" <?php checked( '1', get_option( WBOUNCE_OPTION_KEY.'_test_mode' ) ); ?> /> <label>Check this option to enable "Aggressive Mode" <b>for admins</b>, regardless of the actual setting in the tab "Options".</label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Selectors</th>
+					        	<th scope="row">Ouibounce Content <span class="description thin"><br>Add code that should be displayed within the wBounce window.</span></th>
 					        	<td>
-					        		<textarea rows="3" cols="70" type="text" name="multiselector" placeholder="selector1, selector2, selectorN"><?php echo get_option('multiselector'); ?></textarea><br>
-					        		<span>Insert selectors in order to control beside which sections the comment bubbles should be displayed.<br><br>You can insert selectors like that: <i>selector1, selector2, selectorN</i><br>Example: <i>h1, .single-post .entry-content p, span, blockquote</i></span>
+					        		<textarea rows="14" cols="70" type="text" name="<?= WBOUNCE_OPTION_KEY ?>_content" placeholder="Exemplary template below."><?php echo get_option(WBOUNCE_OPTION_KEY.'_content'); ?></textarea>
+					        		<span>
+
+					        			Exemplary template:<br>
+<pre>
+&lt;div class=&quot;modal-title&quot;&gt;
+  &lt;h3&gt;Title&lt;/h3&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;modal-body&quot;&gt;
+  &lt;p&gt;Paragraph&lt;/p&gt;
+
+  &lt;form&gt;
+    &lt;input type=&quot;email&quot; placeholder=&quot;you@email.com&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;learn more &raquo;&quot;&gt;
+    &lt;p class=&quot;form-notice&quot;&gt;*this is a fake form&lt;/p&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;modal-footer&quot;&gt;
+  &lt;p&gt;no thanks&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+
+					        		</span>
 					        	</td>
 					        </tr>
 					    </tbody>
@@ -111,164 +109,62 @@ class INCOM_Admin_Options {
 
 			    </div>
 
-			    <div id="tab-wordpress">
+			    <div id="tab-options">
 
-					<h3>Specific Settings for Comment System "WordPress Comments"</h3>
+					<h3>Options</h3>
 
 				    <table class="form-table">
 					    <tbody>
 					        <tr valign="top">
-					        	<th scope="row">Use Ajaxify (no page reload) <span class="newred">New!</span><br><span class="description thin">Requires <a href="http://wordpress.org/extend/plugins/wp-ajaxify-comments/" title="WP-Ajaxify-Comments" target="_blank">that plugin</a>.</th>
+						        <th scope="row">Aggressive Mode</th>
 						        <td>
-									<input name="<?php echo INCOM_OPTION_KEY; ?>_support_for_ajaxify_comments" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_support_for_ajaxify_comments' ) ); ?> /> <span>Empower <a href="http://wordpress.org/extend/plugins/wp-ajaxify-comments/" title="WP-Ajaxify-Comments" target="_blank">WP-Ajaxify-Comments</a> (version 0.24.0 or higher) to add Ajax functionality to Inline Comments and improve the user experience: Your page will not reload after a comment is submitted. <b>Recommended.</b></span>
+									<input name="<?= WBOUNCE_OPTION_KEY ?>_aggressive_mode" type="checkbox" value="1" <?php checked( '1', get_option( WBOUNCE_OPTION_KEY.'_aggressive_mode' ) ); ?> /> <label>By default, Ouibounce will only fire once for each visitor. When Ouibounce fires, a cookie is created to ensure a non obtrusive experience.<br><br>There are cases, however, when you may want to be more aggressive (as in, you want the modal to be elegible to fire anytime the page is loaded/ reloaded). An example use-case might be on your paid landing pages. If you enable aggressive, the modal will fire any time the page is reloaded, for the same user.</label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">"Slide Site" Selector</th>
-					        	<td>
-					        		<?php 
-					        			$arr_selectors = array( ".site-main", ".site-inner", ".site" );
-					        			$selectors = implode( '<br>' , $arr_selectors );
-					        		?>
-					        		<input type="text" name="moveselector" placeholder="body" value="<?php echo get_option('moveselector'); ?>" />
-					        			<br>
-					        			<span>This selector defines which content should slide left/right when the user clicks on a bubble. This setting depends on your theme's structure. Default is <i>body</i>.
-					        				<br><br>You might try one of these selectors:
-					        				<br><span class="italic"><?php echo $selectors; ?></span>
-					        			</span>
-					        	</td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row">Bubble Style <span class="description thin"><br>for sections with no comments yet</span></th>
+						        <th scope="row">Timer</th>
 						        <td>
-									<select class="select" typle="select" name="select_bubble_style">
-										<option value="bubble"<?php if (get_option('select_bubble_style') === 'bubble') { echo ' selected="selected"'; } ?>>Bubble</option>
-										<option value="plain"<?php if (get_option('select_bubble_style') === 'plain') { echo ' selected="selected"'; } ?>>Plain +</option>
-									</select>
+						        	<input type="number" name="<?= WBOUNCE_OPTION_KEY ?>_timer" placeholder="milliseconds" value="<?php echo get_option(WBOUNCE_OPTION_KEY.'_timer'); ?>" /><br><label>By default, Ouibounce won't fire in the first second to prevent false positives, as it's unlikely the user will be able to exit the page within less than a second. If you want to change the amount of time that firing is surpressed for, you can pass in a number of milliseconds to timer.<br><b>Insert 0 to fire immediately.</b></label>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Always Display Bubbles</th>
+						        <th scope="row" style="color: red">MORE TO COME<br><span class="description thin">with the next plugin update</span></th>
 						        <td>
-									<input name="bubble_static_always" type="checkbox" value="1" <?php checked( '1', get_option( 'bubble_static_always' ) ); ?> /> <span>If checked, the comment count bubbles will always be visible (and not only on hover). Bubbles will not fade.</span>
-						        </td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row">Bubble Fade In</th>
-						        <td>
-									<select class="select" typle="select" name="select_bubble_fadein">
-										<option value="default"<?php if (get_option('select_bubble_fadein') === 'default') { echo ' selected="selected"'; } ?>>No animation</option>
-										<option value="fadein"<?php if (get_option('select_bubble_fadein') === 'fadein') { echo ' selected="selected"'; } ?>>Basic animation</option>
-									</select>
-						        </td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row">Bubble Fade Out</th>
-						        <td>
-									<select class="select" typle="select" name="select_bubble_fadeout">
-										<option value="default"<?php if (get_option('select_bubble_fadeout') === 'default') { echo ' selected="selected"'; } ?>>No animation</option>
-										<option value="fadeout"<?php if (get_option('select_bubble_fadeout') === 'fadeout') { echo ' selected="selected"'; } ?>>Basic animation</option>
-									</select>
-						        </td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row">Hide Permalinks</th>
-						        <td>
-									<input name="comment_permalink" type="checkbox" value="1" <?php checked( '1', get_option( 'comment_permalink' ) ); ?> /> <span>If checked, the permalink icon next to each comment will not be displayed.</span>
 						        </td>
 					        </tr>
 					    </tbody>
 				    </table>
 
-				</div>
+			    </div>
 
-			    <div id="tab-disqus">
-
-					<h3>Specific Settings for Comment System "Disqus"</h3>
-
-				    <table class="form-table">
-					    <tbody>
-					        <tr valign="top">
-					        	<th scope="row">Disqus Shortname (required!)</th>
-					        	<td>
-					        		<input type="text" name="disqus_shortname" placeholder="your_disqus_shortname" value="<?php echo get_option('disqus_shortname'); ?>" /><br><span>To use Disqus, a <a href="http://disqus.com" target="_blank" title="Disqus">shortname</a> is required. (<a href="http://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-" target="_blank" title="What's a Shortname?">What's a shortname?</a>)</span>
-					        	</td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row">Highlighting</th>
-						        <td>
-									<input name="check_highlight" type="checkbox" value="1" <?php checked( '1', get_option( 'check_highlight' ) ); ?> /> <span>If checked, the highlighting of the active section is enabled. Default: Unchecked (no highlighting).</span>
-						        </td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row">Max Disqussion Width</th>
-					        	<td>
-					        		<input type="text" name="set_maxwidth" placeholder="9999" value="<?php echo get_option('set_maxwidth'); ?>" /> <span>Maximum width, in pixels, for comment threads.</span>
-					        	</td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row">Responsive Mode</th>
-						        <td>
-									<input name="check_rmode" type="checkbox" value="1" <?php checked( '1', get_option( 'check_rmode' ) ); ?> /> <span>If checked, the plugin reacts different on smaller/larger screens. The comments field will be fixed on the page's right/left side.</span>
-						        </td>
-					        </tr>
-					    </tbody>
-				    </table>
-
-				</div>
-
-			    <div id="tabs-4">
+			    <div id="tab-styling">
 
 					<h3>Styling</h3>
 
 				    <table class="form-table">
 					    <tbody>
 					        <tr valign="top">
-					        	<th scope="row">Position</th>
-						        <td>
-						        	<input id="select_align_left" class="radio" type="radio" name="select_align" value="left"<?php if (get_option('select_align') === 'left') { echo ' checked'; } ?> /><label class="label-radio" for="select_align_left">Left</label>
-						        	<input id="select_align_right" class="radio" type="radio" name="select_align" value="right"<?php if (get_option('select_align') !== 'left') { echo ' checked'; } ?> /><label class="label-radio" for="select_align_right">Right</label>
-							    </td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row">Hide Static Bubbles</th>
-						        <td>
-									<input name="bubble_static" type="checkbox" value="1" <?php checked( '1', get_option( 'bubble_static' ) ); ?> /> <span>If checked, the comment count bubbles will only be visible when the user hovers a specific element (paragraph or so).</span>
-						        </td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row">Background Colour <span class="description thin"><br>for comment threads</th>
-					        	<td>
-					        		<input id="incom_picker_input_bgcolor" class="picker-input" type="text" name="set_bgcolour" placeholder="#ffffff" value="<?php if (get_option("set_bgcolour") == "") { echo "#ffffff"; } else { echo get_option("set_bgcolour"); } ?>" />
-					        		<div id="incom_picker_bgcolor" class="picker-style"></div>
-					        	</td>
-					        </tr>
-
-					        <tr valign="top">
 					        	<th scope="row">Custom CSS <span class="description thin"><br>Add additional CSS. This should override any other stylesheets.</span></th>
 					        	<td>
-					        		<textarea rows="14" cols="70" type="text" name="custom_css" placeholder="selector { property: value; }"><?php echo get_option('custom_css'); ?></textarea>
+					        		<textarea rows="14" cols="70" type="text" name="<?= WBOUNCE_OPTION_KEY ?>_custom_css" placeholder="selector { property: value; }"><?php echo get_option(WBOUNCE_OPTION_KEY.'_custom_css'); ?></textarea>
 					        		<span>
-					        			For example:<br>
-					        			<i>.incom-bubble-dynamic a.incom-bubble-link { color: red; }</i><br>
-					        			<i>.incom-active { background: #f3f3f3; }</i><br>
-					        			(You don't know CSS? Try the <a href="http://www.w3schools.com/css/DEFAULT.asp" target="_blank" title="CSS Tutorial on W3Schools">CSS Tutorial</a> on W3Schools.)
+					        			Examplary code:<br>
+					        			<i>.wbounce-modal .modal-title { background-color: #4ab471; }</i><br>
+					        			(You don't know CSS? Try the <a href="http://kevinw.de/css-tutorial" target="_blank" title="CSS Tutorial on W3Schools">CSS Tutorial</a> on W3Schools.)
 					        		</span>
 					        	</td>
 					        </tr>
-				        </tbody>
+					    </tbody>
 				    </table>
 
-				</div>
+			    </div>
 
-				<?php do_action( 'incom_settings_page_tabs_after' ); ?>
+				<?php do_action( WBOUNCE_OPTION_KEY.'_settings_page_tabs_after' ); ?>
 
 			    <?php submit_button(); ?>
 			</form>
 
-			<?php if ( INCOM_ESSENTIAL ) {
-				require_once( 'inc/signup.php' );
-			} ?>
+			<?php require_once( 'inc/signup.php' ); ?>
 
 		    <table class="form-table">
 		        <tr valign="top">
@@ -289,19 +185,6 @@ class INCOM_Admin_Options {
 	<?php
 	}
 
-	function incom_admin_js() {
-	    wp_enqueue_script( 'incom_admin_js', plugins_url( '../js/min/admin-ck.js' , __FILE__ ), array( 'jquery', 'jquery-ui-tabs', 'farbtastic' ) );
-	}
-
-	function incom_admin_css() {
-		wp_enqueue_style( 'incom_admin_css', plugins_url('../css/min/admin.css', __FILE__) );
-		wp_enqueue_style( 'farbtastic' );	// Required for colour picker
-	}
-
 }
 
-function initialize_incom_admin_options() {
-	$incom_admin_options = new INCOM_Admin_Options();
-}
-add_action( 'init', 'initialize_incom_admin_options' );
-?>
+new Wbounce_Admin_Options();
