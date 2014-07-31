@@ -17,7 +17,7 @@ $vcard-image-size: 15px;
 @mixin vendor-prefix($property, $value) {
   -webkit-#{$property}: #{$value};
   -moz-#{$property}: #{$value};
-  -os-#{$property}: #{$value};
+  -ms-#{$property}: #{$value};
   -o-#{$property}: #{$value};
   #{$property}: #{$value};
 }
