@@ -54,6 +54,7 @@ class INCOM_Admin_Options {
 			'select_align',
 			'select_comment_type',
 			'set_bgcolour',
+			'incom_set_bgopacity',
 			'set_maxwidth',
 			'custom_css',
 			'check_rmode'
@@ -73,7 +74,7 @@ class INCOM_Admin_Options {
 		        <li><a href="#tabs-1">Basics</a></li>
 				<li class="hide-wp"><a href="#tab-wordpress">WordPress-specific <span class="newred_dot">&bull;</span></a></li>
 				<li class="hide-disqus"><a href="#tab-disqus">Disqus-specific</a></li>
-		    	<li><a href="#tabs-4">Styling</a></li>
+		    	<li><a href="#tabs-4">Styling <span class="newred_dot">&bull;</span></a></li>
 		    	<?php do_action( 'incom_settings_page_tabs_link_after' ); ?>
 		    </ul>
 
@@ -237,12 +238,19 @@ class INCOM_Admin_Options {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Background Colour <span class="description thin"><br>for comment threads</th>
+					        	<th scope="row">Background Colour <span class="description thin"><br>for comment threads</span></th>
 					        	<td>
 					        		<input id="incom_picker_input_bgcolor" class="picker-input" type="text" name="set_bgcolour" placeholder="#ffffff" value="<?php if (get_option("set_bgcolour") == "") { echo "#ffffff"; } else { echo get_option("set_bgcolour"); } ?>" />
 					        		<div id="incom_picker_bgcolor" class="picker-style"></div>
 					        	</td>
 					        </tr>
+					        <tr class="hide-wp" valign="top">
+					        	<th scope="row">Background Opacity <span class="description thin"><br>for comment threads</span></th>
+					        	<td>
+					        		<input type="text" name="incom_set_bgopacity" placeholder="1" value="<?php echo get_option('incom_set_bgopacity'); ?>" /><br><span>Insert a value from 0 to 1 where "1" means maximum covering power. Insert 0.7 to make the opacity 70%.</span>
+					        	</td>
+					        </tr>
+
 
 					        <tr valign="top">
 					        	<th scope="row">Custom CSS <span class="description thin"><br>Add additional CSS. This should override any other stylesheets.</span></th>

@@ -84,6 +84,7 @@
         // highlighted: false,
         position: 'left',
         background: 'white',
+        backgroundOpacity: '1',
       },
     options);
   };
@@ -335,7 +336,7 @@
           'class': classCommentsWrapper,
         })
       .appendTo( idWrapperHash )
-      .css('background-color', 'rgba(' + convertHexToRgb( o.background ) + ',' + '1' + ')');
+      .css('background-color', 'rgba(' + convertHexToRgb( o.background ) + ',' + o.backgroundOpacity + ')');
 
     loadComments();
     loadCommentForm();

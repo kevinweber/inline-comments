@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: admin, comment, comments, content, counter, free, integration, jquery, mobile, page, pages, plugin, post, posts, sidebar, wordpress
 Requires at least: 3.0
 Tested up to: 3.9.1
-Stable tag: 1.1
+Stable tag: 1.2
 
 Inline Comments adds your comment system to the side of paragraphs and other sections (like headlines and images) of your post.
 
@@ -47,6 +47,9 @@ First, you need an account and a registered site on disqus.com. Then read this: 
 * When you use Jetpack Comments, the comments will not be assigned to a specific paragraph. Anyhow, the comment will be displayed within your regular comment section with all other comments.
 
 == Changelog ==
+
+= 1.2 =
+* New feature: Change background opacity for comment threads.
 
 = 1.1 =
 * No page reload anymore: INLINE COMMENTS NOW EMPOWERS WP-AJAXIFY-COMMENTS!! This improves the user experience with Ajax functionality: Your page will not reload after a comment is submitted.

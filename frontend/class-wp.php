@@ -38,6 +38,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 	              // highlighted: false,
 	            	position: '<?php if (get_option("select_align") == "") { echo "right"; } else { echo get_option("select_align"); } ?>',
 	              	background: '<?php if (get_option("set_bgcolour") == "") { echo "#fff"; } else { echo get_option("set_bgcolour"); } ?>',
+					backgroundOpacity: '<?php if (get_option("incom_set_bgopacity") == "") { echo "1"; } else { echo get_option("incom_set_bgopacity"); } ?>',
 					<?php do_action( 'incom_wp_set_options' ); ?>
 				});
 			});
