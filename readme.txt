@@ -49,10 +49,10 @@ First, you need an account and a registered site on disqus.com. Then read this: 
 == Changelog ==
 
 = 1.2 =
-* New feature: Change background opacity for comment threads.
+* New feature: Change background opacity for comment threads
 
 = 1.1 =
-* No page reload anymore: INLINE COMMENTS NOW EMPOWERS WP-AJAXIFY-COMMENTS!! This improves the user experience with Ajax functionality: Your page will not reload after a comment is submitted.
+* No page reload anymore: INLINE COMMENTS NOW EMPOWERS WP-AJAXIFY-COMMENTS!! This improves the user experience with Ajax functionality: Your page will not reload after a comment is submitted
 
 = 1.0.6 =
 * New feature: Decide if bubbles should fade in/out or appear/disappear immediately
@@ -67,12 +67,12 @@ First, you need an account and a registered site on disqus.com. Then read this: 
 * New feature: Select bubble style for sections with no comments yet (options: plain or bubble)
 
 = 1.0 =
-* Major update! Many improvements and new functionalities.
-* This plugin now performs with native WordPress comments.
+* Major update! Many improvements and new functionalities
+* This plugin now performs with native WordPress comments
 * Removed option “identifier” (users cannot choose their own identifier anymore)
 
 = 0.8 =
-* Plugin goes public (Disqus-only).
+* Plugin goes public (Disqus-only)
 
 
 == Upgrade Notice ==

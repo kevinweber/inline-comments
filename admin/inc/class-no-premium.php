@@ -64,9 +64,9 @@ class INCOM_No_Premium_Admin_Options {
 				        </td>
 			        </tr>
 			        <tr valign="top">
-			        	<th scope="row"><span style="color:#f90;font-size:1.25em;font-weight:normal">44€</span><br><span class="description thin">starting in August</span></th>
+			        	<th scope="row"><span style="color:#009000;font-size:1.25em;font-weight:normal">just 44€</span></th>
 				        <td>
-							<span><b>55% introductory offer</b>: The first <b>55 people who contact me</b> in July get a lifetime license for merely <span style="color:#009000;font-size:1.25em"><b>19,80€</b></span>! <a href="http://kevinw.de/kontakt" target="_blank">Click here to contact me right now</a>.</span>
+							<span>You could invest 4.000€ for a developer to let him develop such an innovative commenting system.<br>Or you simply pay 44€ for Inline Comments that has already been developed in weeks-long work. <a href="http://kevinw.de/kontakt" target="_blank">Click here to contact me right now</a>.</span>
 				        </td>
 			        </tr>
 			    </tbody>
