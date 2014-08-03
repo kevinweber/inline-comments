@@ -117,7 +117,8 @@ $z-index-base: 2;
     padding: 0 0 0.3em;
     position: initial;
   }
-  input[type="email"], input[type="text"], input[type="url"] {
+  input[type="email"], input[type="text"], input[type="url"],
+  #respond form input[type="email"], #respond form input[type="text"], #respond form input[type="url"] {
     width: 100%;
   }
   textarea, input {
