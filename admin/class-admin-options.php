@@ -47,6 +47,8 @@ class INCOM_Admin_Options {
 			'select_bubble_fadein',
 			'select_bubble_fadeout',
 			'comment_permalink',
+			'cancel_x',
+			'cancel_link',
 			'bubble_static_always',
 
 			'bubble_static',
@@ -173,9 +175,21 @@ class INCOM_Admin_Options {
 						        </td>
 					        </tr>
 					        <tr valign="top">
+					        	<th scope="row">Hide closing "x" <span class="newred">New!</span></th>
+						        <td>
+									<input name="cancel_x" type="checkbox" value="1" <?php checked( '1', get_option( 'cancel_x' ) ); ?> /> <span>If checked, the "x" at the right top of the comments wrapper will not be displayed.</span>
+						        </td>
+					        </tr>
+					        <tr valign="top">
 					        	<th scope="row">Hide Permalinks</th>
 						        <td>
 									<input name="comment_permalink" type="checkbox" value="1" <?php checked( '1', get_option( 'comment_permalink' ) ); ?> /> <span>If checked, the permalink icon next to each comment will not be displayed.</span>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row">Hide "cancel" link <span class="newred">New!</span></th>
+						        <td>
+									<input name="cancel_link" type="checkbox" value="1" <?php checked( '1', get_option( 'cancel_link' ) ); ?> /> <span>If checked, the "cancel" link at the left bottom of the comments wrapper will not be displayed.</span>
 						        </td>
 					        </tr>
 					    </tbody>
@@ -245,7 +259,7 @@ class INCOM_Admin_Options {
 					        	</td>
 					        </tr>
 					        <tr class="hide-wp" valign="top">
-					        	<th scope="row">Background Opacity <span class="description thin"><br>for comment threads</span></th>
+					        	<th scope="row">Background Opacity <span class="newred">New!</span><span class="description thin"><br>for comment threads</span></th>
 					        	<td>
 					        		<input type="text" name="incom_set_bgopacity" placeholder="1" value="<?php echo get_option('incom_set_bgopacity'); ?>" /><br><span>Insert a value from 0 to 1 where "1" means maximum covering power. Insert 0.7 to make the opacity 70%.</span>
 					        	</td>

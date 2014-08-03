@@ -50,6 +50,8 @@ First, you need an account and a registered site on disqus.com. Then read this: 
 
 = 1.2 =
 * New feature: Change background opacity for comment threads
+* New feature: Added closing "x" to the right top of the comments wrapper. Can be removed per option
+* New feature: Hide "cancel" link
 
 = 1.1 =
 * No page reload anymore: INLINE COMMENTS NOW EMPOWERS WP-AJAXIFY-COMMENTS!! This improves the user experience with Ajax functionality: Your page will not reload after a comment is submitted

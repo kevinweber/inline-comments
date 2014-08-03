@@ -42,7 +42,10 @@ class INCOM_Comments {
 
 		$this->loadPluginInfoInvisible();
 
-		do_action( 'incom_plugin_info_before' );
+		do_action( 'incom_cancel_x_before' );
+		echo apply_filters( 'incom_cancel_x', $this->loadCancelX() );
+		do_action( 'incom_cancel_x_after' );
+
 		echo apply_filters( 'incom_plugin_info', $this->loadPluginInfo() );
 
 		do_action( 'incom_comments_list_before' );
@@ -190,11 +193,22 @@ class INCOM_Comments {
 		return $permalink_html;
 	}
 
+	/*
+	 * Load cancel cross (remove wrapper when user clicks on that cross)
+	 */
+	private function loadCancelX() {
+		if ( get_option( 'cancel_x' ) !== 1 ) {
+			return '<a class="incom-cancel incom-cancel-x" href title>&#10006;</a>';
+		}
+	}
+
 	/**
 	 * Load cancel link (remove wrapper when user clicks on that link)
 	 */
 	private function loadCancelLink() {
-		return '<a class="incom-cancel incom-cancel-link" href title>' . $this->loadCancelLinkText . '</a>';
+		if ( get_option( 'cancel_link' ) !== 1 ) {
+			return '<a class="incom-cancel incom-cancel-link" href title>' . $this->loadCancelLinkText . '</a>';
+		}
 	}
 
 }
