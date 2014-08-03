@@ -5,7 +5,7 @@
 class INCOM_Frontend {
 
 	function __construct() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'lazyload_enqueue_jquery' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_jquery' ) );
 	}
 
 	/**
@@ -21,7 +21,7 @@ class INCOM_Frontend {
 	/**
  	 * Enable jQuery (comes with WordPress)
  	 */
- 	function lazyload_enqueue_jquery() {
+ 	function enqueue_jquery() {
      	wp_enqueue_script( 'jquery' );
  	}
 
