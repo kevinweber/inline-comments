@@ -84,7 +84,9 @@ $z-index-base: 2;
 }
 
 .incom-comments-wrapper {
-  @include vendor-prefix( box-sizing, border-box );
+  * {
+    @include vendor-prefix( box-sizing, border-box );
+  }
   border-left: 1px solid $grey_light;
   position: absolute;
   background: #fff;
