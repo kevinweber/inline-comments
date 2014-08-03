@@ -9,8 +9,6 @@ $black: #000;
 $grey_light: #f3f3f3;
 $z-index-base: 2;
 
-$vcard-image-size: 15px;
-
 /*
  * Mixins
  */
@@ -116,17 +114,6 @@ $vcard-image-size: 15px;
   .comment-author {
     padding: 0 0 0.3em;
     position: initial;
-  }
-  .vcard img {
-    @include vendor-prefix( border-radius, 50% );
-    width: $vcard-image-size;
-    height: $vcard-image-size;
-  }
-  img {
-    opacity: 0.3;
-    &:hover {
-      opacity: 1;
-    }
   }
   input[type="email"], input[type="text"], input[type="url"] {
     width: 100%;

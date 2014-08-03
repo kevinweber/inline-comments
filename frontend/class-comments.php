@@ -42,6 +42,7 @@ class INCOM_Comments {
 
 		$this->loadPluginInfoInvisible();
 
+		do_action( 'incom_plugin_info_before' );
 		echo apply_filters( 'incom_plugin_info', $this->loadPluginInfo() );
 
 		do_action( 'incom_comments_list_before' );
