@@ -13,7 +13,7 @@ class INCOM_Frontend {
 	 */
 	function addActions() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'incom_enqueue_scripts' ) );
-		add_action( 'wp_footer', array( $this, 'load_incom'), 15, 'functions' );
+		add_action( 'wp_footer', array( $this, 'load_incom'), 444, 'functions' );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_incom_style') );
 		add_action( 'wp_head', array( $this, 'load_incom_custom_css') );
 	}
