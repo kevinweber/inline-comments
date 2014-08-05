@@ -46,7 +46,7 @@ class INCOM_No_Premium_Admin_Options {
 				        </td>
 			        </tr>
 			        <tr valign="top">
-			        	<th scope="row">&hellip; display avatars<br><span class="description thin">next to each comment</span></th>
+			        	<th scope="row">&hellip; display avatars <span class="newred grey">Updated</span><br><span class="description thin">next to each comment</span></th>
 				        <td>
 							<span>Display photos/avatars from commentators next to each comment.</span>
 				        </td>
@@ -64,15 +64,15 @@ class INCOM_No_Premium_Admin_Options {
 				        </td>
 			        </tr>
 			        <tr valign="top">
-			        	<th scope="row">&hellip; enjoy coming features</th>
+			        	<th scope="row">&hellip; enjoy coming features<br><span class="description thin">with free lifetime updates!</span></th>
 				        <td>
 							<span>Here is so much more to come!<br>What do you think of social logins (Twitter, Facebook) and the possibility to reply to specific inline comments?</span>
 				        </td>
 			        </tr>
 			        <tr valign="top">
-			        	<th scope="row"><span style="color:#009000;font-size:1.25em;font-weight:normal">just 44€</span></th>
+			        	<th scope="row"><a href="https://sellfy.com/p/uzBe/" id="uzBe" class="sellfy-buy-button">buy</a><script type="text/javascript" src="https://sellfy.com/js/api_buttons.js"></script></th>
 				        <td>
-							<span>You could invest 4.000€ for a developer to let him develop such an innovative commenting system.<br>Or you simply pay 44€ for Inline Comments that has already been developed in weeks-long work. <a href="http://kevinw.de/kontakt" target="_blank">Click here to contact me right now</a>.</span>
+							<span>You could invest 4.800€ for a developer to let him develop such an innovative comment system.<br><br>Or you pay just €43 for Inline Comments that has already been developed in weeks-long work. <a href="http://kevinw.de/kontakt" target="_blank">Click here to contact me</a> before you buy the extension or <b>simply buy the extension</b> with the Sellfy button on the left for the instant download.</span>
 				        </td>
 			        </tr>
 			    </tbody>
