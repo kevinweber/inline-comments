@@ -117,12 +117,17 @@ $z-index-base: 2;
     padding: 0 0 0.3em;
     position: initial;
   }
+  textarea, input,
   input[type="email"], input[type="text"], input[type="url"],
   #respond form input[type="email"], #respond form input[type="text"], #respond form input[type="url"] {
     width: 100%;
-  }
-  textarea, input {
     max-width: 100%;
+  }
+  img {
+    opacity: 0.3;
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 .incom-info-icon {
@@ -144,4 +149,9 @@ $z-index-base: 2;
       opacity: 1;
       text-decoration: none;
     }
+}
+.incom-cancel-x {
+  @extend .incom-info-icon;
+  font-weight: normal;
+  border: none;
 }

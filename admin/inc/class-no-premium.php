@@ -29,7 +29,7 @@ class INCOM_No_Premium_Admin_Options {
 	}
 	// Step 2
 	function add_incom_admin_tab_link() {
-		echo '<li><a href="#tab-no-premium" class="tab-orange tab-premium">Premium</a></li>';
+		echo '<li><a href="#tab-no-premium" class="tab-orange tab-premium">Premium <span class="newred_dot">&bull;</span></a></li>';
 	}
 	// Step 3
 	function add_incom_admin_tab() { ?>
@@ -49,6 +49,12 @@ class INCOM_No_Premium_Admin_Options {
 			        	<th scope="row">&hellip; display avatars<br><span class="description thin">next to each comment</span></th>
 				        <td>
 							<span>Display photos/avatars from commentators next to each comment.</span>
+				        </td>
+			        </tr>
+			        <tr valign="top">
+			        	<th scope="row">&hellip; insert content <span class="newred">New!</span></th>
+				        <td>
+							<span>Insert content (any HTML) above the list of comments.</span>
 				        </td>
 			        </tr>
 			        <tr valign="top">
