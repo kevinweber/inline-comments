@@ -25,7 +25,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 		<script>
 			var $ind = jQuery.noConflict();
 
-			$ind(window).bind( "load", function() {
+			$ind(window).on( "load", function() {
 				incom.init({
 					selectors: '<?php if (get_option("multiselector") == '') { echo "p"; } else { echo get_option("multiselector"); } ?>',
 					moveSiteSelector: '<?php if (get_option("moveselector") == '') { echo "body"; } else { echo get_option("moveselector"); } ?>',
