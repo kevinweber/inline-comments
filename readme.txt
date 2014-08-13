@@ -80,6 +80,9 @@ First, you need an account and a registered site on disqus.com. Then read this: 
 
 == Upgrade Notice ==
 
+= 1.2 =
+* Check your settings and how your inline comments look. This update comes with some style update. IMPORTANT: When you call your site the first time after the update, clear your browser’s cache and reload the page with “F5” to ensure that the current stylesheets are actually loaded. If you’re using a caching plugin, clear it’s cache, too.
+
 = 1.0 =
 * This plugin now performs with native WordPress comments.
 

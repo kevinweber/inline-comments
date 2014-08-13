@@ -197,7 +197,7 @@ class INCOM_Comments {
 	 * Load cancel cross (remove wrapper when user clicks on that cross)
 	 */
 	private function loadCancelX() {
-		if ( get_option( 'cancel_x' ) !== 1 ) {
+		if ( get_option( 'cancel_x' ) !== '1' ) {
 			return '<a class="incom-cancel incom-cancel-x" href title>&#10006;</a>';
 		}
 	}
@@ -206,7 +206,7 @@ class INCOM_Comments {
 	 * Load cancel link (remove wrapper when user clicks on that link)
 	 */
 	private function loadCancelLink() {
-		if ( get_option( 'cancel_link' ) !== 1 ) {
+		if ( get_option( 'cancel_link' ) !== '1' ) {
 			return '<a class="incom-cancel incom-cancel-link" href title>' . $this->loadCancelLinkText . '</a>';
 		}
 	}

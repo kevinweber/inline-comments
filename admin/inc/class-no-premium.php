@@ -72,7 +72,7 @@ class INCOM_No_Premium_Admin_Options {
 			        <tr valign="top">
 			        	<th scope="row"><a href="https://sellfy.com/p/uzBe/" id="uzBe" class="sellfy-buy-button">buy</a><script type="text/javascript" src="https://sellfy.com/js/api_buttons.js"></script></th>
 				        <td>
-							<span>You could invest 4.800€ for a developer to let him develop such an innovative comment system.<br><br>Or you pay just €43 for Inline Comments that has already been developed in weeks-long work. <a href="http://kevinw.de/kontakt" target="_blank">Click here to contact me</a> before you buy the extension or <b>simply buy the extension</b> with the Sellfy button on the left for the instant download.</span>
+							<span>You could invest $2.000 for a developer to let him develop such an innovative comment system. Or you pay just $48 for Inline Comments that has already been developed in weeks-long work. The price on the green button might change over time. If you think the price is not appropriate in your case, feel free to <a href="http://kevinw.de/kontakt" target="_blank">contact me</a>. Many others and I are persuaded that this plugin will revolutionise the way users comment online. So make sure to get premium as long as it is that cheap and buy it using the <span style="color:green">green</span> button on the left.</span>
 				        </td>
 			        </tr>
 			    </tbody>
