@@ -544,6 +544,11 @@
       'display': 'block',
       'visibility': 'visible',
     });
+
+    var color = $( classBrandingDot ).css('color');
+    if (color === 'rgb(255, 255, 255)' || color === 'white') {
+      $( classBrandingDot ).css("cssText", "color: black!important;");
+    }
   };
 
   /*
