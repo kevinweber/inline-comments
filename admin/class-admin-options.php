@@ -301,8 +301,16 @@ class INCOM_Admin_Options {
 			        <td>
 						<p><b>It's free!</b> Support me with <a href="http://kevinw.de/donate/InlineComments/" title="Pay me a delicious lunch" target="_blank">a delicious lunch</a> or give this plugin a 5 star rating <a href="http://wordpress.org/support/view/plugin-reviews/inline-comments?filter=5" title="Vote for Inline Comments" target="_blank">on WordPress.org</a>.</p>
 			        </td>       
-		        <td>
-					<p><b>Speed up your site</b> by replacing embedded Youtube and Vimeo videos with a clickable preview image: <a href="http://kevinw.de/ic-ll" title="Lazy Load for Videos" target="_blank">Lazy Load for Videos</a>.</p>
+		        <td style="width:300px;">
+					<p>
+						<b>Personal tip: Must use plugins</b>
+						<ol>
+							<li><a href="http://kevinw.de/ic-ll" title="Lazy Load for Videos" target="_blank">Lazy Load for Videos</a> (on my part)</li>
+							<li><a href="https://yoast.com/wordpress/plugins/seo/" title="WordPress SEO by Yoast" target="_blank">WordPress SEO</a> (by Yoast)</li>
+							<li><a href="http://kevinw.de/ic-wb" title="wBounce" target="_blank">wBounce</a> (on my part)</li>
+							<li><a href="https://wordpress.org/plugins/broken-link-checker/" title="Broken Link Checker" target="_blank">Broken Link Checker</a> (by Janis Elsts)</li>
+						</ol>
+					</p>
 		        </td>
 		        </tr>
 			</table>
