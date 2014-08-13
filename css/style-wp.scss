@@ -132,7 +132,6 @@ $z-index-base: 2;
 }
 .incom-info-icon {
     @include vendor-prefix( border-radius, 50% );
-    border: 2px solid $black;
     width: 19px;
     height: 19px;
     line-height: 19px;
