@@ -49,10 +49,10 @@ First, you need an account and a registered site on disqus.com. Then read this: 
 == Changelog ==
 
 = 1.2 =
-* New feature: Change background opacity for comment threads
 * New feature: Added closing "x" to the right top of the comments wrapper. Can be removed per option
+* New feature: Change background opacity for comment threads
 * New feature: Hide "cancel" link
-* Fix: Now bubbles will only then appear when images, fonts and all other elements are loaded. So there is no displacement of bubbles anymore. (Displacements occurred especially on sites that load web fonts and when users with a slow internet connection visited the site.)
+* Fix: Now bubbles will only then appear when images, fonts and all other elements are loaded. So there is no displacement of bubbles anymore but it may take a bit longer until they are visible. (Displacements occurred especially on sites that load web fonts and when users with a slow internet connection visited the site.)
 
 = 1.1 =
 * No page reload anymore: INLINE COMMENTS NOW EMPOWERS WP-AJAXIFY-COMMENTS!! This improves the user experience with Ajax functionality: Your page will not reload after a comment is submitted
