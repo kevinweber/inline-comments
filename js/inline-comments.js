@@ -343,7 +343,16 @@
     setPosition( source, $commentsWrapper );
     testIfMoveSiteIsNecessary( $commentsWrapper );
     handleClickElsewhere();
-    handleClickCancel();
+    ajaxStop();
+  };
+
+  /*
+   * Use ajaxStop function to prevent plugin from breaking when another plugin uses Ajax
+   */
+  var ajaxStop = function() {
+    $(document).ready(handleClickCancel()).ajaxStop(function() {
+      handleClickCancel();
+    });
   };
 
   /*
