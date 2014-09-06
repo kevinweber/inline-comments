@@ -49,7 +49,7 @@ First, you need an account and a registered site on disqus.com. Then read this: 
 == Changelog ==
 
 = 1.2.1 =
-* Fix: When WP-Ajaxify-Comments is enabled and a comment was submitted, and when then the user wants to close the wrapper using a cancel link, the page reloaded. That issue is now fixed.
+* Fix: When WP-Ajaxify-Comments is enabled and a comment was submitted, and when then the user wants to close the wrapper using the cancel link/cross, the page reloaded. That issue is now fixed.
 
 = 1.2 =
 * New feature: Added closing "x" to the right top of the comments wrapper. Can be removed per option

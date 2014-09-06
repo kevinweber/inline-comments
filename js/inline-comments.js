@@ -10,7 +10,7 @@
   // IDs
   var idWrapper = 'incom_wrapper';
     var idWrapperHash = '#'+idWrapper;
-  var idWrapperAppendTo = 'html'; // Alternative: 'body'
+  var idWrapperAppendTo = 'body'; // Alternative: 'body'
   var idCommentsAndForm = 'comments-and-form';
     var idCommentsAndFormHash = '#'+idCommentsAndForm;
 
@@ -554,8 +554,14 @@
       'visibility': 'visible',
     });
 
+    // Get colour
     var color = $( classBrandingDot ).css('color');
-    if (color === 'rgb(255, 255, 255)' || color === 'white') {
+    // Remove spaces
+    color = color.replace(/\s/g, '');
+    // Convert to lowercase
+    color = color.toLowerCase();
+    // When transparent: make it white
+    if ( (color === 'rgb(255, 255, 255)' || color === 'white') || color === 'rgba(0,0,0,0)' ) {
       $( classBrandingDot ).css("cssText", "color: black!important;");
     }
   };
