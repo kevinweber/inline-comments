@@ -130,7 +130,7 @@
 
     // If element has no attribute attDataIncom, add it
     if ( !element.attr( attDataIncom ) ) {
-      var attProp = identifier + i;
+      var attProp = identifier + i; // BETTER WOULD BE: var attProp = identifier + '-' + i; // BUT THAT WOULD CONFLICT WITH ALREADY STORED COMMENTS
       element.attr( attDataIncom, attProp );
     }
   };

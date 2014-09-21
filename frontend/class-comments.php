@@ -1,7 +1,7 @@
 <?php
 class INCOM_Comments {
 
-	private $loadPluginInfoHref = 'http://kevinw.de/inline-comments';
+	private $loadPluginInfoHref = 'http://kevinw.de/inline-comments/';
 	private $loadPluginInfoTitle = 'Inline Comments by Kevin Weber';
 	private $loadCancelLinkText = 'Cancel';
 	private $DataIncomValue = NULL;
@@ -139,7 +139,7 @@ class INCOM_Comments {
 			'comment_notes_before' => '',
 			'comment_notes_after' => '',
 			'title_reply' => '',
-			'title_reply_to' => '',
+			'title_reply_to' => __( 'Leave a Reply to %s' ),
 			'logged_in_as' => '<p class="logged-in-as">' .
 			    sprintf(
 			    __( 'Logged in as <a href="%1$s">%2$s</a>.' ),
