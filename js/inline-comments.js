@@ -125,8 +125,8 @@
    * Add attribute attDataIncom to each element
    */
   var addAtt = function( i, element ) {
-    // Use the first letter of the element's name as identifier
-    var identifier = element.prop('tagName').substr(0,1);
+    // Use the first two letters of the element's name as identifier
+    var identifier = element.prop('tagName').substr(0,2);
 
     // If element has no attribute attDataIncom, add it
     if ( !element.attr( attDataIncom ) ) {
@@ -549,6 +549,9 @@
    * Prevent users from removing branding
    */
   var displayBranding = function() {
+
+    // DON'T BE EVIL - IS THIS ACTUALLY WORTH THE EFFORT?
+
     $( classBrandingDot ).css({
       'display': 'block',
       'visibility': 'visible',
