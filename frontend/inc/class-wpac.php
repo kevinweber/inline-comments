@@ -45,7 +45,7 @@
 			var attDataIncomComment = \'data-incom-comment\';
 			var attFromSource = idNewComment.attr( attDataIncomComment );
 			var selectByAtt = \'[\' + attDataIncomComment + \'=\' + attFromSource + \']\';
-			jQuery( selectByAtt ).show();
+			jQuery( selectByAtt + \', \' + selectByAtt + \' .children li\' ).show();
 
 			// Add a hidden input field in order to assign a comment to a specific section when he is submitted
 			var $attDataIncomValue = jQuery( classActiveDot ).attr( attDataIncom );

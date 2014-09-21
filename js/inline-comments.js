@@ -380,6 +380,7 @@
     var selectByAtt = '[' + attDataIncomComment + '=' + getAttDataIncomValue() + ']';
     $( selectComment ).hide();
     $( selectComment + selectByAtt ).addClass( classVisibleComment ).show();
+    $( classVisibleCommentDot + ' .children li' ).show();
   };
 
   /*

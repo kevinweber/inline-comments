@@ -120,6 +120,12 @@ class INCOM_Comments {
 
 		<?php comment_text(); ?>
 
+		<?php if ( get_option( 'incom_reply' ) == '1' ) { ?>
+			<div class="reply">
+			<?php comment_reply_link( array_merge( $args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+			</div>
+		<? } ?>
+
 		<?php if ( 'div' != $args['style'] ) : ?>
 		</div>
 		<?php endif; ?>
@@ -139,7 +145,7 @@ class INCOM_Comments {
 			'comment_notes_before' => '',
 			'comment_notes_after' => '',
 			'title_reply' => '',
-			'title_reply_to' => __( 'Leave a Reply to %s' ),
+			'title_reply_to' => '',
 			'logged_in_as' => '<p class="logged-in-as">' .
 			    sprintf(
 			    __( 'Logged in as <a href="%1$s">%2$s</a>.' ),
