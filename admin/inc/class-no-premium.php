@@ -46,34 +46,40 @@ class INCOM_No_Premium_Admin_Options {
 				        </td>
 			        </tr>
 			        <tr valign="top">
-			        	<th scope="row">&hellip; display avatars <span class="newred grey">Updated</span><br><span class="description thin">next to each comment</span></th>
+			        	<th scope="row">&hellip; display avatars</th>
 				        <td>
 							<span>Display photos/avatars from commentators next to each comment.</span>
 				        </td>
 			        </tr>
 			        <tr valign="top">
-			        	<th scope="row">&hellip; insert content <span class="newred">New!</span></th>
+			        	<th scope="row">&hellip; insert content</th>
 				        <td>
 							<span>Insert content (any HTML) above the list of comments.</span>
 				        </td>
 			        </tr>
 			        <tr valign="top">
-			        	<th scope="row">&hellip; get preferred support<br><span class="description thin">to setup and style Inline Comments</span></th>
+			        	<th scope="row">&hellip; get setup support</th>
 				        <td>
-							<span>I help you to choose the correct selectors and assist you to make Inline Comments good-looking on your site.</span>
+							<span>I help you to choose the correct selectors.</span>
+				        </td>
+			        </tr>
+			        <tr valign="top">
+			        	<th scope="row">&hellip; request features</th>
+				        <td>
+							<span>I'm going to develop your feature request with priority (but no guarantee).</span>
 				        </td>
 			        </tr>
 			        <tr valign="top">
 			        	<th scope="row">&hellip; enjoy coming features<br><span class="description thin">with free lifetime updates!</span></th>
 				        <td>
-							<span>Here is so much more to come!<br>What do you think of social logins (Twitter, Facebook) and the possibility to reply to specific inline comments?</span>
+							<span>No matter what comes next: Once you've bought premium, you're going to get every new feature for free. What do you think of social logins (Twitter, Facebook) or Inline Comments for Editors?</span>
 				        </td>
 			        </tr>
 			        <tr valign="top">
 			        	<th scope="row"><a href="https://sellfy.com/p/uzBe/" id="uzBe" class="sellfy-buy-button">buy</a><script type="text/javascript" src="https://sellfy.com/js/api_buttons.js"></script></th>
 				        <td>
-							<span>You could invest $2.000 for a developer to let him develop such an innovative comment system. Or you pay just $48 for Inline Comments that has already been developed in weeks-long work. The price on the green button might change over time. If you think the price is not appropriate in your case, feel free to <a href="http://kevinw.de/kontakt" target="_blank">contact me</a>. Many others and I are persuaded that this plugin will revolutionise the way users comment online. So make sure to get premium as long as it is that cheap and push development using <a href="https://sellfy.com/p/uzBe/" target="_blank" title="Buy Inline Comments Premium on Sellfy">this link</a> or the <span style="color:green">green</span> button on the left.</span><br>
-							<strong>Immediate download after purchase.</strong>
+							<span>Buy premium to get additional features, honour my month-long work and push development. The price might change/increase over time.</span>
+							<br><strong>Immediate download after purchase.</strong>
 				        </td>
 			        </tr>
 			    </tbody>

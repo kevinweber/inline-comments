@@ -39,10 +39,11 @@ class INCOM_Admin_Options {
 			// Disqus-only
 			'disqus_shortname',
 			'multiselector',
-			'moveselector',
 
 			// WP-only
 			INCOM_OPTION_KEY.'_support_for_ajaxify_comments',
+			'moveselector',
+			'incom_reply',
 			'select_bubble_style',
 			'select_bubble_fadein',
 			'select_bubble_fadeout',
@@ -70,13 +71,16 @@ class INCOM_Admin_Options {
 	function incom_settings_page()	{ ?>
 
 		<div id="tabs" class="ui-tabs">
-			<h2>Inline Comments <span class="subtitle">by <a href="http://kevinw.de/ic" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo INCOM_VERSION; ?>)</span></h2>
+			<h2>Inline Comments <span class="subtitle">by <a href="http://kevinw.de/ic" target="_blank" title="Website by Kevin Weber">Kevin Weber</a> (Version <?php echo INCOM_VERSION; ?>)</span>
+				<br><span class="claim" style="font-size:15px;font-style:italic;position:relative;top:-7px;">&hellip; revolutionise the way we comment online!</span>
+			</h2>
+
 
 			<ul class="ui-tabs-nav">
 		        <li><a href="#tabs-1">Basics</a></li>
 				<li class="hide-wp"><a href="#tab-wordpress">WordPress-specific <span class="newred_dot">&bull;</span></a></li>
 				<li class="hide-disqus"><a href="#tab-disqus">Disqus-specific</a></li>
-		    	<li><a href="#tabs-4">Styling <span class="newred_dot">&bull;</span></a></li>
+		    	<li><a href="#tabs-4">Styling</a></li>
 		    	<?php do_action( 'incom_settings_page_tabs_link_after' ); ?>
 		    </ul>
 
@@ -142,6 +146,12 @@ class INCOM_Admin_Options {
 					        	</td>
 					        </tr>
 					        <tr valign="top">
+					        	<th scope="row">Inline Replies <span class="newred">New!</span></th>
+						        <td>
+									<input name="incom_reply" type="checkbox" value="1" <?php checked( '1', get_option( 'incom_reply' ) ); ?> /> <span>If checked, users can reply to specific inline comments.</span>
+						        </td>
+					        </tr>
+					        <tr valign="top">
 					        	<th scope="row">Bubble Style <span class="description thin"><br>for sections with no comments yet</span></th>
 						        <td>
 									<select class="select" typle="select" name="select_bubble_style">
@@ -175,7 +185,7 @@ class INCOM_Admin_Options {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Hide closing "x" <span class="newred">New!</span></th>
+					        	<th scope="row">Hide closing "x"</th>
 						        <td>
 									<input name="cancel_x" type="checkbox" value="1" <?php checked( '1', get_option( 'cancel_x' ) ); ?> /> <span>If checked, the "x" at the right top of the comments wrapper will not be displayed.</span>
 						        </td>
@@ -187,7 +197,7 @@ class INCOM_Admin_Options {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Hide "cancel" link <span class="newred">New!</span></th>
+					        	<th scope="row">Hide "cancel" link</th>
 						        <td>
 									<input name="cancel_link" type="checkbox" value="1" <?php checked( '1', get_option( 'cancel_link' ) ); ?> /> <span>If checked, the "cancel" link at the left bottom of the comments wrapper will not be displayed.</span>
 						        </td>
@@ -200,6 +210,8 @@ class INCOM_Admin_Options {
 			    <div id="tab-disqus">
 
 					<h3>Specific Settings for Comment System "Disqus"</h3>
+
+					<p><span style="color:#f60">Attention:</span> Disqus is no longer supported with this plugin and might be removed with a future update.</p>
 
 				    <table class="form-table">
 					    <tbody>
@@ -259,7 +271,7 @@ class INCOM_Admin_Options {
 					        	</td>
 					        </tr>
 					        <tr class="hide-wp" valign="top">
-					        	<th scope="row">Background Opacity <span class="newred">New!</span><span class="description thin"><br>for comment threads</span></th>
+					        	<th scope="row">Background Opacity<span class="description thin"><br>for comment threads</span></th>
 					        	<td>
 					        		<input type="text" name="incom_set_bgopacity" placeholder="1" value="<?php echo get_option('incom_set_bgopacity'); ?>" /><br><span>Insert a value from 0 to 1 where "1" means maximum covering power. Insert 0.7 to make the opacity 70%.</span>
 					        	</td>
