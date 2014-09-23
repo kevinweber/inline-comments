@@ -55,12 +55,6 @@
 			  .attr( \'name\', dataIncomKey ).val( $attDataIncomValue );
 			jQuery( idCommentsAndFormHash + \' .form-submit\' ).append( jQuery( input ) );
 
-			return false;
-      jQuery( "#respond form" ).submit(function( e ) {
-        console.log("testt");
-        e.preventDefault();
-      });
-
 		';
 
 	   return $wpacOptions;

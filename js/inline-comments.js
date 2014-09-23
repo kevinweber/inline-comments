@@ -60,6 +60,17 @@
     setOptions( options );
     initIncomWrapper();
     displayBranding();
+
+    // TODO: Ensure that #commentform is replaced by #incom-commentform to make IC work with Ajaxify
+    // TODO: Use useful variables instead of hard-coded selectors
+    // TODO: Debug bugs
+    // TODO: Call that code only in class-wpac.php
+      $( ".incom-reply .comment-reply-link" ).on( 'click', function() {
+        $( '#comments-and-form #commentform' ).attr( "id", "incom-commentform" );
+      });
+
+
+
   };
 
 
