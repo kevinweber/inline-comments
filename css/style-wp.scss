@@ -106,12 +106,18 @@ $z-index-base: 2;
     }
   }
   .comment {
-    padding: 11px 8px 10px;
+    padding: 11px 0 10px 8px;
     border-bottom: 1px solid $grey_light;
   }
   .comment-meta {
     display: inline;
     float: right;
+    margin-top: -4px;
+    padding-right: 9px;
+  }
+  .incom-permalink-img {
+    width: 16px;
+    height: 16px;
   }
   .comment-author {
     padding: 0 0 0.3em;

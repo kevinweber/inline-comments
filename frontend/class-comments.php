@@ -192,8 +192,8 @@ class INCOM_Comments {
 		$permalink_url = htmlspecialchars( get_comment_link( $comment_ID ) );
 		$permalink_img_url = plugins_url( 'images/permalink-icon.png' , INCOM_FILE );
 		$permalink_html = '<div class="comment-meta commentmetadata">
-			<a href="' . $permalink_url . '" title="Permalink to this comment">
-				<img src="' . $permalink_img_url . '" alt="">
+			<a class="incom-permalink" href="' . $permalink_url . '" title="Permalink to this comment">
+				<img class="incom-permalink-img" src="' . $permalink_img_url . '" alt="">
 			</a>
 		</div>';
 		return $permalink_html;
