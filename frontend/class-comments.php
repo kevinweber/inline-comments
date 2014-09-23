@@ -204,7 +204,7 @@ class INCOM_Comments {
 	 */
 	private function loadCancelX() {
 		if ( get_option( 'cancel_x' ) !== '1' ) {
-			return '<a class="incom-cancel incom-cancel-x" href title>&#10006;</a>';
+			return '<a class="incom-cancel incom-cancel-x" href title="'. __($this->loadCancelLinkText) . '">&#10006;</a>';
 		}
 	}
 
@@ -213,7 +213,7 @@ class INCOM_Comments {
 	 */
 	private function loadCancelLink() {
 		if ( get_option( 'cancel_link' ) !== '1' ) {
-			return '<a class="incom-cancel incom-cancel-link" href title>' . $this->loadCancelLinkText . '</a>';
+			return '<a class="incom-cancel incom-cancel-link" href title>' . __($this->loadCancelLinkText) . '</a>';
 		}
 	}
 

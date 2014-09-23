@@ -115,6 +115,14 @@ $z-index-base: 2;
     margin-top: -4px;
     padding-right: 9px;
   }
+  .comment-reply-title {
+    small {
+      display: block;
+      #cancel-comment-reply-link {
+        margin-left: 0!important;
+      }
+    }
+  }
   .incom-permalink-img {
     width: 16px;
     height: 16px;
@@ -133,6 +141,15 @@ $z-index-base: 2;
     opacity: 0.3;
     &:hover {
       opacity: 1;
+    }
+  }
+  #respond.comment-respond {
+    margin-top: 0;
+    form {
+      margin-top: 0;
+    }
+    .comment-reply-title, .logged-in-as {
+      display: none;
     }
   }
 }

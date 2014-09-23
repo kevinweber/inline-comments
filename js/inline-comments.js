@@ -189,6 +189,8 @@
     var selectByAtt = '[' + attDataIncomComment + '=' + attFromSource + ']';
     // Count elements
     var $count = $( selectByAtt ).length;
+    // Increase count for each inline reply, too
+    $count += $( selectByAtt + ' .children li').length;
 
     return $count;
   };

@@ -148,7 +148,7 @@ class INCOM_Admin_Options {
 					        <tr valign="top">
 					        	<th scope="row">Inline Replies <span class="newred">New!</span></th>
 						        <td>
-									<input name="incom_reply" type="checkbox" value="1" <?php checked( '1', get_option( 'incom_reply' ) ); ?> /> <span>If checked, users can reply to specific inline comments.</span>
+									<input name="incom_reply" type="checkbox" value="1" <?php checked( '1', get_option( 'incom_reply' ) ); ?> /> <span>If checked, a reply link will be added below each inline comment and users can reply directly.</span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
