@@ -13,7 +13,7 @@
 
 		// Filter Values
 		$wpacOptions['enable'] = true;
-		$wpacOptions['disableScrollToAnchor'] = true;
+		//$wpacOptions['disableScrollToAnchor'] = true;
 
 		$wpacOptions['selectorCommentForm'] = '#incom-commentform';
 		$wpacOptions['selectorCommentsContainer'] = '#comments-and-form';
