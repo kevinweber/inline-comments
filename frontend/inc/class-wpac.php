@@ -13,10 +13,11 @@
 
 		// Filter Values
 		$wpacOptions['enable'] = true;
-		//$wpacOptions['disableScrollToAnchor'] = true;
+		// $wpacOptions['disableScrollToAnchor'] = true;
 
 		$wpacOptions['selectorCommentForm'] = '#incom-commentform';
 		$wpacOptions['selectorCommentsContainer'] = '#comments-and-form';
+		//$wpacOptions['selectorRespondContainer'] = '#comments-and-form';
 		$wpacOptions['selectorCommentPagingLinks'] = '#incom-commentform [class^="nav-"] a';
 		$wpacOptions['selectorCommentLinks'] = '#incom-commentform a[href*="/comment-page-"]';
 	
@@ -53,6 +54,12 @@
 			  .attr( \'type\', \'hidden\' )
 			  .attr( \'name\', dataIncomKey ).val( $attDataIncomValue );
 			jQuery( idCommentsAndFormHash + \' .form-submit\' ).append( jQuery( input ) );
+
+			return false;
+      jQuery( "#respond form" ).submit(function( e ) {
+        console.log("testt");
+        e.preventDefault();
+      });
 
 		';
 

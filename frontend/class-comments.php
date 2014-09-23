@@ -99,7 +99,7 @@ class INCOM_Comments {
 		<<?php echo $tag ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>" data-incom-comment="<?php echo $data_incom; ?>" style="display:none">
 		<?php if ( 'div' != $args['style'] ) : ?>
 
-		<div id="div-comment-<?php comment_ID() ?>" class="comment-body">
+		<div id="incom-div-comment-<?php comment_ID() ?>" class="comment-body">
 		
 		<?php
 			endif;
@@ -121,8 +121,20 @@ class INCOM_Comments {
 		<?php comment_text(); ?>
 
 		<?php if ( get_option( 'incom_reply' ) == '1' ) { ?>
-			<div class="reply">
-			<?php comment_reply_link( array_merge( $args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+			<div class="incom-reply">
+			<?php
+				comment_reply_link( array_merge(
+						$args,
+						array(
+							'add_below' => 'incom-div-comment',
+							// 'respond_id' => 'incom-commentform',//#respond
+							// TODO: 'reply_text' => 'insert icon here',
+							'depth' => $depth,
+							'max_depth' => $args['max_depth'],
+						)
+					)
+				);
+			?>
 			</div>
 		<? } ?>
 
