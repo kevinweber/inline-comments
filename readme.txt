@@ -50,6 +50,7 @@ First, you need an account and a registered site on disqus.com. Then read this: 
 
 = 1.3 =
 * New feature: Reply to inline comments (WORK IN PROGRESS).
+* New feature: Remove form field "Website”.
 * Improvement/fix: Use the first two letters to create the data-incom attribute (instead of just one letter). Else it happens that one comment is displayed next to two different headings, like next to h1 and h2. (Now a comment will be assigned either to h1 or h2.) This improvement removes existing comments that have been assigned to headings from being displayed inline.
 * Improved look of permalink icons.
 * Fix: When WP-Ajaxify-Comments is enabled and a comment was submitted, and when then the user wants to close the wrapper using the cancel link/cross, the page reloaded. That issue is now fixed.

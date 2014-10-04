@@ -152,6 +152,7 @@ class INCOM_Comments {
 		$user_identity = $user->exists() ? $user->display_name : '';
 
 		$args = array(
+			'fields' => apply_filters( 'incom_comment_form_fields', $this->comment_form_fields() ),
 			'id_form' => 'incom-commentform',
 			'comment_form_before' => '',
 			'comment_notes_before' => '',
@@ -168,6 +169,40 @@ class INCOM_Comments {
 		);
 
 		comment_form( apply_filters( 'incom_comment_form_args', $args ) );
+	}
+
+	/**
+	 * Template for comment form fields
+	 * @since 1.3
+	 */
+	private function comment_form_fields() {
+		$commenter = wp_get_current_commenter();
+		$req = get_option( 'require_name_email' );
+		$aria_req = ( $req ? " aria-required='true'" : '' );
+
+		$fields =  array(
+		  'author' =>
+		    '<p class="comment-form-author"><label for="author">' . __( 'Name', 'inline-comments' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
+		    '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
+		    '" size="30"' . $aria_req . ' /></p>',
+
+		  'email' =>
+		    '<p class="comment-form-email"><label for="email">' . __( 'Email', 'inline-comments' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
+		    '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
+		    '" size="30"' . $aria_req . ' /></p>',
+		);
+
+		if ( get_option( 'incom_field_url' ) !== '1' ) {
+			$fields_url = array(
+			  'url' =>
+			    '<p class="comment-form-url"><label for="url">' . __( 'Website', 'inline-comments' ) . '</label>' .
+			    '<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
+			    '" size="30" /></p>',
+			);
+			$fields = array_merge( $fields, $fields_url );
+		}
+
+		return $fields;
 	}
 
 	/**

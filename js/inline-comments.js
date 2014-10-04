@@ -13,6 +13,7 @@
   var idWrapperAppendTo = 'body'; // Alternative: 'body'
   var idCommentsAndForm = 'comments-and-form';
     var idCommentsAndFormHash = '#'+idCommentsAndForm;
+  var idCommentForm = 'incom-commentform';
 
   // Attributes
   var attDataIncom = 'data-incom';
@@ -34,6 +35,8 @@
     var classBubbleLink = classBubble+'-link';
   var classCommentsWrapper = 'incom-comments-wrapper';
     var classCommentsWrapperDot = '.'+classCommentsWrapper;
+  var classReply = 'incom-reply';
+    var classReplyDot = '.'+classReply;
   var classCancel = 'incom-cancel'; // When a user clicks on an element with this class, the comments wrapper will be removed
     var classCancelDot = '.'+classCancel;
   var classBranding = 'incom-info-icon';
@@ -61,12 +64,12 @@
     initIncomWrapper();
     displayBranding();
 
-    // TODO: Ensure that #commentform is replaced by #incom-commentform to make IC work with Ajaxify
-    // TODO: Use useful variables instead of hard-coded selectors
+    // CHECK: Ensure that #commentform is replaced by #incom-commentform to make IC work with Ajaxify
+    // CHECK: Use useful variables instead of hard-coded selectors
     // TODO: Debug bugs
     // TODO: Call that code only in class-wpac.php
-      $( ".incom-reply .comment-reply-link" ).on( 'click', function() {
-        $( '#comments-and-form #commentform' ).attr( "id", "incom-commentform" );
+      $( classReplyDot + " .comment-reply-link" ).on( 'click', function() {
+        $( idCommentsAndFormHash + ' #commentform' ).attr( "id", idCommentForm );
       });
 
 

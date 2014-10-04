@@ -51,6 +51,7 @@ class INCOM_Admin_Options {
 			'cancel_x',
 			'cancel_link',
 			'bubble_static_always',
+			'incom_field_url',
 
 			'bubble_static',
 			'check_highlight',
@@ -200,6 +201,12 @@ class INCOM_Admin_Options {
 					        	<th scope="row">Hide "cancel" link</th>
 						        <td>
 									<input name="cancel_link" type="checkbox" value="1" <?php checked( '1', get_option( 'cancel_link' ) ); ?> /> <span>If checked, the "cancel" link at the left bottom of the comments wrapper will not be displayed.</span>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row">Remove form field "Website" <span class="newred">New!</span></th>
+						        <td>
+									<input name="incom_field_url" type="checkbox" value="1" <?php checked( '1', get_option( 'incom_field_url' ) ); ?> /> <span>If checked, users cannot submit an URL/Website when they comment inline.</span>
 						        </td>
 					        </tr>
 					    </tbody>
