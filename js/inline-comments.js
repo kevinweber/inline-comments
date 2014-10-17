@@ -18,7 +18,7 @@
   // Attributes
   var attDataIncom = 'data-incom';
     var attDataIncomComment = attDataIncom+'-comment';
-    var attDataIncomArr = [];
+    var attDataIncomArr = []; // This array will contain all attDataIncom values
 
   // Classes
   var classActive = 'incom-active';

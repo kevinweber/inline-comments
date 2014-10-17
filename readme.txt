@@ -51,7 +51,7 @@ First, you need an account and a registered site on disqus.com. Then read this: 
 = 1.3 =
 * New feature: Reply to inline comments (WORK IN PROGRESS).
 * New feature: Remove form field "Website”.
-* Improvement/fix: Use the first two letters to create the data-incom attribute (instead of just one letter). Else it happens that one comment is displayed next to two different headings, like next to h1 and h2. (Now a comment will be assigned either to h1 or h2.) This improvement removes existing comments that have been assigned to headings from being displayed inline.
+* Improvement/fix: Use the first five letters to create the data-incom attribute (instead of just one letter) and, additionally, ensure that no two elements with the same value exist. Else it happens that one comment is displayed next to two different headings, like next to h1 and h2. (Now a comment will be assigned either to h1 or h2.) This improvement removes existing comments that have been assigned to headings from being displayed inline.
 * Improved look of permalink icons.
 * Fix: When WP-Ajaxify-Comments is enabled and a comment was submitted, and when then the user wants to close the wrapper using the cancel link/cross, the page reloaded. That issue is now fixed.
 
@@ -86,6 +86,9 @@ First, you need an account and a registered site on disqus.com. Then read this: 
 
 
 == Upgrade Notice ==
+
+= 1.3 =
+* Inline comments that were assigned to a div or heading (and a few other elements) before this update will not be linked to that element anymore. However, those comments are not lost - they are still visible within the regular comment section. This bugfix ensures that there are no longer two or more different headings display the same comment section.
 
 = 1.2 =
 * Check your settings and how your inline comments look. This update comes with some style update. IMPORTANT: When you call your site the first time after the update, clear your browser’s cache and reload the page with “F5” to ensure that the current stylesheets are actually loaded. If you’re using a caching plugin, clear it’s cache, too.
