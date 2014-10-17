@@ -18,6 +18,7 @@
   // Attributes
   var attDataIncom = 'data-incom';
     var attDataIncomComment = attDataIncom+'-comment';
+    var attDataIncomArr = [];
 
   // Classes
   var classActive = 'incom-active';
@@ -127,8 +128,11 @@
 
       $( selectors[j] ).each( function(i) {
         var $element = $( this );
+        var identifier = getIdentifier( $element );
 
-        addAtt( i, $element );
+        i = increaseIdentifierNumberIfAttPropExists( i, identifier );
+
+        addAtt( i, $element, identifier );
         addBubble( $element );
       });
 
@@ -136,16 +140,41 @@
   };
 
   /*
+   * Use the first five letters of the element's name as identifier
+   */
+  var getIdentifier = function( element ) {
+    var identifier = element.prop('tagName').substr(0,5);
+    return identifier;
+  };
+
+  /*
+   * Increase identifier number (i) if that specific attProp was already used. attProp must be unique
+   *
+   * @return
+   */
+  var increaseIdentifierNumberIfAttPropExists = function( i, identifier ) {
+    var attProp = identifier + i;
+
+    if ( $.inArray( attProp, attDataIncomArr ) !== -1 ) {
+      while ( $.inArray( attProp, attDataIncomArr ) !== -1 ) {
+        i++;
+        attProp = identifier + i;
+      }
+    }
+    attDataIncomArr.push(attProp);
+
+    return i;
+  };
+
+  /*
    * Add attribute attDataIncom to each element
    */
-  var addAtt = function( i, element ) {
-    // Use the first two letters of the element's name as identifier
-    var identifier = element.prop('tagName').substr(0,2);
-
+  var addAtt = function( i, element, identifier ) {
     // If element has no attribute attDataIncom, add it
     if ( !element.attr( attDataIncom ) ) {
-      var attProp = identifier + i; // BETTER WOULD BE: var attProp = identifier + '-' + i; // BUT THAT WOULD CONFLICT WITH ALREADY STORED COMMENTS
-      element.attr( attDataIncom, attProp );
+    	var attProp = identifier + i; // WOULD BE BETTER: var attProp = identifier + '-' + i; // BUT THAT WOULD CONFLICT WITH ALREADY STORED COMMENTS
+
+    	element.attr( attDataIncom, attProp );
     }
   };
 
