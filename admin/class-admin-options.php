@@ -40,18 +40,21 @@ class INCOM_Admin_Options {
 			'select_comment_type',
 			'multiselector',
 			INCOM_OPTION_KEY.'_support_for_ajaxify_comments',
-			'incom_reply',
+			INCOM_OPTION_KEY.'_reply',
 			'moveselector',
 			
 			// Styling
 			'custom_css',
+			INCOM_OPTION_KEY.'_avatars_display',
+			INCOM_OPTION_KEY.'_avatars_size',
 			'select_align',
 			'select_bubble_style',
 			'set_bgcolour',
-			'incom_set_bgopacity',
+			INCOM_OPTION_KEY.'_set_bgopacity',
 			'bubble_static',
 
 			// Advanced
+			'incom_content_comments_before',
 			'select_bubble_fadein',
 			'select_bubble_fadeout',
 			'comment_permalink',
@@ -75,9 +78,9 @@ class INCOM_Admin_Options {
 
 
 			<ul class="ui-tabs-nav">
-		        <li><a href="#tabs-basics">Basics <span class="newred_dot">&bull;</span></a></li>
-		    	<li><a href="#tabs-styling">Styling</a></li>
-				<li><a href="#tab-advanced">Advanced <span class="newred_dot">&bull;</span></a></li>
+		        <li><a href="#basics">Basics <span class="newred_dot">&bull;</span></a></li>
+		    	<li><a href="#styling">Styling <span class="newred_dot">&bull;</span></a></li>
+				<li><a href="#advanced">Advanced <span class="newred_dot">&bull;</span></a></li>
 		    	<?php do_action( 'incom_settings_page_tabs_link_after' ); ?>
 		    </ul>
 
@@ -85,7 +88,7 @@ class INCOM_Admin_Options {
 			    <?php settings_fields( 'incom-settings-group' ); ?>
 			    <?php do_settings_sections( 'incom-settings-group' ); ?>
 
-			    <div id="tabs-basics">
+			    <div id="basics">
 
 					<h3>Basic Settings</h3>
 
@@ -141,7 +144,7 @@ class INCOM_Admin_Options {
 
 			    </div>
 
-			    <div id="tabs-styling">
+			    <div id="styling">
 
 					<h3>Styling</h3>
 
@@ -158,6 +161,13 @@ class INCOM_Admin_Options {
 					        			(You don't know CSS? Try the <a href="http://kevinw.de/css-tutorial" target="_blank" title="CSS Tutorial on W3Schools">CSS Tutorial</a> on W3Schools.)
 					        		</span>
 					        	</td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row">Display Avatars<span class="newred">New!</span><br><span class="description thin">next to each comment</span></th>
+						        <td>
+									<input name="<?php echo INCOM_OPTION_KEY; ?>_avatars_display" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_avatars_display' ) ); ?> /> <span> If checked, avatars will be displayed next to each comment.</span><br><br>
+						        	<input type="number" name="<?php echo INCOM_OPTION_KEY; ?>_avatars_size" placeholder="15" value="<?php echo get_option( INCOM_OPTION_KEY.'_avatars_size' ); ?>" /> <span>Define avatar size (in px). Insert an integer higher than 0.</span>
+						        </td>
 					        </tr>
 					        <tr valign="top">
 					        	<th scope="row">Position</th>
@@ -199,12 +209,18 @@ class INCOM_Admin_Options {
 
 				</div>
 
-			    <div id="tab-advanced">
+			    <div id="advanced">
 
 					<h3>Advanced Settings</h3>
 
 				    <table class="form-table">
 					    <tbody>
+					        <tr valign="top">
+					        	<th scope="row">Content Before<span class="newred">New!</span><br><span class="description thin">Insert HTML above the list of comments</span></th>
+					        	<td>
+					        		<textarea rows="5" cols="70" type="text" name="incom_content_comments_before" placeholder=""><?php echo get_option('incom_content_comments_before'); ?></textarea>
+					        	</td>
+					        </tr>
 					        <tr valign="top">
 					        	<th scope="row">Bubble Fade In</th>
 						        <td>
