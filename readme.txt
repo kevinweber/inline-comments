@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: admin, comment, comments, content, counter, free, integration, jquery, mobile, page, pages, plugin, post, posts, sidebar, wordpress
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.2.1
+Stable tag: 1.3
 
 Inline Comments adds your comment system to the side of paragraphs and other sections (like headlines and images) of your post.
 
@@ -40,21 +40,18 @@ For comment system "WordPress Comments", use custom CSS like this:
 
 *.incom-active { background: #f3f3f3; }*
 
-= Where do I get my Disqus shortname from? =
-First, you need an account and a registered site on disqus.com. Then read this: http://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
-
 = Known bugs =
 * When you use Jetpack Comments, the comments will not be assigned to a specific paragraph. Anyhow, the comment will be displayed within your regular comment section with all other comments.
 
 == Changelog ==
 
 = 1.3 =
-* New feature: Reply to inline comments (WORK IN PROGRESS).
+* MILESTONE, new feature: Reply to inline comments (this feature is compatible with WP-Ajaxify-Comments).
+* Removed Disqus integration.
 * New feature: Remove form field "Website”.
 * Improvement/fix: Use the first five letters to create the data-incom attribute (instead of just one letter) and, additionally, ensure that no two elements with the same value exist. Else it happens that one comment is displayed next to two different headings, like next to h1 and h2. (Now a comment will be assigned either to h1 or h2.) This improvement removes existing comments that have been assigned to headings from being displayed inline.
 * Improved look of permalink icons.
 * Fix: When WP-Ajaxify-Comments is enabled and a comment was submitted, and when then the user wants to close the wrapper using the cancel link/cross, the page reloaded. That issue is now fixed.
-* Disqus integration is no longer supported.
 
 = 1.2 =
 * New feature: Added closing "x" to the right top of the comments wrapper. Can be removed per option

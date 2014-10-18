@@ -34,19 +34,27 @@
 			    var classActiveDot = "."+classActive;
 			  var dataIncomKey = "data_incom";  // Should be the same as $DataIncomKey in class-comments.php
 
-			// Display the container that contains all comments
+			//// Lets display all comments that are assigned to the specific element/paragraph
+			// Step 1: Display the container that contains all comments
 			jQuery("#comments-and-form").show();
 
-			// Show the newly submitted comment
+			// Step 2: Extract the newly submitted comment\'s ID from the URL
 			var getIdNewComment = commentUrl.indexOf("#") >= 0 ? commentUrl.substr(commentUrl.indexOf("#")) : null;
 			var idNewComment = jQuery( getIdNewComment );
-			idNewComment.show();
 
-			// Display all comments with the same attDataIncomComment (because they are assigned to the same section)
+			// Step 3: Define the attribute that is needed for the next steps
 			var attDataIncomComment = \'data-incom-comment\';
 			var attFromSource = idNewComment.attr( attDataIncomComment );
+
+			// Step 4: This test is needed to make replies to parent comments work 
+			if ( attFromSource === "" )  {
+				attFromSource = idNewComment.parents(".depth-1").attr( attDataIncomComment );
+			}
+
+			// Step 5: Display all comments with the same attDataIncomComment (because they are assigned to the same section) and all their children
 			var selectByAtt = \'[\' + attDataIncomComment + \'=\' + attFromSource + \']\';
 			jQuery( selectByAtt + \', \' + selectByAtt + \' .children li\' ).show();
+
 
 			// Add a hidden input field in order to assign a comment to a specific section when he is submitted
 			var $attDataIncomValue = jQuery( classActiveDot ).attr( attDataIncom );
