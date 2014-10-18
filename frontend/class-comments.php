@@ -9,6 +9,7 @@ class INCOM_Comments extends INCOM_Frontend {
 	private $DataIncomKeyPOST = 'data_incom';
 
 	function __construct() {
+		add_filter( 'comment_form_default_fields', array( $this, 'comment_form_fields' ) );
 		add_action( 'comment_post', array( $this, 'add_comment_meta_data_incom' ) );
 		add_action( 'preprocess_comment' , array( $this, 'preprocess_comment_handler' ) );
 		add_action( 'wp_footer', array( $this, 'generateCommentsAndForm' ) );
@@ -127,10 +128,11 @@ class INCOM_Comments extends INCOM_Frontend {
 						$args,
 						array(
 							'add_below' => 'incom-div-comment',
-							// 'respond_id' => 'incom-commentform',//#respond
+							// 'respond_id' => 'incom-commentform',
 							// TODO: 'reply_text' => 'insert icon here',
 							'depth' => $depth,
 							'max_depth' => $args['max_depth'],
+							'login_text' => '',
 						)
 					)
 				);
@@ -152,7 +154,6 @@ class INCOM_Comments extends INCOM_Frontend {
 		$user_identity = $user->exists() ? $user->display_name : '';
 
 		$args = array(
-			'fields' => apply_filters( 'incom_comment_form_fields', $this->comment_form_fields() ),
 			'id_form' => 'incom-commentform',
 			'comment_form_before' => '',
 			'comment_notes_before' => '',
@@ -175,7 +176,7 @@ class INCOM_Comments extends INCOM_Frontend {
 	 * Template for comment form fields
 	 * @since 1.3
 	 */
-	private function comment_form_fields() {
+	function comment_form_fields() {
 		$commenter = wp_get_current_commenter();
 		$req = get_option( 'require_name_email' );
 		$aria_req = ( $req ? " aria-required='true'" : '' );
