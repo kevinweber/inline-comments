@@ -5,11 +5,14 @@
 class INCOM_WordPress extends INCOM_Frontend {
 
 	function __construct() {
-		parent::addActions();
 		$this->addActions();
 	}
 
 	function addActions() {
+		add_action( 'wp_enqueue_scripts', array( $this, 'incom_enqueue_scripts' ) );
+		add_action( 'wp_footer', array( $this, 'load_incom'), 444, 'functions' );
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_incom_style') );
+		add_action( 'wp_head', array( $this, 'load_custom_css') );
 		$this->get_comments_php();
 	}
 
@@ -36,7 +39,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 			    	bubbleAnimationOut: '<?php if (get_option("select_bubble_fadeout") == "") { echo "default"; } else { echo get_option("select_bubble_fadeout"); } ?>',
 				  // defaultBubbleText: '+',
 			      // highlighted: false,
-			    	position: '<?php if (get_option("select_align") == "") { echo "right"; } else { echo get_option("select_align"); } ?>',
+			    	position: '<?php if (get_option("incom_select_align") == "") { echo "right"; } else { echo get_option("incom_select_align"); } ?>',
 			      	background: '<?php if (get_option("set_bgcolour") == "") { echo "#fff"; } else { echo get_option("set_bgcolour"); } ?>',
 					backgroundOpacity: '<?php if (get_option("incom_set_bgopacity") == "") { echo "1"; } else { echo get_option("incom_set_bgopacity"); } ?>',
 					<?php do_action( 'incom_wp_set_options' ); ?>
@@ -82,11 +85,22 @@ class INCOM_WordPress extends INCOM_Frontend {
 	/**
 	 * Add Custom CSS
 	 */
-	function load_incom_custom_css(){
+	function load_custom_css(){
 		echo '<style type="text/css">';
+
+		// Set avatar size
+		if ( get_option( 'incom_avatars_display' ) == 1 ) { ?>
+			.incom-comments-wrapper .vcard img {
+			    width: <?= parent::get_avatar_size() ?>px;
+			    height: <?= parent::get_avatar_size() ?>px;
+			}
+		<?php }
+
+		// User's custom CSS input
 		if (stripslashes(get_option('custom_css')) != '') {
 			echo stripslashes(get_option('custom_css'));
 		}
+
 		echo '</style>';
 	}
 

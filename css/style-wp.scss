@@ -9,6 +9,8 @@ $black: #000;
 $grey_light: #f3f3f3;
 $z-index-base: 2;
 
+$vcard-image-size: 15px;
+
 /*
  * Mixins
  */
@@ -176,4 +178,13 @@ $z-index-base: 2;
   @extend .incom-info-icon;
   font-weight: normal;
   border: none;
+}
+
+.incom-comments-wrapper {
+  .vcard img {
+    @include vendor-prefix( border-radius, 50% );
+    opacity: 1;
+    width: $vcard-image-size;
+    height: $vcard-image-size;
+  }
 }

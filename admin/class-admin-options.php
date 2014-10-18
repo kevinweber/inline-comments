@@ -45,9 +45,9 @@ class INCOM_Admin_Options {
 			
 			// Styling
 			'custom_css',
+			INCOM_OPTION_KEY.'_select_align',
 			INCOM_OPTION_KEY.'_avatars_display',
 			INCOM_OPTION_KEY.'_avatars_size',
-			'select_align',
 			'select_bubble_style',
 			'set_bgcolour',
 			INCOM_OPTION_KEY.'_set_bgopacity',
@@ -163,18 +163,18 @@ class INCOM_Admin_Options {
 					        	</td>
 					        </tr>
 					        <tr valign="top">
+					        	<th scope="row">Position</th>
+						        <td>
+						        	<input id="<?php echo INCOM_OPTION_KEY; ?>_select_align_left" class="radio" type="radio" name="<?php echo INCOM_OPTION_KEY; ?>_select_align" value="left"<?php if (get_option( INCOM_OPTION_KEY.'_select_align') === 'left') { echo ' checked'; } ?> /><label class="label-radio" for="<?php echo INCOM_OPTION_KEY; ?>_select_align_left">Left</label>
+						        	<input id="<?php echo INCOM_OPTION_KEY; ?>_select_align_right" class="radio" type="radio" name="<?php echo INCOM_OPTION_KEY; ?>_select_align" value="right"<?php if (get_option( INCOM_OPTION_KEY.'_select_align') !== 'left') { echo ' checked'; } ?> /><label class="label-radio" for="<?php echo INCOM_OPTION_KEY; ?>_select_align_right">Right</label>
+							    </td>
+					        </tr>
+					        <tr valign="top">
 					        	<th scope="row">Display Avatars<span class="newred">New!</span><br><span class="description thin">next to each comment</span></th>
 						        <td>
 									<input name="<?php echo INCOM_OPTION_KEY; ?>_avatars_display" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_avatars_display' ) ); ?> /> <span> If checked, avatars will be displayed next to each comment.</span><br><br>
 						        	<input type="number" name="<?php echo INCOM_OPTION_KEY; ?>_avatars_size" placeholder="15" value="<?php echo get_option( INCOM_OPTION_KEY.'_avatars_size' ); ?>" /> <span>Define avatar size (in px). Insert an integer higher than 0.</span>
 						        </td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row">Position</th>
-						        <td>
-						        	<input id="select_align_left" class="radio" type="radio" name="select_align" value="left"<?php if (get_option('select_align') === 'left') { echo ' checked'; } ?> /><label class="label-radio" for="select_align_left">Left</label>
-						        	<input id="select_align_right" class="radio" type="radio" name="select_align" value="right"<?php if (get_option('select_align') !== 'left') { echo ' checked'; } ?> /><label class="label-radio" for="select_align_right">Right</label>
-							    </td>
 					        </tr>
 					        <tr valign="top">
 					        	<th scope="row">Bubble Style <span class="description thin"><br>for sections with no comments yet</span></th>
@@ -240,25 +240,25 @@ class INCOM_Admin_Options {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Remove closing "x"</th>
+					        	<th scope="row">Remove Closing "x"</th>
 						        <td>
 									<input name="cancel_x" type="checkbox" value="1" <?php checked( '1', get_option( 'cancel_x' ) ); ?> /> <span>If checked, the "x" at the right top of the comments wrapper will not be displayed.</span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Remove permalinks</th>
+					        	<th scope="row">Remove Permalinks</th>
 						        <td>
 									<input name="comment_permalink" type="checkbox" value="1" <?php checked( '1', get_option( 'comment_permalink' ) ); ?> /> <span>If checked, the permalink icon next to each comment will not be displayed.</span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Remove field "Website" <span class="newred">New!</span></th>
+					        	<th scope="row">Remove Field "Website" <span class="newred">New!</span></th>
 						        <td>
 									<input name="incom_field_url" type="checkbox" value="1" <?php checked( '1', get_option( 'incom_field_url' ) ); ?> /> <span>If checked, users cannot submit an URL/Website when they comment inline.</span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row">Remove link "Cancel"</th>
+					        	<th scope="row">Remove Link "Cancel"</th>
 						        <td>
 									<input name="cancel_link" type="checkbox" value="1" <?php checked( '1', get_option( 'cancel_link' ) ); ?> /> <span>If checked, the "cancel" link at the left bottom of the comments wrapper will not be displayed.</span>
 						        </td>

@@ -9,24 +9,29 @@ class INCOM_Frontend {
 	}
 
 	/**
-	 * Called by class-wp.php and class-indisq.php
-	 */
-	function addActions() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'incom_enqueue_scripts' ) );
-		add_action( 'wp_footer', array( $this, 'load_incom'), 444, 'functions' );
-		add_action( 'wp_enqueue_scripts', array( $this, 'load_incom_style') );
-		add_action( 'wp_head', array( $this, 'load_incom_custom_css') );
-	}
-
-	/**
  	 * Enable jQuery (comes with WordPress)
  	 */
  	function enqueue_jquery() {
      	wp_enqueue_script( 'jquery' );
  	}
 
-}
+	/**
+	 * Handle avatar size
+	 */
+	protected function get_avatar_size() {
+		if ( get_option( 'incom_avatars_display' ) != 1 )
+			return '0';
 
+		$input = get_option( 'incom_avatars_size' );
+		if ( (int) $input > 0 ) {
+			return $input;
+		}
+		else {
+			return '15';
+		}
+	}
+
+}
 
 function initialize_incom_frontend() {
 	$incom_frontend = new INCOM_Frontend();

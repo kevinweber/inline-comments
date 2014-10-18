@@ -626,10 +626,11 @@
       color = color.toLowerCase();
       // When transparent: make it white
       if ( (color === 'rgb(255,255,255)' || color === 'white') || color === 'rgba(255,255,255,0)' ) {
-        $element.css("cssText", "color: red!important;");
+        $element.css("cssText", "color: black!important;");
       }
 
     }
+
   };
 
   /*

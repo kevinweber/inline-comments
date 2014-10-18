@@ -29,11 +29,11 @@ class INCOM_No_Premium_Admin_Options {
 	}
 	// Step 2
 	function add_incom_admin_tab_link() {
-		echo '<li><a href="#tab-no-premium" class="tab-orange tab-premium">Premium <span class="newred_dot">&bull;</span></a></li>';
+		echo '<li><a href="#premium" class="tab-orange tab-premium">Premium <span class="newred_dot">&bull;</span></a></li>';
 	}
 	// Step 3
 	function add_incom_admin_tab() { ?>
-		<div id="tab-no-premium">
+		<div id="premium">
 
 			<h3>Get Premium and &hellip;</h3>
 

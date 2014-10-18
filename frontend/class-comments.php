@@ -1,5 +1,5 @@
 <?php
-class INCOM_Comments {
+class INCOM_Comments extends INCOM_Frontend {
 
 	private $loadPluginInfoHref = 'http://kevinw.de/inline-comments/';
 	private $loadPluginInfoTitle = 'Inline Comments by Kevin Weber';
@@ -47,8 +47,8 @@ class INCOM_Comments {
 		do_action( 'incom_cancel_x_after' );
 
 		echo apply_filters( 'incom_plugin_info', $this->loadPluginInfo() );
+		echo apply_filters( 'incom_comments_list_before', $this->comments_list_before() );
 
-		do_action( 'incom_comments_list_before' );
 		$this->loadCommentsList();
 		$this->loadCommentForm();
 
@@ -74,7 +74,7 @@ class INCOM_Comments {
 			'post_id' => get_the_ID(),
 			'type' => 'comment',
 			'callback' => array( $this, 'loadComment' ),
-			'avatar_size' => '0',
+			'avatar_size' => parent::get_avatar_size(),
 		);
 		wp_list_comments( apply_filters( 'incom_comments_list_args', $args ) );
 	}
@@ -263,6 +263,23 @@ class INCOM_Comments {
 			return '<a class="incom-cancel incom-cancel-link" href title>' . __($this->loadCancelLinkText) . '</a>';
 		}
 	}
+
+	/**
+	 * Add content before comment list
+	 */
+	function comments_list_before() {
+		if ( get_option( 'incom_content_comments_before' ) != '' ) {
+			return get_option( 'incom_content_comments_before' );
+		}
+	}
+	
+	/**
+	 * Customise comment form
+	 */
+	// function comment_form_args( $args ) {
+	// 	$args['comment_notes_after'] = '';
+	// 	return $args;
+	// }
 
 }
 
