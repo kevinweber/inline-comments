@@ -595,24 +595,59 @@
    * Prevent users from removing branding
    */
   var displayBranding = function() {
+    var $element = $( classBrandingDot );
 
     // DON'T BE EVIL - IS THIS ACTUALLY WORTH THE EFFORT?
+    
+    if ( $element.length ) {
 
-    $( classBrandingDot ).css({
-      'display': 'block',
-      'visibility': 'visible',
-    });
+      $element.css({
+        'display': 'block',
+        'visibility': 'visible',
+      });
 
-    // Get colour
-    var color = $( classBrandingDot ).css('color');
-    // Remove spaces
-    color = color.replace(/\s/g, '');
-    // Convert to lowercase
-    color = color.toLowerCase();
-    // When transparent: make it white
-    if ( (color === 'rgb(255, 255, 255)' || color === 'white') || color === 'rgba(0,0,0,0)' ) {
-      $( classBrandingDot ).css("cssText", "color: black!important;");
+      // When the opacity/alpha is to low, increase opacity and color it black
+      if ( 
+          ( $element.css( "opacity" ) < 0.2 ) ||
+          ( getAlpha( $element ) < 0.2 )
+        )
+      {
+        $element.css({'color':'rgba(0,0,0,1)'}).fadeTo( "fast", 0.5 );
+      }
+
+      // Get colour
+      var color = $element.css('color');
+      // Test if spaces or tab stops exist
+      if ( /\s/g.test(color) ) {
+        // Remove spaces
+        color = color.replace(/\s/g, '');
+      }
+      // Convert to lowercase
+      color = color.toLowerCase();
+      // When transparent: make it white
+      if ( (color === 'rgb(255,255,255)' || color === 'white') || color === 'rgba(255,255,255,0)' ) {
+        $element.css("cssText", "color: red!important;");
+      }
+
     }
+  };
+
+  /*
+   * Test if element's color contains a RGBA value.
+   * If yes,  @return integer
+   *          else @return 1
+   */
+  var getAlpha = function( element ) {
+    var alpha = 1;
+    var color = element.css( 'color' );
+
+    // Search color value for string "rgba" (case-insensitive)
+    if ( /rgba/i.test( color ) ) {
+      // Get the fourth (alpha) value using string replace
+      alpha = color.replace(/^.*,(.+)\)/,'$1');
+    }
+
+    return alpha;
   };
 
   /*
