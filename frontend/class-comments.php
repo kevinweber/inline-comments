@@ -183,12 +183,12 @@ class INCOM_Comments extends INCOM_Frontend {
 
 		$fields =  array(
 		  'author' =>
-		    '<p class="comment-form-author"><label for="author">' . __( 'Name', 'inline-comments' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
+		    '<p class="comment-form-author"><label for="author">' . esc_html__( 'Name', INCOM_TD ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
 		    '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
 		    '" size="30"' . $aria_req . ' /></p>',
 
 		  'email' =>
-		    '<p class="comment-form-email"><label for="email">' . __( 'Email', 'inline-comments' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
+		    '<p class="comment-form-email"><label for="email">' . esc_html__( 'Email', INCOM_TD ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
 		    '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
 		    '" size="30"' . $aria_req . ' /></p>',
 		);
@@ -196,7 +196,7 @@ class INCOM_Comments extends INCOM_Frontend {
 		if ( get_option( 'incom_field_url' ) !== '1' ) {
 			$fields_url = array(
 			  'url' =>
-			    '<p class="comment-form-url"><label for="url">' . __( 'Website', 'inline-comments' ) . '</label>' .
+			    '<p class="comment-form-url"><label for="url">' . esc_html__( 'Website', INCOM_TD ) . '</label>' .
 			    '<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
 			    '" size="30" /></p>',
 			);
@@ -252,7 +252,7 @@ class INCOM_Comments extends INCOM_Frontend {
 	 */
 	private function loadCancelX() {
 		if ( get_option( 'cancel_x' ) !== '1' ) {
-			return '<a class="incom-cancel incom-cancel-x" href title="'. __($this->loadCancelLinkText) . '">&#10006;</a>';
+			return '<a class="incom-cancel incom-cancel-x" href title="'. esc_html__($this->loadCancelLinkText, INCOM_TD ) . '">&#10006;</a>';
 		}
 	}
 
@@ -261,7 +261,7 @@ class INCOM_Comments extends INCOM_Frontend {
 	 */
 	private function loadCancelLink() {
 		if ( get_option( 'cancel_link' ) !== '1' ) {
-			return '<a class="incom-cancel incom-cancel-link" href title>' . __($this->loadCancelLinkText) . '</a>';
+			return '<a class="incom-cancel incom-cancel-link" href title>' . esc_html__($this->loadCancelLinkText, INCOM_TD ) . '</a>';
 		}
 	}
 

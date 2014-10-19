@@ -14,7 +14,7 @@ function incom_plugin_activation() {
 				<form action="http://kevinw.us2.list-manage.com/subscribe/post?u=f65d804ad274b9c8812b59b4d&amp;id=20c3ab10d8" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 					<div class="mc-field-group">
 						<label for="mce-EMAIL" style="line-height:2.5em">'.INCOM_NEWS_TEXT.'</label><br>
-						<input type="email" value="Enter your email address" name="EMAIL" class="required email" id="mce-EMAIL" onclick="this.focus();this.select()" onfocus="if(this.value == \'\') { this.value = this.defaultValue; }" onblur="if(this.value == \'\') { this.value = this.defaultValue; }">
+						<input type="email" value="'. esc_html__( 'Enter your email address', INCOM_TD ) .'" name="EMAIL" class="required email" id="mce-EMAIL" onclick="this.focus();this.select()" onfocus="if(this.value == \'\') { this.value = this.defaultValue; }" onblur="if(this.value == \'\') { this.value = this.defaultValue; }">
 						<input type="hidden" name="GROUPS" id="GROUPS" value="'.INCOM_VERSION_NAME.'" />
 						<input type="submit" value="'.INCOM_NEWS_BUTTON.'" name="subscribe" id="mc-embedded-subscribe" class="button">
 					</div>
@@ -28,8 +28,8 @@ function incom_plugin_activation() {
 	}
 
 	$notices = get_option( 'incom_deferred_admin_notices', array() );
-	$notices[] = $signup . '<br>Edit your plugin settings: <strong>
-					<a href="options-general.php?page=incom.php">Inline Comments</a>
+	$notices[] = $signup . '<br>'.esc_html__( 'Edit your plugin settings: ', INCOM_TD ).'<strong>
+					<a href="options-general.php?page=incom.php">'.esc_html__( 'Inline Comments', INCOM_TD ).'</a>
 					</strong>';
 				;
 	update_option( 'incom_deferred_admin_notices', $notices );
