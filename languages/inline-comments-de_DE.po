@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Inline Comments 1.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/inline-comments\n"
 "POT-Creation-Date: 2014-10-19 13:29:51+00:00\n"
-"PO-Revision-Date: 2014-10-19 15:31+0100\n"
+"PO-Revision-Date: 2014-10-19 15:33+0100\n"
 "Last-Translator: Kevin Weber <k-iwi@web.de>\n"
 "Language-Team: Kevin Weber <k-iwi@web.de>\n"
 "Language: de_DE\n"
@@ -58,7 +58,7 @@ msgstr "Kommentarsystem"
 
 #: admin/class-admin-options.php:97
 msgid "Updated"
-msgstr "Aktualisiert"
+msgstr "Updated"
 
 #: admin/class-admin-options.php:100
 msgid "WordPress Comments"

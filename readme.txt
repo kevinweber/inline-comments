@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: admin, comment, comments, content, counter, free, integration, jquery, mobile, page, pages, plugin, post, posts, sidebar, wordpress
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.3
+Stable tag: 2.0
 
 Inline Comments adds your comment system to the side of paragraphs and other sections (like headlines and images) of your post.
 
@@ -17,7 +17,7 @@ It performs native with WordPress comments. The comment area is shown when you c
 
 When publishing a comment next to a paragraph, the comment is published in place without a page reload (using Ajax).
 
-Demo and more information on the developer’s website: [kevinw.de/inline-comments](http://kevinw.de/inline-comments)
+Demo and more information on the developer’s website: [kevinw.de/inline-comments/](http://kevinw.de/inline-comments/)
 
 == Installation ==
 
@@ -29,11 +29,12 @@ Demo and more information on the developer’s website: [kevinw.de/inline-commen
 
 = Why should I use Inline Comments? =
 * Inline Comments are an innovative approach on how to display comments.
-* It’s simply different from „traditional“ comments you see on every website.
+* It's different from "traditional" comments you see on every website.
 * Commentators can better refer to specific paragraphs/statements in an article.
 * Readers can comment while reading (and don’t have to scroll to the very bottom).
+* Readers can even reply to inline comments directly and discuss existing annotations.
 
-Demo and get more information on the developer’s website: [kevinw.de/inline-comments](http://kevinw.de/inline-comments)
+Demo and more information on the developer’s website: [kevinw.de/inline-comments/](http://kevinw.de/inline-comments/)
 
 = How can I change the formatting of the commentator’s currently selected section? =
 For comment system "WordPress Comments", use custom CSS like this: 
@@ -45,12 +46,13 @@ For comment system "WordPress Comments", use custom CSS like this:
 
 == Changelog ==
 
-= 1.3 =
+= 2.0 =
 * MILESTONE, new feature: Reply to inline comments (this feature is compatible with WP-Ajaxify-Comments).
 * Removed Disqus integration.
+* It's translatable! A German translation comes with this update ("Inline-Kommentare", de_DE).
 * New feature: Display avatars.
 * New feature: Insert HTML above the list of comments.
-* New feature: Remove form field "Website”.
+* New feature: Remove form field "Website".
 * Improvement/fix: Use the first five letters to create the data-incom attribute (instead of just one letter) and, additionally, ensure that no two elements with the same value exist. Else it happens that one comment is displayed next to two different headings, like next to h1 and h2. (Now a comment will be assigned either to h1 or h2.) This improvement removes existing comments that have been assigned to headings from being displayed inline.
 * Improved look of permalink icons.
 * Improved usability for admins: Change URL when tab is switched. Now you can send URLs that directly load a specific tab on your options page
@@ -90,7 +92,8 @@ For comment system "WordPress Comments", use custom CSS like this:
 
 = 1.3 =
 * Disqus integration is no longer supported, but you can still use the previous versions  1.2 or below from https://wordpress.org/plugins/inline-comments/developers/.
-* Inline comments that were assigned to a div or heading (and a few other elements) before this update will not be linked to that element anymore. However, those comments are not lost - they are still visible within the regular comment section. This bugfix ensures that there are no longer two or more different headings display the same comment section.
+* Inline comments that were assigned to a div or heading (and a few other elements) before this update will not be linked to that element anymore. However, those comments are not lost - they are still visible within the regular comment section. This bugfix ensures that there are no longer two or more different headings that display the same comments.
+* A German translation (de_DE) comes with this update.
 
 = 1.2 =
 * Check your settings and how your inline comments look. This update comes with some style update. IMPORTANT: When you call your site the first time after the update, clear your browser’s cache and reload the page with “F5” to ensure that the current stylesheets are actually loaded. If you’re using a caching plugin, clear it’s cache, too.
