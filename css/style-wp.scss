@@ -117,6 +117,12 @@ $vcard-image-size: 15px;
     float: right;
     margin-top: -4px;
     padding-right: 9px;
+    img {
+      opacity: 0.3;
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
   .comment-reply-title {
     small {
@@ -139,12 +145,6 @@ $vcard-image-size: 15px;
   #respond form input[type="email"], #respond form input[type="text"], #respond form input[type="url"] {
     width: 100%;
     max-width: 100%;
-  }
-  img {
-    opacity: 0.3;
-    &:hover {
-      opacity: 1;
-    }
   }
   #respond.comment-respond {
     margin-top: 0;
