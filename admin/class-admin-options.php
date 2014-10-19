@@ -100,7 +100,7 @@ class INCOM_Admin_Options {
 										<option value="wp"<?php if (get_option('select_comment_type') === 'wp') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'WordPress Comments', INCOM_TD ); ?></option>
 									</select>
 									<span><br>
-										<span style="color:#f60;">Notice:</span>Disqus integration is no longer supported, but you can still use the previous versions 1.2 or below from <a href="https://wordpress.org/plugins/inline-comments/developers/" target="_blank" title="Inline Comments for Developers">here</a>. This update makes Inline Comments even more lightweight and allows to simplify this options page.</span>
+										<span style="color:#f60;">Notice:</span> Disqus integration is no longer supported, but you can still use the previous versions 1.2 or below from <a href="https://wordpress.org/plugins/inline-comments/developers/" target="_blank" title="Inline Comments for Developers">here</a>. This update makes Inline Comments even more lightweight and allows to simplify this options page.</span>
 									</span>
 						        </td>
 					        </tr>
@@ -114,7 +114,13 @@ class INCOM_Admin_Options {
 					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Use Ajaxify (no page reload)', INCOM_TD ); ?><br><span class="description thin"><?php esc_html_e( 'Requires', INCOM_TD ); ?> <a href="http://wordpress.org/extend/plugins/wp-ajaxify-comments/" title="WP-Ajaxify-Comments" target="_blank"><?php esc_html_e( 'that plugin', INCOM_TD ); ?></a>.</th>
 						        <td>
-									<input name="<?php echo INCOM_OPTION_KEY; ?>_support_for_ajaxify_comments" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_support_for_ajaxify_comments' ) ); ?> /><span>Empower <a href="http://wordpress.org/extend/plugins/wp-ajaxify-comments/" title="WP-Ajaxify-Comments" target="_blank">WP-Ajaxify-Comments</a> (version 0.24.0 or higher) to add Ajax functionality to Inline Comments and improve the user experience: Your page will not reload after a comment is submitted. <b>Recommended.</b></span>
+									<input name="<?php echo INCOM_OPTION_KEY; ?>_support_for_ajaxify_comments" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_support_for_ajaxify_comments' ) ); ?> />
+
+									<span><?php
+									printf( esc_html__( 'Empower %1$sWP-Ajaxify-Comments%2$s (version 0.24.0 or higher) to add Ajax functionality to Inline Comments and improve the user experience: Your page will not reload after a comment is submitted.', INCOM_TD ),
+										'<a href="http://wordpress.org/extend/plugins/wp-ajaxify-comments/" title="WP-Ajaxify-Comments" target="_blank">',
+										'</a>'
+									); ?> <b><?php esc_html_e( 'Recommended.', INCOM_TD ); ?></b></span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
@@ -157,7 +163,11 @@ class INCOM_Admin_Options {
 					        			<?php esc_html_e( 'For example:', INCOM_TD ); ?><br>
 					        			<i>.incom-bubble-dynamic a.incom-bubble-link { color: red; }</i><br>
 					        			<i>.incom-active { background: #f3f3f3; }</i><br>
-					        			(You don't know CSS? Try the <a href="http://kevinw.de/css-tutorial" target="_blank" title="CSS Tutorial on W3Schools">CSS Tutorial</a> on W3Schools.)
+										<?php printf( esc_html__( '(You don\'t know CSS? Try the %1$shttp://kevinw.de/css-tutorial%2$sCSS Tutorial%3$s on W3Schools.)', INCOM_TD ),
+											'<a href="',
+											'" target="_blank">',
+											'</a>'
+										); ?>
 					        		</span>
 					        	</td>
 					        </tr>
@@ -289,7 +299,15 @@ class INCOM_Admin_Options {
 		        	<p><a href="http://kevinw.de/ic" target="_blank">Kevin Weber</a> &ndash; <?php esc_html_e( 'that\'s me.', INCOM_TD ); ?><br>
 		        	<?php esc_html_e( 'I\'m the developer of this plugin. Love it!', INCOM_TD ); ?></p></td>
 			        <td>
-						<p><b><?php esc_html_e( 'It\'s free!', INCOM_TD ); ?></b> Support me with <a href="http://kevinw.de/donate/InlineComments/" title="Pay me a delicious lunch" target="_blank">a delicious lunch</a> or give this plugin a 5 star rating <a href="http://wordpress.org/support/view/plugin-reviews/inline-comments?filter=5" title="Vote for Inline Comments" target="_blank">on WordPress.org</a>.</p>
+						<p>
+							<b><?php esc_html_e( 'It\'s free!', INCOM_TD ); ?></b> 
+							<?php printf( esc_html__( 'Support me with %1$sa delicious lunch%2$s or give this plugin a 5 star rating %3$son WordPress.org%4$s.', INCOM_TD ),
+								'<a href="http://kevinw.de/donate/InlineComments/" title="Pay me a delicious lunch" target="_blank">',
+								'</a>',
+								'<a href="http://wordpress.org/support/view/plugin-reviews/inline-comments?filter=5" title="Vote for Inline Comments" target="_blank">',
+								'</a>'
+							); ?>
+						</p>
 			        </td>       
 		        <td style="width:300px;">
 					<p>
