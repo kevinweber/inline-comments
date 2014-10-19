@@ -54,6 +54,12 @@ class INCOM_No_Premium_Admin_Options {
 				        </td>
 			        </tr>
 			        <tr valign="top">
+			        	<th scope="row">Lifetime updates<br><span class="description thin">Enjoy all coming features!</span></th>
+				        <td>
+							<span>No matter what comes next: Once you've bought premium, you're going to get every new feature for free. What do you think of social logins (Twitter, Facebook) or Inline Comments for Editors?</span>
+				        </td>
+			        </tr>
+			        <tr valign="top">
 			        	<th scope="row">Push development</th>
 				        <td>
 							<span>This plugin does not anywhere near compensate my month-long time efforts financially. WordPress development is a hobby of mine and allows me to experiment. With your purchase, you sponsor me to spend at least a bit more time to enhance Inline Comments.</span>
@@ -63,12 +69,6 @@ class INCOM_No_Premium_Admin_Options {
 			        	<th scope="row">Request features</th>
 				        <td>
 							<span>I'm going to develop your feature request with priority (but no guarantee).</span>
-				        </td>
-			        </tr>
-			        <tr valign="top">
-			        	<th scope="row">Enjoy coming features<br><span class="description thin">with free lifetime updates!</span></th>
-				        <td>
-							<span>No matter what comes next: Once you've bought premium, you're going to get every new feature for free. What do you think of social logins (Twitter, Facebook) or Inline Comments for Editors?</span>
 				        </td>
 			        </tr>
 			        <tr valign="top">
