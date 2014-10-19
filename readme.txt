@@ -46,6 +46,9 @@ For comment system "WordPress Comments", use custom CSS like this:
 
 == Changelog ==
 
+= 2.0.1 =
+* Renamed functions.php to inline-comments.php
+
 = 2.0 =
 * MILESTONE, new feature: Reply to inline comments (this feature is compatible with WP-Ajaxify-Comments).
 * Removed Disqus integration.
@@ -90,7 +93,8 @@ For comment system "WordPress Comments", use custom CSS like this:
 
 == Upgrade Notice ==
 
-= 1.3 =
+= 2.0.1 =
+* I renamed functions.php to inline-comments.php. This causes your plugin to be deactivated. Simply activate it again and everything works fine.
 * Disqus integration is no longer supported, but you can still use the previous versions  1.2 or below from https://wordpress.org/plugins/inline-comments/developers/.
 * Inline comments that were assigned to a div or heading (and a few other elements) before this update will not be linked to that element anymore. However, those comments are not lost - they are still visible within the regular comment section. This bugfix ensures that there are no longer two or more different headings that display the same comments.
 * A German translation (de_DE) comes with this update.
