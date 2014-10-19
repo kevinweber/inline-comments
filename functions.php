@@ -8,6 +8,7 @@
  * Author URI: http://kevinw.de/
  * License: GPL v3
  * Text Domain: inline-comments
+ * Domain Path: /languages
 */
 
 if ( !defined( 'INCOM_VERSION' ) ) {
@@ -24,6 +25,10 @@ if ( !defined( 'INCOM_ESSENTIAL' ) ) {
 
 if ( !defined( 'INCOM_OPTION_KEY' ) ) {
 	define( 'INCOM_OPTION_KEY', 'incom' ); // used to save options in version >= 0.9.0
+}
+
+if ( !defined( 'INCOM_TD' ) ) {
+	define( 'INCOM_TD', 'inline-comments' ); // = text domain (used for translations)
 }
 
 if ( !defined( 'INCOM_FILE' ) ) {
