@@ -55,6 +55,8 @@
 			var selectByAtt = \'[\' + attDataIncomComment + \'=\' + attFromSource + \']\';
 			jQuery( selectByAtt + \', \' + selectByAtt + \' .children li\' ).show();
 
+			// Add class that indicates the newest submitted comment
+			idNewComment.addClass("incom-comment-newest");
 
 			// Add a hidden input field in order to assign a comment to a specific section when he is submitted
 			var $attDataIncomValue = jQuery( classActiveDot ).attr( attDataIncom );

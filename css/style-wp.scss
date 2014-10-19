@@ -7,6 +7,7 @@ $bubble-margin-left: 10px;
 
 $black: #000;
 $grey_light: #f3f3f3;
+$grey_lighter: #f6f6f6;
 $z-index-base: 2;
 
 $vcard-image-size: 15px;
@@ -153,6 +154,9 @@ $vcard-image-size: 15px;
     .comment-reply-title, .logged-in-as, .comment-notes {
       display: none;
     }
+  }
+  .incom-comment-newest {
+    background: $grey_lighter;
   }
 }
 .incom-info-icon {
