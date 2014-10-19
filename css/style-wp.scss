@@ -156,6 +156,7 @@ $vcard-image-size: 15px;
     }
   }
   .incom-comment-newest {
+    @include vendor-prefix( transition, background-color 2s ease 0.5s );
     background: $grey_lighter;
   }
 }
