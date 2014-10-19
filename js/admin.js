@@ -7,7 +7,6 @@
   var init = function() {
     handleTabs();
     addColourPicker();
-
   };
 
   /*

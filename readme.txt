@@ -107,9 +107,6 @@ For comment system "WordPress Comments", use custom CSS like this:
 
 == Screenshots ==
 
-1. Screenshot of a site that uses Inline Comments.
-2. Comment count bubble on the right (visible when hovering the heading, requires custom selector "h1").
-3. Comment area - visible after clicking on the bubble.
-4. Comment area with option "Highlighting" enabled.
-5. Options panel for admins “Basics” (version 1.0).
-6. Options panel for admins “Styling” (version 1.0).
+1. Screenshot of a site that uses Inline Comments. The user has hovered the first paragraph.
+2. Comments view. The user has clicked on the bubble.
+3. Admin backend with many options for customisation.
