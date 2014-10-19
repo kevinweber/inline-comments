@@ -4,13 +4,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Inline Comments 1.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/inline-comments\n"
-"POT-Creation-Date: 2014-10-19 03:40:46+00:00\n"
+"POT-Creation-Date: 2014-10-19 13:29:51+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Kevin Weber <k-iwi@web.de>\n"
+"Language-Team: Kevin Weber <k-iwi@web.de>\n"
 
 #: admin/class-admin-options.php:28
 msgid "Settings"
@@ -29,11 +29,15 @@ msgstr ""
 msgid "Version"
 msgstr ""
 
+#: admin/class-admin-options.php:76
+msgid "&hellip; revolutionise the way we comment online!"
+msgstr ""
+
 #: admin/class-admin-options.php:80
 msgid "Basics"
 msgstr ""
 
-#: admin/class-admin-options.php:81 admin/class-admin-options.php:148
+#: admin/class-admin-options.php:81 admin/class-admin-options.php:161
 msgid "Styling"
 msgstr ""
 
@@ -85,224 +89,244 @@ msgstr ""
 msgid "Use Ajaxify (no page reload)"
 msgstr ""
 
-#: admin/class-admin-options.php:115
-msgid "Requires"
-msgstr ""
-
-#: admin/class-admin-options.php:115
-msgid "that plugin"
-msgstr ""
-
-#: admin/class-admin-options.php:121
-msgid "Enable Inline Replies"
-msgstr ""
-
-#: admin/class-admin-options.php:121 admin/class-admin-options.php:172
-#: admin/class-admin-options.php:218 admin/class-admin-options.php:254
-msgid "New!"
-msgstr ""
-
-#: admin/class-admin-options.php:123
-msgid "If checked, a reply link will be added below each inline comment and users can reply directly."
+#: admin/class-admin-options.php:117
+msgid "Requires %1$sthat plugin%2$s."
 msgstr ""
 
 #: admin/class-admin-options.php:127
-msgid "\"Slide Site\" Selector"
+msgid "Empower %1$sWP-Ajaxify-Comments%2$s (version 0.24.0 or higher) to add Ajax functionality to Inline Comments and improve the user experience: Your page will not reload after a comment is submitted."
 msgstr ""
 
-#: admin/class-admin-options.php:135
-msgid "This selector defines which content should slide left/right when the user clicks on a bubble. This setting depends on your theme's structure."
+#: admin/class-admin-options.php:130
+msgid "Recommended."
 msgstr ""
 
-#: admin/class-admin-options.php:135
-msgid "Default is"
+#: admin/class-admin-options.php:134
+msgid "Enable Inline Replies"
+msgstr ""
+
+#: admin/class-admin-options.php:134 admin/class-admin-options.php:189
+#: admin/class-admin-options.php:235 admin/class-admin-options.php:271
+msgid "New!"
 msgstr ""
 
 #: admin/class-admin-options.php:136
+msgid "If checked, a reply link will be added below each inline comment and users can reply directly."
+msgstr ""
+
+#: admin/class-admin-options.php:140
+msgid "\"Slide Site\" Selector"
+msgstr ""
+
+#: admin/class-admin-options.php:148
+msgid "This selector defines which content should slide left/right when the user clicks on a bubble. This setting depends on your theme's structure."
+msgstr ""
+
+#: admin/class-admin-options.php:148
+msgid "Default is"
+msgstr ""
+
+#: admin/class-admin-options.php:149
 msgid "You might try one of these selectors:"
 msgstr ""
 
-#: admin/class-admin-options.php:153
+#: admin/class-admin-options.php:166
 msgid "Custom CSS"
 msgstr ""
 
-#: admin/class-admin-options.php:153
+#: admin/class-admin-options.php:166
 msgid "Add additional CSS. This should override any other stylesheets."
 msgstr ""
 
-#: admin/class-admin-options.php:157
+#: admin/class-admin-options.php:170
 msgid "For example:"
 msgstr ""
 
-#: admin/class-admin-options.php:165
-msgid "Position"
-msgstr ""
-
-#: admin/class-admin-options.php:167
-msgid "Left"
-msgstr ""
-
-#: admin/class-admin-options.php:168
-msgid "Right"
-msgstr ""
-
-#: admin/class-admin-options.php:172
-msgid "Display Avatars"
-msgstr ""
-
-#: admin/class-admin-options.php:174
-msgid "If checked, avatars will be displayed next to each comment."
-msgstr ""
-
-#: admin/class-admin-options.php:175
-msgid "Define avatar size (in px). Insert an integer higher than 0."
-msgstr ""
-
-#: admin/class-admin-options.php:179
-msgid "Bubble Style"
+#: admin/class-admin-options.php:173
+msgid "(You don't know CSS? Try the %1$shttp://kevinw.de/css-tutorial%2$sCSS Tutorial%3$s on W3Schools.)"
 msgstr ""
 
 #: admin/class-admin-options.php:182
+msgid "Position"
+msgstr ""
+
+#: admin/class-admin-options.php:184
+msgid "Left"
+msgstr ""
+
+#: admin/class-admin-options.php:185
+msgid "Right"
+msgstr ""
+
+#: admin/class-admin-options.php:189
+msgid "Display Avatars"
+msgstr ""
+
+#: admin/class-admin-options.php:189
+msgid "next to each comment"
+msgstr ""
+
+#: admin/class-admin-options.php:191
+msgid "If checked, avatars will be displayed next to each comment."
+msgstr ""
+
+#: admin/class-admin-options.php:192
+msgid "Define avatar size (in px). Insert an integer higher than 0."
+msgstr ""
+
+#: admin/class-admin-options.php:196
+msgid "Bubble Style"
+msgstr ""
+
+#: admin/class-admin-options.php:196
+msgid "for sections with no comments yet"
+msgstr ""
+
+#: admin/class-admin-options.php:199
 msgid "Bubble"
 msgstr ""
 
-#: admin/class-admin-options.php:183
+#: admin/class-admin-options.php:200
 msgid "Plain +"
 msgstr ""
 
-#: admin/class-admin-options.php:188
+#: admin/class-admin-options.php:205
 msgid "Background Colour"
 msgstr ""
 
-#: admin/class-admin-options.php:188 admin/class-admin-options.php:195
+#: admin/class-admin-options.php:205 admin/class-admin-options.php:212
 msgid "for comment threads"
 msgstr ""
 
-#: admin/class-admin-options.php:195
+#: admin/class-admin-options.php:212
 msgid "Background Opacity"
 msgstr ""
 
-#: admin/class-admin-options.php:197
+#: admin/class-admin-options.php:214
 msgid "Insert a value from 0 to 1 where \"1\" means maximum covering power. Insert 0.7 to make the opacity 70%."
 msgstr ""
 
-#: admin/class-admin-options.php:201
+#: admin/class-admin-options.php:218
 msgid "Hide Static Bubbles"
 msgstr ""
 
-#: admin/class-admin-options.php:203
+#: admin/class-admin-options.php:220
 msgid "This checkbox only affects bubbles that indicate a paragraph/element with at least one comment. If checked, the comment count bubbles will only be visible when the user hovers the specific paragraph. (By default, bubbles that indicate at least one comment are always visible.)"
 msgstr ""
 
-#: admin/class-admin-options.php:213
+#: admin/class-admin-options.php:230
 msgid "Advanced Settings"
 msgstr ""
 
-#: admin/class-admin-options.php:218
+#: admin/class-admin-options.php:235
 msgid "Content Before"
 msgstr ""
 
-#: admin/class-admin-options.php:218
+#: admin/class-admin-options.php:235
 msgid "Insert HTML above the list of comments"
 msgstr ""
 
-#: admin/class-admin-options.php:224
+#: admin/class-admin-options.php:241
 msgid "Bubble Fade In"
 msgstr ""
 
-#: admin/class-admin-options.php:227 admin/class-admin-options.php:236
+#: admin/class-admin-options.php:244 admin/class-admin-options.php:253
 msgid "No animation"
 msgstr ""
 
-#: admin/class-admin-options.php:228 admin/class-admin-options.php:237
+#: admin/class-admin-options.php:245 admin/class-admin-options.php:254
 msgid "Basic animation"
 msgstr ""
 
-#: admin/class-admin-options.php:233
+#: admin/class-admin-options.php:250
 msgid "Bubble Fade Out"
 msgstr ""
 
-#: admin/class-admin-options.php:242
+#: admin/class-admin-options.php:259
 msgid "Remove Closing \"x\""
 msgstr ""
 
-#: admin/class-admin-options.php:244
+#: admin/class-admin-options.php:261
 msgid "If checked, the \"x\" at the right top of the comments wrapper will not be displayed."
 msgstr ""
 
-#: admin/class-admin-options.php:248
+#: admin/class-admin-options.php:265
 msgid "Remove Permalinks"
 msgstr ""
 
-#: admin/class-admin-options.php:250
+#: admin/class-admin-options.php:267
 msgid "If checked, the permalink icon next to each comment will not be displayed."
 msgstr ""
 
-#: admin/class-admin-options.php:254
+#: admin/class-admin-options.php:271
 msgid "Remove Field \"Website\""
 msgstr ""
 
-#: admin/class-admin-options.php:256
+#: admin/class-admin-options.php:273
 msgid "If checked, users cannot submit an URL/Website when they comment inline."
 msgstr ""
 
-#: admin/class-admin-options.php:260
+#: admin/class-admin-options.php:277
 msgid "Remove Link \"Cancel\""
 msgstr ""
 
-#: admin/class-admin-options.php:262
+#: admin/class-admin-options.php:279
 msgid "If checked, the \"cancel\" link at the left bottom of the comments wrapper will not be displayed."
 msgstr ""
 
-#: admin/class-admin-options.php:266
+#: admin/class-admin-options.php:283
 msgid "Always Display Bubbles"
 msgstr ""
 
-#: admin/class-admin-options.php:268
+#: admin/class-admin-options.php:285
 msgid "If checked, the comment count bubbles will always be visible (and not only on hover). Bubbles will not fade."
 msgstr ""
 
-#: admin/class-admin-options.php:289
+#: admin/class-admin-options.php:306
 msgid "that's me."
 msgstr ""
 
-#: admin/class-admin-options.php:290
+#: admin/class-admin-options.php:307
 msgid "I'm the developer of this plugin. Love it!"
 msgstr ""
 
-#: admin/class-admin-options.php:292
+#: admin/class-admin-options.php:310
 msgid "It's free!"
 msgstr ""
 
-#: admin/class-admin-options.php:296
+#: admin/class-admin-options.php:311
+msgid "Support me with %1$sa delicious lunch%2$s or give this plugin a 5 star rating %3$son WordPress.org%4$s."
+msgstr ""
+
+#: admin/class-admin-options.php:321
 msgid "Personal tip: Must use plugins"
 msgstr ""
 
-#: admin/class-admin-options.php:298
+#: admin/class-admin-options.php:323
 msgid "Lazy Load for Videos"
 msgstr ""
 
-#: admin/class-admin-options.php:298 admin/class-admin-options.php:300
+#: admin/class-admin-options.php:323 admin/class-admin-options.php:325
 msgid "(on my part)"
 msgstr ""
 
-#: admin/class-admin-options.php:299
+#: admin/class-admin-options.php:324
 msgid "WordPress SEO"
 msgstr ""
 
-#: admin/class-admin-options.php:299
+#: admin/class-admin-options.php:324
 msgid "(by Yoast)"
 msgstr ""
 
-#: admin/class-admin-options.php:300
+#: admin/class-admin-options.php:325
 msgid "wBounce"
 msgstr ""
 
-#: admin/class-admin-options.php:301
+#: admin/class-admin-options.php:326
 msgid "Broken Link Checker"
 msgstr ""
 
-#: admin/class-admin-options.php:301
+#: admin/class-admin-options.php:326
 msgid "(by Janis Elsts)"
 msgstr ""
 

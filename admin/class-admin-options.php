@@ -112,7 +112,14 @@ class INCOM_Admin_Options {
 					        	</td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><?php esc_html_e( 'Use Ajaxify (no page reload)', INCOM_TD ); ?><br><span class="description thin"><?php esc_html_e( 'Requires', INCOM_TD ); ?> <a href="http://wordpress.org/extend/plugins/wp-ajaxify-comments/" title="WP-Ajaxify-Comments" target="_blank"><?php esc_html_e( 'that plugin', INCOM_TD ); ?></a>.</th>
+					        	<th scope="row"><?php esc_html_e( 'Use Ajaxify (no page reload)', INCOM_TD ); ?><br>
+						        	<span class="description thin">
+										<?php printf( esc_html__( 'Requires %1$sthat plugin%2$s.', INCOM_TD ),
+											'<a href="http://wordpress.org/extend/plugins/wp-ajaxify-comments/" title="WP-Ajaxify-Comments" target="_blank">',
+											'</a>'
+										); ?>
+									</span>
+					        	</th>
 						        <td>
 									<input name="<?php echo INCOM_OPTION_KEY; ?>_support_for_ajaxify_comments" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_support_for_ajaxify_comments' ) ); ?> />
 
@@ -179,14 +186,14 @@ class INCOM_Admin_Options {
 							    </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><?php esc_html_e( 'Display Avatars', INCOM_TD ); ?><span class="newred"><?php esc_html_e( 'New!', INCOM_TD ); ?></span><br><span class="description thin">next to each comment</span></th>
+					        	<th scope="row"><?php esc_html_e( 'Display Avatars', INCOM_TD ); ?><span class="newred"><?php esc_html_e( 'New!', INCOM_TD ); ?></span><br><span class="description thin"><?php esc_html_e( 'next to each comment', INCOM_TD ); ?></span></th>
 						        <td>
 									<input name="<?php echo INCOM_OPTION_KEY; ?>_avatars_display" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_avatars_display' ) ); ?> /><span><?php esc_html_e( 'If checked, avatars will be displayed next to each comment.', INCOM_TD ); ?></span><br><br>
 						        	<input type="number" name="<?php echo INCOM_OPTION_KEY; ?>_avatars_size" placeholder="15" value="<?php echo get_option( INCOM_OPTION_KEY.'_avatars_size' ); ?>" /><span><?php esc_html_e( 'Define avatar size (in px). Insert an integer higher than 0.', INCOM_TD ); ?></span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><?php esc_html_e( 'Bubble Style', INCOM_TD ); ?> <span class="description thin"><br>for sections with no comments yet</span></th>
+					        	<th scope="row"><?php esc_html_e( 'Bubble Style', INCOM_TD ); ?> <span class="description thin"><br><?php esc_html_e( 'for sections with no comments yet', INCOM_TD ); ?></span></th>
 						        <td>
 									<select class="select" typle="select" name="select_bubble_style">
 										<option value="bubble"<?php if (get_option('select_bubble_style') === 'bubble') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Bubble', INCOM_TD ); ?></option>
