@@ -100,7 +100,7 @@ class INCOM_Admin_Options {
 										<option value="wp"<?php if (get_option('select_comment_type') === 'wp') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'WordPress Comments', INCOM_TD ); ?></option>
 									</select>
 									<span><br>
-										<span style="color:#f60;">Notice:</span> Disqus integration is no longer supported, but you can still use the previous versions 1.2 or below from <a href="https://wordpress.org/plugins/inline-comments/developers/" target="_blank" title="Inline Comments for Developers">here</a>. This update makes Inline Comments even more lightweight and allows to simplify this options page.</span>
+										<span style="color:#f60;">Notice:</span>Disqus integration is no longer supported, but you can still use the previous versions 1.2 or below from <a href="https://wordpress.org/plugins/inline-comments/developers/" target="_blank" title="Inline Comments for Developers">here</a>. This update makes Inline Comments even more lightweight and allows to simplify this options page.</span>
 									</span>
 						        </td>
 					        </tr>
@@ -114,13 +114,13 @@ class INCOM_Admin_Options {
 					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Use Ajaxify (no page reload)', INCOM_TD ); ?><br><span class="description thin"><?php esc_html_e( 'Requires', INCOM_TD ); ?> <a href="http://wordpress.org/extend/plugins/wp-ajaxify-comments/" title="WP-Ajaxify-Comments" target="_blank"><?php esc_html_e( 'that plugin', INCOM_TD ); ?></a>.</th>
 						        <td>
-									<input name="<?php echo INCOM_OPTION_KEY; ?>_support_for_ajaxify_comments" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_support_for_ajaxify_comments' ) ); ?> /> <span>Empower <a href="http://wordpress.org/extend/plugins/wp-ajaxify-comments/" title="WP-Ajaxify-Comments" target="_blank">WP-Ajaxify-Comments</a> (version 0.24.0 or higher) to add Ajax functionality to Inline Comments and improve the user experience: Your page will not reload after a comment is submitted. <b>Recommended.</b></span>
+									<input name="<?php echo INCOM_OPTION_KEY; ?>_support_for_ajaxify_comments" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_support_for_ajaxify_comments' ) ); ?> /><span>Empower <a href="http://wordpress.org/extend/plugins/wp-ajaxify-comments/" title="WP-Ajaxify-Comments" target="_blank">WP-Ajaxify-Comments</a> (version 0.24.0 or higher) to add Ajax functionality to Inline Comments and improve the user experience: Your page will not reload after a comment is submitted. <b>Recommended.</b></span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Enable Inline Replies', INCOM_TD ); ?> <span class="newred"><?php esc_html_e( 'New!', INCOM_TD ); ?></span></th>
 						        <td>
-									<input name="incom_reply" type="checkbox" value="1" <?php checked( '1', get_option( 'incom_reply' ) ); ?> /> <span><?php esc_html_e( 'If checked, a reply link will be added below each inline comment and users can reply directly.', INCOM_TD ); ?></span>
+									<input name="incom_reply" type="checkbox" value="1" <?php checked( '1', get_option( 'incom_reply' ) ); ?> /><span><?php esc_html_e( 'If checked, a reply link will be added below each inline comment and users can reply directly.', INCOM_TD ); ?></span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
@@ -171,8 +171,8 @@ class INCOM_Admin_Options {
 					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Display Avatars', INCOM_TD ); ?><span class="newred"><?php esc_html_e( 'New!', INCOM_TD ); ?></span><br><span class="description thin">next to each comment</span></th>
 						        <td>
-									<input name="<?php echo INCOM_OPTION_KEY; ?>_avatars_display" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_avatars_display' ) ); ?> /> <span><?php esc_html_e( 'If checked, avatars will be displayed next to each comment.', INCOM_TD ); ?></span><br><br>
-						        	<input type="number" name="<?php echo INCOM_OPTION_KEY; ?>_avatars_size" placeholder="15" value="<?php echo get_option( INCOM_OPTION_KEY.'_avatars_size' ); ?>" /> <span><?php esc_html_e( 'Define avatar size (in px). Insert an integer higher than 0.', INCOM_TD ); ?></span>
+									<input name="<?php echo INCOM_OPTION_KEY; ?>_avatars_display" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_avatars_display' ) ); ?> /><span><?php esc_html_e( 'If checked, avatars will be displayed next to each comment.', INCOM_TD ); ?></span><br><br>
+						        	<input type="number" name="<?php echo INCOM_OPTION_KEY; ?>_avatars_size" placeholder="15" value="<?php echo get_option( INCOM_OPTION_KEY.'_avatars_size' ); ?>" /><span><?php esc_html_e( 'Define avatar size (in px). Insert an integer higher than 0.', INCOM_TD ); ?></span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
@@ -200,7 +200,7 @@ class INCOM_Admin_Options {
 					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Hide Static Bubbles', INCOM_TD ); ?></th>
 						        <td>
-									<input name="bubble_static" type="checkbox" value="1" <?php checked( '1', get_option( 'bubble_static' ) ); ?> /> <span><?php esc_html_e( 'This checkbox only affects bubbles that indicate a paragraph/element with at least one comment. If checked, the comment count bubbles will only be visible when the user hovers the specific paragraph. (By default, bubbles that indicate at least one comment are always visible.)', INCOM_TD ); ?></span>
+									<input name="bubble_static" type="checkbox" value="1" <?php checked( '1', get_option( 'bubble_static' ) ); ?> /><span><?php esc_html_e( 'This checkbox only affects bubbles that indicate a paragraph/element with at least one comment. If checked, the comment count bubbles will only be visible when the user hovers the specific paragraph. (By default, bubbles that indicate at least one comment are always visible.)', INCOM_TD ); ?></span>
 						        </td>
 					        </tr>
 				        </tbody>
@@ -241,31 +241,31 @@ class INCOM_Admin_Options {
 					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Remove Closing "x"', INCOM_TD ); ?></th>
 						        <td>
-									<input name="cancel_x" type="checkbox" value="1" <?php checked( '1', get_option( 'cancel_x' ) ); ?> /> <span><?php esc_html_e( 'If checked, the "x" at the right top of the comments wrapper will not be displayed.', INCOM_TD ); ?></span>
+									<input name="cancel_x" type="checkbox" value="1" <?php checked( '1', get_option( 'cancel_x' ) ); ?> /><span><?php esc_html_e( 'If checked, the "x" at the right top of the comments wrapper will not be displayed.', INCOM_TD ); ?></span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Remove Permalinks', INCOM_TD ); ?></th>
 						        <td>
-									<input name="comment_permalink" type="checkbox" value="1" <?php checked( '1', get_option( 'comment_permalink' ) ); ?> /> <span><?php esc_html_e( 'If checked, the permalink icon next to each comment will not be displayed.', INCOM_TD ); ?></span>
+									<input name="comment_permalink" type="checkbox" value="1" <?php checked( '1', get_option( 'comment_permalink' ) ); ?> /><span><?php esc_html_e( 'If checked, the permalink icon next to each comment will not be displayed.', INCOM_TD ); ?></span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Remove Field "Website"', INCOM_TD ); ?> <span class="newred"><?php esc_html_e( 'New!', INCOM_TD ); ?></span></th>
 						        <td>
-									<input name="incom_field_url" type="checkbox" value="1" <?php checked( '1', get_option( 'incom_field_url' ) ); ?> /> <span><?php esc_html_e( 'If checked, users cannot submit an URL/Website when they comment inline.', INCOM_TD ); ?></span>
+									<input name="incom_field_url" type="checkbox" value="1" <?php checked( '1', get_option( 'incom_field_url' ) ); ?> /><span><?php esc_html_e( 'If checked, users cannot submit an URL/Website when they comment inline.', INCOM_TD ); ?></span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Remove Link "Cancel"', INCOM_TD ); ?></th>
 						        <td>
-									<input name="cancel_link" type="checkbox" value="1" <?php checked( '1', get_option( 'cancel_link' ) ); ?> /> <span><?php esc_html_e( 'If checked, the "cancel" link at the left bottom of the comments wrapper will not be displayed.', INCOM_TD ); ?></span>
+									<input name="cancel_link" type="checkbox" value="1" <?php checked( '1', get_option( 'cancel_link' ) ); ?> /><span><?php esc_html_e( 'If checked, the "cancel" link at the left bottom of the comments wrapper will not be displayed.', INCOM_TD ); ?></span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Always Display Bubbles', INCOM_TD ); ?></th>
 						        <td>
-									<input name="bubble_static_always" type="checkbox" value="1" <?php checked( '1', get_option( 'bubble_static_always' ) ); ?> /> <span><?php esc_html_e( 'If checked, the comment count bubbles will always be visible (and not only on hover). Bubbles will not fade.', INCOM_TD ); ?></span>
+									<input name="bubble_static_always" type="checkbox" value="1" <?php checked( '1', get_option( 'bubble_static_always' ) ); ?> /><span><?php esc_html_e( 'If checked, the comment count bubbles will always be visible (and not only on hover). Bubbles will not fade.', INCOM_TD ); ?></span>
 						        </td>
 					        </tr>
 					    </tbody>
