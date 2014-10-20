@@ -149,7 +149,7 @@ class INCOM_Comments extends INCOM_Frontend {
 	/**
 	 * Load comment form
 	 */
-	private function loadCommentForm() {
+	function loadCommentForm() {
 		$user = wp_get_current_user();
 		$user_identity = $user->exists() ? $user->display_name : '';
 
