@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: admin, comment, comments, content, counter, free, integration, jquery, mobile, page, pages, plugin, post, posts, sidebar, wordpress
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 
 Inline Comments adds your comment system to the side of paragraphs and other sections (like headlines and images) of your post.
 
@@ -18,6 +18,14 @@ It performs native with WordPress comments. The comment area is shown when you c
 When publishing a comment next to a paragraph, the comment is published in place without a page reload (using Ajax).
 
 Demo and more information on the developer’s website: [kevinw.de/inline-comments/](http://kevinw.de/inline-comments/)
+
+
+= Translators =
+* German (de_DE) - [Kevin Weber](http://kevinw.de/)
+* Serbian (sr_RS) - [Ogi Djuraskovic](http://firstsiteguide.com/)
+
+If you have created your own language pack, or have an update of an existing one, you can [send me](kevinw.de/kontakt/) your gettext PO and MO so that I can bundle it into my plugin. You can download the latest POT file [from here](http://plugins.svn.wordpress.org/inline-comments/trunk/languages/inline-comments.pot).
+
 
 == Installation ==
 
@@ -46,8 +54,11 @@ For comment system "WordPress Comments", use custom CSS like this:
 
 == Changelog ==
 
+= 2.0.2 =
+* Added Serbian translation by Ogi Djuraskovic.
+
 = 2.0.1 =
-* Renamed functions.php to inline-comments.php
+* Renamed functions.php to inline-comments.php.
 
 = 2.0 =
 * MILESTONE, new feature: Reply to inline comments (this feature is compatible with WP-Ajaxify-Comments).
