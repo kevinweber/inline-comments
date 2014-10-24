@@ -327,17 +327,27 @@
     bubble.on( 'click', function(e) {
       e.preventDefault();
       
-      // Remove classActive before classActive will be added to another element (source)
-      removeClassActive();
+      // When the wrapper is already visible (and the bubble is active), then remove the wrapper and the bubble's class
+      if ( $(this).hasClass(classBubbleActive) ) {
+        removeCommentsWrapper( true );
+        $(this).removeClass(classBubbleActive);
+      }
 
-      // Add classActive to active elements (paragraphs, divs, etc.)
-      source.addClass( classActive );
+      // Else ...
+      else {
+        // Remove classActive before classActive will be added to another element (source)
+        removeClassActive();
 
-      // Before creating a new comments wrapper: remove the previously created wrapper, if any
-      removeCommentsWrapper();
+        // Add classActive to active elements (paragraphs, divs, etc.)
+        source.addClass( classActive );
 
-      bubble.addClass( classBubbleActive );
-      loadCommentsWrapper( bubble );
+        // Before creating a new comments wrapper: remove the previously created wrapper, if any
+        removeCommentsWrapper();
+
+        bubble.addClass( classBubbleActive );
+        loadCommentsWrapper( bubble );
+      }
+
     });
   };
 

@@ -55,6 +55,7 @@ For comment system "WordPress Comments", use custom CSS like this:
 == Changelog ==
 
 = 2.0.2 =
+* Improved UX: Close comments when user clicks on the same bubble again.
 * Added Serbian translation by Ogi Djuraskovic.
 
 = 2.0.1 =
