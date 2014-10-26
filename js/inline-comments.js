@@ -625,6 +625,12 @@
         $element.css({'color':'rgba(0,0,0,1)'}).fadeTo( "fast", 0.5 );
       }
 
+      // When the font size is to low, increase it
+      var $fontsize = $element.css( "font-size" ).replace(/\D/g,'');  // Remove everything but numbers
+      if ( $fontsize < 6 ) {
+        $element.css({'font-size':'13px'});
+      }
+
       // Get colour
       var color = $element.css('color');
       // Test if spaces or tab stops exist

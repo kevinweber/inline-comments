@@ -24,7 +24,7 @@ Demo and more information on the developer’s website: [kevinw.de/inline-commen
 * German (de_DE) - [Kevin Weber](http://kevinw.de/)
 * Serbian (sr_RS) - [Ogi Djuraskovic](http://firstsiteguide.com/)
 
-If you have created your own language pack, or have an update of an existing one, you can [send me](kevinw.de/kontakt/) your gettext PO and MO so that I can bundle it into my plugin. You can download the latest POT file [from here](http://plugins.svn.wordpress.org/inline-comments/trunk/languages/inline-comments.pot).
+If you have created your own language pack, or have an update of an existing one, you can [send me](http://kevinw.de/kontakt/) your gettext PO and MO so that I can bundle it into my plugin. You can download the latest POT file [from here](http://plugins.svn.wordpress.org/inline-comments/trunk/languages/inline-comments.pot).
 
 
 == Installation ==
