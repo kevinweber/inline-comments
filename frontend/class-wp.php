@@ -91,8 +91,8 @@ class INCOM_WordPress extends INCOM_Frontend {
 		// Set avatar size
 		if ( get_option( 'incom_avatars_display' ) == 1 ) { ?>
 			.incom-comments-wrapper .vcard img {
-			    width: <?= parent::get_avatar_size() ?>px;
-			    height: <?= parent::get_avatar_size() ?>px;
+			    width: <?php echo parent::get_avatar_size() ?>px;
+			    height: <?php echo parent::get_avatar_size() ?>px;
 			}
 		<?php }
 

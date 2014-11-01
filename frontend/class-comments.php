@@ -138,7 +138,7 @@ class INCOM_Comments extends INCOM_Frontend {
 				);
 			?>
 			</div>
-		<? } ?>
+		<?php } ?>
 
 		<?php if ( 'div' != $args['style'] ) : ?>
 		</div>
