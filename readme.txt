@@ -55,8 +55,9 @@ For comment system "WordPress Comments", use custom CSS like this:
 == Changelog ==
 
 = 2.1 =
-* New feature: References.
+* New feature: References. The default WordPress comments that are displayed below your article contain a link to the referenced paragraph.
 * Fixed not working option "Always Display Bubbles".
+* Extended WordPress' body_class() function to display class "inline-comments" for the <body> element.
 
 = 2.0.2 =
 * Improved UX: Close comments when user clicks on the same bubble again.

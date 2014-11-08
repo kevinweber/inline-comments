@@ -180,11 +180,13 @@
    */
   var addBubble = function( source ) {
     var bubbleText = addBubbleText( source );
+    var bubbleValue = source.attr( attDataIncom );
     var bubbleContainer = loadBubbleContainer( source );
     var $bubble = $('<a/>',
         {
           href: '',
           'class': classBubbleLink,
+          'data-incom-bubble': bubbleValue,
         })
       .text( bubbleText )
       .wrap( bubbleContainer )
@@ -360,23 +362,6 @@
         $activeE.removeAttr( 'class' );
       }
     }
-  };
-
-  /*
-   * @return Hex colour value as RGB
-   */
-  var convertHexToRgb = function (h) {
-    var r = parseInt((removeHex(h)).substring(0,2),16);
-    var g = parseInt((removeHex(h)).substring(2,4),16);
-    var b = parseInt((removeHex(h)).substring(4,6),16);
-    return r+','+g+','+b;
-  };
-
-  /*
-   * Remove Hex ("#") from string
-   */
-  var removeHex = function (h) {
-    return ( h.charAt(0) === "#" ) ? h.substring(1,7) : h;
   };
 
   /* 
@@ -644,6 +629,21 @@
         $( 'html, body' ).animate({
             scrollTop: targetOffset
         }, 1200, 'quart' );
+
+
+        // // Remove classActive before classActive will be added to another element (source)
+        // removeClassActive();
+
+        // // Add classActive to active elements (paragraphs, divs, etc.)
+        // $target.addClass( classActive );
+
+        // // Before creating a new comments wrapper: remove the previously created wrapper, if any
+        // removeCommentsWrapper();
+
+        // $target.addClass( classBubbleActive );
+        // loadCommentsWrapper( $target );
+
+
       }
 
     });
@@ -699,6 +699,10 @@
   };
 
   /*
+   * Private Helpers
+   */
+
+  /*
    * Test if element's color contains a RGBA value.
    * If yes,  @return integer
    *          else @return 1
@@ -714,6 +718,23 @@
     }
 
     return alpha;
+  };
+
+  /*
+   * @return Hex colour value as RGB
+   */
+  var convertHexToRgb = function (h) {
+    var r = parseInt((removeHex(h)).substring(0,2),16);
+    var g = parseInt((removeHex(h)).substring(2,4),16);
+    var b = parseInt((removeHex(h)).substring(4,6),16);
+    return r+','+g+','+b;
+  };
+
+  /*
+   * Remove Hex ("#") from string
+   */
+  var removeHex = function (h) {
+    return ( h.charAt(0) === "#" ) ? h.substring(1,7) : h;
   };
 
   /*

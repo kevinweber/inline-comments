@@ -19,11 +19,9 @@ class INCOM_Comments extends INCOM_Frontend {
 	/**
 	 * Filter comment_text
 	 * @since 2.1
-	 *
-	 * @todo Test if admin wants references to be displayed
 	 */
 	function comment_text( $comment_text, $comment ) {
-		if ( isset($comment) ) {
+		if ( isset($comment) && ( get_option(INCOM_OPTION_KEY.'_references') != "nowhere" ) ) {
 			$comment_text = $this->comment_text_reference( $comment_text, $comment );
 		}
 		return $comment_text;
