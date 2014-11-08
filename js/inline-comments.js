@@ -19,6 +19,7 @@
   var attDataIncom = 'data-incom';
     var attDataIncomComment = attDataIncom+'-comment';
     var attDataIncomArr = []; // This array will contain all attDataIncom values
+    var attDataIncomBubble = attDataIncom+'-bubble';
     var attDataIncomRef = attDataIncom+'-ref';
 
   // Classes
@@ -43,6 +44,7 @@
     var classCancelDot = '.'+classCancel;
   var classBranding = 'incom-info-icon';
     var classBrandingDot = '.'+classBranding;
+  var classScrolledTo = 'incom-scrolled-to';
 
   // Other
   var selectComment = idCommentsAndFormHash+' .comment';
@@ -180,13 +182,11 @@
    */
   var addBubble = function( source ) {
     var bubbleText = addBubbleText( source );
-    var bubbleValue = source.attr( attDataIncom );
     var bubbleContainer = loadBubbleContainer( source );
     var $bubble = $('<a/>',
         {
           href: '',
           'class': classBubbleLink,
-          'data-incom-bubble': bubbleValue,
         })
       .text( bubbleText )
       .wrap( bubbleContainer )
@@ -241,7 +241,8 @@
    * Get container that contains the bubble link
    */
   var loadBubbleContainer = function( source ) {
-    var text = '<div class="' + loadBubbleContainerClass( source ) + '" />';
+    var bubbleValue = source.attr( attDataIncom );
+    var text = '<div class="' + loadBubbleContainerClass( source ) + '" '+attDataIncomBubble+'="'+bubbleValue+'" />';
     return text;
   };
 
@@ -335,7 +336,7 @@
       // Else ...
       else {
         // Remove classActive before classActive will be added to another element (source)
-        removeClassActive();
+        removeExistingClasses( classActive );
 
         // Add classActive to active elements (paragraphs, divs, etc.)
         source.addClass( classActive );
@@ -344,33 +345,29 @@
         removeCommentsWrapper();
 
         bubble.addClass( classBubbleActive );
-        loadCommentsWrapper( bubble, createCommentsWrapper() );
+        loadCommentsWrapper( bubble );
       }
 
     });
   };
 
-  /* 
-   * Remove classActive from the element that's not 'active' anymore
+  /*
+   * Create comments wrapper
    */
-   var removeClassActive = function() {
-    var $activeE = $( classActiveDot );
-    if ( $activeE.length !== 0 ) {
-      $activeE.removeClass( classActive );
-      // If the attribute 'class' is empty -> remove it
-      if ( $activeE.prop( 'class' ).length === 0 ) {
-        $activeE.removeAttr( 'class' );
-      }
-    }
-  };
-
   var createCommentsWrapper = function() {
-    var $commentsWrapper = $('<div/>',
-        {
-          'class': classCommentsWrapper,
-        })
-        .appendTo( idWrapperHash )
-        .css('background-color', 'rgba(' + convertHexToRgb( o.background ) + ',' + o.backgroundOpacity + ')');
+    var $commentsWrapper;
+
+    if ( $( classCommentsWrapperDot ).length === 0 ) {
+      $commentsWrapper = $('<div/>',
+          {
+            'class': classCommentsWrapper,
+          })
+          .appendTo( idWrapperHash )
+          .css('background-color', 'rgba(' + convertHexToRgb( o.background ) + ',' + o.backgroundOpacity + ')');
+    }
+    else {
+      $commentsWrapper = $( classCommentsWrapperDot );
+    }
 
     return $commentsWrapper;
   };
@@ -378,8 +375,8 @@
   /* 
    * Load comments wrapper
    */
-  var loadCommentsWrapper = function ( source, wrapper ) {
-    var $commentsWrapper = wrapper;
+  var loadCommentsWrapper = function ( source ) {
+    var $commentsWrapper = createCommentsWrapper();
 
     loadComments();
     loadCommentForm();
@@ -525,7 +522,7 @@
       if ( fadeout ) {
         $classCommentsWrapper.fadeOut( 'fast', function() {
             $( this ).remove();
-            removeClassActive();
+            removeExistingClasses( classActive );
         });
       }
       else {
@@ -628,7 +625,6 @@
     $( '['+source+']' ).click(function() {
 
       var targetValue = $( this ).attr( source );  // Get value from source element
-
       var $target = $( '['+target+'="'+targetValue+'"]' );
 
       if ( $target.length ) {
@@ -637,11 +633,27 @@
         $( 'html, body' ).animate({
             scrollTop: targetOffset
         }, 1200, 'quart' );
+
+        removeExistingClasses( classScrolledTo );
+        $target.addClass( classScrolledTo );
       }
 
     });
   };
 
+  /*
+   * Remove existing classes (expects parameter "className" - without "dot")
+   */
+  var removeExistingClasses = function( className ) {
+    var $activeE = $( '.'+className );
+    if ( $activeE.length !== 0 ) {
+      $activeE.removeClass( className );
+      // If the attribute 'class' is empty -> remove it
+      if ( $activeE.prop( 'class' ).length === 0 ) {
+        $activeE.removeAttr( 'class' );
+      }
+    }
+  };
 
   /*
    * Prevent users from removing branding

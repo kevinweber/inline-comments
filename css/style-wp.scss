@@ -208,3 +208,8 @@ $vcard-image-size: 15px;
     cursor: pointer;
   }
 }
+
+.incom-scrolled-to {
+  @include vendor-prefix( transition, background-color 2s ease 0.5s );
+  background: $grey_lighter;
+}
