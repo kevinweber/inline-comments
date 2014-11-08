@@ -54,6 +54,10 @@ For comment system "WordPress Comments", use custom CSS like this:
 
 == Changelog ==
 
+= 2.1 =
+* New feature: References.
+* Fixed not working option "Always Display Bubbles".
+
 = 2.0.2 =
 * Improved UX: Close comments when user clicks on the same bubble again.
 * Added Serbian translation by Ogi Djuraskovic.
