@@ -160,6 +160,15 @@ $vcard-image-size: 15px;
     @include vendor-prefix( transition, background-color 2s ease 0.5s );
     background: $grey_lighter;
   }
+  .vcard img {
+    @include vendor-prefix( border-radius, 50% );
+    opacity: 1;
+    width: $vcard-image-size;
+    height: $vcard-image-size;
+  } 
+  .incom-reference {
+    display: none;
+  }
 }
 .incom-info-icon {
     @include vendor-prefix( border-radius, 50% );
@@ -186,11 +195,12 @@ $vcard-image-size: 15px;
   border: none;
 }
 
-.incom-comments-wrapper {
-  .vcard img {
-    @include vendor-prefix( border-radius, 50% );
-    opacity: 1;
-    width: $vcard-image-size;
-    height: $vcard-image-size;
+.incom-reference {
+  display: block;
+  &:before, &::before {
+    content: '(';
+  }
+  &:after, &::after {
+    content: ')';
   }
 }

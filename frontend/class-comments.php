@@ -9,11 +9,29 @@ class INCOM_Comments extends INCOM_Frontend {
 	private $DataIncomKeyPOST = 'data_incom';
 
 	function __construct() {
+		add_filter( 'body_class' , array( $this, 'body_class' ) );
+		add_filter( 'comment_text' , array( $this, 'comment_text' ) );
+
 		add_filter( 'comment_form_default_fields', array( $this, 'comment_form_fields' ) );
 		add_action( 'comment_post', array( $this, 'add_comment_meta_data_incom' ) );
 		add_action( 'preprocess_comment' , array( $this, 'preprocess_comment_handler' ) );
 		add_action( 'wp_footer', array( $this, 'generateCommentsAndForm' ) );
 	}
+
+function body_class( $classes ) {
+	// Separates classes with a single space, collates classes for comment DIV
+	//$class = 'class="' . join( ' ', get_comment_class( $class, $comment_id, $post_id ) ) . '"';
+	$classes[] = 'inline-comments';
+	return $classes;
+}
+
+function comment_text( $comment_text ) {
+	$jump_to_link_text = esc_html__( 'Reference', INCOM_TD );
+	$jump_to_link = "<a class='incom-reference-link' href=''>$jump_to_link_text</a>";
+	$comment_text .= "<span class='incom-reference'>$jump_to_link</span>";
+	return $comment_text;
+}
+
 
 	/**
 	 * Set $DataIncomValue
@@ -100,7 +118,7 @@ class INCOM_Comments extends INCOM_Frontend {
 		<<?php echo $tag ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>" data-incom-comment="<?php echo $data_incom; ?>" style="display:none">
 		<?php if ( 'div' != $args['style'] ) : ?>
 
-		<div id="incom-div-comment-<?php comment_ID() ?>" class="comment-body">
+		<div id="incom-div-comment-<?php comment_ID() ?>" class="incom-div-comment comment-body">
 		
 		<?php
 			endif;

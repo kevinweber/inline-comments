@@ -5,7 +5,17 @@
 class INCOM_Frontend {
 
 	function __construct() {
+		add_filter( 'body_class' , array( $this, 'body_class' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_jquery' ) );
+	}
+
+	/**
+	 * Add class to <body> that identifies the usage of this plugin
+	 * @since 2.1
+	 */
+	function body_class( $classes ) {
+		$classes[] = 'inline-comments';
+		return $classes;
 	}
 
 	/**
