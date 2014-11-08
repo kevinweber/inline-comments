@@ -195,12 +195,16 @@ $vcard-image-size: 15px;
   border: none;
 }
 
-.incom-reference {
+.incom-ref {
   display: block;
   &:before, &::before {
     content: '(';
   }
   &:after, &::after {
     content: ')';
+  }
+  .incom-ref-link {
+    text-decoration: underline;
+    cursor: pointer;
   }
 }

@@ -9,29 +9,39 @@ class INCOM_Comments extends INCOM_Frontend {
 	private $DataIncomKeyPOST = 'data_incom';
 
 	function __construct() {
-		add_filter( 'body_class' , array( $this, 'body_class' ) );
-		add_filter( 'comment_text' , array( $this, 'comment_text' ) );
-
 		add_filter( 'comment_form_default_fields', array( $this, 'comment_form_fields' ) );
 		add_action( 'comment_post', array( $this, 'add_comment_meta_data_incom' ) );
 		add_action( 'preprocess_comment' , array( $this, 'preprocess_comment_handler' ) );
 		add_action( 'wp_footer', array( $this, 'generateCommentsAndForm' ) );
+		add_filter( 'comment_text' , array( $this, 'comment_text' ), 10, 2 );
 	}
 
-function body_class( $classes ) {
-	// Separates classes with a single space, collates classes for comment DIV
-	//$class = 'class="' . join( ' ', get_comment_class( $class, $comment_id, $post_id ) ) . '"';
-	$classes[] = 'inline-comments';
-	return $classes;
-}
+	/**
+	 * Filter comment_text
+	 * @since 2.1
+	 *
+	 * @todo Test if admin wants references to be displayed
+	 */
+	function comment_text( $comment_text, $comment ) {
+		$comment_text = $this->comment_text_reference( $comment_text, $comment );
+		return $comment_text;
+	}
 
-function comment_text( $comment_text ) {
-	$jump_to_link_text = esc_html__( 'Reference', INCOM_TD );
-	$jump_to_link = "<a class='incom-reference-link' href=''>$jump_to_link_text</a>";
-	$comment_text .= "<span class='incom-reference'>$jump_to_link</span>";
-	return $comment_text;
-}
+	/**
+	 * Add reference to referenced paragraph/element
+	 * @since 2.1
+	 */
+	private function comment_text_reference( $comment_text, $comment ) {
+		$data_incom = get_comment_meta( $comment->comment_ID, $this->DataIncomKey, true );
 
+		if ( $data_incom != '' ) {	// Only display reference when comment actually references on a paragraph/element
+			$jump_to_text = esc_html__( 'Reference', INCOM_TD );
+			$jump_to = "<span class='incom-ref-link' data-incom-ref='$data_incom'>$jump_to_text</span>";
+			$comment_text .= "<span class='incom-ref'>$jump_to</span>";
+		}
+
+		return $comment_text;
+	}
 
 	/**
 	 * Set $DataIncomValue
