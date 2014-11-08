@@ -344,7 +344,7 @@
         removeCommentsWrapper();
 
         bubble.addClass( classBubbleActive );
-        loadCommentsWrapper( bubble );
+        loadCommentsWrapper( bubble, createCommentsWrapper() );
       }
 
     });
@@ -364,16 +364,22 @@
     }
   };
 
-  /* 
-   * Load comments wrapper
-   */
-  var loadCommentsWrapper = function ( source ) {
+  var createCommentsWrapper = function() {
     var $commentsWrapper = $('<div/>',
         {
           'class': classCommentsWrapper,
         })
-      .appendTo( idWrapperHash )
-      .css('background-color', 'rgba(' + convertHexToRgb( o.background ) + ',' + o.backgroundOpacity + ')');
+        .appendTo( idWrapperHash )
+        .css('background-color', 'rgba(' + convertHexToRgb( o.background ) + ',' + o.backgroundOpacity + ')');
+
+    return $commentsWrapper;
+  };
+
+  /* 
+   * Load comments wrapper
+   */
+  var loadCommentsWrapper = function ( source, wrapper ) {
+    var $commentsWrapper = wrapper;
 
     loadComments();
     loadCommentForm();
@@ -615,6 +621,8 @@
   /*
    * Load scroll script
    * @since 2.1
+   *
+   * @todo When page scrolls to element, automatically open wrapper
    */
   var loadScrollScript = function( source, target ) {
     $( '['+source+']' ).click(function() {
@@ -629,21 +637,6 @@
         $( 'html, body' ).animate({
             scrollTop: targetOffset
         }, 1200, 'quart' );
-
-
-        // // Remove classActive before classActive will be added to another element (source)
-        // removeClassActive();
-
-        // // Add classActive to active elements (paragraphs, divs, etc.)
-        // $target.addClass( classActive );
-
-        // // Before creating a new comments wrapper: remove the previously created wrapper, if any
-        // removeCommentsWrapper();
-
-        // $target.addClass( classBubbleActive );
-        // loadCommentsWrapper( $target );
-
-
       }
 
     });
