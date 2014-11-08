@@ -19,6 +19,7 @@
   var attDataIncom = 'data-incom';
     var attDataIncomComment = attDataIncom+'-comment';
     var attDataIncomArr = []; // This array will contain all attDataIncom values
+    var attDataIncomRef = attDataIncom+'-ref';
 
   // Classes
   var classActive = 'incom-active';
@@ -64,16 +65,12 @@
     setOptions( options );
     initIncomWrapper();
     displayBranding();
+    references();
 
-    // CHECK: Ensure that #commentform is replaced by #incom-commentform to make IC work with Ajaxify
-    // CHECK: Use useful variables instead of hard-coded selectors
-    // TODO: Debug bugs
-    // TODO: Call that code only in class-wpac.php
-      $( classReplyDot + " .comment-reply-link" ).on( 'click', function() {
-        $( idCommentsAndFormHash + ' #commentform' ).attr( "id", idCommentForm );
-      });
-
-
+    // This code is required to make Inline Comments work with Ajaxify
+    $( classReplyDot + " .comment-reply-link" ).on( 'click', function() {
+      $( idCommentsAndFormHash + ' #commentform' ).attr( "id", idCommentForm );
+    });
 
   };
 
@@ -602,6 +599,58 @@
   };
 
   /*
+   * Controle references
+   * @since 2.1
+   */
+  var references = function() {
+    var source = attDataIncomRef;
+    var target = attDataIncom;
+    removeOutdatedReferences( source, target );
+    loadScrollScript( source, target );
+  };
+
+  /*
+   * Remove outdated references that link to an element that doesn't exist
+   * @since 2.1
+   */
+  var removeOutdatedReferences = function( source, target ) {
+    $( '['+source+']' ).each( function() {
+
+      var $source = $( this );
+      var targetValue = $source.attr( source );  // Get value from source element
+      var $target = $( '['+target+'="'+targetValue+'"]' );
+
+      if ( ! $target.length ) { // No length = linked element doesn't exist
+        $source.parent().remove();
+      }
+
+    });
+  };
+
+  /*
+   * Load scroll script
+   * @since 2.1
+   */
+  var loadScrollScript = function( source, target ) {
+    $( '['+source+']' ).click(function() {
+
+      var targetValue = $( this ).attr( source );  // Get value from source element
+
+      var $target = $( '['+target+'="'+targetValue+'"]' );
+
+      if ( $target.length ) {
+        var targetOffset = $target.offset().top - 30;
+
+        $( 'html, body' ).animate({
+            scrollTop: targetOffset
+        }, 1200, 'quart' );
+      }
+
+    });
+  };
+
+
+  /*
    * Prevent users from removing branding
    */
   var displayBranding = function() {
@@ -674,6 +723,13 @@
   var splitSelectors = function( selectors ) {
     var splitSelectors = selectors.split(',');
     return splitSelectors;
+  };
+
+  /*
+   * Set easing "quart"
+   */
+  $.easing.quart = function (x, t, b, c, d) {
+    return -c * ((t=t/d-1)*t*t*t - 1) + b;
   };
 
 }( window.incom = window.incom || {}, jQuery ));
