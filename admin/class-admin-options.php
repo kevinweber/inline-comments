@@ -205,8 +205,7 @@ class INCOM_Admin_Options {
 					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Background Colour', INCOM_TD ); ?> <span class="description thin"><br><?php esc_html_e( 'for comment threads', INCOM_TD ); ?></span></th>
 					        	<td>
-					        		<input id="incom_picker_input_bgcolor" class="picker-input" type="text" name="set_bgcolour" placeholder="#ffffff" value="<?php if (get_option("set_bgcolour") == "") { echo "#ffffff"; } else { echo get_option("set_bgcolour"); } ?>" />
-					        		<div id="incom_picker_bgcolor" class="picker-style"></div>
+					        		<input id="incom_picker_input_bgcolor" class="incom_picker_bgcolor picker-input" type="text" name="set_bgcolour" data-default-color="#ffffff" value="<?php if (get_option("set_bgcolour") == "") { echo "#ffffff"; } else { echo get_option("set_bgcolour"); } ?>" />
 					        	</td>
 					        </tr>
 					        <tr valign="top">
@@ -348,12 +347,12 @@ class INCOM_Admin_Options {
 	}
 
 	function incom_admin_js() {
-	    wp_enqueue_script( 'incom_admin_js', plugins_url( '../js/min/admin-ck.js' , __FILE__ ), array( 'jquery', 'jquery-ui-tabs', 'farbtastic' ) );
+	    wp_enqueue_script( 'incom_admin_js', plugins_url( '../js/min/admin-ck.js' , __FILE__ ), array( 'jquery', 'jquery-ui-tabs', 'wp-color-picker' ) );
 	}
 
 	function incom_admin_css() {
 		wp_enqueue_style( 'incom_admin_css', plugins_url('../css/min/admin.css', __FILE__) );
-		wp_enqueue_style( 'farbtastic' );	// Required for colour picker
+		wp_enqueue_style( 'wp-color-picker' );	// Required for colour picker
 	}
 
 }

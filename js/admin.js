@@ -47,9 +47,13 @@
   };
 
 
+//   var addColourPicker = function() {
+//     $('#incom_picker_bgcolor').farbtastic('#incom_picker_input_bgcolor');
+// // Picker No 2:    $('#incom_picker_bgcolor').farbtastic('#incom_picker_input_bgcolor');
+//   };
+
   var addColourPicker = function() {
-    $('#incom_picker_bgcolor').farbtastic('#incom_picker_input_bgcolor');
-// Picker No 2:    $('#incom_picker_bgcolor').farbtastic('#incom_picker_input_bgcolor');
+    $('.incom_picker_bgcolor').wpColorPicker();
   };
 
   /*

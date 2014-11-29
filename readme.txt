@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: admin, comment, comments, content, counter, free, integration, jquery, mobile, page, pages, plugin, post, posts, sidebar, wordpress
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 2.0.2
+Stable tag: 2.1
 
 Inline Comments adds your comment system to the side of paragraphs and other sections (like headlines and images) of your post.
 
@@ -54,10 +54,13 @@ For comment system "WordPress Comments", use custom CSS like this:
 
 == Changelog ==
 
+= 2.1.1 =
+* Improved colour picker.
+
 = 2.1 =
-* New feature: References. The default WordPress comments that are displayed below your article contain a link to the referenced paragraph.
+* New feature: References. The default WordPress comments that are displayed below your article contain a link to the referenced paragraph. Click on the link to jump to the paragraph.
 * Fixed not working option "Always Display Bubbles".
-* Extended WordPress' body_class() function to display class "inline-comments" for the <body> element.
+* Extended body_class() function to display class "inline-comments" within the <body> element.
 
 = 2.0.2 =
 * Improved UX: Close comments when user clicks on the same bubble again.
