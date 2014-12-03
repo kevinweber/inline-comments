@@ -121,8 +121,8 @@
    * Setup elements and bubbles that depend on selectors
    */
   var initElementsAndBubblesFromSelectors = function() {
-    $( o.selectors ).each( function(i) {
-      addAttToElement( $(this), i );
+    $( o.selectors ).each( function() {
+      addAttToElement( $(this) );
       createBubbleFromElement( $(this) );
     });
   };
@@ -131,9 +131,12 @@
    * Add attribute attDataIncom to element; increase counter per element type (instead of using one counter for all elements independent of their types).
    */
    var addAttToElement = function( $element, i ) {
+      i = i || 0;
+
       // Only proceed if element has no attribute attDataIncom yet
       if ( !$element.attr( attDataIncom ) ) {
         var identifier = getIdentifier( $element );
+
         // Increase i when specific attProp (value of attDataIncom) already exists
         i = increaseIdentifierNumberIfAttPropExists( i, identifier );
         
@@ -151,6 +154,33 @@
    var createBubbleFromElement = function( $element ) {
     //@TODO
     addBubble( $element );
+   };
+
+   /*
+    * Set bubble position and visibility
+    */
+   var setBubble = function( options ) {
+    var opt = $.extend( {
+        posX: undefined,
+        posY: undefined,
+        id: undefined,
+        visible: false,
+      },
+    options);
+
+    //@TODO
+    /*
+    if (!exists … && id !== undefined ) {
+      createBubble + addAtt
+    }
+    else if ( ( posX && posY ) !== undefined && ( changedPosX || changedPosY ) ) {
+      recalculatePos
+    }
+    
+    if ( opt.visible ) {
+      displayBubble
+    }
+    */
    };
 
    /*
