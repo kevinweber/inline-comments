@@ -65,8 +65,10 @@
 
   incom.init = function( options ) {
     setOptions( options );
-    initIncomWrapper();
-    setElementsFromSelectors();
+    setIncomWrapper();
+
+    initElementsAndBubblesFromSelectors();
+
     displayBranding();
     references();
 
@@ -108,29 +110,43 @@
   /* 
    * This wrapper contains comment bubbles
    */
-  var initIncomWrapper = function() {
+  var setIncomWrapper = function() {
     if ( $( idWrapperHash ).length === 0 ) {
       $( '<div id="'+idWrapper+'"></div>' ).appendTo( $( idWrapperAppendTo ) )
         .addClass( classPosition + o.position );
     }
   };
 
+  /*
+   * Setup elements and bubbles that depend on selectors
+   */
+  var initElementsAndBubblesFromSelectors = function() {
+    $( o.selectors ).each( function(i) {
+      addAttToElement( $(this), i );
+      createBubbleFromElement( $(this) );
+    });
+  };
 
   /*
-   * Select elements and increase counter per element type (instead of using one counter for all elements independent of their types).
+   * Add attributes to elements; increase counter per element type (instead of using one counter for all elements independent of their types).
    */
-   var setElementsFromSelectors = function() {
-    $( o.selectors ).each( function(i) {
-      var $element = $( this );
+   var addAttToElement = function( $element, i ) {
       var identifier = getIdentifier( $element );
-
       i = increaseIdentifierNumberIfAttPropExists( i, identifier );
-      addAtt( i, $element, identifier );
-
-      addBubble( $element );
-    });
+      addAtt( i, $element, identifier );      
    };
 
+   /*
+    * Add bubble depending to an element
+    */
+   var createBubbleFromElement = function( $element ) {
+    //@TODO
+    addBubble( $element );
+   };
+
+   /*
+    * Example: Getter and Setter
+    */
    // function Selectors( val ) {
    //    var selectors = val;
 
@@ -177,6 +193,8 @@
     // If element has no attribute attDataIncom, add it
     if ( !element.attr( attDataIncom ) ) {
     	var attProp = identifier + i; // WOULD BE BETTER: var attProp = identifier + '-' + i; // BUT THAT WOULD CONFLICT WITH ALREADY STORED COMMENTS
+
+//@TODO: Add part that assigns comment to specific article/page/post (article-id); include fallback in cause a comment has no ID (yet)
 
     	element.attr( attDataIncom, attProp );
     }
