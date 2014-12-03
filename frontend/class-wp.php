@@ -70,7 +70,8 @@ class INCOM_WordPress extends INCOM_Frontend {
 	 * Add scripts (like JS)
 	 */
 	function incom_enqueue_scripts() {
-		wp_enqueue_script( 'function', plugins_url( 'js/min/inline-comments-ck.js' , plugin_dir_path( __FILE__ ) ), array( 'jquery' ), true);	// In case 'wp_localize_script' is used: wp_enqueue_script must be enqueued before wp_localize_script
+		// @TODO: wp_enqueue_script( 'function', plugins_url( 'js/min/inline-comments-ck.js' , plugin_dir_path( __FILE__ ) ), array( 'jquery' ), true);	// In case 'wp_localize_script' is used: wp_enqueue_script must be enqueued before wp_localize_script
+		wp_enqueue_script( 'function', plugins_url( 'js/inline-comments-beta.js' , plugin_dir_path( __FILE__ ) ), array( 'jquery' ), true);	// In case 'wp_localize_script' is used: wp_enqueue_script must be enqueued before wp_localize_script
 	}
 
 	/**
