@@ -128,12 +128,21 @@
   };
 
   /*
-   * Add attributes to elements; increase counter per element type (instead of using one counter for all elements independent of their types).
+   * Add attribute attDataIncom to element; increase counter per element type (instead of using one counter for all elements independent of their types).
    */
    var addAttToElement = function( $element, i ) {
-      var identifier = getIdentifier( $element );
-      i = increaseIdentifierNumberIfAttPropExists( i, identifier );
-      addAtt( i, $element, identifier );      
+      // Only proceed if element has no attribute attDataIncom yet
+      if ( !$element.attr( attDataIncom ) ) {
+        var identifier = getIdentifier( $element );
+        // Increase i when specific attProp (value of attDataIncom) already exists
+        i = increaseIdentifierNumberIfAttPropExists( i, identifier );
+        
+        var attProp = identifier + i; // WOULD BE BETTER: var attProp = identifier + '-' + i; // BUT THAT WOULD CONFLICT WITH ALREADY STORED COMMENTS
+
+        //@TODO: Add part that assigns comment to specific article/page/post (article-id); include fallback in cause a comment has no ID (yet)
+
+        $element.attr( attDataIncom, attProp );
+      }
    };
 
    /*
@@ -161,6 +170,7 @@
 
   /*
    * Use the first five letters of the element's name as identifier
+   * @return string
    */
   var getIdentifier = function( element ) {
     var identifier = element.prop('tagName').substr(0,5);
@@ -169,8 +179,7 @@
 
   /*
    * Increase identifier number (i) if that specific attProp was already used. attProp must be unique
-   *
-   * @return
+   * @return int
    */
   var increaseIdentifierNumberIfAttPropExists = function( i, identifier ) {
     var attProp = identifier + i;
@@ -184,20 +193,6 @@
     attDataIncomArr.push(attProp);
 
     return i;
-  };
-
-  /*
-   * Add attribute attDataIncom to each element
-   */
-  var addAtt = function( i, element, identifier ) {
-    // If element has no attribute attDataIncom, add it
-    if ( !element.attr( attDataIncom ) ) {
-    	var attProp = identifier + i; // WOULD BE BETTER: var attProp = identifier + '-' + i; // BUT THAT WOULD CONFLICT WITH ALREADY STORED COMMENTS
-
-//@TODO: Add part that assigns comment to specific article/page/post (article-id); include fallback in cause a comment has no ID (yet)
-
-    	element.attr( attDataIncom, attProp );
-    }
   };
 
   /*
