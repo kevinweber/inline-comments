@@ -58,6 +58,7 @@ For comment system "WordPress Comments", use custom CSS like this:
 * Improved colour picker.
 * Fix: Replaced '<?=' with '<?php echo'.
 * Improvement: Use not minified JavaScript files when SCRIPT_DEBUG is true (defined in wp-config.php).
+* Added version number to scripts.
 
 = 2.1 =
 * New feature: References. The default WordPress comments that are displayed below your article contain a link to the referenced paragraph. Click on the link to jump to the paragraph.

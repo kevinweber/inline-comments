@@ -123,7 +123,7 @@
   var initElementsAndBubblesFromSelectors = function() {
     $( o.selectors ).each( function() {
       addAttToElement( $(this) );
-      createBubbleFromElement( $(this) );
+      bubble.createFromElement( $(this) );
     });
   };
 
@@ -148,39 +148,42 @@
       }
    };
 
-   /*
-    * Add bubble depending to an element
-    */
-   var createBubbleFromElement = function( $element ) {
-    //@TODO
-    addBubble( $element );
-   };
+   var bubble = {
+     /*
+      * Set bubble position and visibility
+      */
+     set : function( options ) {
+      var opt = $.extend( {
+          posX: undefined,
+          posY: undefined,
+          id: undefined,
+          visible: false,
+        },
+      options);
 
-   /*
-    * Set bubble position and visibility
-    */
-   var setBubble = function( options ) {
-    var opt = $.extend( {
-        posX: undefined,
-        posY: undefined,
-        id: undefined,
-        visible: false,
-      },
-    options);
+      //@TODO
+      /*
+      if (!exists … && id !== undefined ) {
+        createBubble + addAtt
+      }
+      else if ( ( posX && posY ) !== undefined && ( changedPosX || changedPosY ) ) {
+        recalculatePos
+      }
+      
+      if ( opt.visible ) {
+        displayBubble
+      }
+      */
+     },
+     
+     /*
+      * Add bubble depending on an element
+      */
+     createFromElement : function( $element ) {
+      //@TODO
+      addBubble( $element );
+     }
 
-    //@TODO
-    /*
-    if (!exists … && id !== undefined ) {
-      createBubble + addAtt
-    }
-    else if ( ( posX && posY ) !== undefined && ( changedPosX || changedPosY ) ) {
-      recalculatePos
-    }
-    
-    if ( opt.visible ) {
-      displayBubble
-    }
-    */
    };
 
    /*

@@ -65,7 +65,10 @@
 
   incom.init = function( options ) {
     setOptions( options );
-    initIncomWrapper();
+    setIncomWrapper();
+
+    initElementsAndBubblesFromSelectors();
+
     displayBranding();
     references();
 
@@ -107,39 +110,55 @@
   /* 
    * This wrapper contains comment bubbles
    */
-  var initIncomWrapper = function() {
+  var setIncomWrapper = function() {
     if ( $( idWrapperHash ).length === 0 ) {
       $( '<div id="'+idWrapper+'"></div>' ).appendTo( $( idWrapperAppendTo ) )
         .addClass( classPosition + o.position );
     }
-    
-    initSelectElements();
   };
 
-
-  /* 
-   * Select elements and increase counter per element type (instead of using one counter for all elements independent of their types).
+  /*
+   * Setup elements and bubbles that depend on selectors
    */
-  var initSelectElements = function() {
-    var selectors = splitSelectors( o.selectors );
-
-    $( selectors ).each( function(j) {
-
-      $( selectors[j] ).each( function(i) {
-        var $element = $( this );
-        var identifier = getIdentifier( $element );
-
-        i = increaseIdentifierNumberIfAttPropExists( i, identifier );
-
-        addAtt( i, $element, identifier );
-        addBubble( $element );
-      });
-
+  var initElementsAndBubblesFromSelectors = function() {
+    $( o.selectors ).each( function() {
+      addAttToElement( $(this) );
+      bubble.createFromElement( $(this) );
     });
   };
 
   /*
+   * Add attribute attDataIncom to element; increase counter per element type (instead of using one counter for all elements independent of their types).
+   */
+   var addAttToElement = function( $element, i ) {
+      i = i || 0;
+
+      // Only proceed if element has no attribute attDataIncom yet
+      if ( !$element.attr( attDataIncom ) ) {
+        var identifier = getIdentifier( $element );
+
+        // Increase i when specific attProp (value of attDataIncom) already exists
+        i = increaseIdentifierNumberIfAttPropExists( i, identifier );
+        
+        var attProp = identifier + i; // WOULD BE BETTER: var attProp = identifier + '-' + i; // BUT THAT WOULD CONFLICT WITH ALREADY STORED COMMENTS
+
+        $element.attr( attDataIncom, attProp );
+      }
+   };
+
+   var bubble = {
+     /*
+      * Add bubble depending on an element
+      */
+     createFromElement : function( $element ) {
+      addBubble( $element );
+     }
+
+   };
+
+  /*
    * Use the first five letters of the element's name as identifier
+   * @return string
    */
   var getIdentifier = function( element ) {
     var identifier = element.prop('tagName').substr(0,5);
@@ -148,8 +167,7 @@
 
   /*
    * Increase identifier number (i) if that specific attProp was already used. attProp must be unique
-   *
-   * @return
+   * @return int
    */
   var increaseIdentifierNumberIfAttPropExists = function( i, identifier ) {
     var attProp = identifier + i;
@@ -163,18 +181,6 @@
     attDataIncomArr.push(attProp);
 
     return i;
-  };
-
-  /*
-   * Add attribute attDataIncom to each element
-   */
-  var addAtt = function( i, element, identifier ) {
-    // If element has no attribute attDataIncom, add it
-    if ( !element.attr( attDataIncom ) ) {
-    	var attProp = identifier + i; // WOULD BE BETTER: var attProp = identifier + '-' + i; // BUT THAT WOULD CONFLICT WITH ALREADY STORED COMMENTS
-
-    	element.attr( attDataIncom, attProp );
-    }
   };
 
   /*
@@ -740,15 +746,6 @@
    */
   var removeHex = function (h) {
     return ( h.charAt(0) === "#" ) ? h.substring(1,7) : h;
-  };
-
-  /*
-   * Split selectors
-   * @return array
-   */
-  var splitSelectors = function( selectors ) {
-    var splitSelectors = selectors.split(',');
-    return splitSelectors;
   };
 
   /*
