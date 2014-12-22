@@ -26,9 +26,8 @@ class INCOM_WordPress extends INCOM_Frontend {
 	 */
 	function load_incom() { ?>
 		<script>
-			var $ind = jQuery.noConflict();
-
-			$ind(window).on( "load", function() {
+		(function ( $ ) {
+			$(window).on( "load", function() {
 				incom.init({
 					selectors: '<?php if (get_option("multiselector") == '') { echo "p"; } else { echo get_option("multiselector"); } ?>',
 					moveSiteSelector: '<?php if (get_option("moveselector") == '') { echo "body"; } else { echo get_option("moveselector"); } ?>',
@@ -46,7 +45,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 				});
 			});
 
-			// $ind(document).ready(function() {
+			// $(document).ready(function() {
 			// 	incom.init({
 			// 		selectors: '<?php if (get_option("multiselector") == '') { echo "p"; } else { echo get_option("multiselector"); } ?>',
 			// 		moveSiteSelector: '<?php if (get_option("moveselector") == '') { echo "body"; } else { echo get_option("moveselector"); } ?>',
@@ -63,6 +62,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 			// 		<?php do_action( 'incom_wp_set_options' ); ?>
 			// 	});
 			// });
+		})(jQuery);
 		</script>
 	<?php }
 
