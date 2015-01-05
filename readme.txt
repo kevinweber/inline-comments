@@ -31,6 +31,7 @@ If you have created your own language pack, or have an update of an existing one
 
 1. Upload Inline Comments into you plugin directory (/wp-content/plugins/) and activate the plugin through the 'Plugins' menu in WordPress.
 2. Configure the plugin via the admin backend.
+3. Optionally: Sign up to the Inline Comments newsletter to get notified about major updates.
 
 
 == Frequently Asked Questions ==
