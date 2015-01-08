@@ -69,7 +69,7 @@ class INCOM_Comments extends INCOM_Frontend {
 	 * Generate comments form
 	 */
 	function generateCommentsAndForm() {
-		echo '<div id="comments-and-form" style="display:none">';
+		echo '<div id="comments-and-form" class="comments-and-form" style="display:none">';
 
 		$this->loadPluginInfoInvisible();
 
