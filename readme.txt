@@ -23,13 +23,14 @@ Demo and more information on the developer’s website: [kevinw.de/inline-commen
 = Translators =
 * German (de_DE) - [Kevin Weber](http://kevinw.de/)
 * Serbian (sr_RS) - [Ogi Djuraskovic](http://firstsiteguide.com/)
+* Spanish (es_ES) - [Andrew Kurtis](http://www.webhostinghub.com/)
 
 If you have created your own language pack, or have an update of an existing one, you can [send me](http://kevinw.de/kontakt/) your gettext PO and MO so that I can bundle it into my plugin. You can download the latest POT file [from here](http://plugins.svn.wordpress.org/inline-comments/trunk/languages/inline-comments.pot).
 
 
 == Installation ==
 
-1. Upload Inline Comments into you plugin directory (/wp-content/plugins/) and activate the plugin through the 'Plugins' menu in WordPress.
+1. Upload Inline Comments into you plugin directory (/wp-content/plugins/) and activate the pastlugin through the 'Plugins' menu in WordPress.
 2. Configure the plugin via the admin backend.
 3. Optionally: Sign up to the Inline Comments newsletter to get notified about major updates.
 
@@ -60,6 +61,7 @@ For comment system "WordPress Comments", use custom CSS like this:
 * Fix: Replaced '<?=' with '<?php echo'.
 * Improvement: Use not minified JavaScript files when SCRIPT_DEBUG is true (defined in wp-config.php).
 * Added version number to scripts.
+* Added Spanish translation by Andrew Kurtis.
 
 = 2.1 =
 * New feature: References. The default WordPress comments that are displayed below your article contain a link to the referenced paragraph. Click on the link to jump to the paragraph.
