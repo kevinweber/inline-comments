@@ -59,6 +59,7 @@ For comment system "WordPress Comments", use custom CSS like this:
 = 2.1.1 =
 * Improved colour picker.
 * Fix: Replaced '<?=' with '<?php echo'.
+* Fix: Set 'html' as default slide site selector (instead of 'body') to prevent bubbles from "jumping".
 * Improvement: Use not minified JavaScript files when SCRIPT_DEBUG is true (defined in wp-config.php).
 * Added version number to scripts.
 * Added Spanish translation by Andrew Kurtis.

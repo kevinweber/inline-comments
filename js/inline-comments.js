@@ -10,7 +10,7 @@
   // IDs
   var idWrapper = 'incom_wrapper';
     var idWrapperHash = '#'+idWrapper;
-  var idWrapperAppendTo = 'body'; // Alternative: 'body'
+  var idWrapperAppendTo = 'html';
   var idCommentsAndForm = 'comments-and-form';
     var idCommentsAndFormHash = '#'+idCommentsAndForm;
   var idCommentForm = 'incom-commentform';

@@ -144,9 +144,9 @@ class INCOM_Admin_Options {
 					        			$arr_selectors = array( ".site-main", ".site-inner", ".site" );
 					        			$selectors = implode( '<br>' , $arr_selectors );
 					        		?>
-					        		<input type="text" name="moveselector" placeholder="body" value="<?php echo get_option('moveselector'); ?>" />
+					        		<input type="text" name="moveselector" placeholder="html" value="<?php echo get_option('moveselector'); ?>" />
 					        			<br>
-					        			<span><?php esc_html_e( 'This selector defines which content should slide left/right when the user clicks on a bubble. This setting depends on your theme\'s structure.', INCOM_TD ); ?> <?php esc_html_e( 'Default is', INCOM_TD ); ?> <i>body</i>.
+					        			<span><?php esc_html_e( 'This selector defines which content should slide left/right when the user clicks on a bubble. This setting depends on your theme\'s structure.', INCOM_TD ); ?> <?php esc_html_e( 'Default is', INCOM_TD ); ?> <i>html</i>.
 					        				<br><br><?php esc_html_e( 'You might try one of these selectors:', INCOM_TD ); ?>
 					        				<br><span class="italic"><?php echo $selectors; ?></span>
 					        			</span>
