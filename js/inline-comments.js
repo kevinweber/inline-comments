@@ -142,19 +142,64 @@
         
         var attProp = identifier + i; // WOULD BE BETTER: var attProp = identifier + '-' + i; // BUT THAT WOULD CONFLICT WITH ALREADY STORED COMMENTS
 
+        //@TODO: Add part that assigns comment to specific article/page/post (article-id); include fallback in cause a comment has no ID (yet)
+
         $element.attr( attDataIncom, attProp );
       }
    };
 
    var bubble = {
      /*
+      * Set bubble position and visibility
+      */
+     set : function( options ) {
+      var opt = $.extend( {
+          posX: undefined,
+          posY: undefined,
+          id: undefined,
+          visible: false,
+        },
+      options);
+
+      //@TODO
+      /*
+      if (!exists … && id !== undefined ) {
+        createBubble + addAtt
+      }
+      else if ( ( posX && posY ) !== undefined && ( changedPosX || changedPosY ) ) {
+        recalculatePos
+      }
+      
+      if ( opt.visible ) {
+        displayBubble
+      }
+      */
+     },
+     
+     /*
       * Add bubble depending on an element
       */
      createFromElement : function( $element ) {
+      //@TODO
       addBubble( $element );
      }
 
    };
+
+   /*
+    * Example: Getter and Setter
+    */
+   // function Selectors( val ) {
+   //    var selectors = val;
+
+   //    this.getValue = function(){
+   //        return selectors;
+   //    };
+
+   //    this.setValue = function( val ){
+   //        selectors = splitSelectors( val );
+   //    };
+   // }
 
   /*
    * Use the first five letters of the element's name as identifier
@@ -566,11 +611,65 @@
   };
 
   var moveLeftOrRight = function( element, value ) {
-    if ( testIfPositionRight() ) {
-      element.css( { 'right' : value  } );
-    } else {
-      element.css( { 'left' : value  } );
-    }
+    var direction = testIfPositionRight() ? 'right' : 'left';
+    var options = {};
+    options[direction] = value;
+
+    element.css( options );
+
+
+// element.animate(options,{
+//    duration: 500,
+//           step:function(now, fn){
+//             fn.start = 0;
+//             fn.end = value;
+//             $(element).css({
+//                 '-webkit-transform':'translateX(-'+now+'px)',
+//                 '-moz-transform':'translateX(-'+now+'px)',
+//                 '-o-transform':'translateX(-'+now+'px)',
+//                 'transform':'translateX(-'+now+'px)'
+//             });
+//           }
+// });
+
+    // if ( testIfPositionRight() ) {
+    //   element.css( { 
+    //     '-webkit-transform': translateX(-100%);
+    //     -moz-transform: translateX(-100%);
+    //     -ms-transform: translateX(-100%);
+    //     -o-transform: translateX(-100%);
+    //     transform: translateX(-100%)
+
+    //    } );
+    // } else {
+    //   element.css( { 'left' : value  } );
+    // }
+
+
+
+    // if ( testIfPositionRight() ) {
+    //   // element.css( { 'right' : value  } );
+
+    //   // element.animate({
+    //   //   width: "toggle",
+    //   //   height: "toggle"
+    //   // }, {
+    //   //   duration: 5000,
+    //   //   specialEasing: {
+    //   //     width: "linear",
+    //   //     height: "easeOutBounce"
+    //   //   },
+    //   //   complete: function() {
+    //   //     $( this ).after( "<div>Animation complete.</div>" );
+    //   //   }
+    //   // });
+    //   element.animate({
+    //       right: value,
+    //     }, "fast" );
+
+    // } else {
+    //   element.css( { 'left' : value  } );
+    // }
   };
 
   var moveElement = function( way, selector ) {

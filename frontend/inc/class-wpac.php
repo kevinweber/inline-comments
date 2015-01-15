@@ -22,7 +22,13 @@
 		$wpacOptions['selectorCommentLinks'] = '#incom-commentform a[href*="/comment-page-"]';
 	
 		// Filter Callbacks
-		$wpacOptions['callbackOnBeforeUpdateComments'] = 'var newCommentsContainer = jQuery("body").find("#comments-and-form");';
+		
+		// @TODO//TESTING for Danny
+		// $wpacOptions['callbackOnBeforeSelectElements'] = "var e = jQuery('#comments, #comments ~ *',dom); if (e.length==0) e = jQuery('#comments-and-form', dom); e.wrapAll('<div id=\"comments-and-form\" />');";
+	//	$wpacOptions['callbackOnBeforeSelectElements'] = "var e = jQuery('#comments, #comments ~ *',dom); if (e.length==0) e = jQuery('#respond', dom); e.wrapAll('<div id=\"comments-and-form\" />');";
+
+		
+		$wpacOptions['callbackOnBeforeUpdateComments'] = 'var newCommentsContainer = jQuery("body").find("'.$wpacOptions['selectorCommentsContainer'].'");';
 		$wpacOptions['callbackOnAfterUpdateComments'] = '
 
 			// Variables from Inline Comments JS file
