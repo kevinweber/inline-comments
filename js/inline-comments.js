@@ -102,6 +102,7 @@
         position: 'left',
         background: 'white',
         backgroundOpacity: '1',
+        animation: 'default',
       },
     options);
   };
@@ -610,66 +611,49 @@
     moveLeftOrRight( element, value );
   };
 
+ var animate = {
+   /*
+    * Move element left or right
+    */
+  set : {
+    translateX : function( now, direction ) {
+      var options = {
+        '-webkit-transform':'translateX(-'+now+'px)',
+        '-moz-transform':'translateX(-'+now+'px)',
+        '-o-transform':'translateX(-'+now+'px)',
+        'transform':'translateX(-'+now+'px)'
+      };
+      options[direction] = '0';
+
+      return options;
+    }
+  },
+
+  go : function( element, options, value ) {
+    // element.velocity(options,{
+    //    duration: 500,
+    //       step:function(now, fn){
+    //         fn.start = 0;
+    //         fn.end = value;
+    //         element.css( animate.set.translateX( now, o.position ) );
+    //       }
+    // });
+    element.transition({ x: value });
+  }
+
+ };
+
   var moveLeftOrRight = function( element, value ) {
-    var direction = testIfPositionRight() ? 'right' : 'left';
     var options = {};
-    options[direction] = value;
+    options[o.position] = value;
 
-    element.css( options );
+    if ( o.animation === false ) {
+      element.css( options );
+    }
+    else {
+      animate.go( element, options, value );
+    }
 
-
-// element.animate(options,{
-//    duration: 500,
-//           step:function(now, fn){
-//             fn.start = 0;
-//             fn.end = value;
-//             $(element).css({
-//                 '-webkit-transform':'translateX(-'+now+'px)',
-//                 '-moz-transform':'translateX(-'+now+'px)',
-//                 '-o-transform':'translateX(-'+now+'px)',
-//                 'transform':'translateX(-'+now+'px)'
-//             });
-//           }
-// });
-
-    // if ( testIfPositionRight() ) {
-    //   element.css( { 
-    //     '-webkit-transform': translateX(-100%);
-    //     -moz-transform: translateX(-100%);
-    //     -ms-transform: translateX(-100%);
-    //     -o-transform: translateX(-100%);
-    //     transform: translateX(-100%)
-
-    //    } );
-    // } else {
-    //   element.css( { 'left' : value  } );
-    // }
-
-
-
-    // if ( testIfPositionRight() ) {
-    //   // element.css( { 'right' : value  } );
-
-    //   // element.animate({
-    //   //   width: "toggle",
-    //   //   height: "toggle"
-    //   // }, {
-    //   //   duration: 5000,
-    //   //   specialEasing: {
-    //   //     width: "linear",
-    //   //     height: "easeOutBounce"
-    //   //   },
-    //   //   complete: function() {
-    //   //     $( this ).after( "<div>Animation complete.</div>" );
-    //   //   }
-    //   // });
-    //   element.animate({
-    //       right: value,
-    //     }, "fast" );
-
-    // } else {
-    //   element.css( { 'left' : value  } );
-    // }
   };
 
   var moveElement = function( way, selector ) {
