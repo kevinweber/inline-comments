@@ -102,7 +102,6 @@
         position: 'left',
         background: 'white',
         backgroundOpacity: '1',
-        animation: 'default',
       },
     options);
   };
@@ -611,48 +610,11 @@
     moveLeftOrRight( element, value );
   };
 
- var animate = {
-   /*
-    * Move element left or right
-    */
-  set : {
-    translateX : function( now, direction ) {
-      var options = {
-        '-webkit-transform':'translateX(-'+now+'px)',
-        '-moz-transform':'translateX(-'+now+'px)',
-        '-o-transform':'translateX(-'+now+'px)',
-        'transform':'translateX(-'+now+'px)'
-      };
-      options[direction] = '0';
-
-      return options;
-    }
-  },
-
-  go : function( element, options, value ) {
-    // element.velocity(options,{
-    //    duration: 500,
-    //       step:function(now, fn){
-    //         fn.start = 0;
-    //         fn.end = value;
-    //         element.css( animate.set.translateX( now, o.position ) );
-    //       }
-    // });
-    element.transition({ x: value });
-  }
-
- };
-
   var moveLeftOrRight = function( element, value ) {
     var options = {};
     options[o.position] = value;
 
-    if ( o.animation === false ) {
-      element.css( options );
-    }
-    else {
-      animate.go( element, options, value );
-    }
+    element.css( options );
 
   };
 
