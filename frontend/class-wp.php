@@ -77,7 +77,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 		}
 
 		//@TODO: Only load JS when needed
-		wp_enqueue_script( 'incom-velocity-js', plugins_url( 'js/min/animation.min.js' , plugin_dir_path( __FILE__ ) ), array( 'jquery' ), INCOM_VERSION );
+		wp_enqueue_script( 'incom-animation-js', plugins_url( 'js/min/animation.min.js' , plugin_dir_path( __FILE__ ) ), array( 'jquery' ), INCOM_VERSION );
 	}
 
 	/**
