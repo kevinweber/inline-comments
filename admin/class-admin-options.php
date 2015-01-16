@@ -55,6 +55,7 @@ class INCOM_Admin_Options {
 
 			// Advanced
 			INCOM_OPTION_KEY.'_content_comments_before',
+			INCOM_OPTION_KEY.'_animation',
 			'select_bubble_fadein',
 			'select_bubble_fadeout',
 			'comment_permalink',
@@ -146,7 +147,7 @@ class INCOM_Admin_Options {
 					        		?>
 					        		<input type="text" name="moveselector" placeholder="body" value="<?php echo get_option('moveselector'); ?>" />
 					        			<br>
-					        			<span><?php esc_html_e( 'This selector defines which content should slide left/right when the user clicks on a bubble. This setting depends on your theme\'s structure.', INCOM_TD ); ?> <?php esc_html_e( 'Default is', INCOM_TD ); ?> <i>html</i>.
+					        			<span><?php esc_html_e( 'This selector defines which content should slide left/right when the user clicks on a bubble. This setting depends on your theme\'s structure.', INCOM_TD ); ?> <?php esc_html_e( 'Default is', INCOM_TD ); ?> <i>body</i>.
 					        				<br><br><?php esc_html_e( 'You might try one of these selectors:', INCOM_TD ); ?>
 					        				<br><span class="italic"><?php echo $selectors; ?></span>
 					        			</span>
@@ -236,6 +237,19 @@ class INCOM_Admin_Options {
 					        	<td>
 					        		<textarea rows="5" cols="70" type="text" name="<?php echo INCOM_OPTION_KEY; ?>_content_comments_before" placeholder=""><?php echo get_option(INCOM_OPTION_KEY.'_content_comments_before'); ?></textarea>
 					        	</td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row"><?php esc_html_e( 'Show/Hide Animation', INCOM_TD ); ?><br><span class="description thin">
+					        		<?php printf( esc_html__( 'Please provide %1$sfeedback%2$s.', INCOM_TD ),
+										'<a href="http://kevinw.de/kontakt/" title="Contact Kevin Weber" target="_blank">',
+										'</a>'
+									); ?><span class="newred"><?php esc_html_e( 'Beta', INCOM_TD ); ?></th>
+						        <td>
+									<select class="select" typle="select" name="incom_animation">
+										<option value="off"<?php if (get_option('incom_animation') === 'off') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'No animation', INCOM_TD ); ?></option>
+										<option value="default"<?php if (get_option('incom_animation') === 'default') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Default', INCOM_TD ); ?></option>
+									</select>
+						        </td>
 					        </tr>
 					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Bubble Fade In', INCOM_TD ); ?></th>

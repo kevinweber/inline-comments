@@ -41,6 +41,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 			    	position: '<?php if (get_option("incom_select_align") == "") { echo "right"; } else { echo get_option("incom_select_align"); } ?>',
 			      	background: '<?php if (get_option("set_bgcolour") == "") { echo "#fff"; } else { echo get_option("set_bgcolour"); } ?>',
 					backgroundOpacity: '<?php if (get_option("incom_set_bgopacity") == "") { echo "1"; } else { echo get_option("incom_set_bgopacity"); } ?>',
+					animation: <?php if (get_option("incom_animation") == "default") { echo "'snap'"; } else { echo "false"; } ?>,
 					<?php do_action( 'incom_wp_set_options' ); ?>
 				});
 			});
