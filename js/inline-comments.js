@@ -564,7 +564,7 @@
     var $classCommentsWrapper = $( classCommentsWrapperDot );
 
     // Comments and comment form must be detached (and hidden) before wrapper is deleted, so it can be used afterwards
-    $( idCommentsAndFormHash ).appendTo( idWrapperHash ).detach();
+    $( idCommentsAndFormHash ).appendTo( idWrapperHash ).hide();
 
     // Remove classVisibleComment from every element that has classVisibleComment
     $( classVisibleCommentDot ).removeClass( classVisibleComment );
