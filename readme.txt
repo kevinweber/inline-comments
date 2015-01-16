@@ -59,6 +59,7 @@ For comment system "WordPress Comments", use custom CSS like this:
 = 2.1.1 =
 * Beta: Show/hide comments wrapper with animation.
 * Improved colour picker.
+* Scroll smoothly when the user clicks on a comment's permalink icon.
 * Fix: Replaced '<?=' with '<?php echo'.
 * Fix: Set 'html' as default slide site selector (instead of 'body') to prevent bubbles from "jumping".
 * Improvement: Use not minified JavaScript files when SCRIPT_DEBUG is true (defined in wp-config.php).
