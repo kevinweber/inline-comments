@@ -242,8 +242,7 @@
         })
       .text( bubbleText )
       .wrap( bubbleContainer )
-      .parent()
-      .appendTo( idWrapperHash );
+      .parent();
 
     setDisplayStatic( $bubble );
     setPosition( source, $bubble );
@@ -255,6 +254,8 @@
       handleHover( source, $bubble );
       handleClickBubble( source, $bubble );
     }
+
+    $bubble.appendTo( idWrapperHash );
   };
 
   /*
@@ -414,8 +415,8 @@
           {
             'class': classCommentsWrapper,
           })
-          .appendTo( idWrapperHash )
-          .css('background-color', 'rgba(' + convertHexToRgb( o.background ) + ',' + o.backgroundOpacity + ')');
+          .css('background-color', 'rgba(' + convertHexToRgb( o.background ) + ',' + o.backgroundOpacity + ')')
+          .appendTo( idWrapperHash );
     }
     else {
       $commentsWrapper = $( classCommentsWrapperDot );
@@ -563,7 +564,7 @@
     var $classCommentsWrapper = $( classCommentsWrapperDot );
 
     // Comments and comment form must be detached (and hidden) before wrapper is deleted, so it can be used afterwards
-    $( idCommentsAndFormHash ).appendTo( idWrapperHash ).hide();
+    $( idCommentsAndFormHash ).appendTo( idWrapperHash ).detach();
 
     // Remove classVisibleComment from every element that has classVisibleComment
     $( classVisibleCommentDot ).removeClass( classVisibleComment );
@@ -636,7 +637,7 @@
   var moveX = function( element, value ) {
     element.transition( // ".transition" requires jQuery Transit library
       { x: value },     // property: value
-      500,              // duration
+      400,              // duration
       o.animation       // easing effect
     );
   };
