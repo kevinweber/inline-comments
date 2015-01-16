@@ -247,7 +247,7 @@ class INCOM_Admin_Options {
 						        <td>
 									<select class="select" typle="select" name="incom_animation">
 										<option value="off"<?php if (get_option('incom_animation') === 'off') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'No animation', INCOM_TD ); ?></option>
-										<option value="default"<?php if (get_option('incom_animation') === 'default') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Default', INCOM_TD ); ?></option>
+										<option value="snap"<?php if (get_option('incom_animation') === 'snap') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Basic animation', INCOM_TD ); ?></option>
 									</select>
 						        </td>
 					        </tr>
