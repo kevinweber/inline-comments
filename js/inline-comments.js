@@ -98,10 +98,10 @@
         bubbleStyle: 'bubble',
         bubbleAnimationIn: 'default',
         bubbleAnimationOut: 'default',
-        // highlighted: false,
         position: 'left',
         background: 'white',
         backgroundOpacity: '1',
+        animation: false,//'snap' // Get possible easing effects from http://ricostacruz.com/jquery.transit/
       },
     options);
   };
@@ -490,7 +490,7 @@
 
     element.css({
       'top': $offset.top,
-      'left': testIfPositionRight() ? $offset.left + source.outerWidth() : $offset.left - element.outerWidth(),
+      'left': testIfPosRight() ? $offset.left + source.outerWidth() : $offset.left - element.outerWidth(),
     });
   };
 
@@ -515,11 +515,11 @@
     setElementProperties( element );
 
     // If admin has selected position "right" and the comments wrapper's right side stands out of the screen -> setSlideWidth and moveSite
-    if( testIfPositionRight() && ( $sumOffsetAndElementW > $viewportW ) ) {
+    if( testIfPosRight() && ( $sumOffsetAndElementW > $viewportW ) ) {
       setSlideWidth( $sumOffsetAndElementW - $viewportW );
       moveSite( 'in' );
     }
-    else if ( !testIfPositionRight() && ( $offsetL < 0 ) ) {
+    else if ( !testIfPosRight() && ( $offsetL < 0 ) ) {
       setSlideWidth( -$offsetL );
       moveSite( 'in' );
     }
@@ -575,11 +575,11 @@
             $( this ).remove();
             removeExistingClasses( classActive );
         });
+        moveSite( 'out' );
       }
       else {
         $classCommentsWrapper.remove();
       }
-      moveSite( 'out' );
     }
 
   };
@@ -588,52 +588,59 @@
     var $move = $( o.moveSiteSelector );
     $move.css( { "position" : "relative"  } );
 
-    handleWayInAndOut( $move, way );
+    moveInOrOut( $move, way );
 
     // Only move elements if o.moveSiteSelector is not the same as idWrapperAppendTo
     if ( o.moveSiteSelector !== idWrapperAppendTo ) {
-      moveElement( way, classBubbleDot ); // Move bubbles
-      moveElement( way, classCommentsWrapperDot );  // Move wrapper
+      prepareMoveX( $(classBubbleDot), way ); // Move bubbles
+      prepareMoveX( $(classCommentsWrapperDot), way ); // Move wrapper
     }
   };
 
-  var handleWayInAndOut = function( element, way ) {
+  // @TODO: Merge prepareMoveX into moveInOrOut.
+  var moveInOrOut = function( element, way ) {
     var value;
 
     if ( way === 'in' ) {
       value = getSlidewidth();
     }
     else if ( way === 'out' ) {
-      value = 'initial';
-
+      value = '0';
     }
-    moveLeftOrRight( element, value );
+
+    if (o.animation === false) {
+      var options = {};
+      options[o.position] = value;
+      element.css( options );
+    }
+    else {  // DO ANIMATION
+      prepareMoveX( element, way );
+    }
   };
 
-  var moveLeftOrRight = function( element, value ) {
-    var options = {};
-    options[o.position] = value;
-
-    element.css( options );
-
-  };
-
-  var moveElement = function( way, selector ) {
-    var $element = $( selector );
+  var prepareMoveX = function( element, way ) {
+    var value;
+    var sign = testIfPosRight() ? '-' : '';
 
     if ( way === 'in' ) {
-      $element.css({
-          left: testIfPositionRight() ? '-='+getSlidewidth() : '+='+getSlidewidth()
-      });
+      value = sign+getSlidewidth();
     }
     else if ( way === 'out' ) {
-      $element.css({
-          left: testIfPositionRight() ? '+='+getSlidewidth() : '-='+getSlidewidth()
-      });
+      value = '0';
     }
+
+    moveX( element, value );
   };
 
-  var testIfPositionRight = function() {
+  var moveX = function( element, value ) {
+    element.transition( // ".transition" requires jQuery Transit library
+      { x: value },     // property: value
+      500,              // duration
+      o.animation       // easing effect
+    );
+  };
+
+  var testIfPosRight = function() {
     return o.position === 'right' ? true : false;
   };
 
