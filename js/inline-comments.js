@@ -73,8 +73,8 @@
     references();
 
     // This code is required to make Inline Comments work with Ajaxify
-    $( classReplyDot + " .comment-reply-link" ).on( 'click', function() {
-      $( idCommentsAndFormHash + ' #commentform' ).attr( "id", idCommentForm );
+    $( classReplyDot ).find( ".comment-reply-link" ).on( 'click', function() {
+      $( idCommentsAndFormHash ).find( ' #commentform' ).attr( "id", idCommentForm );
     });
 
   };
@@ -122,8 +122,9 @@
    */
   var initElementsAndBubblesFromSelectors = function() {
     $( o.selectors ).each( function() {
-      addAttToElement( $(this) );
-      bubble.createFromElement( $(this) );
+      var $this = $(this);
+      addAttToElement( $this );
+      bubble.createFromElement( $this );
     });
   };
 
@@ -281,9 +282,9 @@
     // Define selector that identifies elements that shell be counted
     var selectByAtt = '[' + attDataIncomComment + '=' + attFromSource + ']';
     // Count elements
-    var $count = $( selectByAtt ).length;
+    var $count = $( idCommentsAndFormHash ).find(selectByAtt).length;
     // Increase count for each inline reply, too
-    $count += $( selectByAtt + ' .children li').length;
+    $count += $( idCommentsAndFormHash ).find(selectByAtt).find('.children').find('li').length;
 
     return $count;
   };
@@ -346,7 +347,7 @@
       // Handle hover (for both, "elements" and $bubble)
       element.add(bubble).hover(function() {
         // First hide all non-static bubbles
-        $( classBubbleDot+':not('+classBubbleStaticDot+')' ).hide();
+        $( idWrapperHash ).find( classBubbleDot+':not('+classBubbleStaticDot+')' ).hide();
 
         if ( o.bubbleAnimationIn === 'fadein' ) {
           bubble.stop( true, true ).fadeIn();
@@ -461,7 +462,7 @@
     var input = $( '<input>' )
      .attr( 'type', 'hidden' )
      .attr( 'name', dataIncomKey ).val( getAttDataIncomValue );
-    $( idCommentsAndFormHash + ' .form-submit' ).append( $( input ) );
+    $( idCommentsAndFormHash ).find( '.form-submit' ).append( $( input ) );
   };
 
   /*
@@ -470,8 +471,8 @@
   var loadComments = function() {
     var selectByAtt = '[' + attDataIncomComment + '=' + getAttDataIncomValue() + ']';
     $( selectComment ).hide();
-    $( selectComment + selectByAtt ).addClass( classVisibleComment ).show();
-    $( classVisibleCommentDot + ' .children li' ).show();
+    $( selectComment ).find( selectByAtt ).addClass( classVisibleComment ).show();
+    $( classVisibleCommentDot ).find( '.children' ).find( 'li' ).show();
   };
 
   /*
