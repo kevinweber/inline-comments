@@ -471,8 +471,8 @@
   var loadComments = function() {
     var selectByAtt = '[' + attDataIncomComment + '=' + getAttDataIncomValue() + ']';
     $( selectComment ).hide();
-    $( selectComment ).find( selectByAtt ).addClass( classVisibleComment ).show();
-    $( classVisibleCommentDot ).find( '.children' ).find( 'li' ).show();
+    $( selectComment + selectByAtt ).addClass( classVisibleComment ).show();
+    $( classVisibleCommentDot ).find( '.children').find( 'li' ).show();
   };
 
   /*
