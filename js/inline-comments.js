@@ -247,7 +247,8 @@
         })
       .text( bubbleText )
       .wrap( bubbleContainer )
-      .parent();
+      .parent()
+      .appendTo( idWrapperHash );
 
     setDisplayStatic( $bubble );
     setPosition( source, $bubble );
@@ -260,7 +261,6 @@
       handleClickBubble( source, $bubble );
     }
 
-    $bubble.appendTo( idWrapperHash );
   };
 
   /*
