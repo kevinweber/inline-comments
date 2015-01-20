@@ -243,12 +243,17 @@ class INCOM_Admin_Options {
 					        		<?php printf( esc_html__( 'Please %1$sprovide feedback%2$s.', INCOM_TD ),
 										'<a href="http://kevinw.de/kontakt/" title="Contact Kevin Weber" target="_blank">',
 										'</a>'
-									); ?><span class="newred"><?php esc_html_e( 'Beta', INCOM_TD ); ?></th>
+									); ?><span class="newred"><?php esc_html_e( 'Beta', INCOM_TD ); ?></span></span>
+								</th>
 						        <td>
 									<select class="select" typle="select" name="incom_animation">
 										<option value="off"<?php if (get_option('incom_animation') === 'off') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'No animation', INCOM_TD ); ?></option>
 										<option value="snap"<?php if (get_option('incom_animation') === 'snap') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Basic animation', INCOM_TD ); ?></option>
 									</select>
+									<span><br>
+									<?php esc_html_e( 'Animate the showing/hiding of the comments wrapper.', INCOM_TD ); ?><br>
+									<?php esc_html_e( 'Make sure to define a "Slide Site" Selector when you want to use an animation (else your admin bar will "jump" as soon as the comments wrapper appears).', INCOM_TD ); ?>
+									</span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
