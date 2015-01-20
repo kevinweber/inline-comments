@@ -108,6 +108,7 @@
         background: 'white',
         backgroundOpacity: '1',
         animation: false,//'snap' // Get possible easing effects from http://ricostacruz.com/jquery.transit/
+        animationDuration: 400,
       },
     options);
   };
@@ -603,6 +604,7 @@
       }
       else {
         $classCommentsWrapper.remove();
+        moveSite( 'out' );
       }
     }
 
@@ -662,10 +664,11 @@
     moveX( element, value );
   };
 
-  var moveX = function( element, value ) {
+  var moveX = function( element, value, duration ) {
+    duration = duration || o.animationDuration;
     element.transition( // ".transition" requires jQuery Transit library
       { x: value },     // property: value
-      400,              // duration
+      duration,              // duration
       o.animation       // easing effect
     );
   };
