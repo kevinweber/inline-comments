@@ -604,7 +604,7 @@
       }
       else {
         $classCommentsWrapper.remove();
-        moveSite( 'out' );
+        // moveSite( 'out', 0 );
       }
     }
 
@@ -620,7 +620,7 @@
     var $move = $( o.moveSiteSelector );
     $move.css( { "position" : "relative"  } );
 
-    moveInOrOut( $move, way );
+    prepareMoveX( $move, way );
 
     // Only move elements if o.moveSiteSelector is not the same as idWrapperAppendTo
     if ( o.moveSiteSelector !== idWrapperAppendTo ) {
@@ -629,28 +629,7 @@
     }
   };
 
-  // @TODO: Merge prepareMoveX into moveInOrOut.
-  var moveInOrOut = function( element, way ) {
-    var value;
-
-    if ( way === 'in' ) {
-      value = getSlidewidth();
-    }
-    else if ( way === 'out' ) {
-      value = '0';
-    }
-
-    if (o.animation === false) {
-      var options = {};
-      options[o.position] = value;
-      element.css( options );
-    }
-    else {  // DO ANIMATION
-      prepareMoveX( element, way );
-    }
-  };
-
-  var prepareMoveX = function( element, way ) {
+  var prepareMoveX = function( element, way, duration ) {
     var value;
     var sign = testIfPosRight() ? '-' : '';
 
@@ -661,11 +640,13 @@
       value = '0';
     }
 
-    moveX( element, value );
+    moveX( element, value, duration );
   };
 
   var moveX = function( element, value, duration ) {
-    duration = duration || o.animationDuration;
+    if (duration !== 0) {
+      duration = duration || o.animationDuration;
+    }
     element.transition( // ".transition" requires jQuery Transit library
       { x: value },     // property: value
       duration,              // duration
