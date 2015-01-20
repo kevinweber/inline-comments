@@ -58,10 +58,10 @@ class INCOM_Admin_Options {
 			INCOM_OPTION_KEY.'_animation',
 			'select_bubble_fadein',
 			'select_bubble_fadeout',
-			'comment_permalink',
 			'cancel_x',
 			'cancel_link',
 			INCOM_OPTION_KEY.'_field_url',
+			INCOM_OPTION_KEY.'_comment_permalink',
 			INCOM_OPTION_KEY.'_references',
 			INCOM_OPTION_KEY.'_bubble_static_always',
 		);
@@ -240,7 +240,7 @@ class INCOM_Admin_Options {
 					        </tr>
 					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Show/Hide Animation', INCOM_TD ); ?><br><span class="description thin">
-					        		<?php printf( esc_html__( 'Please provide %1$sfeedback%2$s.', INCOM_TD ),
+					        		<?php printf( esc_html__( 'Please %1$sprovide feedback%2$s.', INCOM_TD ),
 										'<a href="http://kevinw.de/kontakt/" title="Contact Kevin Weber" target="_blank">',
 										'</a>'
 									); ?><span class="newred"><?php esc_html_e( 'Beta', INCOM_TD ); ?></th>
@@ -276,12 +276,6 @@ class INCOM_Admin_Options {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><?php esc_html_e( 'Remove Permalinks', INCOM_TD ); ?></th>
-						        <td>
-									<input name="comment_permalink" type="checkbox" value="1" <?php checked( '1', get_option( 'comment_permalink' ) ); ?> /><span><?php esc_html_e( 'If checked, the permalink icon next to each comment will not be displayed.', INCOM_TD ); ?></span>
-						        </td>
-					        </tr>
-					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Remove Field "Website"', INCOM_TD ); ?></th>
 						        <td>
 									<input name="<?php echo INCOM_OPTION_KEY; ?>_field_url" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_field_url' ) ); ?> /><span><?php esc_html_e( 'If checked, users cannot submit an URL/Website when they comment inline.', INCOM_TD ); ?></span>
@@ -291,6 +285,12 @@ class INCOM_Admin_Options {
 					        	<th scope="row"><?php esc_html_e( 'Remove Link "Cancel"', INCOM_TD ); ?></th>
 						        <td>
 									<input name="cancel_link" type="checkbox" value="1" <?php checked( '1', get_option( 'cancel_link' ) ); ?> /><span><?php esc_html_e( 'If checked, the "cancel" link at the left bottom of the comments wrapper will not be displayed.', INCOM_TD ); ?></span>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row"><?php esc_html_e( 'Display Permalinks', INCOM_TD ); ?> <span class="newred"><?php esc_html_e( 'Updated', INCOM_TD ); ?></th>
+						        <td>
+									<input name="<?php echo INCOM_OPTION_KEY; ?>_comment_permalink" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_comment_permalink' ) ); ?> /><span><?php esc_html_e( 'If checked, a permalink icon will be displayed next to each comment.', INCOM_TD ); ?></span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
