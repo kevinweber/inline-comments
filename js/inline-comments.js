@@ -604,7 +604,7 @@
       }
       else {
         $classCommentsWrapper.remove();
-        // moveSite( 'out', 0 );
+        // @TODO: moveSite( 'out', 0 ); // With "0" the bubbles do another jump; implement a "switch" that deals if the container's changing position (instead of deleting and adding a new container)
       }
     }
 
@@ -616,16 +616,16 @@
 
   };
 
-  var moveSite = function( way ) {
+  var moveSite = function( way, duration ) {
     var $move = $( o.moveSiteSelector );
     $move.css( { "position" : "relative"  } );
 
-    prepareMoveX( $move, way );
+    prepareMoveX( $move, way, duration );
 
     // Only move elements if o.moveSiteSelector is not the same as idWrapperAppendTo
     if ( o.moveSiteSelector !== idWrapperAppendTo ) {
-      prepareMoveX( $(classBubbleDot), way ); // Move bubbles
-      prepareMoveX( $(classCommentsWrapperDot), way ); // Move wrapper
+      prepareMoveX( $(classBubbleDot), way, duration ); // Move bubbles
+      prepareMoveX( $(classCommentsWrapperDot), way, duration ); // Move wrapper
     }
   };
 
