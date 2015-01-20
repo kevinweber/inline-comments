@@ -595,10 +595,6 @@
 
     // If any element with $classIncomBubble has classBubbleActive -> remove class and commentsWrapper
     if ( $classIncomBubble.hasClass( classBubbleActive ) ) {
-
-    // var $wrapper = $(idWrapperHash);
-    // $wrapper.removeClass( classWrapperHidden );
-
       $classIncomBubble.removeClass( classBubbleActive );
       if ( fadeout ) {
         $classCommentsWrapper.remove();
