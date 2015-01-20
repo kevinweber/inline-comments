@@ -574,10 +574,8 @@
     if ( $classIncomBubble.hasClass( classBubbleActive ) ) {
       $classIncomBubble.removeClass( classBubbleActive );
       if ( fadeout ) {
-        $classCommentsWrapper.fadeOut( 'fast', function() {
-            $( this ).remove();
-            removeExistingClasses( classActive );
-        });
+        $classCommentsWrapper.remove();
+        removeExistingClasses( classActive );
         moveSite( 'out' );
       }
       else {

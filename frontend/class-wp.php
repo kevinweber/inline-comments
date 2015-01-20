@@ -45,24 +45,6 @@ class INCOM_WordPress extends INCOM_Frontend {
 					<?php do_action( 'incom_wp_set_options' ); ?>
 				});
 			});
-
-			// $(document).ready(function() {
-			// 	incom.init({
-			// 		selectors: '<?php if (get_option("multiselector") == '') { echo "p"; } else { echo get_option("multiselector"); } ?>',
-			// 		moveSiteSelector: '<?php if (get_option("moveselector") == '') { echo "body"; } else { echo get_option("moveselector"); } ?>',
-	  //           	countStatic: <?php if (get_option("bubble_static") == "1") { echo "false"; } else { echo "true"; } ?>,
-	  //           	alwaysStatic: <?php if (get_option("bubble_static_always") == "1") { echo "true"; } else { echo "false"; } ?>,
-	  //           	bubbleStyle: '<?php if (get_option("select_bubble_style") == "") { echo "bubble"; } else { echo get_option("select_bubble_style"); } ?>',
-	  //           	bubbleAnimationIn: '<?php if (get_option("select_bubble_fadein") == "") { echo "default"; } else { echo get_option("select_bubble_fadein"); } ?>',
-	  //           	bubbleAnimationOut: '<?php if (get_option("select_bubble_fadeout") == "") { echo "default"; } else { echo get_option("select_bubble_fadeout"); } ?>',
-			// 	  // defaultBubbleText: '+',
-	  //             // highlighted: false,
-	  //           	position: '<?php if (get_option("select_align") == "") { echo "right"; } else { echo get_option("select_align"); } ?>',
-	  //             	background: '<?php if (get_option("set_bgcolour") == "") { echo "#fff"; } else { echo get_option("set_bgcolour"); } ?>',
-			// 		backgroundOpacity: '<?php if (get_option("incom_set_bgopacity") == "") { echo "1"; } else { echo get_option("incom_set_bgopacity"); } ?>',
-			// 		<?php do_action( 'incom_wp_set_options' ); ?>
-			// 	});
-			// });
 		})(jQuery);
 		</script>
 	<?php }
@@ -77,7 +59,6 @@ class INCOM_WordPress extends INCOM_Frontend {
 			wp_enqueue_script( 'incom-js', plugins_url( 'js/min/inline-comments-ck.js' , plugin_dir_path( __FILE__ ) ), array( 'jquery' ), INCOM_VERSION );	// In case 'wp_localize_script' is used: wp_enqueue_script must be enqueued before wp_localize_script
 		}
 
-		//@TODO: Only load JS when needed
 		wp_enqueue_script( 'incom-animation-js', plugins_url( 'js/min/animation.min.js' , plugin_dir_path( __FILE__ ) ), array( 'jquery' ), INCOM_VERSION );
 	}
 
