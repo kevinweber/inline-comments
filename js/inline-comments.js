@@ -46,6 +46,11 @@
     var classBrandingDot = '.'+classBranding;
   var classScrolledTo = 'incom-scrolled-to';
 
+  var classWrapperHidden = idWrapper+'-hidden';
+  var classWrapperVisible = idWrapper+'-visible';
+  var classWrapperVisibility = classWrapperHidden;  // Wrapper is hidden by default
+    // var classWrapperVisibilityDot = '.'+classWrapperVisibility;
+
   // Other
   var selectComment = idCommentsAndFormHash+' .comment';
   var dataIncomKey = 'data_incom';  // Should be the same as $DataIncomKey in class-comments.php
@@ -113,8 +118,7 @@
    */
   var setIncomWrapper = function() {
     if ( $( idWrapperHash ).length === 0 ) {
-      $( '<div id="'+idWrapper+'"></div>' ).appendTo( $( idWrapperAppendTo ) )
-        .addClass( classPosition + o.position );
+      $( '<div id="'+idWrapper+'" class="'+classWrapperVisibility+' '+classPosition+o.position+'"></div>' ).appendTo( $( idWrapperAppendTo ) );
     }
   };
 
@@ -432,12 +436,34 @@
   var loadCommentsWrapper = function ( source ) {
     var $commentsWrapper = createCommentsWrapper();
 
+    // Add class to wrapper which indicates that the wrapper is visible
+    handleWrapperVisibility( 'show' );
+
     loadComments();
     loadCommentForm();
     setPosition( source, $commentsWrapper );
     testIfMoveSiteIsNecessary( $commentsWrapper );
     handleClickElsewhere();
     ajaxStop();
+  };
+
+  /*
+   * idWrapperHash has a class that changes regarding of the element's visibility.
+   * @param change: 'hide' || 'show'
+   */
+  var handleWrapperVisibility = function( change ) {
+    var $wrapper = $(idWrapperHash);
+
+    if ( change === 'show' ) {
+      $wrapper.removeClass( classWrapperHidden );
+      $wrapper.addClass( classWrapperVisible );
+    }
+
+    else if ( change === 'hide' ) {
+      $wrapper.removeClass( classWrapperVisible );
+      $wrapper.addClass( classWrapperHidden );
+    }
+
   };
 
   /*
@@ -567,11 +593,12 @@
     // Comments and comment form must be detached (and hidden) before wrapper is deleted, so it can be used afterwards
     $( idCommentsAndFormHash ).appendTo( idWrapperHash ).hide();
 
-    // Remove classVisibleComment from every element that has classVisibleComment
-    $( classVisibleCommentDot ).removeClass( classVisibleComment );
-
     // If any element with $classIncomBubble has classBubbleActive -> remove class and commentsWrapper
     if ( $classIncomBubble.hasClass( classBubbleActive ) ) {
+
+    // var $wrapper = $(idWrapperHash);
+    // $wrapper.removeClass( classWrapperHidden );
+
       $classIncomBubble.removeClass( classBubbleActive );
       if ( fadeout ) {
         $classCommentsWrapper.remove();
@@ -582,6 +609,12 @@
         $classCommentsWrapper.remove();
       }
     }
+
+    // Add class to wrapper which indicates that the wrapper is hidden
+    handleWrapperVisibility( 'hide' );
+
+    // Remove classVisibleComment from every element that has classVisibleComment
+    $( classVisibleCommentDot ).removeClass( classVisibleComment );
 
   };
 
