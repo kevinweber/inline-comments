@@ -142,7 +142,7 @@ class INCOM_Admin_Options {
 					        	<th scope="row"><?php esc_html_e( '"Slide Site" Selector', INCOM_TD ); ?></th>
 					        	<td>
 					        		<?php 
-					        			$arr_selectors = array( ".site-main", ".site-inner", ".site" );
+					        			$arr_selectors = array( ".site-main", ".site-inner", ".site", "html" );
 					        			$selectors = implode( '<br>' , $arr_selectors );
 					        		?>
 					        		<input type="text" name="moveselector" placeholder="body" value="<?php echo get_option('moveselector'); ?>" />
