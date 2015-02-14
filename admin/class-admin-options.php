@@ -37,7 +37,6 @@ class INCOM_Admin_Options {
 	function register_incom_settings() {
 		$arr = array(
 			// Basics
-			'select_comment_type',
 			'multiselector',
 			INCOM_OPTION_KEY.'_support_for_ajaxify_comments',
 			INCOM_OPTION_KEY.'_reply',
@@ -94,17 +93,6 @@ class INCOM_Admin_Options {
 
 				    <table class="form-table">
 					    <tbody>
-					        <tr valign="top">
-					        	<th scope="row"><?php esc_html_e( 'Comment System', INCOM_TD ); ?></th>
-						        <td>
-									<select class="select" typle="select" name="select_comment_type">
-										<option value="wp"<?php if (get_option('select_comment_type') === 'wp') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'WordPress Comments', INCOM_TD ); ?></option>
-									</select>
-									<span><br>
-										<span style="color:#f60;">Notice:</span> Disqus integration is no longer supported, but you can still use the previous versions 1.2 or below from <a href="https://wordpress.org/plugins/inline-comments/developers/" target="_blank" title="Inline Comments for Developers">here</a>. This update makes Inline Comments even more lightweight and allows to simplify this options page.</span>
-									</span>
-						        </td>
-					        </tr>
 					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Selectors', INCOM_TD ); ?></th>
 					        	<td>

@@ -60,6 +60,7 @@ For comment system "WordPress Comments", use custom CSS like this:
 * Changed option "Remove Permalinks" to "Display Permalinks" (permalinks are hidden by default as from now). If this option is checked, a permalink icon will be displayed next to each comment.
 * Improved colour picker.
 * Scroll smoothly when the user clicks on a comment's permalink icon.
+* Removed "Comment System" option.
 * Fix: Replaced '<?=' with '<?php echo'.
 * Improvement: Use not minified JavaScript files when SCRIPT_DEBUG is true (defined in wp-config.php).
 * Added version number to scripts.
