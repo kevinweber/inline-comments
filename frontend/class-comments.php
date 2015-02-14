@@ -135,7 +135,7 @@ class INCOM_Comments extends INCOM_Frontend {
 		<?php
 			endif;
 
-			if ( (get_option("comment_permalink") != "1") ) {
+			if ( (get_option(INCOM_OPTION_KEY."_comment_permalink") == "1") ) {
 				echo apply_filters( 'incom_comment_permalink', $this->loadCommentPermalink( $comment->comment_ID ) );
 			}
 		?>
