@@ -37,6 +37,7 @@ class INCOM_Admin_Options {
 	function register_incom_settings() {
 		$arr = array(
 			// Basics
+			'select_comment_type',
 			'multiselector',
 			INCOM_OPTION_KEY.'_support_for_ajaxify_comments',
 			INCOM_OPTION_KEY.'_reply',
@@ -54,13 +55,12 @@ class INCOM_Admin_Options {
 
 			// Advanced
 			INCOM_OPTION_KEY.'_content_comments_before',
-			INCOM_OPTION_KEY.'_animation',
 			'select_bubble_fadein',
 			'select_bubble_fadeout',
+			'comment_permalink',
 			'cancel_x',
 			'cancel_link',
 			INCOM_OPTION_KEY.'_field_url',
-			INCOM_OPTION_KEY.'_comment_permalink',
 			INCOM_OPTION_KEY.'_references',
 			INCOM_OPTION_KEY.'_bubble_static_always',
 		);
@@ -94,6 +94,17 @@ class INCOM_Admin_Options {
 
 				    <table class="form-table">
 					    <tbody>
+					        <tr valign="top">
+					        	<th scope="row"><?php esc_html_e( 'Comment System', INCOM_TD ); ?></th>
+						        <td>
+									<select class="select" typle="select" name="select_comment_type">
+										<option value="wp"<?php if (get_option('select_comment_type') === 'wp') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'WordPress Comments', INCOM_TD ); ?></option>
+									</select>
+									<span><br>
+										<span style="color:#f60;">Notice:</span> Disqus integration is no longer supported, but you can still use the previous versions 1.2 or below from <a href="https://wordpress.org/plugins/inline-comments/developers/" target="_blank" title="Inline Comments for Developers">here</a>. This update makes Inline Comments even more lightweight and allows to simplify this options page.</span>
+									</span>
+						        </td>
+					        </tr>
 					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Selectors', INCOM_TD ); ?></th>
 					        	<td>
@@ -130,12 +141,12 @@ class INCOM_Admin_Options {
 					        	<th scope="row"><?php esc_html_e( '"Slide Site" Selector', INCOM_TD ); ?></th>
 					        	<td>
 					        		<?php 
-					        			$arr_selectors = array( ".site-main", ".site-inner", ".site", "html" );
+					        			$arr_selectors = array( ".site-main", ".site-inner", ".site" );
 					        			$selectors = implode( '<br>' , $arr_selectors );
 					        		?>
-					        		<input type="text" name="moveselector" placeholder="body" value="<?php echo get_option('moveselector'); ?>" />
+					        		<input type="text" name="moveselector" placeholder="html" value="<?php echo get_option('moveselector'); ?>" />
 					        			<br>
-					        			<span><?php esc_html_e( 'This selector defines which content should slide left/right when the user clicks on a bubble. This setting depends on your theme\'s structure.', INCOM_TD ); ?> <?php esc_html_e( 'Default is', INCOM_TD ); ?> <i>body</i>.
+					        			<span><?php esc_html_e( 'This selector defines which content should slide left/right when the user clicks on a bubble. This setting depends on your theme\'s structure.', INCOM_TD ); ?> <?php esc_html_e( 'Default is', INCOM_TD ); ?> <i>html</i>.
 					        				<br><br><?php esc_html_e( 'You might try one of these selectors:', INCOM_TD ); ?>
 					        				<br><span class="italic"><?php echo $selectors; ?></span>
 					        			</span>
@@ -227,24 +238,6 @@ class INCOM_Admin_Options {
 					        	</td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><?php esc_html_e( 'Show/Hide Animation', INCOM_TD ); ?><br><span class="description thin">
-					        		<?php printf( esc_html__( 'Please %1$sprovide feedback%2$s.', INCOM_TD ),
-										'<a href="http://kevinw.de/kontakt/" title="Contact Kevin Weber" target="_blank">',
-										'</a>'
-									); ?><span class="newred"><?php esc_html_e( 'Beta', INCOM_TD ); ?></span></span>
-								</th>
-						        <td>
-									<select class="select" typle="select" name="incom_animation">
-										<option value="off"<?php if (get_option('incom_animation') === 'off') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'No animation', INCOM_TD ); ?></option>
-										<option value="snap"<?php if (get_option('incom_animation') === 'snap') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Basic animation', INCOM_TD ); ?></option>
-									</select>
-									<span><br>
-									<?php esc_html_e( 'Animate the showing/hiding of the comments wrapper.', INCOM_TD ); ?><br>
-									<?php esc_html_e( 'Make sure to define a "Slide Site" Selector when you want to use an animation (else your admin bar will "jump" as soon as the comments wrapper appears).', INCOM_TD ); ?>
-									</span>
-						        </td>
-					        </tr>
-					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Bubble Fade In', INCOM_TD ); ?></th>
 						        <td>
 									<select class="select" typle="select" name="select_bubble_fadein">
@@ -269,6 +262,12 @@ class INCOM_Admin_Options {
 						        </td>
 					        </tr>
 					        <tr valign="top">
+					        	<th scope="row"><?php esc_html_e( 'Remove Permalinks', INCOM_TD ); ?></th>
+						        <td>
+									<input name="comment_permalink" type="checkbox" value="1" <?php checked( '1', get_option( 'comment_permalink' ) ); ?> /><span><?php esc_html_e( 'If checked, the permalink icon next to each comment will not be displayed.', INCOM_TD ); ?></span>
+						        </td>
+					        </tr>
+					        <tr valign="top">
 					        	<th scope="row"><?php esc_html_e( 'Remove Field "Website"', INCOM_TD ); ?></th>
 						        <td>
 									<input name="<?php echo INCOM_OPTION_KEY; ?>_field_url" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_field_url' ) ); ?> /><span><?php esc_html_e( 'If checked, users cannot submit an URL/Website when they comment inline.', INCOM_TD ); ?></span>
@@ -278,12 +277,6 @@ class INCOM_Admin_Options {
 					        	<th scope="row"><?php esc_html_e( 'Remove Link "Cancel"', INCOM_TD ); ?></th>
 						        <td>
 									<input name="cancel_link" type="checkbox" value="1" <?php checked( '1', get_option( 'cancel_link' ) ); ?> /><span><?php esc_html_e( 'If checked, the "cancel" link at the left bottom of the comments wrapper will not be displayed.', INCOM_TD ); ?></span>
-						        </td>
-					        </tr>
-					        <tr valign="top">
-					        	<th scope="row"><?php esc_html_e( 'Display Permalinks', INCOM_TD ); ?> <span class="newred"><?php esc_html_e( 'Updated', INCOM_TD ); ?></th>
-						        <td>
-									<input name="<?php echo INCOM_OPTION_KEY; ?>_comment_permalink" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_comment_permalink' ) ); ?> /><span><?php esc_html_e( 'If checked, a permalink icon will be displayed next to each comment.', INCOM_TD ); ?></span>
 						        </td>
 					        </tr>
 					        <tr valign="top">

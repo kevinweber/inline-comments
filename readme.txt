@@ -56,13 +56,10 @@ For comment system "WordPress Comments", use custom CSS like this:
 
 == Changelog ==
 
-= 2.2 =
-* Changed option "Remove Permalinks" to "Display Permalinks" (permalinks are hidden by default as from now). If this option is checked, a permalink icon will be displayed next to each comment.
-* Beta: Show/hide comments wrapper with animation.
-* Removed "Comment System" option.
+= 2.1.1 =
 * Improved colour picker.
-* Scroll smoothly when the user clicks on a comment's permalink icon.
 * Fix: Replaced '<?=' with '<?php echo'.
+* Fix: Set 'html' as default slide site selector (instead of 'body') to prevent bubbles from "jumping".
 * Improvement: Use not minified JavaScript files when SCRIPT_DEBUG is true (defined in wp-config.php).
 * Added version number to scripts.
 * Added Spanish translation by Andrew Kurtis.
@@ -122,9 +119,6 @@ For comment system "WordPress Comments", use custom CSS like this:
 
 
 == Upgrade Notice ==
-
-= 2.2 =
-* If you want permalinks to be displayed next to each comment, please check the updated option "Display Permalinks". Previously, those permalinks had been visible by default.
 
 = 2.0.1 =
 * I renamed functions.php to inline-comments.php. This causes your plugin to be deactivated. Simply activate it again and everything works fine.

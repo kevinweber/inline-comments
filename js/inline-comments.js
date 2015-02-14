@@ -46,11 +46,6 @@
     var classBrandingDot = '.'+classBranding;
   var classScrolledTo = 'incom-scrolled-to';
 
-  var classWrapperHidden = idWrapper+'-hidden';
-  var classWrapperVisible = idWrapper+'-visible';
-  var classWrapperVisibility = classWrapperHidden;  // Wrapper is hidden by default
-    // var classWrapperVisibilityDot = '.'+classWrapperVisibility;
-
   // Other
   var selectComment = idCommentsAndFormHash+' .comment';
   var dataIncomKey = 'data_incom';  // Should be the same as $DataIncomKey in class-comments.php
@@ -78,11 +73,10 @@
     references();
 
     // This code is required to make Inline Comments work with Ajaxify
-    $( classReplyDot ).find( ".comment-reply-link" ).on( 'click', function() {
-      $( idCommentsAndFormHash ).find( ' #commentform' ).attr( "id", idCommentForm );
+    $( classReplyDot + " .comment-reply-link" ).on( 'click', function() {
+      $( idCommentsAndFormHash + ' #commentform' ).attr( "id", idCommentForm );
     });
 
-    handleEvents.init();
   };
 
 
@@ -104,11 +98,10 @@
         bubbleStyle: 'bubble',
         bubbleAnimationIn: 'default',
         bubbleAnimationOut: 'default',
+        // highlighted: false,
         position: 'left',
         background: 'white',
         backgroundOpacity: '1',
-        animation: false,//'snap' // Get possible easing effects from http://ricostacruz.com/jquery.transit/
-        animationDuration: 400,
       },
     options);
   };
@@ -119,7 +112,8 @@
    */
   var setIncomWrapper = function() {
     if ( $( idWrapperHash ).length === 0 ) {
-      $( '<div id="'+idWrapper+'" class="'+classWrapperVisibility+' '+classPosition+o.position+'"></div>' ).appendTo( $( idWrapperAppendTo ) );
+      $( '<div id="'+idWrapper+'"></div>' ).appendTo( $( idWrapperAppendTo ) )
+        .addClass( classPosition + o.position );
     }
   };
 
@@ -128,9 +122,8 @@
    */
   var initElementsAndBubblesFromSelectors = function() {
     $( o.selectors ).each( function() {
-      var $this = $(this);
-      addAttToElement( $this );
-      bubble.createFromElement( $this );
+      addAttToElement( $(this) );
+      bubble.createFromElement( $(this) );
     });
   };
 
@@ -261,7 +254,6 @@
       handleHover( source, $bubble );
       handleClickBubble( source, $bubble );
     }
-
   };
 
   /*
@@ -289,9 +281,9 @@
     // Define selector that identifies elements that shell be counted
     var selectByAtt = '[' + attDataIncomComment + '=' + attFromSource + ']';
     // Count elements
-    var $count = $( idCommentsAndFormHash ).find(selectByAtt).length;
+    var $count = $( selectByAtt ).length;
     // Increase count for each inline reply, too
-    $count += $( idCommentsAndFormHash ).find(selectByAtt).find('.children').find('li').length;
+    $count += $( selectByAtt + ' .children li').length;
 
     return $count;
   };
@@ -354,7 +346,7 @@
       // Handle hover (for both, "elements" and $bubble)
       element.add(bubble).hover(function() {
         // First hide all non-static bubbles
-        $( idWrapperHash ).find( classBubbleDot+':not('+classBubbleStaticDot+')' ).hide();
+        $( classBubbleDot+':not('+classBubbleStaticDot+')' ).hide();
 
         if ( o.bubbleAnimationIn === 'fadein' ) {
           bubble.stop( true, true ).fadeIn();
@@ -421,8 +413,8 @@
           {
             'class': classCommentsWrapper,
           })
-          .css('background-color', 'rgba(' + convertHexToRgb( o.background ) + ',' + o.backgroundOpacity + ')')
-          .appendTo( idWrapperHash );
+          .appendTo( idWrapperHash )
+          .css('background-color', 'rgba(' + convertHexToRgb( o.background ) + ',' + o.backgroundOpacity + ')');
     }
     else {
       $commentsWrapper = $( classCommentsWrapperDot );
@@ -437,34 +429,12 @@
   var loadCommentsWrapper = function ( source ) {
     var $commentsWrapper = createCommentsWrapper();
 
-    // Add class to wrapper which indicates that the wrapper is visible
-    handleWrapperVisibility( 'show' );
-
     loadComments();
     loadCommentForm();
     setPosition( source, $commentsWrapper );
     testIfMoveSiteIsNecessary( $commentsWrapper );
     handleClickElsewhere();
     ajaxStop();
-  };
-
-  /*
-   * idWrapperHash has a class that changes regarding of the element's visibility.
-   * @param change: 'hide' || 'show'
-   */
-  var handleWrapperVisibility = function( change ) {
-    var $wrapper = $(idWrapperHash);
-
-    if ( change === 'show' ) {
-      $wrapper.removeClass( classWrapperHidden );
-      $wrapper.addClass( classWrapperVisible );
-    }
-
-    else if ( change === 'hide' ) {
-      $wrapper.removeClass( classWrapperVisible );
-      $wrapper.addClass( classWrapperHidden );
-    }
-
   };
 
   /*
@@ -491,7 +461,7 @@
     var input = $( '<input>' )
      .attr( 'type', 'hidden' )
      .attr( 'name', dataIncomKey ).val( getAttDataIncomValue );
-    $( idCommentsAndFormHash ).find( '.form-submit' ).append( $( input ) );
+    $( idCommentsAndFormHash + ' .form-submit' ).append( $( input ) );
   };
 
   /*
@@ -501,7 +471,7 @@
     var selectByAtt = '[' + attDataIncomComment + '=' + getAttDataIncomValue() + ']';
     $( selectComment ).hide();
     $( selectComment + selectByAtt ).addClass( classVisibleComment ).show();
-    $( classVisibleCommentDot ).find( '.children').find( 'li' ).show();
+    $( classVisibleCommentDot + ' .children li' ).show();
   };
 
   /*
@@ -520,7 +490,7 @@
 
     element.css({
       'top': $offset.top,
-      'left': testIfPosRight() ? $offset.left + source.outerWidth() : $offset.left - element.outerWidth(),
+      'left': testIfPositionRight() ? $offset.left + source.outerWidth() : $offset.left - element.outerWidth(),
     });
   };
 
@@ -545,11 +515,11 @@
     setElementProperties( element );
 
     // If admin has selected position "right" and the comments wrapper's right side stands out of the screen -> setSlideWidth and moveSite
-    if( testIfPosRight() && ( $sumOffsetAndElementW > $viewportW ) ) {
+    if( testIfPositionRight() && ( $sumOffsetAndElementW > $viewportW ) ) {
       setSlideWidth( $sumOffsetAndElementW - $viewportW );
       moveSite( 'in' );
     }
-    else if ( !testIfPosRight() && ( $offsetL < 0 ) ) {
+    else if ( !testIfPositionRight() && ( $offsetL < 0 ) ) {
       setSlideWidth( -$offsetL );
       moveSite( 'in' );
     }
@@ -594,67 +564,130 @@
     // Comments and comment form must be detached (and hidden) before wrapper is deleted, so it can be used afterwards
     $( idCommentsAndFormHash ).appendTo( idWrapperHash ).hide();
 
+    // Remove classVisibleComment from every element that has classVisibleComment
+    $( classVisibleCommentDot ).removeClass( classVisibleComment );
+
     // If any element with $classIncomBubble has classBubbleActive -> remove class and commentsWrapper
     if ( $classIncomBubble.hasClass( classBubbleActive ) ) {
       $classIncomBubble.removeClass( classBubbleActive );
       if ( fadeout ) {
-        $classCommentsWrapper.remove();
-        removeExistingClasses( classActive );
-        moveSite( 'out' );
+        $classCommentsWrapper.fadeOut( 'fast', function() {
+            $( this ).remove();
+            removeExistingClasses( classActive );
+        });
       }
       else {
         $classCommentsWrapper.remove();
-        // @TODO: moveSite( 'out', 0 ); // With "0" the bubbles do another jump; implement a "switch" that deals if the container's changing position (instead of deleting and adding a new container)
       }
+      moveSite( 'out' );
     }
-
-    // Add class to wrapper which indicates that the wrapper is hidden
-    handleWrapperVisibility( 'hide' );
-
-    // Remove classVisibleComment from every element that has classVisibleComment
-    $( classVisibleCommentDot ).removeClass( classVisibleComment );
 
   };
 
-  var moveSite = function( way, duration ) {
+  var moveSite = function( way ) {
     var $move = $( o.moveSiteSelector );
     $move.css( { "position" : "relative"  } );
 
-    prepareMoveX( $move, way, duration );
+    handleWayInAndOut( $move, way );
 
     // Only move elements if o.moveSiteSelector is not the same as idWrapperAppendTo
     if ( o.moveSiteSelector !== idWrapperAppendTo ) {
-      prepareMoveX( $(classBubbleDot), way, duration ); // Move bubbles
-      prepareMoveX( $(classCommentsWrapperDot), way, duration ); // Move wrapper
+      moveElement( way, classBubbleDot ); // Move bubbles
+      moveElement( way, classCommentsWrapperDot );  // Move wrapper
     }
   };
 
-  var prepareMoveX = function( element, way, duration ) {
+  var handleWayInAndOut = function( element, way ) {
     var value;
-    var sign = testIfPosRight() ? '-' : '';
 
     if ( way === 'in' ) {
-      value = sign+getSlidewidth();
+      value = getSlidewidth();
     }
     else if ( way === 'out' ) {
-      value = '0';
-    }
+      value = 'initial';
 
-    moveX( element, value, duration );
+    }
+    moveLeftOrRight( element, value );
   };
 
-  var moveX = function( element, value, duration ) {
-    if (duration !== 0) {
-      duration = duration || o.animationDuration;
-    }
-    element.transition( // ".transition" requires jQuery Transit library
-      { x: value },     // property: value
-      duration,              // duration
-      o.animation       // easing effect
-    );
+  var moveLeftOrRight = function( element, value ) {
+    var direction = testIfPositionRight() ? 'right' : 'left';
+    var options = {};
+    options[direction] = value;
+
+    element.css( options );
+
+
+// element.animate(options,{
+//    duration: 500,
+//           step:function(now, fn){
+//             fn.start = 0;
+//             fn.end = value;
+//             $(element).css({
+//                 '-webkit-transform':'translateX(-'+now+'px)',
+//                 '-moz-transform':'translateX(-'+now+'px)',
+//                 '-o-transform':'translateX(-'+now+'px)',
+//                 'transform':'translateX(-'+now+'px)'
+//             });
+//           }
+// });
+
+    // if ( testIfPositionRight() ) {
+    //   element.css( { 
+    //     '-webkit-transform': translateX(-100%);
+    //     -moz-transform: translateX(-100%);
+    //     -ms-transform: translateX(-100%);
+    //     -o-transform: translateX(-100%);
+    //     transform: translateX(-100%)
+
+    //    } );
+    // } else {
+    //   element.css( { 'left' : value  } );
+    // }
+
+
+
+    // if ( testIfPositionRight() ) {
+    //   // element.css( { 'right' : value  } );
+
+    //   // element.animate({
+    //   //   width: "toggle",
+    //   //   height: "toggle"
+    //   // }, {
+    //   //   duration: 5000,
+    //   //   specialEasing: {
+    //   //     width: "linear",
+    //   //     height: "easeOutBounce"
+    //   //   },
+    //   //   complete: function() {
+    //   //     $( this ).after( "<div>Animation complete.</div>" );
+    //   //   }
+    //   // });
+    //   element.animate({
+    //       right: value,
+    //     }, "fast" );
+
+    // } else {
+    //   element.css( { 'left' : value  } );
+    // }
   };
 
-  var testIfPosRight = function() {
+  var moveElement = function( way, selector ) {
+    var $element = $( selector );
+
+    if ( way === 'in' ) {
+      $element.css({
+          left: testIfPositionRight() ? '-='+getSlidewidth() : '+='+getSlidewidth()
+      });
+    }
+    else if ( way === 'out' ) {
+      $element.css({
+          left: testIfPositionRight() ? '+='+getSlidewidth() : '-='+getSlidewidth()
+      });
+    }
+  };
+
+  var testIfPositionRight = function() {
     return o.position === 'right' ? true : false;
   };
 
@@ -688,33 +721,6 @@
   };
 
   /*
-   * Define all event handler functions here
-   * @since 2.1.1
-   */
-  var handleEvents = {
-    init : function() {
-      this.permalinksHandler();
-    },
-
-    permalinksHandler : function() {
-      $(idCommentsAndFormHash).on( 'click', 'a.incom-permalink', function() {
-        var $target = $(this.hash);
-
-        if ( $target.length ) {
-
-          animateScrolling($target);
-
-          var href = $(this).attr("href");
-          changeUrl(href);
-
-          return false;
-        }
-      });
-    }
-  };
-
-
-  /*
    * Load scroll script
    * @since 2.1
    *
@@ -727,8 +733,11 @@
       var $target = $( '['+target+'="'+targetValue+'"]' );
 
       if ( $target.length ) {
+        var targetOffset = $target.offset().top - 30;
 
-        animateScrolling($target);
+        $( 'html, body' ).animate({
+            scrollTop: targetOffset
+        }, 1200, 'quart' );
 
         removeExistingClasses( classScrolledTo );
         $target.addClass( classScrolledTo );
@@ -843,34 +852,6 @@
    */
   $.easing.quart = function (x, t, b, c, d) {
     return -c * ((t=t/d-1)*t*t*t - 1) + b;
-  };
-
-  /*
-   * Change URL
-   * @param href = complete URL
-   */
-  var changeUrl = function( href ) {
-    history.pushState(null, null, href);
-    if(history.pushState) {
-        history.pushState(null, null, href);
-    }
-    else {
-        location.hash = href;
-    }
-  };
-
-  /*
-   * Animate scrolling
-   * @param $target (expects unique jQuery object)
-   */
-
-  var animateScrolling = function( $target ) {
-    var $scrollingRoot = $('html, body');
-    var targetOffset = $target.offset().top - 30;
-
-    $scrollingRoot.animate({
-        scrollTop: targetOffset
-    }, 1200, 'quart' );
   };
 
 }( window.incom = window.incom || {}, jQuery ));
