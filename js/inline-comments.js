@@ -77,6 +77,7 @@
       $( idCommentsAndFormHash + ' #commentform' ).attr( "id", idCommentForm );
     });
 
+    handleEvents.init();
   };
 
 
@@ -721,6 +722,33 @@
   };
 
   /*
+   * Define all event handler functions here
+   * @since 2.1.1
+   */
+  var handleEvents = {
+    init : function() {
+      this.permalinksHandler();
+    },
+
+    permalinksHandler : function() {
+      $(idCommentsAndFormHash).on( 'click', 'a.incom-permalink', function() {
+        var $target = $(this.hash);
+
+        if ( $target.length ) {
+
+          animateScrolling($target);
+
+          var href = $(this).attr("href");
+          changeUrl(href);
+
+          return false;
+        }
+      });
+    }
+  };
+
+
+  /*
    * Load scroll script
    * @since 2.1
    *
@@ -733,11 +761,8 @@
       var $target = $( '['+target+'="'+targetValue+'"]' );
 
       if ( $target.length ) {
-        var targetOffset = $target.offset().top - 30;
 
-        $( 'html, body' ).animate({
-            scrollTop: targetOffset
-        }, 1200, 'quart' );
+        animateScrolling($target);
 
         removeExistingClasses( classScrolledTo );
         $target.addClass( classScrolledTo );
@@ -852,6 +877,34 @@
    */
   $.easing.quart = function (x, t, b, c, d) {
     return -c * ((t=t/d-1)*t*t*t - 1) + b;
+  };
+
+  /*
+   * Change URL
+   * @param href = complete URL
+   */
+  var changeUrl = function( href ) {
+    history.pushState(null, null, href);
+    if(history.pushState) {
+        history.pushState(null, null, href);
+    }
+    else {
+        location.hash = href;
+    }
+  };
+
+  /*
+   * Animate scrolling
+   * @param $target (expects unique jQuery object)
+   */
+
+  var animateScrolling = function( $target ) {
+    var $scrollingRoot = $('html, body');
+    var targetOffset = $target.offset().top - 30;
+
+    $scrollingRoot.animate({
+        scrollTop: targetOffset
+    }, 1200, 'quart' );
   };
 
 }( window.incom = window.incom || {}, jQuery ));
