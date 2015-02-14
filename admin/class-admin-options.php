@@ -350,7 +350,7 @@ class INCOM_Admin_Options {
 		if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
 			wp_enqueue_script( 'incom_admin_js', plugins_url( '../js/admin.js' , __FILE__ ), array( 'jquery', 'jquery-ui-tabs', 'wp-color-picker' ), INCOM_VERSION );
 		} else {
-			wp_enqueue_script( 'incom_admin_js', plugins_url( '../js/min/admin-ck.js' , __FILE__ ), array( 'jquery', 'jquery-ui-tabs', 'wp-color-picker', INCOM_VERSION ) );
+			wp_enqueue_script( 'incom_admin_js', plugins_url( '../js/min/admin.min.js' , __FILE__ ), array( 'jquery', 'jquery-ui-tabs', 'wp-color-picker', INCOM_VERSION ) );
 		}
 	}
 
