@@ -4,7 +4,7 @@ Plugin Name: Inline Comments
 Plugin URI: http://kevinw.de/inline-comments/
 Description: Inline Comments adds your comment system to the side of paragraphs and other sections (like headlines and images) of your post. It performs native with WordPress comments.
 Author: Kevin Weber
-Version: 2.1.1
+Version: 2.1.2
 Author URI: http://kevinw.de/
 License: GPL v3
 Text Domain: inline-comments
@@ -12,7 +12,7 @@ Domain Path: /languages/
 */
 
 if ( !defined( 'INCOM_VERSION' ) ) {
-	define( 'INCOM_VERSION', '2.1.1' );
+	define( 'INCOM_VERSION', '2.1.2' );
 }
 
 if ( !defined( 'INCOM_VERSION_NAME' ) ) {
@@ -39,7 +39,6 @@ if ( !defined( 'INCOM_PATH' ) )
 	define( 'INCOM_PATH', plugin_dir_path( INCOM_FILE ) );
 
 
-
 /**
  * Load plugin textdomain.
  * @since 2.0
@@ -53,7 +52,7 @@ add_action( 'plugins_loaded', INCOM_OPTION_KEY.'_load_textdomain' );
 define( 'INCOM_NEWS_TEXT', 'To suggest and vote for new features: Let the developer come into contact with you.' );
 define( 'INCOM_NEWS_BUTTON', 'Get contacted' );
 
-require_once( INCOM_PATH . 'admin/class-register.php' );
+require_once( INCOM_PATH . 'inc/class-register.php' );
 
 function incom_admin_init() {
 	// require_once( INCOM_PATH . 'admin/class-admin.php' );

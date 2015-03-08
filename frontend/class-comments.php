@@ -303,7 +303,7 @@ class INCOM_Comments extends INCOM_Frontend {
 			return get_option( 'incom_content_comments_before' );
 		}
 	}
-	
+
 	/**
 	 * Customise comment form
 	 */

@@ -6,6 +6,7 @@
 
 register_activation_hook( INCOM_FILE, 'incom_plugin_activation' );
 register_deactivation_hook( INCOM_FILE, 'incom_plugin_deactivation' );
+add_action( 'init', 'allow_ksas_data' );
 
 function incom_plugin_activation() {
 	$signup = '';
@@ -39,6 +40,22 @@ function incom_plugin_deactivation() {
 	delete_option( 'incom_deferred_admin_notices' ); 
 }
 
+/**
+ * Register additional HTML attributes for WP KSES
+ * Based on https://vip.wordpress.com/documentation/register-additional-html-attributes-for-tinymce-and-wp-kses/
+ * @since 2.1.2
+ */
+function allow_ksas_data() {
+    global $allowedposttags;
+ 
+    $tags = array( 'span' );
+    $new_attributes = array( 'data-incom-ref' => array() );
+ 
+    foreach ( $tags as $tag ) {
+        if ( isset( $allowedposttags[ $tag ] ) && is_array( $allowedposttags[ $tag ] ) )
+            $allowedposttags[ $tag ] = array_merge( $allowedposttags[ $tag ], $new_attributes );
+    }
+}
 
 class INCOM_Register {
 
