@@ -71,6 +71,10 @@
 			  .attr( \'name\', dataIncomKey ).val( $attDataIncomValue );
 			jQuery( idCommentsAndFormHash + \' .form-submit\' ).append( jQuery( input ) );
 
+			// Update count of bubble
+			var bubble = jQuery( ".incom-bubble-active a" );
+			bubble.text( parseInt( bubble.text(), 10 ) + 1 );
+
 		';
 
 	   return $wpacOptions;
