@@ -163,6 +163,7 @@ class INCOM_Comments extends INCOM_Frontend {
 							'depth' => $depth,
 							'max_depth' => $args['max_depth'],
 							'login_text' => '',
+							'reply_title_id' => 'incom-reply-title',
 						)
 					)
 				);
