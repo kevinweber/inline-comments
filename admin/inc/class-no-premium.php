@@ -29,6 +29,14 @@ class INCOM_No_Premium_Admin_Options {
 
 			<table class="form-table">
 				<tbody>
+					<tr valign="top">
+						<th>It's pretty simple:</th>
+						<td>
+							<p><?php esc_html_e( 'I offer nearly every feature of Inline Comments for free. So you can ensure that everything works fine on your site before you grab this slick extension.', INCOM_TD ); ?></p>
+							<p><?php esc_html_e( 'This extension removes the subtle "i" (information link) that is placed in the top right of every comment wrapper. That\'s it.', INCOM_TD ); ?></p>
+							<p style="color:#999;"><i><?php esc_html_e( 'Using this link I assure that the plugin gets spread. And everyone who doesn\'t want the branding pays a very little compensation for my time-consuming efforts.', INCOM_TD ); ?></i></p>
+						</td>
+					</tr>
 			        <tr valign="top">
 			        	<th scope="row"><?php esc_html_e( 'Remove branding', INCOM_TD ); ?></th>
 				        <td>
@@ -36,27 +44,9 @@ class INCOM_No_Premium_Admin_Options {
 				        </td>
 			        </tr>
 			        <tr valign="top">
-			        	<th scope="row"><?php esc_html_e( 'Get setup support', INCOM_TD ); ?></th>
-				        <td>
-							<span><?php esc_html_e( 'I help you to choose the correct selectors.', INCOM_TD ); ?></span>
-				        </td>
-			        </tr>
-			        <tr valign="top">
 			        	<th scope="row"><?php esc_html_e( 'Lifetime updates', INCOM_TD ); ?><br><span class="description thin"><?php esc_html_e( 'Enjoy all coming features!', INCOM_TD ); ?></span></th>
 				        <td>
-							<span><?php esc_html_e( 'No matter what comes next: Once you\'ve bought premium, you\'re going to get every new feature for free. What do you think of social logins (Twitter, Facebook) or Inline Comments for Editors?', INCOM_TD ); ?></span>
-				        </td>
-			        </tr>
-			        <tr valign="top">
-			        	<th scope="row"><?php esc_html_e( 'Push development', INCOM_TD ); ?></th>
-				        <td>
-							<span><?php esc_html_e( 'This plugin does not anywhere near compensate my month-long time efforts financially. WordPress development is a hobby of mine and allows me to experiment. With your purchase, you sponsor me to spend at least a bit more time to enhance Inline Comments.', INCOM_TD ); ?></span>
-				        </td>
-			        </tr>
-			        <tr valign="top">
-			        	<th scope="row"><?php esc_html_e( 'Request features', INCOM_TD ); ?></th>
-				        <td>
-							<span><?php esc_html_e( 'I\'m going to develop your feature request with priority (but no guarantee).', INCOM_TD ); ?></span>
+							<span><?php esc_html_e( 'No matter what comes next: Once you\'ve bought premium, you\'re going to get every new feature for free.', INCOM_TD ); ?></span>
 				        </td>
 			        </tr>
 			        <tr valign="top">
