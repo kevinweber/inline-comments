@@ -82,6 +82,17 @@
 
 
 
+  /**
+   * Rebuild bubbles and content data attributes
+   */
+  incom.rebuild = function() {
+    $( '#incom_wrapper .incom-bubble' ).remove();
+    attDataIncomArr = [];
+    initElementsAndBubblesFromSelectors();
+  };
+
+
+
   /*
    * Private methods
    */
