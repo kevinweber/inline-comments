@@ -86,9 +86,20 @@
    * Rebuild bubbles and content data attributes
    */
   incom.rebuild = function() {
-    $( '#incom_wrapper .incom-bubble' ).remove();
+    // reset
+    $viewportW = $(window).width();
     attDataIncomArr = [];
+    $( '#incom_wrapper .incom-bubble' ).remove();
+
+    // re-init bubbles
     initElementsAndBubblesFromSelectors();
+
+    // reset sidebar form if visible
+    var commentsForm = $( idCommentsAndFormHash + ':visible' );
+    if ( commentsForm.length ) {
+        removeCommentsWrapper();
+        moveSite( 'out' );
+    }
   };
 
 
