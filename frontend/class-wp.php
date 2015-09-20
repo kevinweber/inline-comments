@@ -27,6 +27,16 @@ class INCOM_WordPress extends INCOM_Frontend {
 	function load_incom() { ?>
 		<script>
 		(function ( $ ) {
+			var icTimer;
+
+			$(window).on( "resize", function() {
+			        clearTimeout( icTimer );
+
+			        icTimer = setTimeout( function() {
+					incom.rebuild();
+			        }, 100 );
+			} );
+
 			$(window).on( "load", function() {
 				incom.init({
 					selectors: '<?php if (get_option("multiselector") == '') { echo "p"; } else { echo get_option("multiselector"); } ?>',
