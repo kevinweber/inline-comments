@@ -51,6 +51,11 @@ For comment system "WordPress Comments", use custom CSS like this:
 
 *.incom-active { background: #f3f3f3; }*
 
+= Why are comments not showing up (even after submitting a new comment was successful)? =
+Make sure that comments on your page/post are working – even when Inline Comments is not activated. When comments are not showing up while this plugin is deactivated, they probably won't show up when Inline Comments is activated.
+
+When you use a theme with the popular Genesis framework, for example, make sure that the theme specific option "Enable Comments" is checked. If you don't want to display comments in the regular comments section (thus, below the post), you can hide that section using CSS. But do not disable commenting at all.
+
 = Known bugs =
 * When you use Jetpack Comments, the comments will not be assigned to a specific paragraph. Anyhow, the comment will be displayed within your regular comment section with all other comments.
 
@@ -120,7 +125,7 @@ For comment system "WordPress Comments", use custom CSS like this:
 = 1.0 =
 * Major update! Many improvements and new functionalities
 * This plugin now performs with native WordPress comments
-* Removed option “identifier” (users cannot choose their own identifier anymore)
+* Removed option "identifier" (users cannot choose their own identifier anymore)
 
 = 0.8 =
 * Plugin goes public (Disqus-only)
