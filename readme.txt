@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: admin, comment, comments, content, counter, free, integration, jquery, mobile, page, pages, plugin, post, posts, sidebar, wordpress
 Requires at least: 3.5
 Tested up to: 4.3.1
-Stable tag: 2.1.3
+Stable tag: 2.1.4
 
 Inline Comments adds your comment system to the side of paragraphs and other sections (like headlines and images) of your post.
 
@@ -60,6 +60,10 @@ When you use a theme with the popular Genesis framework, for example, make sure 
 * When you use Jetpack Comments, the comments will not be assigned to a specific paragraph. Anyhow, the comment will be displayed within your regular comment section with all other comments.
 
 == Changelog ==
+
+= 2.1.4 =
+* Recalculate bubble positions when window is resized (pull request from @r-a-y on Github).
+* Minor fixes.
 
 = 2.1.3 =
 * Improved compatibility with WP-Ajaxify-Comments: Update comment count bubble when new comment is submitted (pull request from @r-a-y on Github).
