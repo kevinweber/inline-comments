@@ -59,12 +59,7 @@ define( 'INCOM_NEWS_BUTTON', 'Get contacted' );
 require_once( INCOM_PATH . 'inc/class-register.php' );
 
 function incom_admin_init() {
-	// require_once( INCOM_PATH . 'admin/class-admin.php' );
 	require_once( INCOM_PATH . 'admin/class-admin-options.php' );
-
-	if ( INCOM_ESSENTIAL ) {
-		require_once( INCOM_PATH . 'admin/inc/class-no-premium.php'); 
-	}
 }
 
 function incom_frontend_init() {

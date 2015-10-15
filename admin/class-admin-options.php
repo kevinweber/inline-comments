@@ -146,7 +146,7 @@ class INCOM_Admin_Options {
 						        <td>
 									<?php $options = get_option( INCOM_OPTION_KEY.'_attribute' ); ?>
 									<input class="radio" type="radio" name="<?php echo INCOM_OPTION_KEY; ?>_attribute" value="none"<?php checked( 'none' == $options || empty($options) ); ?> /> <label for="none"><?php esc_html_e( 'No attribution: "I can not afford to give appropriate credit for this free plugin."', INCOM_TD ); ?></label><br><br>
-									<input class="radio" type="radio" name="<?php echo INCOM_OPTION_KEY; ?>_attribute" value="link"<?php checked( 'link' == $options ); ?> /> <label for="link"><?php esc_html_e( 'Link attribution: Display a subtle "i" (information link) that is placed in the top right of every video and helps that the plugin gets spread.', INCOM_TD ); ?></label><br><br>
+									<input class="radio" type="radio" name="<?php echo INCOM_OPTION_KEY; ?>_attribute" value="link"<?php checked( 'link' == $options ); ?> /> <label for="link"><?php esc_html_e( 'Link attribution: Display a subtle "i" (information link) that is placed in the top right of every comment wrapper and helps that the plugin gets spread.', INCOM_TD ); ?></label><br><br>
 									<input class="radio" type="radio" name="<?php echo INCOM_OPTION_KEY; ?>_attribute" value="donate"<?php checked( 'donate' == $options ); ?> /> 
 									<label for="donate">
 										<?php esc_html_e( 'Donation: "I have donated already or will do so soon."', INCOM_TD ); ?> 
