@@ -69,7 +69,7 @@
 
     initElementsAndBubblesFromSelectors();
 
-    displayBranding();
+    createPluginInfo();
     references();
 
     // This code is required to make Inline Comments work with Ajaxify
@@ -125,6 +125,7 @@
         position: 'left',
         background: 'white',
         backgroundOpacity: '1',
+        displayBranding: false,
       },
     options);
   };
@@ -807,72 +808,33 @@
     }
   };
 
+
+
   /*
-   * Prevent users from removing branding
+   * Create info element
    */
-  var displayBranding = function() {
-    var $element = $( classBrandingDot );
+  var createPluginInfo = function() {
+    // source = Video
+    var anchorElement = $('.incom-cancel-x');
+    var element = $( loadPluginInfo() );
 
-    // DON'T BE EVIL - IS THIS ACTUALLY WORTH THE EFFORT?
-    
-    if ( $element.length ) {
-
-      $element.attr("style", "display:block!important;visibility:visible!important");
-
-      // When the opacity/alpha is to low, increase opacity and color it black
-      if ( 
-          ( $element.css( "opacity" ) < 0.2 ) ||
-          ( getAlpha( $element ) < 0.2 )
-        )
-      {
-        $element.css({'color':'rgba(0,0,0,1)'}).fadeTo( "fast", 0.5 );
-      }
-
-      // When the font size is to low, increase it
-      var $fontsize = $element.css( "font-size" ).replace(/\D/g,'');  // Remove everything but numbers
-      if ( $fontsize < 6 ) {
-        $element.css({'font-size':'13px'});
-      }
-
-      // Get colour
-      var color = $element.css('color');
-      // Test if spaces or tab stops exist
-      if ( /\s/g.test(color) ) {
-        // Remove spaces
-        color = color.replace(/\s/g, '');
-      }
-      // Convert to lowercase
-      color = color.toLowerCase();
-      // When transparent: make it white
-      if ( (color === 'rgb(255,255,255)' || color === 'white') || color === 'rgba(255,255,255,0)' ) {
-        $element.css("cssText", "color: black!important;");
-      }
-
+    if ( (o.displayBranding === true || o.displayBranding === 1)    &&    !$(classBrandingDot).length ) {
+      anchorElement.after( element );
     }
-
   };
+
+  /*
+   * Load plugin info
+   */
+  var loadPluginInfo = function() {
+    return '<a class="' + classBranding + '" href="http://kevinw.de/inline-comments/" title="Inline Comments by Kevin Weber" target="_blank">i</a>';
+  };
+
+
 
   /*
    * Private Helpers
    */
-
-  /*
-   * Test if element's color contains a RGBA value.
-   * If yes,  @return integer
-   *          else @return 1
-   */
-  var getAlpha = function( element ) {
-    var alpha = 1;
-    var color = element.css( 'color' );
-
-    // Search color value for string "rgba" (case-insensitive)
-    if ( /rgba/i.test( color ) ) {
-      // Get the fourth (alpha) value using string replace
-      alpha = color.replace(/^.*,(.+)\)/,'$1');
-    }
-
-    return alpha;
-  };
 
   /*
    * @return Hex colour value as RGB

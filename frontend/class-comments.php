@@ -1,8 +1,6 @@
 <?php
 class INCOM_Comments extends INCOM_Frontend {
 
-	private $loadPluginInfoHref = 'http://kevinw.de/inline-comments/';
-	private $loadPluginInfoTitle = 'Inline Comments by Kevin Weber';
 	private $loadCancelLinkText = 'Cancel';
 	private $DataIncomValue = NULL;
 	private $DataIncomKey = 'data_incom';
@@ -77,7 +75,6 @@ class INCOM_Comments extends INCOM_Frontend {
 		echo apply_filters( 'incom_cancel_x', $this->loadCancelX() );
 		do_action( 'incom_cancel_x_after' );
 
-		echo apply_filters( 'incom_plugin_info', $this->loadPluginInfo() );
 		echo apply_filters( 'incom_comments_list_before', $this->comments_list_before() );
 
 		$this->loadCommentsList();
@@ -255,13 +252,6 @@ class INCOM_Comments extends INCOM_Frontend {
 		$commentdata[ $this->DataIncomKey ] = $this->DataIncomValue;
 
 		return $commentdata;
-	}
-
-	/**
-	 * Load plugin info
-	 */
-	private function loadPluginInfo() {
-		return '<a class="incom-info-icon" href="' . $this->loadPluginInfoHref . '" title="' . $this->loadPluginInfoTitle . '" target="_blank">i</a>';
 	}
 
 	/**
