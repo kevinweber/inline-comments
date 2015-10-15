@@ -61,6 +61,10 @@ When you use a theme with the popular Genesis framework, for example, make sure 
 
 == Changelog ==
 
+= 2.1.5 =
+* The "i" link is now optional. By default, no information link is displayed.
+* Fixed not working jQuery tabs in admin backend.
+
 = 2.1.4 =
 * Recalculate bubble positions when window is resized (pull request from @r-a-y on Github).
 * Minor fixes.

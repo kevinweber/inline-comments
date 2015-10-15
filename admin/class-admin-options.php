@@ -41,6 +41,7 @@ class INCOM_Admin_Options {
 			INCOM_OPTION_KEY.'_support_for_ajaxify_comments',
 			INCOM_OPTION_KEY.'_reply',
 			'moveselector',
+			INCOM_OPTION_KEY.'_attribute',
 			
 			// Styling
 			'custom_css',
@@ -72,7 +73,7 @@ class INCOM_Admin_Options {
 	function incom_settings_page()	{ ?>
 
 		<div id="tabs" class="ui-tabs">
-			<h2><?php esc_html_e( 'Inline Comments', INCOM_TD ); ?> <span class="subtitle">by <a href="http://kevinw.de/ic" target="_blank" title="<?php esc_html_e( 'Website by Kevin Weber', INCOM_TD ); ?>">Kevin Weber</a> (<?php esc_html_e( 'Version', INCOM_TD ); ?> <?php echo INCOM_VERSION; ?>)</span>
+			<h2><?php esc_html_e( 'Inline Comments', INCOM_TD ); ?> <span class="subtitle"><?php esc_html__( 'by', INCOM_TD ); ?> <a href="http://kevinw.de/ic" target="_blank" title="<?php esc_html_e( 'Website by Kevin Weber', INCOM_TD ); ?>">Kevin Weber</a> (<?php esc_html_e( 'Version', INCOM_TD ); ?> <?php echo INCOM_VERSION; ?>)</span>
 				<br><span class="claim" style="font-size:15px;font-style:italic;position:relative;top:-7px;"><?php esc_html_e( '&hellip; revolutionise the way we comment online!', INCOM_TD ); ?></span>
 			</h2>
 
@@ -139,6 +140,22 @@ class INCOM_Admin_Options {
 					        				<br><span class="italic"><?php echo $selectors; ?></span>
 					        			</span>
 					        	</td>
+					        </tr>
+					        <tr valign="top">
+						        <th scope="row"><?php esc_html_e( 'Attribution', INCOM_TD ); ?><br><span class="description thin"><?php esc_html_e( 'give appropriate credit for my time-consuming efforts', INCOM_TD ); ?></span></th>
+						        <td>
+									<?php $options = get_option( INCOM_OPTION_KEY.'_attribute' ); ?>
+									<input class="radio" type="radio" name="<?php echo INCOM_OPTION_KEY; ?>_attribute" value="none"<?php checked( 'none' == $options || empty($options) ); ?> /> <label for="none"><?php esc_html_e( 'No attribution: "I can not afford to give appropriate credit for this free plugin."', INCOM_TD ); ?></label><br><br>
+									<input class="radio" type="radio" name="<?php echo INCOM_OPTION_KEY; ?>_attribute" value="link"<?php checked( 'link' == $options ); ?> /> <label for="link"><?php esc_html_e( 'Link attribution: Display a subtle "i" (information link) that is placed in the top right of every video and helps that the plugin gets spread.', INCOM_TD ); ?></label><br><br>
+									<input class="radio" type="radio" name="<?php echo INCOM_OPTION_KEY; ?>_attribute" value="donate"<?php checked( 'donate' == $options ); ?> /> 
+									<label for="donate">
+										<?php esc_html_e( 'Donation: "I have donated already or will do so soon."', INCOM_TD ); ?> 
+										<?php printf( esc_html__( 'Please %1$sdonate now%2$s so that I can keep up the development of this plugin.', INCOM_TD ),
+											'<a href="http://kevinw.de/donate/InlineComments/" target="_blank">',
+											'</a>'
+										); ?>
+									</label><br>
+						        </td>
 					        </tr>
 					    </tbody>
 				    </table>
@@ -315,7 +332,7 @@ class INCOM_Admin_Options {
 								'</a>'
 							); ?>
 						</p>
-			        </td>       
+			        </td>   
 		        <td style="width:300px;">
 					<p>
 						<b><?php esc_html_e( 'Personal tip: Must use plugins', INCOM_TD ); ?></b>
@@ -336,9 +353,9 @@ class INCOM_Admin_Options {
 
 	function incom_admin_js() {
 		if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) {
-			wp_enqueue_script( 'incom_admin_js', plugins_url( '../js/admin.js' , __FILE__ ), array( 'jquery', 'jquery-ui-tabs', 'wp-color-picker' ), INCOM_VERSION );
+			wp_enqueue_script( 'lazyload_admin_js', INCOM_URL . 'js/admin.js', array('jquery', 'jquery-ui-tabs', 'wp-color-picker' ), INCOM_VERSION );
 		} else {
-			wp_enqueue_script( 'incom_admin_js', plugins_url( '../js/min/admin.min.js' , __FILE__ ), array( 'jquery', 'jquery-ui-tabs', 'wp-color-picker', INCOM_VERSION ) );
+			wp_enqueue_script( 'lazyload_admin_js', INCOM_URL . 'js/min/admin.min.js', array('jquery', 'jquery-ui-tabs', 'wp-color-picker' ), INCOM_VERSION );
 		}
 	}
 

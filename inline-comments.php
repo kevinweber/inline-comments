@@ -35,9 +35,13 @@ if ( !defined( 'INCOM_FILE' ) ) {
 	define( 'INCOM_FILE', __FILE__ );
 }
 
-if ( !defined( 'INCOM_PATH' ) )
+if ( !defined( 'INCOM_PATH' ) ) {
 	define( 'INCOM_PATH', plugin_dir_path( INCOM_FILE ) );
+}
 
+if ( !defined( 'INCOM_URL' ) ) {
+	define( 'INCOM_URL', plugin_dir_url( __FILE__ ) );
+}
 
 /**
  * Load plugin textdomain.
