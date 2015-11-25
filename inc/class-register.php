@@ -69,7 +69,7 @@ class INCOM_Register {
 	function incom_plugin_notice_activation() {
 	  if ( $notices = get_option( 'incom_deferred_admin_notices' ) ) {
 	    foreach ($notices as $notice) {
-	      echo "<div class='updated'><p>$notice</p></div>";
+	      echo "<div class='updated'><p>" . esc_html($notice) . "</p></div>";
 	    }
 	    delete_option( 'incom_deferred_admin_notices' );
 	  }
