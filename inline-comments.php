@@ -87,4 +87,3 @@ if ( (get_option( INCOM_OPTION_KEY.'_support_for_ajaxify_comments' ) == true) &&
 
 
 /***** Plugin by Kevin Weber || kevinw.de *****/
-?>
