@@ -39,7 +39,7 @@ class INCOM_WordPress extends INCOM_Frontend {
 
 			$(window).on( "load", function() {
 				incom.init({
-					selectors: '<?php if (get_option("multiselector") == '') { echo "p"; } else { echo esc_js(get_option("multiselector")); } ?>',
+					selectors: '<?php if (get_option("multiselector") == '') { echo "p"; } else { echo get_option("multiselector"); } ?>',
 					moveSiteSelector: '<?php if (get_option("moveselector") == '') { echo "body"; } else { echo esc_js(get_option("moveselector")); } ?>',
 			    	countStatic: <?php if (get_option("incom_bubble_static") == "1") { echo "false"; } else { echo "true"; } ?>,
 			    	alwaysStatic: <?php if (get_option("incom_bubble_static_always") == "1") { echo "true"; } else { echo "false"; } ?>,

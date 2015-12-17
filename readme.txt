@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: admin, comment, comments, content, counter, free, integration, jquery, mobile, page, pages, plugin, post, posts, sidebar, wordpress
 Requires at least: 3.5
 Tested up to: 4.4
-Stable tag: 2.1.6
+Stable tag: 2.1.6.1
 
 Inline Comments adds your comment system to the side of paragraphs and other sections (like headlines and images) of your post.
 
@@ -60,6 +60,9 @@ When you use a theme with the popular Genesis framework, for example, make sure 
 * When you use Jetpack Comments, the comments will not be assigned to a specific paragraph. Anyhow, the comment will be displayed within your regular comment section with all other comments.
 
 == Changelog ==
+
+= 2.1.6.1 =
+* Removed one escape method to make the plugin working again.
 
 = 2.1.6 =
 * Improved security: Excaped content to prevent cross-site scripting (XSS) (pull request from @allan23 on Github).
