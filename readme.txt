@@ -63,6 +63,10 @@ When you use a theme with the popular Genesis framework, for example, make sure 
 
 == Changelog ==
 
+= 2.1.6.2 =
+* Added Russian translation by Vlad M.
+* Added Polish translation by Łukasz Piwko.
+
 = 2.1.6.1 =
 * Removed one escape method to make the plugin working again.
 
