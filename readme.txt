@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: admin, comment, comments, content, counter, free, integration, jquery, mobile, page, pages, plugin, post, posts, sidebar, wordpress
 Requires at least: 3.5
 Tested up to: 4.4
-Stable tag: 2.1.6.1
+Stable tag: 2.1.6.2
 
 Inline Comments adds your comment system to the side of paragraphs and other sections (like headlines and images) of your post.
 
@@ -22,6 +22,8 @@ Demo and more information on the developer’s website: [kevinw.de/inline-commen
 
 = Translators =
 * German (de_DE) - [Kevin Weber](http://kevinw.de/)
+* Polish (pl_PL) - [Łukasz Piwko](http://shebang.pl/)
+* Russian (ru_RU) - Vlad M.
 * Serbian (sr_RS) - [Ogi Djuraskovic](http://firstsiteguide.com/)
 * Spanish (es_ES) - [Andrew Kurtis](http://www.webhostinghub.com/)
 

@@ -1,0 +1,534 @@
+# Copyright (C) 2014 Inline Comments
+# This file is distributed under the same license as the Inline Comments package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Inline Comments 1.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/inline-comments\n"
+"POT-Creation-Date: 2015-12-15 20:20-0800\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-12-15 21:18-0800\n"
+"Language-Team: Kevin Weber <k-iwi@web.de>\n"
+"X-Generator: Poedit 1.8.6\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru_RU\n"
+
+#: admin/class-admin-options.php:28
+msgid "Settings"
+msgstr "Настройки"
+
+#. Plugin Name of the plugin/theme
+#: admin/class-admin-options.php:34 admin/class-admin-options.php:75
+#: admin/class-register.php:32
+msgid "Inline Comments"
+msgstr "Inline Comments"
+
+#: admin/class-admin-options.php:75
+msgid "Website by Kevin Weber"
+msgstr "Сайт Кевина Вибера"
+
+#: admin/class-admin-options.php:75
+msgid "Version"
+msgstr "Версия"
+
+#: admin/class-admin-options.php:76
+msgid "&hellip; revolutionise the way we comment online!"
+msgstr "&hellip; революционное решение для комментариев!"
+
+#: admin/class-admin-options.php:80
+msgid "Basics"
+msgstr "Общие"
+
+#: admin/class-admin-options.php:81 admin/class-admin-options.php:161
+msgid "Styling"
+msgstr "Настройки отображения"
+
+#: admin/class-admin-options.php:82
+msgid "Advanced"
+msgstr "Расширенные настройки"
+
+#: admin/class-admin-options.php:92
+msgid "Basic Settings"
+msgstr "Общие настройки"
+
+#: admin/class-admin-options.php:97
+msgid "Comment System"
+msgstr "Система комментариев"
+
+#: admin/class-admin-options.php:97
+msgid "Updated"
+msgstr "Обновлено"
+
+#: admin/class-admin-options.php:100
+msgid "WordPress Comments"
+msgstr "Комментарии Wordpress"
+
+#: admin/class-admin-options.php:108
+msgid "Selectors"
+msgstr "Классы стилей"
+
+#: admin/class-admin-options.php:111
+msgid ""
+"Insert selectors in order to control beside which sections the comment "
+"bubbles should be displayed."
+msgstr ""
+"Укажите название классов стилей, которые указывают на блоки, где должна "
+"выводиться функция комментирования"
+
+#: admin/class-admin-options.php:111
+msgid "You can insert selectors like that:"
+msgstr "Например, вы можете указать переменные:"
+
+#: admin/class-admin-options.php:111
+msgid "selector1, selector2, selectorN"
+msgstr "selector1, selector2, selectorN"
+
+#: admin/class-admin-options.php:111
+msgid "Example:"
+msgstr "Например:"
+
+#: admin/class-admin-options.php:111
+msgid "h1, .single-post .entry-content p, span, blockquote"
+msgstr "h1, .single-post .entry-content p, span, blockquote"
+
+#: admin/class-admin-options.php:115
+msgid "Use Ajaxify (no page reload)"
+msgstr "Использовать Ajaxify (без перезагрузки страницы)"
+
+#: admin/class-admin-options.php:117
+msgid "Requires %1$sthat plugin%2$s."
+msgstr "Требуется %1$sthat plugin%2$s."
+
+#: admin/class-admin-options.php:127
+msgid ""
+"Empower %1$sWP-Ajaxify-Comments%2$s (version 0.24.0 or higher) to add Ajax "
+"functionality to Inline Comments and improve the user experience: Your page "
+"will not reload after a comment is submitted."
+msgstr ""
+"Требуется %1$sWP-Ajaxify-Comments%2$s (версии 0.24.0 или выше) для "
+"добавления Ajax функциональности для Inline Comments и повышения удобства "
+"использования плагина, ведь страницы вашего сайта не будет перезагружаться "
+"после добавления комментариев."
+
+#: admin/class-admin-options.php:130
+msgid "Recommended."
+msgstr "Рекомендуется."
+
+#: admin/class-admin-options.php:134
+msgid "Enable Inline Replies"
+msgstr "Включить вложенные комментарии"
+
+#: admin/class-admin-options.php:134 admin/class-admin-options.php:189
+#: admin/class-admin-options.php:235 admin/class-admin-options.php:271
+msgid "New!"
+msgstr "Новое!"
+
+#: admin/class-admin-options.php:136
+msgid ""
+"If checked, a reply link will be added below each inline comment and users "
+"can reply directly."
+msgstr ""
+"Если отмечено, то ссылка на ответ будет добавлена после каждого комментария "
+"и пользователи смогут отвечать на комментарии других пользователей."
+
+#: admin/class-admin-options.php:140
+msgid "\"Slide Site\" Selector"
+msgstr "Переключатель сторон"
+
+#: admin/class-admin-options.php:148
+msgid ""
+"This selector defines which content should slide left/right when the user "
+"clicks on a bubble. This setting depends on your theme's structure."
+msgstr ""
+"Эта настройка определяет в какой части сайта (справа или слева) будет "
+"отображаться блок комментариев. Необходимо учитывать дизайна вашего сайта."
+
+#: admin/class-admin-options.php:148
+msgid "Default is"
+msgstr "По умолчанию"
+
+#: admin/class-admin-options.php:149
+msgid "You might try one of these selectors:"
+msgstr "Вы можете использовать один из этих классов"
+
+#: admin/class-admin-options.php:166
+msgid "Custom CSS"
+msgstr "Произвольный CSS"
+
+#: admin/class-admin-options.php:166
+msgid "Add additional CSS. This should override any other stylesheets."
+msgstr ""
+"Добавить новый произвольный CSS, который должен быть отличен от имеющихся у "
+"сайта стилей"
+
+#: admin/class-admin-options.php:170
+msgid "For example:"
+msgstr "Например:"
+
+#: admin/class-admin-options.php:173
+msgid ""
+"(You don't know CSS? Try the %1$shttp://kevinw.de/css-tutorial%2$sCSS "
+"Tutorial%3$s on W3Schools.)"
+msgstr ""
+"Не знакомы с CSS? Ознакомьтесь с уроками %1$shttp://kevinw.de/css-tutorial"
+"%2$sCSS Tutorial%3$s от W3Schools.)"
+
+#: admin/class-admin-options.php:182
+msgid "Position"
+msgstr "Позиция"
+
+#: admin/class-admin-options.php:184
+msgid "Left"
+msgstr "Слева"
+
+#: admin/class-admin-options.php:185
+msgid "Right"
+msgstr "Справа"
+
+#: admin/class-admin-options.php:189
+msgid "Display Avatars"
+msgstr "Отображение аватарок"
+
+#: admin/class-admin-options.php:189
+msgid "next to each comment"
+msgstr "для каждого комментария"
+
+#: admin/class-admin-options.php:191
+msgid "If checked, avatars will be displayed next to each comment."
+msgstr "Если отмечено, то аватарки будут отображаться для каждого комментария"
+
+#: admin/class-admin-options.php:192
+msgid "Define avatar size (in px). Insert an integer higher than 0."
+msgstr "Определить размер аватарки (в пикселях). Укажите число больше чем 0."
+
+#: admin/class-admin-options.php:196
+msgid "Bubble Style"
+msgstr "Стиль комментариев"
+
+#: admin/class-admin-options.php:196
+msgid "for sections with no comments yet"
+msgstr "для области без комментариев"
+
+#: admin/class-admin-options.php:199
+msgid "Bubble"
+msgstr "Bubble"
+
+#: admin/class-admin-options.php:200
+msgid "Plain +"
+msgstr "Plain +"
+
+#: admin/class-admin-options.php:205
+msgid "Background Colour"
+msgstr "Цвет фона"
+
+#: admin/class-admin-options.php:205 admin/class-admin-options.php:212
+msgid "for comment threads"
+msgstr "для веток комментариев"
+
+#: admin/class-admin-options.php:212
+msgid "Background Opacity"
+msgstr "Прозрачность фона"
+
+#: admin/class-admin-options.php:214
+msgid ""
+"Insert a value from 0 to 1 where \"1\" means maximum covering power. Insert "
+"0.7 to make the opacity 70%."
+msgstr ""
+"Введите значение от 0 до 1 где \"1\"означает полную непрозрачность. Вставьте "
+"0.7 для создания 70% прозрачности."
+
+#: admin/class-admin-options.php:218
+msgid "Hide Static Bubbles"
+msgstr "Скрывать статические комментарии"
+
+#: admin/class-admin-options.php:220
+msgid ""
+"This checkbox only affects bubbles that indicate a paragraph/element with at "
+"least one comment. If checked, the comment count bubbles will only be "
+"visible when the user hovers the specific paragraph. (By default, bubbles "
+"that indicate at least one comment are always visible.)"
+msgstr ""
+"Этот настройка влияет на комментарии, где есть хотя бы один ответ. Если она "
+"включена, то количество комментариев будут видны только тогда, когда "
+"пользователь наводит на определенный параграф. (По умолчанию, комментарии, "
+"где есть хотя бы один ответ всегда видны.)"
+
+#: admin/class-admin-options.php:230
+msgid "Advanced Settings"
+msgstr "Расширенные настройки"
+
+#: admin/class-admin-options.php:235
+msgid "Content Before"
+msgstr "Отображать контент"
+
+#: admin/class-admin-options.php:235
+msgid "Insert HTML above the list of comments"
+msgstr "Вставьте HTML-код для его отображения перед блоком комментариев"
+
+#: admin/class-admin-options.php:241
+msgid "Bubble Fade In"
+msgstr "Эффект появления"
+
+#: admin/class-admin-options.php:244 admin/class-admin-options.php:253
+msgid "No animation"
+msgstr "Без анимации"
+
+#: admin/class-admin-options.php:245 admin/class-admin-options.php:254
+msgid "Basic animation"
+msgstr "Базовая анимация"
+
+#: admin/class-admin-options.php:250
+msgid "Bubble Fade Out"
+msgstr "Эффект исчезания"
+
+#: admin/class-admin-options.php:259
+msgid "Remove Closing \"x\""
+msgstr "Убирать по нажатию на \"х\""
+
+#: admin/class-admin-options.php:261
+msgid ""
+"If checked, the \"x\" at the right top of the comments wrapper will not be "
+"displayed."
+msgstr ""
+"Если выбрано, то при нажатии на \"х\", расположенную справа вверху блока "
+"комментариев, данный блок будет скрыт"
+
+#: admin/class-admin-options.php:265
+msgid "Remove Permalinks"
+msgstr "Не показывать ссылки"
+
+#: admin/class-admin-options.php:267
+msgid ""
+"If checked, the permalink icon next to each comment will not be displayed."
+msgstr "Если выбрано, то ссылки на каждый комментарий отображаться не будут"
+
+#: admin/class-admin-options.php:271
+msgid "Remove Field \"Website\""
+msgstr "Удалить поле \"Вебсайт\""
+
+#: admin/class-admin-options.php:273
+msgid ""
+"If checked, users cannot submit an URL/Website when they comment inline."
+msgstr ""
+"Если выбрано, то пользователям не надо будет указывать ссылку на их вебсайт "
+"в форме комментариев"
+
+#: admin/class-admin-options.php:277
+msgid "Remove Link \"Cancel\""
+msgstr "Удалить ссылку \"Отменить\""
+
+#: admin/class-admin-options.php:279
+msgid ""
+"If checked, the \"cancel\" link at the left bottom of the comments wrapper "
+"will not be displayed."
+msgstr ""
+"Если выбрано, то ссылка \"Отменить\" не будет отображаться в форме "
+"комментариев"
+
+#: admin/class-admin-options.php:283
+msgid "Always Display Bubbles"
+msgstr "Всегда показывать комментарии"
+
+#: admin/class-admin-options.php:285
+msgid ""
+"If checked, the comment count bubbles will always be visible (and not only "
+"on hover). Bubbles will not fade."
+msgstr ""
+"Если выбрано, то комментарии будут отображаться всегда (не только при "
+"наведении). Комментарии не будут скрываться."
+
+#: admin/class-admin-options.php:306
+msgid "that's me."
+msgstr "это я."
+
+#: admin/class-admin-options.php:307
+msgid "I'm the developer of this plugin. Love it!"
+msgstr "Я создатель этого плагина. Люблю его!"
+
+#: admin/class-admin-options.php:310
+msgid "It's free!"
+msgstr "Это бесплатно!"
+
+#: admin/class-admin-options.php:311
+msgid ""
+"Support me with %1$sa delicious lunch%2$s or give this plugin a 5 star "
+"rating %3$son WordPress.org%4$s."
+msgstr ""
+"Поддержите меня %1$sa delicious lunch%2$s или поставьте плагину 5 звездочек "
+"на %3$son WordPress.org%4$s."
+
+#: admin/class-admin-options.php:321
+msgid "Personal tip: Must use plugins"
+msgstr "Личные советы: Полезные плашины"
+
+#: admin/class-admin-options.php:323
+msgid "Lazy Load for Videos"
+msgstr "Lazy Load for Videos"
+
+#: admin/class-admin-options.php:323 admin/class-admin-options.php:325
+msgid "(on my part)"
+msgstr "(моя разработка)"
+
+#: admin/class-admin-options.php:324
+msgid "WordPress SEO"
+msgstr "WordPress SEO"
+
+#: admin/class-admin-options.php:324
+msgid "(by Yoast)"
+msgstr "(от Yoast)"
+
+#: admin/class-admin-options.php:325
+msgid "wBounce"
+msgstr "wBounce"
+
+#: admin/class-admin-options.php:326
+msgid "Broken Link Checker"
+msgstr "Broken Link Checker"
+
+#: admin/class-admin-options.php:326
+msgid "(by Janis Elsts)"
+msgstr "(от Janis Elsts)"
+
+#: admin/class-register.php:17 admin/inc/signup.php:5
+msgid "Enter your email address"
+msgstr "Введите ваш email"
+
+#: admin/class-register.php:31
+msgid "Edit your plugin settings: "
+msgstr "Редактировать настройки плагина"
+
+#: admin/inc/class-no-premium.php:26
+msgid "Premium Extension"
+msgstr "Премиум дополнения"
+
+#: admin/inc/class-no-premium.php:28
+msgid ""
+"Right now, every feature for Inline Comments is available FOR FREE, except "
+"for the \"Remove branding\" option. This is what you get when you buy "
+"premium:"
+msgstr ""
+"Сейчас весь функционал Inline Comments доступен БЕСПЛАТНО, за исключением "
+"функции \"Удалить логотип создателя\". Эту возможность вы получите при "
+"покупке ПРЕМИУМ."
+
+#: admin/inc/class-no-premium.php:33
+msgid "Remove branding"
+msgstr "Удалить логотип создателя"
+
+#: admin/inc/class-no-premium.php:35
+msgid "The premium extension automatically removes the subtle branding link."
+msgstr "ПРЕМИУМ обновление позволит удалить логотип разработчика"
+
+#: admin/inc/class-no-premium.php:39
+msgid "Get setup support"
+msgstr "Получить тех. поддержку"
+
+#: admin/inc/class-no-premium.php:41
+msgid "I help you to choose the correct selectors."
+msgstr "Я помогу вам выбрать правильные стили класса"
+
+#: admin/inc/class-no-premium.php:45
+msgid "Lifetime updates"
+msgstr "Пожизненные обновления"
+
+#: admin/inc/class-no-premium.php:45
+msgid "Enjoy all coming features!"
+msgstr "Получение всех будущих функций"
+
+#: admin/inc/class-no-premium.php:47
+msgid ""
+"No matter what comes next: Once you've bought premium, you're going to get "
+"every new feature for free. What do you think of social logins (Twitter, "
+"Facebook) or Inline Comments for Editors?"
+msgstr ""
+"Неважно, что произойдет в будущем: купив однажды ПРЕМИУМ, вы всегда будете "
+"получать новые функции плагина бесплатно. Что скажете насчет соц. "
+"авторизации (через Твиттер и Фейсбук) или Inline Comments для редакторов?"
+
+#: admin/inc/class-no-premium.php:51
+msgid "Push development"
+msgstr "Участвовать в разработке"
+
+#: admin/inc/class-no-premium.php:53
+msgid ""
+"This plugin does not anywhere near compensate my month-long time efforts "
+"financially. WordPress development is a hobby of mine and allows me to "
+"experiment. With your purchase, you sponsor me to spend at least a bit more "
+"time to enhance Inline Comments."
+msgstr ""
+"Этот плагин никак не компенсирует долгие месяцы разработки, которые я трачу "
+"на него. WordPress это мое хобби, позволяющее мне экспериментировать. "
+"Покупая ПРЕМИУМ вы спонсируете меня на то, чтобы я потратил немного больше "
+"времени, чтобы сделать Inline Comments лучше и удобнее."
+
+#: admin/inc/class-no-premium.php:57
+msgid "Request features"
+msgstr "Запрос функционала"
+
+#: admin/inc/class-no-premium.php:59
+msgid ""
+"I'm going to develop your feature request with priority (but no guarantee)."
+msgstr ""
+"Я постараюсь реализовать ваш запрос на новый функционал для плагина (но не "
+"гарантирую этого)."
+
+#: admin/inc/class-no-premium.php:65
+msgid ""
+"Buy premium to get additional features, honour my month-long work and push "
+"development. The price might change/increase over time."
+msgstr ""
+"Купите ПРЕМИУМ чтобы получить дополнительные возможности и подтолкнуть "
+"развитие плагина. Цена может измениться или увеличиться в течение времени."
+
+#: admin/inc/class-no-premium.php:66
+msgid "Immediate download after purchase."
+msgstr "Моментальная загрузка после покупки"
+
+#: frontend/class-comments.php:115
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr "<cite class=\"fn\">%s</cite>"
+
+#: frontend/class-comments.php:118
+msgid "Your comment is awaiting moderation."
+msgstr "Ваш комментарий ожидает модерации"
+
+#: frontend/class-comments.php:165
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>."
+msgstr "Войти <a href=\"%1$s\">%2$s</a>."
+
+#: frontend/class-comments.php:186
+msgid "Name"
+msgstr "Имя"
+
+#: frontend/class-comments.php:191
+msgid "Email"
+msgstr "Email"
+
+#: frontend/class-comments.php:199
+msgid "Website"
+msgstr "Вебсайт"
+
+#. Plugin URI of the plugin/theme
+msgid "http://kevinw.de/inline-comments/"
+msgstr "http://kevinw.de/inline-comments/"
+
+#. Description of the plugin/theme
+msgid ""
+"Inline Comments adds your comment system to the side of paragraphs and other "
+"sections (like headlines and images) of your post. It performs native with "
+"WordPress comments."
+msgstr ""
+"Inline Comments adds your comment system to the side of paragraphs and other "
+"sections (like headlines and images) of your post. It performs native with "
+"WordPress comments."
+
+#. Author of the plugin/theme
+msgid "Kevin Weber"
+msgstr "Kevin Weber"
+
+#. Author URI of the plugin/theme
+msgid "http://kevinw.de/"
+msgstr "http://kevinw.de/"
