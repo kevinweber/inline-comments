@@ -7,6 +7,10 @@ class INCOM_Frontend {
 	function __construct() {
 		add_filter( 'body_class' , array( $this, 'body_class' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_jquery' ) );
+        require_once( INCOM_PATH . 'frontend/class-wp.php' );
+        new INCOM_WordPress();
+        require_once( INCOM_PATH . 'frontend/class-comments.php' );
+        new INCOM_Comments();
 	}
 
 	/**
@@ -40,10 +44,9 @@ class INCOM_Frontend {
 			return '15';
 		}
 	}
-
 }
 
 function initialize_incom_frontend() {
-	$incom_frontend = new INCOM_Frontend();
+  new INCOM_Frontend();
 }
 add_action( 'init', 'initialize_incom_frontend' );

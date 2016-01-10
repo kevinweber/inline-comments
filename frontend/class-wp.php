@@ -9,16 +9,12 @@ class INCOM_WordPress extends INCOM_Frontend {
 	}
 
 	function addActions() {
+        if ($this->test_if_status_is_off()) return;
+      
 		add_action( 'wp_enqueue_scripts', array( $this, 'incom_enqueue_scripts' ) );
 		add_action( 'wp_footer', array( $this, 'load_incom'), 444, 'functions' );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_incom_style') );
 		add_action( 'wp_head', array( $this, 'load_custom_css') );
-		$this->get_comments_php();
-	}
-
-	function get_comments_php() {
-		require_once( 'class-comments.php' );
-		$comments = new INCOM_Comments();
 	}
 
 	/**
@@ -101,9 +97,42 @@ class INCOM_WordPress extends INCOM_Frontend {
 		echo '</style>';
 	}
 
-}
+ 	/**
+ 	 * Test if status is "off" for specific post/page
+ 	 */
+ 	function test_if_status_is_off() {
+		global $post;
+		
+		$result = false;
+		if (!isset($post->ID)) {
+			$id = null;
+		}
+		else {
+			$id = $post->ID;
+		}
 
-function initialize_incom_wp() {
-	$incom_wp = new INCOM_WordPress();
+//
+//		// When the individual status for a page/post is 'off', all the other setting don't matter. So this has to be tested at first. 
+//		if ( get_post_meta( $id, 'wbounce_status', true ) && get_post_meta( $id, 'wbounce_status', true ) === 'off' ) {
+//			$result = true;
+//		}
+//		else if (
+//			( !get_option(WBOUNCE_OPTION_KEY.'_status_default') ) ||	// Fire when no option is defined yet
+//			( get_post_meta( $id, 'wbounce_status', true ) === 'on' ) ||
+//			( get_option(WBOUNCE_OPTION_KEY.'_status_default') === 'on' ) ||
+//			( get_option(WBOUNCE_OPTION_KEY.'_status_default') === 'on_posts' && is_single() ) ||
+//			( get_option(WBOUNCE_OPTION_KEY.'_status_default') === 'on_pages' && is_page() ) ||
+//			( get_option(WBOUNCE_OPTION_KEY.'_status_default') === 'on_posts_pages' && (is_single()||is_page()) )
+//		) {
+//			$result = false;
+//		}
+//		else
+//			$result = true;
+//
+//		// wbounce_test_if_status_is_off
+//		$result = apply_filters( WBOUNCE_OPTION_KEY.'_test_if_status_is_off', $result );
+
+		return false;
+ 	}
+
 }
-add_action( 'init', 'initialize_incom_wp' );

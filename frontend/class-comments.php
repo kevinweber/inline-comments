@@ -304,8 +304,3 @@ class INCOM_Comments extends INCOM_Frontend {
 	// }
 
 }
-
-function initialize_incom_comments() {
-	$incom_comments = new INCOM_Comments();
-}
-add_action( 'init', 'initialize_incom_comments' );

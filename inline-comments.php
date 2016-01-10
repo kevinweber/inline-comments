@@ -64,13 +64,6 @@ function incom_admin_init() {
 
 function incom_frontend_init() {
 	require_once( INCOM_PATH . 'frontend/class-frontend.php' );
-
-	if ( get_option("select_comment_type") !== "disqus" ) {
-		require_once( INCOM_PATH . 'frontend/class-wp.php' );
-	}
-	else {
-		require_once( INCOM_PATH . 'frontend/class-indisq.php' );
-	}
 }
 
 if ( is_admin() ) {
