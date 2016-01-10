@@ -37,6 +37,7 @@ class INCOM_Admin_Options {
 	function register_incom_settings() {
 		$arr = array(
 			// Basics
+            INCOM_OPTION_KEY.'_status_default',
 			'multiselector',
 			INCOM_OPTION_KEY.'_support_for_ajaxify_comments',
 			INCOM_OPTION_KEY.'_reply',
@@ -78,9 +79,9 @@ class INCOM_Admin_Options {
 			</h2>
 
 			<ul class="ui-tabs-nav">
-		        <li><a href="#basics"><?php esc_html_e( 'Basics', INCOM_TD ); ?></a></li>
+		        <li><a href="#basics"><?php esc_html_e( 'Basics', INCOM_TD ); ?> <span class="newred_dot">&bull;</span></a></li>
 		    	<li><a href="#styling"><?php esc_html_e( 'Styling', INCOM_TD ); ?></a></li>
-				<li><a href="#advanced"><?php esc_html_e( 'Advanced', INCOM_TD ); ?> <span class="newred_dot">&bull;</span></a></li>
+				<li><a href="#advanced"><?php esc_html_e( 'Advanced', INCOM_TD ); ?></a></li>
 		    	<?php do_action( 'incom_settings_page_tabs_link_after' ); ?>
 		    </ul>
 
@@ -95,10 +96,29 @@ class INCOM_Admin_Options {
 				    <table class="form-table">
 					    <tbody>
 					        <tr valign="top">
-					        	<th scope="row"><?php esc_html_e( 'Selectors', INCOM_TD ); ?></th>
+					        	<th scope="row"><?php esc_html_e( 'Default status', INCOM_TD ); ?> <span class="newred"><?php esc_html_e( 'New!', INCOM_TD ); ?></th>
+						        <td>
+									<select class="select" typle="select" name="<?php echo esc_attr(INCOM_OPTION_KEY); ?>_status_default">
+		     							<option value="on_posts_pages"<?php if (get_option(INCOM_OPTION_KEY.'_status_default') === 'on_posts_pages') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Load on posts and pages', INCOM_TD ); ?></option>
+								    	<option value="on_posts"<?php if (get_option(INCOM_OPTION_KEY.'_status_default') === 'on_posts') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Load on posts', INCOM_TD ); ?></option>
+		     							<option value="on_pages"<?php if (get_option(INCOM_OPTION_KEY.'_status_default') === 'on_pages') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Load on pages', INCOM_TD ); ?></option>
+                                        <option value="on"<?php if (get_option(INCOM_OPTION_KEY.'_status_default') === 'on') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Always load (not recommended)', INCOM_TD ); ?></option>
+		     							<option value="off"<?php if (get_option(INCOM_OPTION_KEY.'_status_default') === 'off') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Don&#39;t load', INCOM_TD ); ?></option>
+		     						</select>
+									<p>
+                                        <?php esc_html_e( '', INCOM_TD ); ?>
+										<?php printf( esc_html__( 'Define if Inline Comments should be loaded on posts and/or pages by default. You can override the default setting on every post and page individually. See also: %1$sFAQ%2$s.', INCOM_TD ),
+											'<a href="https://wordpress.org/plugins/inline-comments/faq/" title="Page with frequently asked questions" target="_blank">',
+											'</a>'
+										); ?>
+                                    </p>
+						        </td>
+					        </tr>
+					        <tr valign="top">
+					        	<th scope="row"><?php esc_html_e( 'Selectors', INCOM_TD ); ?> <span class="newred"><?php esc_html_e( 'Updated', INCOM_TD ); ?></th>
 					        	<td>
 									<textarea rows="3" cols="70" type="text" name="multiselector" placeholder="selector1, selector2, selectorN"><?php echo sanitize_text_field(get_option('multiselector')); ?></textarea><br>
-					        		<span><?php esc_html_e( 'Insert selectors in order to control beside which sections the comment bubbles should be displayed.', INCOM_TD ); ?><br><br><?php esc_html_e( 'You can insert selectors like that:', INCOM_TD ); ?> <i><?php esc_html_e( 'selector1, selector2, selectorN', INCOM_TD ); ?></i><br><?php esc_html_e( 'Example:', INCOM_TD ); ?> <i><?php esc_html_e( 'h1, .single-post .entry-content p, span, blockquote', INCOM_TD ); ?></i></span>
+					        		<span><?php esc_html_e( 'Insert selectors in order to control beside which sections the comment bubbles should be displayed.', INCOM_TD ); ?><br><br><?php esc_html_e( 'You can insert selectors like that:', INCOM_TD ); ?> <i><?php esc_html_e( 'selector1, selector2, selectorN', INCOM_TD ); ?></i><br><?php esc_html_e( 'Example:', INCOM_TD ); ?> <i><?php esc_html_e( 'h1, .entry-content p, span, blockquote', INCOM_TD ); ?></i></span>
 					        	</td>
 					        </tr>
 					        <tr valign="top">
@@ -279,13 +299,13 @@ class INCOM_Admin_Options {
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><?php esc_html_e( 'Display Permalinks', INCOM_TD ); ?> <span class="newred"><?php esc_html_e( 'Updated', INCOM_TD ); ?></th>
+					        	<th scope="row"><?php esc_html_e( 'Display Permalinks', INCOM_TD ); ?></th>
 						        <td>
 									<input name="<?php echo esc_attr(INCOM_OPTION_KEY); ?>_comment_permalink" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_comment_permalink' ) ); ?> /><span><?php esc_html_e( 'If checked, a permalink icon will be displayed next to each comment.', INCOM_TD ); ?></span>
 						        </td>
 					        </tr>
 					        <tr valign="top">
-					        	<th scope="row"><?php esc_html_e( 'Display References', INCOM_TD ); ?> <span class="newred"><?php esc_html_e( 'New!', INCOM_TD ); ?></th>
+					        	<th scope="row"><?php esc_html_e( 'Display References', INCOM_TD ); ?></th>
 						        <td>
 									<select class="select" typle="select" name="<?php echo esc_attr(INCOM_OPTION_KEY); ?>_references">
 										<option value="below_text"<?php if (get_option( INCOM_OPTION_KEY.'_references') === 'below_text') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Below comment text', INCOM_TD ); ?></option>
