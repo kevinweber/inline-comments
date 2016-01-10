@@ -21,7 +21,7 @@
             <table class="form-table">
                 <tbody>
                     <tr valign="top">
-                        <th scope="row"><?php esc_html_e( 'Default status', INCOM_TD ); ?> <span class="newred"><?php esc_html_e( 'New!', INCOM_TD ); ?></th>
+                        <th scope="row"><?php esc_html_e( 'Default Status', INCOM_TD ); ?> <span class="newred"><?php esc_html_e( 'New!', INCOM_TD ); ?></th>
                         <td>
                             <select class="select" typle="select" name="<?php echo esc_attr(INCOM_OPTION_KEY); ?>_status_default">
                                 <option value="on_posts_pages"<?php if (get_option(INCOM_OPTION_KEY.'_status_default') === 'on_posts_pages') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Load on posts and pages', INCOM_TD ); ?></option>

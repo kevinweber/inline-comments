@@ -5,8 +5,8 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: admin, comment, comments, content, counter, free, integration, jquery, mobile, page, pages, plugin, post, posts, sidebar, wordpress
 Requires at least: 3.5
-Tested up to: 4.4
-Stable tag: 2.1.6.2
+Tested up to: 4.4.1
+Stable tag: 2.2
 
 Inline Comments adds your comment system to the side of paragraphs and other sections (like headlines and images) of your post.
 
@@ -15,7 +15,7 @@ Inline Comments adds your comment system to the side of paragraphs and other sec
 
 It performs native with WordPress comments. The comment area is shown when you click the comment count bubbles (left or right) beside any section.
 
-When publishing a comment next to a paragraph, the comment is published in place without a page reload (using Ajax; requires plugin WP-Ajaxify-Comments). The comment bubbles are not showing up on small screens/mobile sites in many cases.
+When publishing a comment next to a paragraph, the comment is published in place without a page reload (using Ajax; requires plugin WP Ajaxify Comments). The comment bubbles are not showing up on small screens/mobile sites in many cases.
 
 Demo and more information on the developer’s website: [kevinw.de/inline-comments/](http://kevinw.de/inline-comments/)
 
@@ -68,6 +68,9 @@ When you use a theme with the popular Genesis framework, for example, make sure 
 * When you use Jetpack Comments, the comments will not be assigned to a specific paragraph. Anyhow, the comment will be displayed within your regular comment section with all other comments.
 
 == Changelog ==
+
+= 2.2 =
+* New feature: Define where Inline Comments should be loaded by default. You can override the default setting on every post and page individually.
 
 = 2.1.6.2 =
 * Added Russian translation by Vlad M.
@@ -158,6 +161,9 @@ When you use a theme with the popular Genesis framework, for example, make sure 
 
 
 == Upgrade Notice ==
+
+= 2.2 =
+* Check out the new "Default status" option. It makes it easier to display comments on specific pages without the need of extra selectors such as ".single-page".
 
 = 2.1.1 =
 * If you want permalinks to be displayed next to each comment, please check the updated option "Display Permalinks". Previously, those permalinks had been visible by default.
