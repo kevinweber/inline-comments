@@ -60,26 +60,24 @@ class INCOM_Frontend {
 		$result = true;
 
         if (!isset($post->ID)) {
-			$ident = null;
+			$post_id = null;
 		}
 		else {
-			$ident = $post->ID;
+			$post_id = $post->ID;
 		}
 
-//		// When the individual status for a page/post is 'off', all the other setting don't matter. So this has to be tested at first. 
-//		if ( get_post_meta( $ident, INCOM_OPTION_KEY.'_status', true ) && get_post_meta( $ident, INCOM_OPTION_KEY.'_status', true ) === 'off' ) {
-//			$result = true;
-//		}
-        
-        if (//(!get_option(INCOM_OPTION_KEY.'_status_default')) ||   // Load when no option is defined yet
-//                get_post_meta( $ident, INCOM_OPTION_KEY.'_status', true ) === 'on' ||
+		// When the individual status for a page/post is 'off', all the other setting don't matter. So this has to be tested at first. 
+		if (get_post_meta( $post_id, INCOM_OPTION_KEY.'_status', true ) &&
+                get_post_meta( $post_id, INCOM_OPTION_KEY.'_status', true ) === 'off') {
+			$result = true;
+		} else if (!get_option(INCOM_OPTION_KEY.'_status_default') ||   // Load when no option is defined yet
+                get_post_meta( $post_id, INCOM_OPTION_KEY.'_status', true ) === 'on' && is_singular() ||
                 get_option(INCOM_OPTION_KEY.'_status_default') === 'on' ||
                 get_option(INCOM_OPTION_KEY.'_status_default') === 'on_posts' && is_single() || 
                 get_option(INCOM_OPTION_KEY.'_status_default') === 'on_pages' && is_page() ||
                 get_option(INCOM_OPTION_KEY.'_status_default') === 'on_posts_pages' && (is_single()||is_page()) ||
                 get_option(INCOM_OPTION_KEY.'_status_default') === 'on_posts_pages_custom' &&
-                        (is_single()||is_page()||get_post_types(array( 'public' => true, '_builtin' => false )))
-           ) {
+                        (is_single()||is_page()||get_post_types(array( 'public' => true, '_builtin' => false )))) {
 			$result = false;
 		}
 

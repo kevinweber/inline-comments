@@ -60,6 +60,7 @@ require_once( INCOM_PATH . 'inc/class-register.php' );
 
 function incom_admin_init() {
 	require_once( INCOM_PATH . 'admin/class-admin-options.php' );
+    require_once( INCOM_PATH . 'admin/class-meta.php' );
 }
 
 function incom_frontend_init() {

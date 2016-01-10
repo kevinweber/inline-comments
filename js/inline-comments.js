@@ -87,15 +87,15 @@
    * Rebuild bubbles and content data attributes
    */
   incom.rebuild = function () {
-    // reset
+    // Reset
     $viewportW = $(window).width();
     attDataIncomArr = [];
     $('#incom_wrapper .incom-bubble').remove();
 
-    // re-init bubbles
+    // Re-init bubbles
     initElementsAndBubblesFromSelectors();
 
-    // reset sidebar form if visible
+    // Reset sidebar form if visible
     var commentsForm = $(idCommentsAndFormHash + ':visible');
     if (commentsForm.length) {
       removeCommentsWrapper();
