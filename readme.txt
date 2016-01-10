@@ -23,7 +23,7 @@ Demo and more information on the developer’s website: [kevinw.de/inline-commen
 = Translators =
 * German (de_DE) - [Kevin Weber](http://kevinw.de/)
 * Polish (pl_PL) - [Łukasz Piwko](http://shebang.pl/)
-* Russian (ru_RU) - Vlad M.
+* Russian (ru_RU) - [Vlad Mira](http://mirvla.com/)
 * Serbian (sr_RS) - [Ogi Djuraskovic](http://firstsiteguide.com/)
 * Spanish (es_ES) - [Andrew Kurtis](http://www.webhostinghub.com/)
 
@@ -33,7 +33,7 @@ If you have created your own language pack, or have an update of an existing one
 == Installation ==
 
 1. Upload Inline Comments into you plugin directory (/wp-content/plugins/) and activate the pastlugin through the 'Plugins' menu in WordPress.
-2. Configure the plugin via the admin backend.
+2. Configure the plugin via the admin backend. Take at least a closer look at the "Selectors" option to make the comments appear at the desired places.
 3. Optionally: Sign up to the Inline Comments newsletter to get notified about major updates.
 
 
@@ -47,6 +47,12 @@ If you have created your own language pack, or have an update of an existing one
 * Readers can even reply to inline comments directly and discuss existing annotations.
 
 Demo and more information on the developer’s website: [kevinw.de/inline-comments/](http://kevinw.de/inline-comments/)
+
+= How does the "Default status" option work? (Plugin version 2.2+) =
+Using this option you can decide on which parts (posts, pages, ...) of your website the Inline Comments script should be loaded. Only when the script is loaded on a specific page, Inline Comments can show up. It is NOT recommended to load the script on absolutely every page because the plugin doesn't work correctly on pages with multiple posts, such as most home pages or category pages with post loops.
+
+= Why do we need "Selectors"? =
+That option is essential to make this plugin work fine with your individual WordPress site. We need it because each WordPress theme is different and comes with a different page structure. To address those differences, we use selectors. Selectors determine in which places the comments should be displayed. You can use nearly every combination of CSS selectors. You'll find examples on the admin page. ([Learn more about CSS](http://www.w3schools.com/css/).)
 
 = How can I change the formatting of the commentator’s currently selected section? =
 For comment system "WordPress Comments", use custom CSS like this: 
