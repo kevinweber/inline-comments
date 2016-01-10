@@ -25,9 +25,10 @@
                         <td>
                             <select class="select" typle="select" name="<?php echo esc_attr(INCOM_OPTION_KEY); ?>_status_default">
                                 <option value="on_posts_pages"<?php if (get_option(INCOM_OPTION_KEY.'_status_default') === 'on_posts_pages') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Load on posts and pages', INCOM_TD ); ?></option>
+                                <option value="on_posts_pages"<?php if (get_option(INCOM_OPTION_KEY.'_status_default') === 'on_posts_pages_custom') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Load on posts, pages and custom post types', INCOM_TD ); ?></option>
                                 <option value="on_posts"<?php if (get_option(INCOM_OPTION_KEY.'_status_default') === 'on_posts') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Load on posts', INCOM_TD ); ?></option>
                                 <option value="on_pages"<?php if (get_option(INCOM_OPTION_KEY.'_status_default') === 'on_pages') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Load on pages', INCOM_TD ); ?></option>
-                                <option value="on"<?php if (get_option(INCOM_OPTION_KEY.'_status_default') === 'on') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Always load (not recommended)', INCOM_TD ); ?></option>
+                                <option value="on"<?php if (get_option(INCOM_OPTION_KEY.'_status_default') === 'on') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Load always (not recommended)', INCOM_TD ); ?></option>
                                 <option value="off"<?php if (get_option(INCOM_OPTION_KEY.'_status_default') === 'off') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Don&#39;t load', INCOM_TD ); ?></option>
                             </select>
                             <p>
