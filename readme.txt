@@ -17,6 +17,8 @@ It performs native with WordPress comments. The comment area is shown when you c
 
 When publishing a comment next to a paragraph, the comment is published in place without a page reload (using Ajax; requires plugin WP Ajaxify Comments). The comment bubbles are not showing up on small screens/mobile sites in many cases.
 
+IMPORTANT: This plugin is no longer supported. Minor fixes might be published but no new features are going to be developed. However, you can [contribute on Github](https://github.com/kevinweber/inline-comments) and enhancements will be published to the official WordPress directory.
+
 Demo and more information on the developer’s website: [kevinw.de/inline-comments/](http://kevinw.de/inline-comments/)
 
 
@@ -164,6 +166,7 @@ When you use a theme with the popular Genesis framework, for example, make sure 
 
 = 2.2 =
 * Check out the new "Default status" option. It makes it easier to display comments on specific pages without the need of extra selectors such as ".single-page".
+* Starting with this version, this plugin is no longer supported. I might publish minor fixes but will no longer develop new features or reply to requests.
 
 = 2.1.1 =
 * If you want permalinks to be displayed next to each comment, please check the updated option "Display Permalinks". Previously, those permalinks had been visible by default.
