@@ -16,8 +16,7 @@ class INCOM_Frontend {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_jquery' ) );
         require_once( INCOM_PATH . 'frontend/class-wp.php' );
         new INCOM_WordPress();
-        require_once( INCOM_PATH . 'frontend/class-comments.php' );
-        new INCOM_Comments();
+        
     }
     
 	/**
@@ -91,3 +90,11 @@ function initialize_incom_frontend() {
     $frontend->init();
 }
 add_action( 'wp', 'initialize_incom_frontend' );
+
+
+
+function initialize_incom_comment_submission() {
+  require_once( INCOM_PATH . 'frontend/class-comments.php' );
+  new INCOM_Comments();
+}
+add_action( 'init', 'initialize_incom_comment_submission' );
