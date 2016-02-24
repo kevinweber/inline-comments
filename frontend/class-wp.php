@@ -23,13 +23,15 @@ class INCOM_WordPress extends INCOM_Frontend {
 		(function ( $ ) {
 			var icTimer;
 
-			$(window).on( "resize", function() {
-			        clearTimeout( icTimer );
+			$(function(){
+				$(window).on( "resize", function() {
+				        clearTimeout( icTimer );
 
-			        icTimer = setTimeout( function() {
-					incom.rebuild();
-			        }, 100 );
-			} );
+				        icTimer = setTimeout( function() {
+						incom.rebuild();
+				        }, 100 );
+				} );
+			});
 
 			$(window).on( "load", function() {
 				incom.init({
