@@ -137,7 +137,7 @@
             i,
             l;
         
-        elementsBySelectors = document.querySelectorAll(o.selectors);   
+        elementsBySelectors = $( o.selectors );
         for (i = 0, l = elementsBySelectors.length; i < l; i += 1) {
             var $that = $(elementsBySelectors[i]);
             addAttToElement($that);
