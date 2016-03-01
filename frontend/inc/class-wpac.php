@@ -87,6 +87,8 @@
 			} else {
 				bubble.text(1);
 			}
+
+			bubble.parent().addClass("incom-bubble-static").css("display","block");
 		';
 
 	   return $wpacOptions;
