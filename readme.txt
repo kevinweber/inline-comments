@@ -5,8 +5,8 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: admin, comment, comments, content, counter, free, integration, jquery, mobile, page, pages, plugin, post, posts, sidebar, wordpress
 Requires at least: 3.5
-Tested up to: 4.4.2
-Stable tag: 2.2.2
+Tested up to: 4.6.1
+Stable tag: 2.2.2.1
 
 Inline Comments adds your comment system to the side of paragraphs and other sections (like headlines and images) of your post.
 
@@ -57,7 +57,7 @@ Using this option you can decide on which parts (posts, pages, ...) of your webs
 That option is essential to make this plugin work fine with your individual WordPress site. We need it because each WordPress theme is different and comes with a different page structure. To address those differences, we use selectors. Selectors determine in which places the comments should be displayed. You can use nearly every combination of CSS selectors. You'll find examples on the admin page. ([Learn more about CSS](http://www.w3schools.com/css/).)
 
 = How can I change the formatting of the commentator’s currently selected section? =
-For comment system "WordPress Comments", use custom CSS like this: 
+For comment system "WordPress Comments", use custom CSS like this:
 
 *.incom-active { background: #f3f3f3; }*
 
@@ -70,6 +70,9 @@ When you use a theme with the popular Genesis framework, for example, make sure 
 * When you use Jetpack Comments, the comments will not be assigned to a specific paragraph. Anyhow, the comment will be displayed within your regular comment section with all other comments.
 
 == Changelog ==
+
+= 2.2.2.1 =
+* Fix issue where HTML is displayed in backend upon plugin activation instead of the rendered version of it.
 
 = 2.2.2 =
 * Several JavaScript fixes (pull request from @r-a-y on Github).
