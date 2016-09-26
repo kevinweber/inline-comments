@@ -37,7 +37,7 @@ function incom_plugin_activation() {
 }
 
 function incom_plugin_deactivation() {
-	delete_option( 'incom_deferred_admin_notices' ); 
+	delete_option( 'incom_deferred_admin_notices' );
 }
 
 /**
@@ -47,10 +47,10 @@ function incom_plugin_deactivation() {
  */
 function allow_ksas_data() {
     global $allowedposttags;
- 
+
     $tags = array( 'span' );
     $new_attributes = array( 'data-incom-ref' => array() );
- 
+
     foreach ( $tags as $tag ) {
         if ( isset( $allowedposttags[ $tag ] ) && is_array( $allowedposttags[ $tag ] ) )
             $allowedposttags[ $tag ] = array_merge( $allowedposttags[ $tag ], $new_attributes );
@@ -69,7 +69,7 @@ class INCOM_Register {
 	function incom_plugin_notice_activation() {
 	  if ( $notices = get_option( 'incom_deferred_admin_notices' ) ) {
 	    foreach ($notices as $notice) {
-	      echo "<div class='updated'><p>" . esc_html($notice) . "</p></div>";
+	      echo "<div class='updated'><p>$notice</p></div>";
 	    }
 	    delete_option( 'incom_deferred_admin_notices' );
 	  }
