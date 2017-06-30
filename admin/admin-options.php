@@ -59,25 +59,6 @@
                         </td>
                     </tr>
                     <tr valign="top">
-                        <th scope="row"><?php esc_html_e( 'Use Ajaxify (no page reload)', INCOM_TD ); ?><br>
-                            <span class="description thin">
-                                <?php printf( esc_html__( 'Requires %1$sthat plugin%2$s.', INCOM_TD ),
-                                    '<a href="http://wordpress.org/extend/plugins/wp-ajaxify-comments/" title="WP-Ajaxify-Comments" target="_blank">',
-                                    '</a>'
-                                ); ?>
-                            </span>
-                        </th>
-                        <td>
-                            <input name="<?php echo esc_attr(INCOM_OPTION_KEY); ?>_support_for_ajaxify_comments" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_support_for_ajaxify_comments' ) ); ?> />
-
-                            <span><?php
-                            printf( esc_html__( 'Empower %1$sWP-Ajaxify-Comments%2$s (version 0.24.0 or higher) to add Ajax functionality to Inline Comments and improve the user experience: Your page will not reload after a comment is submitted.', INCOM_TD ),
-                                '<a href="http://wordpress.org/extend/plugins/wp-ajaxify-comments/" title="WP-Ajaxify-Comments" target="_blank">',
-                                '</a>'
-                            ); ?> <b><?php esc_html_e( 'Recommended.', INCOM_TD ); ?></b></span>
-                        </td>
-                    </tr>
-                    <tr valign="top">
                         <th scope="row"><?php esc_html_e( 'Enable Inline Replies', INCOM_TD ); ?></span></th>
                         <td>
                             <input name="incom_reply" type="checkbox" value="1" <?php checked( '1', get_option( 'incom_reply' ) ); ?> /><span><?php esc_html_e( 'If checked, a reply link will be added below each inline comment and users can reply directly.', INCOM_TD ); ?></span>
@@ -197,6 +178,25 @@
                         <th scope="row"><?php esc_html_e( 'Content Before', INCOM_TD ); ?><br><span class="description thin"><?php esc_html_e( 'Insert HTML above the list of comments', INCOM_TD ); ?></span></th>
                         <td>
                             <textarea rows="5" cols="70" type="text" name="<?php echo esc_attr(INCOM_OPTION_KEY); ?>_content_comments_before" placeholder=""><?php echo wp_kses_post(get_option(INCOM_OPTION_KEY.'_content_comments_before')); ?></textarea>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row"><?php esc_html_e( 'Use Ajaxify (no page reload)', INCOM_TD ); ?><br>
+                            <span class="description thin">
+                                <?php printf( esc_html__( 'Requires %1$san extra plugin%2$s.', INCOM_TD ),
+                                    '<a href="http://wordpress.org/extend/plugins/wp-ajaxify-comments/" title="WP-Ajaxify-Comments" target="_blank">',
+                                    '</a>'
+                                ); ?>
+                            </span>
+                        </th>
+                        <td>
+                            <input name="<?php echo esc_attr(INCOM_OPTION_KEY); ?>_support_for_ajaxify_comments" type="checkbox" value="1" <?php checked( '1', get_option( INCOM_OPTION_KEY.'_support_for_ajaxify_comments' ) ); ?> />
+
+                            <span><?php
+                            printf( esc_html__( 'Empower %1$sWP-Ajaxify-Comments%2$s (version 0.24.0 or higher) to add Ajax functionality to Inline Comments and improve the user experience: Your page will not reload after a comment is submitted.', INCOM_TD ),
+                                '<a href="http://wordpress.org/extend/plugins/wp-ajaxify-comments/" title="WP-Ajaxify-Comments" target="_blank">',
+                                '</a>'
+                            ); ?> <b><?php esc_html_e( 'Recommended.', INCOM_TD ); ?></b></span>
                         </td>
                     </tr>
                     <tr valign="top">
