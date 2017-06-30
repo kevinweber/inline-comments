@@ -1,0 +1,35 @@
+{
+  "name": "inline-comments",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Inline Comments by [Kevin Weber](https://kevinw.de)",
+  "main": "_build-tools/index.js",
+  "scripts": {
+    "build:js:frontend": "uglifyjs ./js/inline-comments.js -o ./js/min/inline-comments.min.js --compress --mangle",
+    "build:js:admin": "uglifyjs ./js/admin.js -o ./js/min/admin.min.js --compress --mangle",
+    "watch:js": "nodemon -e js -w js/ -i ./js/min/ -x \"npm-run-all build:js:**\"",
+    "build:scss:frontend": "sass ./css/style-wp.scss:./css/min/style-wp.css --sourcemap=none --style=compressed",
+    "build:scss:admin": "sass ./css/admin.scss:./css/min/admin.css --sourcemap=none --style=compressed",
+    "watch:scss": "nodemon -e scss -w css/ -i ./css/min/ -x \"npm-run-all build:scss:**\"",
+    "prebuild": "sh _build-tools/sass.sh",
+    "prewatch": "sh _build-tools/sass.sh",
+    "build": "npm-run-all build:**",
+    "watch": "npm-run-all --parallel watch:**",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinweber/inline-comments.git"
+  },
+  "author": "Kevin Weber",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kevinweber/inline-comments/issues"
+  },
+  "homepage": "https://github.com/kevinweber/inline-comments#readme",
+  "dependencies": {
+    "nodemon": "^1.10.2",
+    "npm-run-all": "^3.1.0",
+    "uglify-js": "^2.7.3"
+  }
+}
