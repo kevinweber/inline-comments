@@ -52,12 +52,12 @@ class INCOM_Frontend {
 	}
 
 	/**
-	 * Determine if user is allowed to comment
+	 * Determine if user is allowed to comment.
 	 * Logged in users are always allowed to comment.
  	 * @since 2.2.3
 	 */
 	protected function can_comment() {
-		return !get_option('comment_registration') || is_user_logged_in();
+		return comments_open() && (!get_option('comment_registration') || is_user_logged_in());
 	}
 
  	/**

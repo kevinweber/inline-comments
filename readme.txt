@@ -73,6 +73,7 @@ When you use a theme with the popular Genesis framework, for example, make sure 
 
 = 2.2.3 =
 * If site-wide option "Users must be registered and logged in to comment" is checked, don't display comment box for users that are not logged in.
+* If comments are disabled for individual post, no longer show "+" bubble on hover of elements.
 
 = 2.2.2.1 =
 * Fix issue where HTML is displayed in backend upon plugin activation instead of the rendered version of it.
