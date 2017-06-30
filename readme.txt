@@ -71,7 +71,8 @@ When you use a theme with the popular Genesis framework, for example, make sure 
 
 == Changelog ==
 
-= 2.2.3 =
+= 2.3 =
+* New feature: Define who can see Inline Comments. By default, everyone can see all comments. Now you can also limit the visibility of comments to logged-in users.
 * If site-wide option "Users must be registered and logged in to comment" is checked, don't display comment box for users that are not logged in.
 * If comments are disabled for individual post, no longer show "+" bubble on hover of elements.
 

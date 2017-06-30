@@ -21,7 +21,19 @@
             <table class="form-table">
                 <tbody>
                     <tr valign="top">
-                        <th scope="row"><?php esc_html_e( 'Default Status', INCOM_TD ); ?> <span class="newred"><?php esc_html_e( 'New!', INCOM_TD ); ?></th>
+                        <th scope="row"><?php esc_html_e( 'Visibility', INCOM_TD ); ?> <span class="newred"><?php esc_html_e( 'New!', INCOM_TD ); ?></th>
+                        <td>
+                            <select class="select" typle="select" name="<?php echo esc_attr(INCOM_OPTION_KEY); ?>_status_default">
+                                <option value="public"<?php if (get_option(INCOM_OPTION_KEY.'_status_default') === 'public') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Everyone', INCOM_TD ); ?></option>
+                                <option value="logged_in"<?php if (get_option(INCOM_OPTION_KEY.'_status_default') === 'logged_in') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Logged-in users only', INCOM_TD ); ?></option>
+                            </select>
+                            <p>
+                                <?php esc_html_e( 'Define who can see Inline Comments.', INCOM_TD ); ?>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row"><?php esc_html_e( 'Default Status', INCOM_TD ); ?></th>
                         <td>
                             <select class="select" typle="select" name="<?php echo esc_attr(INCOM_OPTION_KEY); ?>_status_default">
                                 <option value="on_posts_pages"<?php if (get_option(INCOM_OPTION_KEY.'_status_default') === 'on_posts_pages') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Load on posts and pages', INCOM_TD ); ?></option>
@@ -32,7 +44,6 @@
                                 <option value="off"<?php if (get_option(INCOM_OPTION_KEY.'_status_default') === 'off') { echo ' selected="selected"'; } ?>><?php esc_html_e( 'Don&#39;t load', INCOM_TD ); ?></option>
                             </select>
                             <p>
-                                <?php esc_html_e( '', INCOM_TD ); ?>
                                 <?php printf( esc_html__( 'Define if Inline Comments should be loaded on posts and/or pages by default. You can override the default setting on every post and page individually. See also: %1$sFAQ%2$s.', INCOM_TD ),
                                     '<a href="https://wordpress.org/plugins/inline-comments/faq/" title="Page with frequently asked questions" target="_blank">',
                                     '</a>'
@@ -41,7 +52,7 @@
                         </td>
                     </tr>
                     <tr valign="top">
-                        <th scope="row"><?php esc_html_e( 'Selectors', INCOM_TD ); ?> <span class="newred"><?php esc_html_e( 'Updated', INCOM_TD ); ?></th>
+                        <th scope="row"><?php esc_html_e( 'Selectors', INCOM_TD ); ?></th>
                         <td>
                             <textarea rows="3" cols="70" type="text" name="multiselector" placeholder="selector1, selector2, selectorN"><?php echo sanitize_text_field(get_option('multiselector')); ?></textarea><br>
                             <span><?php esc_html_e( 'Insert selectors in order to control beside which sections the comment bubbles should be displayed.', INCOM_TD ); ?><br><br><?php esc_html_e( 'You can insert selectors like that:', INCOM_TD ); ?> <i><?php esc_html_e( 'selector1, selector2, selectorN', INCOM_TD ); ?></i><br><?php esc_html_e( 'Example:', INCOM_TD ); ?> <i><?php esc_html_e( 'h1, .entry-content p, span, blockquote', INCOM_TD ); ?></i></span>
@@ -75,7 +86,7 @@
                     <tr valign="top">
                         <th scope="row"><?php esc_html_e( '"Slide Site" Selector', INCOM_TD ); ?></th>
                         <td>
-                            <?php 
+                            <?php
                                 $arr_selectors = array( ".site-main", ".site-inner", ".site", "#page", "html" );
                                 $selectors = implode( '<br>' , $arr_selectors );
                             ?>
@@ -93,9 +104,9 @@
                             <?php $options = get_option( INCOM_OPTION_KEY.'_attribute' ); ?>
                             <input class="radio" type="radio" name="<?php echo esc_attr(INCOM_OPTION_KEY); ?>_attribute" value="none"<?php checked( 'none' == $options || empty($options) ); ?> /> <label for="none"><?php esc_html_e( 'No attribution: "I can not afford to give appropriate credit for this free plugin."', INCOM_TD ); ?></label><br><br>
                             <input class="radio" type="radio" name="<?php echo esc_attr(INCOM_OPTION_KEY); ?>_attribute" value="link"<?php checked( 'link' == $options ); ?> /> <label for="link"><?php esc_html_e( 'Link attribution: Display a subtle "i" (information link) that is placed in the top right of every comment wrapper and helps that the plugin gets spread.', INCOM_TD ); ?></label><br><br>
-                            <input class="radio" type="radio" name="<?php echo esc_attr(INCOM_OPTION_KEY); ?>_attribute" value="donate"<?php checked( 'donate' == $options ); ?> /> 
+                            <input class="radio" type="radio" name="<?php echo esc_attr(INCOM_OPTION_KEY); ?>_attribute" value="donate"<?php checked( 'donate' == $options ); ?> />
                             <label for="donate">
-                                <?php esc_html_e( 'Donation: "I have donated already or will do so soon."', INCOM_TD ); ?> 
+                                <?php esc_html_e( 'Donation: "I have donated already or will do so soon."', INCOM_TD ); ?>
                                 <?php printf( esc_html__( 'Please %1$sdonate now%2$s so that I can keep up the development of this plugin.', INCOM_TD ),
                                     '<a href="http://kevinw.de/donate/InlineComments/" target="_blank">',
                                     '</a>'
@@ -270,7 +281,7 @@
             <?php esc_html_e( 'I\'m the developer of this plugin. Love it!', INCOM_TD ); ?></p></td>
             <td>
                 <p>
-                    <b><?php esc_html_e( 'It\'s free!', INCOM_TD ); ?></b> 
+                    <b><?php esc_html_e( 'It\'s free!', INCOM_TD ); ?></b>
                     <?php printf( esc_html__( 'Support me with %1$sa delicious lunch%2$s or give this plugin a 5 star rating %3$son WordPress.org%4$s.', INCOM_TD ),
                         '<a href="http://kevinw.de/donate/InlineComments/" title="Pay me a delicious lunch" target="_blank">',
                         '</a>',
@@ -278,7 +289,7 @@
                         '</a>'
                     ); ?>
                 </p>
-            </td>   
+            </td>
         <td style="width:300px;">
             <p>
                 <b><?php esc_html_e( 'Personal tip: Must use plugins', INCOM_TD ); ?></b>

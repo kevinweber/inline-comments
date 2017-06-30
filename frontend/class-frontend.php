@@ -76,7 +76,10 @@ class INCOM_Frontend {
 
 		// When the individual status for a page/post is 'off', all the other setting don't matter. Therefore, this has to be tested next.
 		if (get_post_meta( $post_id, INCOM_OPTION_KEY.'_status', true ) &&
-                get_post_meta( $post_id, INCOM_OPTION_KEY.'_status', true ) === 'off') {
+    						get_post_meta( $post_id, INCOM_OPTION_KEY.'_status', true ) === 'off') {
+			$result = true;
+		// If only logged in users can comment but the user isn't logged in...
+		} else if ((get_option(INCOM_OPTION_KEY.'_status_default') === 'logged_in') && !is_user_logged_in()) {
 			$result = true;
 		} else if (!get_option(INCOM_OPTION_KEY.'_status_default') ||   // Load when no option is defined yet
                 get_post_meta( $post_id, INCOM_OPTION_KEY.'_status', true ) === 'on' && is_singular() ||
