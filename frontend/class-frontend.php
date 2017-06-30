@@ -4,21 +4,21 @@
  */
 class INCOM_Frontend {
     private static $status_body_class = 'inline-comments';
-    
+
     function init() {
         if (!is_admin() && $this->test_if_status_is_off()) {
             self::$status_body_class = 'inline-comments-off';
             add_filter( 'body_class' , array( $this, 'body_class' ) );
             return;
         }
-        
+
 		add_filter( 'body_class' , array( $this, 'body_class' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_jquery' ) );
         require_once( INCOM_PATH . 'frontend/class-wp.php' );
         new INCOM_WordPress();
-        
+
     }
-    
+
 	/**
 	 * Add class to <body> that identifies the usage of this plugin
 	 * @since 2.1
@@ -50,7 +50,16 @@ class INCOM_Frontend {
 			return '15';
 		}
 	}
-    
+
+	/**
+	 * Determine if user is allowed to comment
+	 * Logged in users are always allowed to comment.
+ 	 * @since 2.2.3
+	 */
+	protected function can_comment() {
+		return !get_option('comment_registration') || is_user_logged_in();
+	}
+
  	/**
  	 * Test if status is "off" for specific post/page
  	 */
@@ -58,24 +67,21 @@ class INCOM_Frontend {
 		global $post;
 		$result = true;
 
-        if (!isset($post->ID)) {
+    if (!isset($post->ID)) {
 			$post_id = null;
 		}
 		else {
 			$post_id = $post->ID;
 		}
 
-		// When comments require a registration and the user is not logged in, commenting inline is not allowed.
-		if ( get_option( 'comment_registration' ) && !is_user_logged_in() ) {
-			$result = true;
-		// When the individual status for a page/post is 'off', all the other setting don't matter. Therefore, this has to be tested next. 
-		} else if (get_post_meta( $post_id, INCOM_OPTION_KEY.'_status', true ) &&
+		// When the individual status for a page/post is 'off', all the other setting don't matter. Therefore, this has to be tested next.
+		if (get_post_meta( $post_id, INCOM_OPTION_KEY.'_status', true ) &&
                 get_post_meta( $post_id, INCOM_OPTION_KEY.'_status', true ) === 'off') {
 			$result = true;
 		} else if (!get_option(INCOM_OPTION_KEY.'_status_default') ||   // Load when no option is defined yet
                 get_post_meta( $post_id, INCOM_OPTION_KEY.'_status', true ) === 'on' && is_singular() ||
                 get_option(INCOM_OPTION_KEY.'_status_default') === 'on' ||
-                get_option(INCOM_OPTION_KEY.'_status_default') === 'on_posts' && is_single() || 
+                get_option(INCOM_OPTION_KEY.'_status_default') === 'on_posts' && is_single() ||
                 get_option(INCOM_OPTION_KEY.'_status_default') === 'on_pages' && is_page() ||
                 get_option(INCOM_OPTION_KEY.'_status_default') === 'on_posts_pages' && (is_single()||is_page()) ||
                 get_option(INCOM_OPTION_KEY.'_status_default') === 'on_posts_pages_custom' &&

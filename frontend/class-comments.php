@@ -78,11 +78,14 @@ class INCOM_Comments extends INCOM_Frontend {
 		echo wp_kses_post(apply_filters( 'incom_comments_list_before', $this->comments_list_before() ));
 
 		$this->loadCommentsList();
-		$this->loadCommentForm();
 
-		do_action( 'incom_cancel_link_before' );
-		echo wp_kses_post(apply_filters( 'incom_cancel_link', $this->loadCancelLink() ));
-		do_action( 'incom_cancel_link_after' );
+		if (parent::can_comment()) {
+			$this->loadCommentForm();
+
+			do_action( 'incom_cancel_link_before' );
+			echo wp_kses_post(apply_filters( 'incom_cancel_link', $this->loadCancelLink() ));
+			do_action( 'incom_cancel_link_after' );
+		}
 
 		echo '</div>';
 	}
@@ -123,12 +126,12 @@ class INCOM_Comments extends INCOM_Frontend {
 		}
 		$data_incom = get_comment_meta( $comment->comment_ID, $this->DataIncomKey, true );
 		?>
-		
+
 		<<?php echo $tag; /* XSS ok */ ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>" data-incom-comment="<?php echo esc_attr($data_incom); ?>" style="display:none">
 		<?php if ( 'div' != $args['style'] ) : ?>
 
 		<div id="incom-div-comment-<?php comment_ID() ?>" class="incom-div-comment comment-body">
-		
+
 		<?php
 			endif;
 

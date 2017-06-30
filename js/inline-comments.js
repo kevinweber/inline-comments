@@ -88,6 +88,7 @@
     var setOptions = function (options) {
         // 'options' overrides these defaults
         o = $.extend({
+                canComment: true,
                 selectors: 'p',
                 moveSiteSelector: idWrapperAppendTo,
                 countStatic: true,
@@ -106,7 +107,7 @@
     };
 
 
-    /* 
+    /*
      * This wrapper contains comment bubbles
      */
     var initIncomWrapper = function () {
@@ -136,7 +137,7 @@
         var elementsBySelectors,
             i,
             l;
-        
+
         elementsBySelectors = $( o.selectors );
         for (i = 0, l = elementsBySelectors.length; i < l; i += 1) {
             var $that = $(elementsBySelectors[i]);
@@ -187,7 +188,7 @@
             else if ( ( posX && posY ) !== undefined && ( changedPosX || changedPosY ) ) {
               recalculatePos
             }
-      
+
             if ( opt.visible ) {
               displayBubble
             }
@@ -352,11 +353,11 @@
         }
     };
 
-    /* 
+    /*
      * This event will be triggered when user hovers a text element or bubble
      */
     var handleHover = function (element, bubble) {
-        if (!bubble.hasClass(classBubbleStatic)) {
+        if (!bubble.hasClass(classBubbleStatic) && o.canComment) {
             // Handle hover (for both, "elements" and $bubble)
             element.add(bubble).hover(function () {
                 // First hide all non-static bubbles
@@ -383,7 +384,7 @@
     };
 
 
-    /* 
+    /*
      * This event will be triggered when user clicks on bubble
      */
     var handleClickBubble = function (source, bubble) {
@@ -434,7 +435,7 @@
         return $commentsWrapper;
     };
 
-    /* 
+    /*
      * Load comments wrapper
      */
     var loadCommentsWrapper = function (source) {
@@ -564,7 +565,7 @@
         });
     };
 
-    /* 
+    /*
      * Remove comments wrapper
      */
     var removeCommentsWrapper = function (fadeout) {
@@ -643,7 +644,7 @@
         // });
 
         // if ( testIfPositionRight() ) {
-        //   element.css( { 
+        //   element.css( {
         //     '-webkit-transform': translateX(-100%);
         //     -moz-transform: translateX(-100%);
         //     -ms-transform: translateX(-100%);
