@@ -65,8 +65,11 @@ class INCOM_Frontend {
 			$post_id = $post->ID;
 		}
 
-		// When the individual status for a page/post is 'off', all the other setting don't matter. So this has to be tested at first. 
-		if (get_post_meta( $post_id, INCOM_OPTION_KEY.'_status', true ) &&
+		// When comments require a registration and the user is not logged in, commenting inline is not allowed.
+		if ( get_option( 'comment_registration' ) && !is_user_logged_in() ) {
+			$result = true;
+		// When the individual status for a page/post is 'off', all the other setting don't matter. Therefore, this has to be tested next. 
+		} else if (get_post_meta( $post_id, INCOM_OPTION_KEY.'_status', true ) &&
                 get_post_meta( $post_id, INCOM_OPTION_KEY.'_status', true ) === 'off') {
 			$result = true;
 		} else if (!get_option(INCOM_OPTION_KEY.'_status_default') ||   // Load when no option is defined yet
