@@ -77,7 +77,7 @@ class INCOM_Comments extends INCOM_Frontend {
 
 		echo wp_kses_post(apply_filters( 'incom_comments_list_before', $this->comments_list_before() ));
 
-		if (!parent::test_if_status_is_off()) {
+		if (!parent::are_inline_comments_disabled()) {
 			$this->loadCommentsList();
 		}
 

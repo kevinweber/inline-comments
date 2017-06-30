@@ -6,7 +6,7 @@ class INCOM_Frontend {
     private static $status_body_class = 'inline-comments';
 
     function init() {
-        if (!is_admin() && $this->test_if_status_is_off()) {
+        if (!is_admin() && $this->are_inline_comments_disabled()) {
             self::$status_body_class = 'inline-comments-off';
             add_filter( 'body_class' , array( $this, 'body_class' ) );
             return;
@@ -61,9 +61,9 @@ class INCOM_Frontend {
 	}
 
  	/**
- 	 * Test if status is "off" for specific post/page
+ 	 * Test if inline comments are disabled for a specific post or page
  	 */
- 	function test_if_status_is_off() {
+ 	function are_inline_comments_disabled() {
 		global $post;
 		$result = true;
 
@@ -92,7 +92,7 @@ class INCOM_Frontend {
 			$result = false;
 		}
 
-		$result = apply_filters( INCOM_OPTION_KEY.'_test_if_status_is_off', $result );
+		$result = apply_filters( INCOM_OPTION_KEY.'_are_inline_comments_disabled', $result );
 		return $result;
  	}
 }
